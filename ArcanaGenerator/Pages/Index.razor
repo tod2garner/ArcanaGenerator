@@ -28,29 +28,24 @@
         <td>Cast Time</td>
         <td>@theSpell.CastTime</td>
     </tr>
+    @if (theSpell.Effect.Duration != Duration.Instant)
+    {
+        <tr>
+            <td>Duration</td>
+            <td>@theSpell.Effect.Duration</td>
+        </tr>
+        <tr>
+            <td>Concentration</td>
+            <td>@theSpell.RequiresConcentration</td>
+        </tr>
+    }
     <tr>
-        <td>Components</td>
-        <td>@theSpell.Components.SummarizeIncludingSpecificMaterials()</td>
-    </tr>
-    <tr>
-        <td>Ritual</td>
-        <td>@theSpell.Ritual</td>
-    </tr>
-    <tr>
-        <td>Duration</td>
-        <td>@theSpell.Effect.Duration</td>
-    </tr>
-    <tr>
-        <td>Concentration</td>
-        <td>@theSpell.RequiresConcentration</td>
+        <td>Effect</td>
+        <td>@theSpell.Effect.Description</td>
     </tr>
     <tr>
         <td>Delivery</td>
         <td>@theSpell.Delivery.Description</td>
-    </tr>
-    <tr>
-        <td>Effect</td>
-        <td>@theSpell.Effect.Description</td>
     </tr>
     @if (theSpell.CasterPenaltyCost != null)
     {
@@ -63,6 +58,14 @@
             <td>@theSpell.CasterPenaltyCost.Duration</td>
         </tr>
     }
+    <tr>
+        <td>Components</td>
+        <td>@theSpell.Components.SummarizeIncludingSpecificMaterials()</td>
+    </tr>
+    <tr>
+        <td>Ritual</td>
+        <td>@theSpell.Ritual</td>
+    </tr>
     <tr>
         <td>Power Rating</td>
         <td>@theSpell.GetFinalPowerRating()</td>

@@ -102,12 +102,39 @@ namespace ArcanaGenerator.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Necromancy },
                     Type = EffectType.Buff,
-                    Description = " shares damage taken with all other friendly creatures affected by this spell. The total damage is split evenly " +
+                    Description = "shares damage taken with all other friendly creatures affected by this spell. The total damage is split evenly " +
                                     "between them - for odd amounts the remainder goes to the original target. Example: for 21 damage split among 4 creatures " +
                                     "the original target takes 6 points and the other creatures each take 5 points.",
                     IsAlwaysAoE = true,
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 15
+                },
+                new SpellTemplate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation },
+                    Type = EffectType.Buff,
+                    Description = "is coated by a shimmering film. Whenever they are hit by a melee attack the damage is reduced by 2d6 and " +
+                                    "a lash of energy strikes back at the attacker, dealing the double amount prevented as Force damage.",
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Buff,
+                    Description = "is temporarily covered by metallic quills. Whenever they are hit by a melee attack the attacker suffers 3d10 + 5 Piercing damage.",
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Buff,
+                    Description = "is temporarily surrounded by an irregular bubble shaped like their body. Whenever they would be hit by a ranged projectile attack the " +
+                                    "projectile is deflected and turned back towards the attacker. The original attack roll is used vs the attackers AC to determine if it hits. " +
+                                    "After deflecting 1d6 attacks the spell ends early.",
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 20
                 }
             };
 

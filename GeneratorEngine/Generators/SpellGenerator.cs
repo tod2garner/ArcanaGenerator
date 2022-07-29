@@ -25,7 +25,7 @@ namespace GeneratorEngine.Generators
                 School = school,
                 Effect = effect,
                 Delivery = delivery,
-                CastTime = GenerateCastTime(effectType, spellTemplate.IsAlwaysAReaction),
+                CastTime = GenerateCastTime(effectType, spellTemplate.IsAlwaysAReaction, spellTemplate.DoesNotTargetCreatures),
                 Components = GenerateComponents(dataTemplateService, school),
                 RequiresConcentration = DetermineConcentration(effect.Duration),
                 Ritual = DetermineRitual(effectType),
@@ -39,7 +39,7 @@ namespace GeneratorEngine.Generators
 
             theSpell.AdjustForTargetValueScore(minValue, maxValue);
                         
-            if (Rnd.Next(100) > 40) // 60%
+            if (theSpell.GetFinalPowerRating() > minValue && Rnd.Next(100) > 40) // 60%
             {
                 var penaltyTemplate = dataTemplateService.GetRandomSpellTemplate(EffectType.Penalty);
                 var penalty = EffectGenerator.GeneratePenaltyEffect(penaltyTemplate, 0.5 * theSpell.GetFinalPowerRating());
@@ -69,7 +69,7 @@ namespace GeneratorEngine.Generators
             return (SchoolOfMagic)Rnd.Next(minRange, maxRange);
         }
 
-        private static CastTime GenerateCastTime(EffectType effectType, bool isAlwaysReaction)
+        private static CastTime GenerateCastTime(EffectType effectType, bool isAlwaysReaction, bool doesNotTargetCreatures)
         {
             if (isAlwaysReaction)
                 return CastTime.Reaction;
@@ -77,7 +77,7 @@ namespace GeneratorEngine.Generators
             int roll = Rnd.Next(100);
             if (roll > 95 && effectType != EffectType.Damage)
                 return CastTime.OneHour; // 5%
-            else if (roll > 90 && effectType != EffectType.Utility)
+            else if (roll > 90 && !doesNotTargetCreatures)
                 return CastTime.Reaction; // 5%
             else if (roll > 80)
                 return CastTime.BonusAction;// 10%

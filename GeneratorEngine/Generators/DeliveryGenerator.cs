@@ -28,7 +28,8 @@ namespace GeneratorEngine.Generators
                         Type = deliveryType,
                         RangeType = rangeType,
                         RangeDistance = rangeDistance,
-                        NumberOfTargets = 1
+                        NumberOfTargets = 1, 
+                        DoesNotTargetCreatures = template.DoesNotTargetCreatures
                     };
                 case DeliveryType.AreaOfEffect:
                     return new AreaDelivery
@@ -38,7 +39,8 @@ namespace GeneratorEngine.Generators
                         RangeDistance = rangeDistance, 
                         Area = GenerateArea(),
                         DoesAreaPersistForDuration = Rnd.NextDouble() > 0.5,
-                        NumberOfTargets = 1
+                        NumberOfTargets = 1,
+                        DoesNotTargetCreatures = template.DoesNotTargetCreatures
                     };
                 case DeliveryType.Projectile:
                     return new ProjectileDelivery
@@ -47,7 +49,8 @@ namespace GeneratorEngine.Generators
                         RangeType = rangeType,
                         RangeDistance = rangeDistance,                         
                         ProjectileType = GenerateProjectileType(),
-                        NumberOfTargets = 1
+                        NumberOfTargets = 1,
+                        DoesNotTargetCreatures = template.DoesNotTargetCreatures
                     };
                 case DeliveryType.AreaProjectile:
                     return new AreaProjectileDelivery
@@ -57,7 +60,8 @@ namespace GeneratorEngine.Generators
                         RangeDistance = rangeDistance,
                         Area = GenerateArea(),
                         ProjectileType = GenerateProjectileType(),
-                        NumberOfTargets = 1
+                        NumberOfTargets = 1,
+                        DoesNotTargetCreatures = template.DoesNotTargetCreatures
                     };
                 default:
                     throw new NotImplementedException();

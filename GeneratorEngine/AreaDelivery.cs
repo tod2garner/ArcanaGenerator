@@ -15,7 +15,7 @@ namespace GeneratorEngine
         internal override void UpdateDescription()
         {
             base.UpdateDescription();
-            Description += $" and an {Area.Size} ft {Area.Shape} area";
+            Description += $" and a {Area.Size} ft {Area.Shape} area";
         }
     }
 }

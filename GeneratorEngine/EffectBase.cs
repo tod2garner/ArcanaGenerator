@@ -20,7 +20,7 @@ namespace GeneratorEngine
 
         internal virtual void UpdateDescription()
         {
-            Description = $"Any creature affected by this spell {Description}.";
+            Description = $"Any creature affected by this spell {Description}";
         }
 
         internal virtual void ScalePower(double scalingRatio)

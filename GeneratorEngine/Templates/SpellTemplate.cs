@@ -23,6 +23,6 @@ namespace GeneratorEngine.Templates
         public bool IsNeverAoE;
         public bool IsRangeAlwaysSelf;
         public bool IsAlwaysRanged;
-        public bool DoesNotTargetCreatures;//Move to new subclass for utility? 
+        public bool DoesNotTargetCreatures;
     }
 }

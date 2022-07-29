@@ -8,6 +8,7 @@ namespace GeneratorEngine
         public RangeType RangeType;
         public double RangeDistance; //Always 0 when RangeType == self        
         public int NumberOfTargets; //Always 1 when RangeType == self
+        public bool DoesNotTargetCreatures;
         public string Description;
 
         public virtual double GetPowerRatingModifier()
@@ -24,7 +25,7 @@ namespace GeneratorEngine
         internal virtual void UpdateDescription()
         {
             //TODO - improve
-            var typeOfTargets = (Type == DeliveryType.AreaOfEffect || Type == DeliveryType.AreaProjectile) ? "location(s)" : "creature(s)";
+            var typeOfTargets = (Type == DeliveryType.AreaOfEffect || Type == DeliveryType.AreaProjectile || DoesNotTargetCreatures) ? "location(s)" : "creature(s)";
             var targetingText = NumberOfTargets > 0 ? $"Can target {NumberOfTargets} {typeOfTargets}." : "";
             var deliveryTypeText = (Type == DeliveryType.None) ? "Instant effect" : $"{Type} delivery";
             

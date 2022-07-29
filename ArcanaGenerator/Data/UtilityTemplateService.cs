@@ -241,6 +241,25 @@ namespace ArcanaGenerator.Data
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 5
                 },
+                new SpellTemplate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "You deal 3d8 + 10 Force damage to a stationary non-living object. This spell cannot target creatures.",
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "A rush of cold air surges across target area. All non-magical flames in the area are instantly doused and all non-living objects are cooled to room temperature.",
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysAoE = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 3
+                },
             };
 
             return templates;

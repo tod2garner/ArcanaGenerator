@@ -64,6 +64,7 @@ namespace ArcanaGenerator.Data
                     Type = EffectType.Debuff,
                     Description = "is pulled closer by 15 ft",
                     IsAlwaysInstant = true,
+                    IsAlwaysRanged = true,
                     BaseValueScore = 10
                 },
                 new SpellTemplate
