@@ -8,7 +8,7 @@ namespace GeneratorEngine.Generators
     {
         private static readonly Random Rnd = new Random();
 
-        public static Spell CreateSpell(IDataTemplateService dataTemplateService, SchoolOfMagic inputSchoolOfMagic, EffectType? inputEffectType)
+        public static Spell CreateSpell(IDataTemplateService dataTemplateService, SchoolOfMagic inputSchoolOfMagic, EffectType? inputEffectType, PowerLevel inputPowerLevel)
         {
             var effectType = inputEffectType ?? GenerateEffectType();
             var spellTemplate = dataTemplateService.GetRandomSpellTemplate(effectType, inputSchoolOfMagic);
@@ -33,10 +33,7 @@ namespace GeneratorEngine.Generators
                 Name = "Create name generator"
             };
 
-            //TODO - get minValue and maxValue from inputs
-            var minValue = Rnd.Next(50);
-            var maxValue = minValue + Rnd.Next(1000);
-
+            (var minValue, var maxValue) = LookupPowerScores(inputPowerLevel);
             theSpell.AdjustForTargetValueScore(minValue, maxValue);
                         
             if (theSpell.GetFinalPowerRating() > minValue && Rnd.Next(100) > 40) // 60%
@@ -121,6 +118,24 @@ namespace GeneratorEngine.Generators
                 return true; // 30%
             else
                 return false;
+        }
+    
+        private static (double minValue, double maxValue) LookupPowerScores(PowerLevel powerLevel)
+        {
+            switch (powerLevel)
+            {
+                case PowerLevel.Minor:
+                    return (2, 20);
+                case PowerLevel.Lesser:
+                    return (20, 60);
+                case PowerLevel.Greater:
+                    return (60, 150);
+                case PowerLevel.Major:
+                    return (150, 500);
+                case PowerLevel.Unlimited:
+                default:
+                    return (0, double.PositiveInfinity);
+            };
         }
     }
 }

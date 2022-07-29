@@ -127,4 +127,13 @@
         d10 = 5,
         d12 = 6
     }
+
+    public enum PowerLevel
+    {
+        Minor,
+        Lesser,
+        Greater,
+        Major,
+        Unlimited
+    }
 }

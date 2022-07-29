@@ -10,5 +10,6 @@ namespace ArcanaGenerator
     {
         public string EffectType;
         public SchoolOfMagic SchoolOfMagic;
+        public PowerLevel PowerLevel;
     }
 }

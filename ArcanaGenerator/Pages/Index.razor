@@ -33,6 +33,18 @@
         </InputSelect>
         <ValidationMessage For="@(() => inputs.SchoolOfMagic)" />
     </div>
+    <div class="form-group">
+        <label for="body">Power Level: </label>
+
+        <InputSelect @bind-Value="@inputs.PowerLevel">
+
+            @foreach (var option in Enum.GetValues(typeof(PowerLevel)))
+            {
+                <option value="@option">@option</option>
+            }
+        </InputSelect>
+        <ValidationMessage For="@(() => inputs.PowerLevel)" />
+    </div>
     <br>
     <button @onclick="GenerateSpell">Create a new spell</button>
     <br>
@@ -121,7 +133,7 @@
         EffectType? inputType = null;
         if (typeExists) inputType = spellType;
 
-        theSpell = GeneratorEngine.Generators.SpellGenerator.CreateSpell(DataTemplateService, inputs.SchoolOfMagic, inputType);
+        theSpell = GeneratorEngine.Generators.SpellGenerator.CreateSpell(DataTemplateService, inputs.SchoolOfMagic, inputType, inputs.PowerLevel);
     }
 
     private IEnumerable<string> GetSpellTypeOptions()
