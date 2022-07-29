@@ -25,7 +25,7 @@ namespace GeneratorEngine.Generators
                 School = school,
                 Effect = effect,
                 Delivery = delivery,
-                CastTime = GenerateCastTime(effectType, spellTemplate.IsAlwaysAReaction, spellTemplate.DoesNotTargetCreatures),
+                CastTime = GenerateCastTime(effectType, effect.Duration, spellTemplate.IsAlwaysAReaction, spellTemplate.DoesNotTargetCreatures),
                 Components = GenerateComponents(dataTemplateService, school),
                 RequiresConcentration = DetermineConcentration(effect.Duration),
                 Ritual = DetermineRitual(effectType),
@@ -66,19 +66,19 @@ namespace GeneratorEngine.Generators
             return (SchoolOfMagic)Rnd.Next(minRange, maxRange);
         }
 
-        private static CastTime GenerateCastTime(EffectType effectType, bool isAlwaysReaction, bool doesNotTargetCreatures)
+        private static CastTime GenerateCastTime(EffectType effectType, Duration duration, bool isAlwaysReaction, bool doesNotTargetCreatures)
         {
             if (isAlwaysReaction)
                 return CastTime.Reaction;
 
             int roll = Rnd.Next(100);
-            if (roll > 95 && effectType != EffectType.Damage)
+            if (roll > 95 && effectType != EffectType.Damage && (int) duration > (int) Duration.OneHour)
                 return CastTime.OneHour; // 5%
             else if (roll > 90 && !doesNotTargetCreatures)
                 return CastTime.Reaction; // 5%
             else if (roll > 80)
                 return CastTime.BonusAction;// 10%
-            else if (roll > 70 && effectType != EffectType.Damage)
+            else if (roll > 70 && effectType != EffectType.Damage && (int) duration > (int) Duration.OneMinute)
                 return CastTime.OneMinute;// 10%
             else
                 return CastTime.Action;// 70%            

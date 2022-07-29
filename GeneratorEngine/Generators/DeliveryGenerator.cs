@@ -171,10 +171,10 @@ namespace GeneratorEngine.Generators
                 return 60.0; // 30%
             else if (roll > 30)
                 return 30.0; // 20%
-            else if (roll > 20)
-                return 15.0; // 10%
+            else if (roll > 10)
+                return 15.0; // 20%
             else
-                return 5.0; // 20%
+                return 10.0; // 10%
         }
 
         private static Area GenerateArea()

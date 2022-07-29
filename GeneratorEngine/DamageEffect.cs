@@ -23,15 +23,18 @@ namespace GeneratorEngine
             Description = $"Any creature affected by this spell suffers {NumberOfDice}{DiceSize} {DamageType} damage.";
         }
 
-        internal override void ScalePower(double scalingRatio)
+        internal override void ScalePower(double? scalingRatio)
         {
-            if(scalingRatio < 1.0 && NumberOfDice > 1)
+            if (!scalingRatio.HasValue)
+                return;
+
+            if(scalingRatio < 1.0 && NumberOfDice > 1) //make it weaker
             {
-                NumberOfDice = Math.Max(1, (int)Math.Floor(scalingRatio * NumberOfDice));
+                NumberOfDice = Math.Max(1, (int)Math.Floor(scalingRatio.Value * NumberOfDice));
             }
-            else if(scalingRatio > 1.0)
+            else if(scalingRatio > 1.0) //make it stronger
             {
-                NumberOfDice = (int)Math.Ceiling(scalingRatio * NumberOfDice);
+                NumberOfDice = Math.Min(12, (int)Math.Ceiling(scalingRatio.Value * NumberOfDice));
             };
         }
     }

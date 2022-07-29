@@ -39,17 +39,23 @@ namespace GeneratorEngine
             //TODO - finish this
             //Scale cast time, concentration, ritual, components
 
-            var powerRating = GetFinalPowerRating();
-            if (powerRating > maxScore || powerRating < minScore)
-            {
-                var scalingRatio = powerRating > maxScore ? maxScore / powerRating : minScore / powerRating;
-                Effect.ScalePower(scalingRatio);
-
-                Delivery.ScalePower(GetFinalPowerRating(), minScore, maxScore);
-            }
+            //recalculate scaling ratio after each round of changes
+            Effect.ScalePower(CalculateScalingRatio(minScore, maxScore));
+            Delivery.ScalePower(CalculateScalingRatio(minScore, maxScore));
 
             Effect.UpdateDescription();
             Delivery.UpdateDescription();
         }
+
+        private double? CalculateScalingRatio(double minScore, double maxScore)
+        {
+            var powerRating = GetFinalPowerRating();
+            if (powerRating > maxScore)           
+                return maxScore / powerRating;            
+            else if (powerRating < minScore)            
+                return minScore / powerRating;            
+            else
+                return null;
+        } 
     }
 }

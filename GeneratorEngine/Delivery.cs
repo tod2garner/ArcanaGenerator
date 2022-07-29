@@ -6,8 +6,8 @@ namespace GeneratorEngine
     {
         public DeliveryType Type;
         public RangeType RangeType;
-        public double RangeDistance; //Always 0 when RangeType == self        
-        public int NumberOfTargets; //Always 1 when RangeType == self
+        public double RangeDistance;       
+        public int NumberOfTargets;
         public bool DoesNotTargetCreatures;
         public string Description;
 
@@ -33,9 +33,39 @@ namespace GeneratorEngine
             Description = $"{targetingText}{deliveryTypeText} with a range of {rangeText}.";
         }
 
-        internal void ScalePower(double powerRating, double minScore, double maxScore)
+        internal void ScalePower(double? scalingRatio)
         {
-            //TODO - scale range distance, AoE size, etc
+            if (!scalingRatio.HasValue)
+                return;
+
+            if (scalingRatio < 1.0) //make it weaker
+            {
+                if(scalingRatio < (NumberOfTargets - 1) / NumberOfTargets)
+                {
+                    var newNumberOfTargets = Math.Max(1, (int) Math.Floor(scalingRatio.Value * NumberOfTargets));
+                    scalingRatio *= (NumberOfTargets / newNumberOfTargets);
+                    NumberOfTargets = newNumberOfTargets;
+                }
+
+                if (scalingRatio < 1.0) // still not weak enough after # target change
+                {
+                    //TODO - scale range distance, AoE size etc
+                }
+            }
+            else if (scalingRatio > 1.0) //make it stronger
+            {
+                if(scalingRatio > 2.0 && RangeType != RangeType.Self)
+                {
+                    var newNumberOfTargets = Math.Min(8, (int)Math.Ceiling(scalingRatio.Value * NumberOfTargets));
+                    scalingRatio *= (NumberOfTargets / newNumberOfTargets);
+                    NumberOfTargets = newNumberOfTargets;
+                }
+
+                if (scalingRatio > 1.0) // still not strong enough after # target change
+                {
+                    //TODO - scale range distance, AoE size etc
+                }
+            }
         }
     }
 }

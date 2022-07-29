@@ -23,14 +23,17 @@ namespace GeneratorEngine
             Description = $"Any creature affected by this spell {Description}";
         }
 
-        internal virtual void ScalePower(double scalingRatio)
+        internal virtual void ScalePower(double? scalingRatio)
         {
-            if(scalingRatio < 1.0 && Duration != Duration.Instant)
+            if(!scalingRatio.HasValue)            
+                return;
+            
+            if(scalingRatio < 1.0 && Duration != Duration.Instant) //make it weaker
             {
                 var nextShorterDuration = Enum.GetValues(typeof(Duration)).Cast<Duration>().Where(e => (int)e < (int)Duration).OrderBy(e => e).First();
                 Duration = nextShorterDuration;
             }
-            else if(scalingRatio > 1.0 && Duration != Duration.OneMonth)
+            else if(scalingRatio > 1.0 && Duration != Duration.OneMonth) //make it stronger
             {
                 var nextLongerDuration = Enum.GetValues(typeof(Duration)).Cast<Duration>().Where(e => (int)e > (int)Duration).OrderBy(e => e).First();
                 Duration = nextLongerDuration;
