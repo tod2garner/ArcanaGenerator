@@ -5,6 +5,7 @@ namespace GeneratorEngine
     public class AreaDelivery : Delivery
     {
         public Area Area;
+        public bool DoesAreaPersistForDuration;
 
         public override double GetPowerRatingModifier()
         {

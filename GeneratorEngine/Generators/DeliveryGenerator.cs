@@ -14,7 +14,7 @@ namespace GeneratorEngine.Generators
             //TODO
             //template.DoesNotTargetCreatures
 
-            var rangeType = GenerateRangeType(template.IsRangeAlwaysSelf);
+            var rangeType = GenerateRangeType(template.IsRangeAlwaysSelf, template.IsAlwaysRanged);
             var deliveryType = GenerateDeliveryType(template.Type, rangeType, template.IsAlwaysAoE, template.IsNeverAoE);
             var rangeDistance = GenerateRangeDistance(template.Type, rangeType);
 
@@ -37,6 +37,7 @@ namespace GeneratorEngine.Generators
                         RangeType = rangeType,
                         RangeDistance = rangeDistance, 
                         Area = GenerateArea(),
+                        DoesAreaPersistForDuration = Rnd.NextDouble() > 0.5,
                         NumberOfTargets = 1
                     };
                 case DeliveryType.Projectile:
@@ -129,10 +130,13 @@ namespace GeneratorEngine.Generators
             return DeliveryType.None;
         }
 
-        private static RangeType GenerateRangeType(bool isRangeAlwaysSelf)
+        private static RangeType GenerateRangeType(bool isRangeAlwaysSelf, bool isAlwaysRanged)
         {
             if (isRangeAlwaysSelf)
                 return RangeType.Self;
+
+            if (isAlwaysRanged)
+                return RangeType.Distance;
 
             var roll = Rnd.Next(100);
             if (roll > 80)

@@ -17,10 +17,12 @@ namespace GeneratorEngine.Templates
         public bool IsAlwaysInstant;
         public Duration? MinimumDuration;
         public CastTime? MinimumCastTime;
+        public bool IsAlwaysAReaction;
         //Delivery restrictions
         public bool IsAlwaysAoE;
         public bool IsNeverAoE;
         public bool IsRangeAlwaysSelf;
-        public bool DoesNotTargetCreatures;//Move to new subclass for utility?        
+        public bool IsAlwaysRanged;
+        public bool DoesNotTargetCreatures;//Move to new subclass for utility? 
     }
 }
