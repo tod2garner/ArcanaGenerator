@@ -26,18 +26,18 @@ namespace ArcanaGenerator.Data
             requiredMaterialsService = requiredMaterialsTemplateService;
         }
 
-        public SpellTemplate GetRandomSpellTemplate(EffectType effectType)
+        public SpellTemplate GetRandomSpellTemplate(EffectType effectType, SchoolOfMagic school)
         {
             return effectType switch
             {
-                EffectType.Buff => buffService.GetRandomTemplate(),
-                EffectType.Debuff => debuffService.GetRandomTemplate(),
-                EffectType.Utility => utilityService.GetRandomTemplate(),
-                EffectType.Penalty => penaltyService.GetRandomTemplate(),
+                EffectType.Buff => buffService.GetRandomTemplate(school),
+                EffectType.Debuff => debuffService.GetRandomTemplate(school),
+                EffectType.Utility => utilityService.GetRandomTemplate(school),
+                EffectType.Penalty => penaltyService.GetRandomTemplate(school),
                 EffectType.Damage => new SpellTemplate
                 {
                     Type = EffectType.Damage,
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any }
+                    Schools = new List<SchoolOfMagic> { school }
                 },
                 _ => throw new NotImplementedException(),
             };

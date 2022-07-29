@@ -8,12 +8,12 @@ namespace GeneratorEngine.Generators
     {
         private static readonly Random Rnd = new Random();
 
-        public static Spell CreateSpell(IDataTemplateService dataTemplateService)
+        public static Spell CreateSpell(IDataTemplateService dataTemplateService, SchoolOfMagic inputSchoolOfMagic, EffectType? inputEffectType)
         {
-            var effectType = GenerateEffectType();
-            var spellTemplate = dataTemplateService.GetRandomSpellTemplate(effectType);
+            var effectType = inputEffectType ?? GenerateEffectType();
+            var spellTemplate = dataTemplateService.GetRandomSpellTemplate(effectType, inputSchoolOfMagic);
 
-            var school = spellTemplate.Schools.ElementAt(Rnd.Next(0, spellTemplate.Schools.Count - 1));
+            var school = (inputSchoolOfMagic != SchoolOfMagic.Any) ? inputSchoolOfMagic: spellTemplate.Schools.ElementAt(Rnd.Next(0, spellTemplate.Schools.Count - 1));
             if(school == SchoolOfMagic.Any)
                 school = GetRandomSchool();
 
@@ -41,7 +41,7 @@ namespace GeneratorEngine.Generators
                         
             if (theSpell.GetFinalPowerRating() > minValue && Rnd.Next(100) > 40) // 60%
             {
-                var penaltyTemplate = dataTemplateService.GetRandomSpellTemplate(EffectType.Penalty);
+                var penaltyTemplate = dataTemplateService.GetRandomSpellTemplate(EffectType.Penalty, SchoolOfMagic.Any);
                 var penalty = EffectGenerator.GeneratePenaltyEffect(penaltyTemplate, 0.5 * theSpell.GetFinalPowerRating());
                 theSpell.CasterPenaltyCost = penalty;
             }
