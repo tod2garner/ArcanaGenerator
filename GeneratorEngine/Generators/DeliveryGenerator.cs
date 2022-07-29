@@ -118,12 +118,15 @@ namespace GeneratorEngine.Generators
 
             if(isAlwaysAoE)
             {
-                options = options.Where(o => o.type == DeliveryType.AreaOfEffect && o.type == DeliveryType.AreaProjectile).ToList();
+                options = options.Where(o => o.type == DeliveryType.AreaOfEffect || o.type == DeliveryType.AreaProjectile).ToList();
             }
             else if(isNeverAoE)
             {
                 options = options.Where(o => o.type != DeliveryType.AreaOfEffect && o.type != DeliveryType.AreaProjectile).ToList();
             }
+
+            if (options.Count == 1)
+                return options.First().type;
 
             foreach (var choice in options)
             {
@@ -131,7 +134,7 @@ namespace GeneratorEngine.Generators
                     return choice.type;
             }
 
-            return DeliveryType.None;
+            throw new ArgumentException("No option for delivery type found");
         }
 
         private static RangeType GenerateRangeType(bool isRangeAlwaysSelf, bool isAlwaysRanged)

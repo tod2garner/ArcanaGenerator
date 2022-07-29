@@ -33,7 +33,7 @@ namespace GeneratorEngine
             Description = $"{targetingText}{deliveryTypeText} with a range of {rangeText}.";
         }
 
-        internal void ScalePower(double? scalingRatio)
+        internal virtual void ScalePower(double? scalingRatio)
         {
             if (!scalingRatio.HasValue)
                 return;
@@ -47,9 +47,9 @@ namespace GeneratorEngine
                     NumberOfTargets = newNumberOfTargets;
                 }
 
-                if (scalingRatio < 1.0) // still not weak enough after # target change
+                if (scalingRatio < 1.0 && RangeType == RangeType.Distance) // still not weak enough after # target change
                 {
-                    //TODO - scale range distance, AoE size etc
+                    RangeDistance = Math.Max(15, Math.Round(scalingRatio.Value * RangeDistance / 5.0) * 5);
                 }
             }
             else if (scalingRatio > 1.0) //make it stronger
@@ -61,9 +61,9 @@ namespace GeneratorEngine
                     NumberOfTargets = newNumberOfTargets;
                 }
 
-                if (scalingRatio > 1.0) // still not strong enough after # target change
+                if (scalingRatio > 1.0 && RangeType == RangeType.Distance) // still not strong enough after # target change
                 {
-                    //TODO - scale range distance, AoE size etc
+                    RangeDistance = Math.Min(150, Math.Round(scalingRatio.Value * RangeDistance / 5.0) * 5);
                 }
             }
         }

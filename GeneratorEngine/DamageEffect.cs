@@ -23,7 +23,7 @@ namespace GeneratorEngine
             Description = $"Any creature affected by this spell suffers {NumberOfDice}{DiceSize} {DamageType} damage.";
         }
 
-        internal override void ScalePower(double? scalingRatio)
+        internal override void ScalePower(double? scalingRatio, Duration? minDuration)
         {
             if (!scalingRatio.HasValue)
                 return;

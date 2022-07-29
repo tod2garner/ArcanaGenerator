@@ -34,13 +34,10 @@ namespace GeneratorEngine
             return 1.0;//TODO - add cast time, components, concentration, ritual
         }
 
-        public void AdjustForTargetValueScore(double minScore, double maxScore)
+        public void AdjustForTargetValueScore(Templates.SpellTemplate spellTemplate, double minScore, double maxScore)
         {
-            //TODO - finish this
-            //Scale cast time, concentration, ritual, components
-
             //recalculate scaling ratio after each round of changes
-            Effect.ScalePower(CalculateScalingRatio(minScore, maxScore));
+            Effect.ScalePower(CalculateScalingRatio(minScore, maxScore), spellTemplate.MinimumDuration);
             Delivery.ScalePower(CalculateScalingRatio(minScore, maxScore));
 
             Effect.UpdateDescription();

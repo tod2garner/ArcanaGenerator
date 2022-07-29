@@ -34,13 +34,16 @@ namespace GeneratorEngine.Generators
             };
 
             (var minValue, var maxValue) = LookupPowerScores(inputPowerLevel);
-            theSpell.AdjustForTargetValueScore(minValue, maxValue);
-                        
-            if (theSpell.GetFinalPowerRating() > minValue && Rnd.Next(100) > 40) // 60%
+            theSpell.AdjustForTargetValueScore(spellTemplate, minValue, maxValue);
+
+            var spellPower = theSpell.GetFinalPowerRating();
+            if (spellPower > minValue && Rnd.Next(100) > 40) // 60%
             {
                 var penaltyTemplate = dataTemplateService.GetRandomSpellTemplate(EffectType.Penalty, SchoolOfMagic.Any);
-                var penalty = EffectGenerator.GeneratePenaltyEffect(penaltyTemplate, 0.5 * theSpell.GetFinalPowerRating());
-                theSpell.CasterPenaltyCost = penalty;
+                var penalty = EffectGenerator.GeneratePenaltyEffect(penaltyTemplate, 0.5 * spellPower);                
+
+                if (penalty.GetPowerRating() < spellPower - 1)
+                    theSpell.CasterPenaltyCost = penalty; ;
             }
 
             return theSpell;
