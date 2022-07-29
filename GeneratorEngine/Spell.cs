@@ -42,7 +42,7 @@ namespace GeneratorEngine
             var powerRating = GetFinalPowerRating();
             if (powerRating > maxScore || powerRating < minScore)
             {
-                var scalingRatio = powerRating > maxScore ? maxScore / powerRating : powerRating / minScore;
+                var scalingRatio = powerRating > maxScore ? maxScore / powerRating : minScore / powerRating;
                 Effect.ScalePower(scalingRatio);
 
                 Delivery.ScalePower(GetFinalPowerRating(), minScore, maxScore);

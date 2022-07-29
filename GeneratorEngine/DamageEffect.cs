@@ -25,13 +25,13 @@ namespace GeneratorEngine
 
         internal override void ScalePower(double scalingRatio)
         {
-            if(scalingRatio < 1.0)
+            if(scalingRatio < 1.0 && NumberOfDice > 1)
             {
-                //TODO
+                NumberOfDice = Math.Max(1, (int)Math.Floor(scalingRatio * NumberOfDice));
             }
             else if(scalingRatio > 1.0)
             {
-                //TODO
+                NumberOfDice = (int)Math.Ceiling(scalingRatio * NumberOfDice);
             };
         }
     }
