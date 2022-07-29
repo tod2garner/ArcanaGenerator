@@ -153,7 +153,17 @@ namespace ArcanaGenerator.Data
                     Description = "is temporarily petrified (only becomes permanent if not resisted before the end of the spell duration)",
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 50
-                }
+                },
+                new SpellTemplate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Debuff,
+                    Description = "experiences a delayed teleportation that is triggered at the end of the spell's duration " +
+                                    "back to the point where they used to be when it was cast (or the nearest unoccupied space). " +
+                                    "This spell cannot cross between planes. When they are teleported they suffer 2d8 psychic damage",
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 20
+                },
             };
 
             return templates;
