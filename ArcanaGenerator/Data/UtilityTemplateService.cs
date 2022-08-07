@@ -46,7 +46,7 @@ namespace ArcanaGenerator.Data
                 },
                 new SpellTemplate
                 {
-                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Abjuration },
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Utility,
                     Description = "Your boots or shoes are temporarily invulnerable to all damage. If you are not wearing any shoes or boots this spell has no effect.",
                     IsNeverAoE = true,
@@ -139,7 +139,7 @@ namespace ArcanaGenerator.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
                     Type = EffectType.Utility,
-                    Description = "You permanently conjure a tiny snake that is hostile to you",
+                    Description = "You permanently conjure a tiny snake that is hostile to everyone, including you",
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsAlwaysInstant = true,
@@ -159,7 +159,7 @@ namespace ArcanaGenerator.Data
                 },
                 new SpellTemplate
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Abjuration },
                     Type = EffectType.Utility,
                     Description = "You conjure a thick cloud of swirling vapor that obscures line of sight",
                     IsAlwaysAoE = true,
@@ -184,9 +184,9 @@ namespace ArcanaGenerator.Data
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 3
                 },
-                new SpellTemplate
+                new SpellTemplate//Translator services
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Necromancy },
                     Type = EffectType.Utility,
                     Description = "You conjure a spirit to assist with translation with a specific language. " +
                                     "The spirit will only translate and will not speak of itself or converse with you directly.",
@@ -196,7 +196,7 @@ namespace ArcanaGenerator.Data
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 2
                 },
-                new SpellTemplate
+                new SpellTemplate//Shuffle creatures
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
                     Type = EffectType.Utility,
@@ -229,7 +229,7 @@ namespace ArcanaGenerator.Data
                     IsAlwaysRanged = true,
                     BaseValueScore = 15
                 },
-                new SpellTemplate
+                new SpellTemplate//Delayed teleport
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
                     Type = EffectType.Utility,
@@ -241,16 +241,16 @@ namespace ArcanaGenerator.Data
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 5
                 },
-                new SpellTemplate
+                new SpellTemplate//Destroy object
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Transmutation },
                     Type = EffectType.Utility,
                     Description = "You deal 3d8 + 10 Force damage to a stationary non-living object. This spell cannot target creatures.",
                     DoesNotTargetCreatures = true,
                     IsAlwaysInstant = true,
                     BaseValueScore = 15
                 },
-                new SpellTemplate
+                new SpellTemplate//Douse flames
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation },
                     Type = EffectType.Utility,
@@ -259,6 +259,204 @@ namespace ArcanaGenerator.Data
                     IsAlwaysAoE = true,
                     IsAlwaysInstant = true,
                     BaseValueScore = 3
+                },
+                new SpellTemplate //Lesser wall of force
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "An invisible, impenetrable surface appears in an unoccupied location within range. It takes the shape of a flat surface made up of 2d4 panels, each 5 ft square, " +
+                                    "and each contiguous with at least one other panel. The plane is 1 inch thick and lasts for the duration. Nothing can physically pass through the plane and it is immune to all damage.",
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneRound,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Sound barrier
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You create an faint line on the ground within range, up to 100ft long. An invisible surface extends 10ft vertically from the line. This surface blocks any sounds and smells " +
+                                    "from passing through it in one direction of your choosing.",
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Repel water
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "All water (and water-based liquids) is repelled and pushed to the edges of the area of effect. Note that this spell does not impact liquids in fully sealed containers, nor " +
+                                    "does it impact liquids within creatures or plants.",
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Repel heat
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "Any loose materials - including solids, liquids, and gases - that are dangerously hot (heated enough to cause burns) are repelled and pushed to the edges of the area of effect. " +
+                                    "Note that this spell does not impact materials in fully sealed containers, solid materials heavier than 5 lbs, nor does it impact materials within creatures or plants.",
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Summon 9ft tall grass
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Illusion },
+                    Type = EffectType.Utility,
+                    Description = "You choose a visible point on the ground within range and starting at that point 9ft tall grass appears and rapidly spreads along the ground for 2d8 X 10ft in all directions. " +
+                                   "It rounds corners and spreads up or down cliffs, but stops at pooled liquids.",
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Conjure quicksand
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "The ground within the area of effect becomes quicksand. Any creatures in the area, or that end their turn in the area, must make a CON saving throw. " +
+                                    "On a failure they suffer an escalating debuff that increases by one level, and on a success the intensity decreases by one level. " +
+                                    "Level 1 = Up to the knees, Movement speed reduced to 5ft. Level 2 = Up to the waist, Restrained. Level 3 = Up to the neck, Paralyzed.",
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysAoE = true,
+                    IsAlwaysRanged = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 2
+                },
+                new SpellTemplate //Vine ladder
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a rough, rope-style ladder made of vines and branches, hanging from a visible location in range. The ladder has a maximum length of 4d6 X 5ft and lasts for 10 minutes before vanishing.",
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Create false footprints
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You create false footprints or animal tracks of any variety within the area of effect, which last for 48hrs. The false prints cannot completely replace your own tracks, but can be used to make them harder to detect.",
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 3
+                },
+                new SpellTemplate //Giant mushroom
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a giant mushroom, which sprouts from any surface in range - ground, roof, or wall. The mushroom can be up to 15ft tall, 20ft wide in any direction, and lasts for 15 minutes before vanishing. " +
+                                    "Any creatures in the space where it appears are harmlessly lifted or held by it.",
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Resurrection by consuming magical item(s)
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "To cast this spell you must be holding one or more magical items worth at least 900 GP. These items are consumed in order to resurrect a creature within 10ft of you that has been dead for less than 5 days.",
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Glimpse local past accelerated
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Utility,
+                    Description = "You see a vision of the past 2d4 hours in your immediate vicinity, accelerated rapidly. You are blind to your surroundings for 5 minutes while you see this glimpse of the past. " +
+                                    "In the vision you stand in the same spot where you currently stand and cannot move except to turn in a circle and observe. The experience is purely visual - your other senses (hearing, smell, etc.) remain in the present.",
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Scrying on the past
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "You cast a variation of the scrying spell where you are able to look into the past by specifing an exact date and time of day to observe. " +
+                                    "This spell can reach no more than 1 year into the past and the vision has a maximum duration of 5 minutes. During that 5 minutes, however, " +
+                                    "you may change the date and time you observe (but not the target) up to 1d3 times. For example, you could jump back 10 days prior or skip ahead by an hour.",
+                    IsNeverAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysInstant = true,
+                    MinimumCastTime = CastTime.OneMinute,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Secret light
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "You cast a varation of the light spell where the light created is visible only to you and up to 1d4 other creatures that you select at the time of casting.",
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Selective darkness
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "You cast a varation of the darkness spell where the darkness created is transparent to you and up to 1d3 other creatures that you select at the time of casting (each can still see the outline of the affected area).",
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysAoE = true,
+                    IsAlwaysRanged = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Smell emotions
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You are able to smell the emotions of any creature within 15ft of you. As an action you can make an insight check with a +10 bonus. If they are within 5ft of you then you also make the check with advantage.",
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Count heartbeats
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "You are instantly aware of the number of beating hearts within 100 ft of you. You also have a rough idea of the location of any beating hearts within 20 ft of you.",
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Census on immediate vicinity
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a piece of parchment with writing on it that lists out the number of sentient creatures within 100 ft of you, sorted by their general race or type. Large numbers of creatures will be rounded. " +
+                                    "For example: 30 humans, 20 elves, 1 fiend, and 2 monstrosities. Creatures with less than 3 for INT are not included on the list, and creatures obscured by a spell of a higher level " +
+                                    "than this one will not be detected by it.",
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 30
                 },
             };
 
