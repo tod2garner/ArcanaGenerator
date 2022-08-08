@@ -178,7 +178,7 @@ namespace ArcanaGenerator.Data
                                     "sides as if by invisible river banks. Creatures caught in the torrent have their swimming speed (if " +
                                     "they have any) reduced by half and are swept downstream at a rate of 20 ft per round. If cast at Level 6 " +
                                     "or higher the caster may use a bonus action to reverse the direction of flow, even to flow uphill.",
-                    IsNeverAoE = true,                    
+                    IsNeverAoE = true,
                     IsAlwaysRanged = true,
                     DoesNotTargetCreatures = true,
                     MinimumDuration = Duration.TenMinutes,
@@ -450,13 +450,37 @@ namespace ArcanaGenerator.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Conjuration },
                     Type = EffectType.Utility,
                     Description = "You conjure a piece of parchment with writing on it that lists out the number of sentient creatures within 100 ft of you, sorted by their general race or type. Large numbers of creatures will be rounded. " +
-                                    "For example: 30 humans, 20 elves, 1 fiend, and 2 monstrosities. Creatures with less than 3 for INT are not included on the list, and creatures obscured by a spell of a higher level " +
-                                    "than this one will not be detected by it.",
+                                    "For example: 30 humans, 20 elves, 1 fiend, and 2 monstrosities. Creatures with less than 3 for INT are not included on the list, and creatures that are magically obscured (i.e. by shapeshifting or invisibility) " +
+                                    "will not be revealed if the spell/ability hiding it is of a higher level than this spell.",
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsRangeAlwaysSelf = true,
                     IsAlwaysInstant = true,
                     BaseValueScore = 30
+                },
+                new SpellTemplate //Create a flare or beacon
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Illusion, SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "You create either a beacon at your feet or a flare overhead. A beacon lasts 30 minutes but is stationary on the ground. A flare vanishes after 6 seconds but can be launched " +
+                    "up to 60 ft directly vertically into the air. Either creates a brilliant light of any color you choose, but not so intense as to deal any damage or impair vision.",
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Organize or disorganize
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "In a matter of seconds you can either clean/organize or toss/disorganize any portion of the area within range. " +
+                                    "This acts like a larger scale variation of the soil/clean abilitly of prestidigitation.",
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 2
                 },
             };
 

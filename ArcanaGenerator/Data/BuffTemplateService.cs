@@ -20,7 +20,7 @@ namespace ArcanaGenerator.Data
                 },
                 new SpellTemplate
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
                     Description = "gains a 2d4 bonus AC for the duration, but if they are hit this spell ends early.",
                     MinimumDuration = Duration.OneRound,
@@ -28,7 +28,7 @@ namespace ArcanaGenerator.Data
                 },
                 new SpellTemplate
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
                     Description = "gains a +3 bonus AC for the duration.",
                     MinimumDuration = Duration.OneMinute,
@@ -50,17 +50,17 @@ namespace ArcanaGenerator.Data
                     IsAlwaysInstant = true,
                     BaseValueScore = 20
                 },
-                new SpellTemplate
+                new SpellTemplate //Resist crit
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
                     Description = "can resist critical hits - they are treated as normal hits instead.",
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 15
                 },
-                new SpellTemplate
+                new SpellTemplate //Resist physical
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
                     Description = "gains resistance to one type of Physical damage. The caster can choose between Piercing, Slashing, and Bludgeoning.",
                     MinimumDuration = Duration.OneMinute,
@@ -74,7 +74,7 @@ namespace ArcanaGenerator.Data
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 20
                 },
-                new SpellTemplate
+                new SpellTemplate //Heal via damage
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation, SchoolOfMagic.Necromancy },
                     Type = EffectType.Buff,
@@ -82,7 +82,7 @@ namespace ArcanaGenerator.Data
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 60
                 },
-                new SpellTemplate
+                new SpellTemplate //Resist elements
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Conjuration },
                     Type = EffectType.Buff,
@@ -90,7 +90,7 @@ namespace ArcanaGenerator.Data
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 15
                 },
-                new SpellTemplate
+                new SpellTemplate //Undead resistance
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
                     Type = EffectType.Buff,
@@ -98,7 +98,7 @@ namespace ArcanaGenerator.Data
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 15
                 },
-                new SpellTemplate
+                new SpellTemplate //Link to split damage among allies
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Necromancy },
                     Type = EffectType.Buff,
@@ -109,7 +109,7 @@ namespace ArcanaGenerator.Data
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 15
                 },
-                new SpellTemplate
+                new SpellTemplate //Melee reflect damage
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation },
                     Type = EffectType.Buff,
@@ -118,7 +118,7 @@ namespace ArcanaGenerator.Data
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 15
                 },
-                new SpellTemplate
+                new SpellTemplate //Melee thorns
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
@@ -126,7 +126,7 @@ namespace ArcanaGenerator.Data
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 10
                 },
-                new SpellTemplate
+                new SpellTemplate //Ranged reflect damage
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Conjuration },
                     Type = EffectType.Buff,
@@ -135,7 +135,144 @@ namespace ArcanaGenerator.Data
                                     "After deflecting 1d6 attacks the spell ends early.",
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 20
-                }
+                },
+                new SpellTemplate //Accuracy
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Buff,
+                    Description = "gains a +2 bonus to all attack rolls (accuracy, not damage).",
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Accuracy once per turn
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Buff,
+                    Description = "gains a +4 bonus to their first attack roll on their turn (accuracy only, not damage).",
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Initiative
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Buff,
+                    Description = "gains a +2d6 bonus to initiative.",
+                    MinimumDuration = Duration.OneHour,
+                    BaseValueScore = 2
+                },
+                new SpellTemplate //Truesight
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Transmutation, SchoolOfMagic.Illusion },
+                    Type = EffectType.Buff,
+                    Description = "gains true-sight.",
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Added weapon damage
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Buff,
+                    Description = "gains +1d12 damage to all weapon attacks. The type of the added damage matches that from the weapon.",
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 8
+                },
+                new SpellTemplate //Added fire damage 
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Buff,
+                    Description = "gains +3d10 fire damage to one attack per round.",
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 12
+                },
+                new SpellTemplate //Added cold damage 
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Buff,
+                    Description = "gains +3d6 cold damage to one attack per round.",
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 9
+                },
+                new SpellTemplate //Added thunder damage 
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Buff,
+                    Description = "gains +3d8 thunder damage to one attack per round.",
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Added lightning damage 
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Buff,
+                    Description = "gains +2d12 lightning damage to one attack per round.",
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Added acid damage 
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Buff,
+                    Description = "gains +4d4 acid damage to one attack per round.",
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Added melee necrotic damage 
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Buff,
+                    Description = "gains +1d10 necrotic damage to all melee attacks.",
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 8
+                },
+                new SpellTemplate //Added melee radiant damage 
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation, SchoolOfMagic.Divination },
+                    Type = EffectType.Buff,
+                    Description = "gains +2d6 radiant damage to all melee attacks.",
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 8
+                },
+                new SpellTemplate //Added poison damage to weapons
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Buff,
+                    Description = "gains +1d8 poison damage to weapon attacks.",
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 6
+                },
+                new SpellTemplate //Percent bonus damage
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Buff,
+                    Description = "gains 50% of all damage from weapon attacks as added force damage.",
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Lesser critical hits
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Buff,
+                    Description = "can deal semi-critical hits with attack rolls greater than 16 but less than 20 on the dice. " +
+                                    "Semi-criticals do not deal double dice damage - instead you deal an extra 50% of the dice damage.",
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 8
+                },
+                new SpellTemplate //Hover speed
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Buff,
+                    Description = "gains a hovering speed equal to their walking speed. They cannot fully fly but can hover up to 3 ft above any solid or liquid surface.",
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Low elevation flight
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Buff,
+                    Description = "gains a flying speed equal to their walking speed, but are limited to an elevation no more than 10 ft above ground level.",
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 9
+                },
             };
 
             return templates;
