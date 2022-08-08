@@ -14,8 +14,8 @@ namespace ArcanaGenerator.Data
         {
             var rng = new Random();
             var templatesForSchool = GetTemplatesPerSchool(school);
-            var roll = rng.Next(templatesForSchool.Count - 1);
-            return _templates.ElementAt(roll);
+            var roll = rng.Next(templatesForSchool.Count);
+            return templatesForSchool.ElementAt(roll);
         }
 
         private List<SpellTemplate> GetTemplatesPerSchool(SchoolOfMagic school)
