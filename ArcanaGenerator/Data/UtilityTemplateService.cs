@@ -19,6 +19,7 @@ namespace ArcanaGenerator.Data
                                     "you may end this spell early to block any one spell you detect that is of a lower level.",
                     IsNeverAoE = true,
                     DoesNotTargetCreatures = true,
+                    IsRangeAlwaysSelf = true,
                     MinimumDuration = Duration.OneHour,
                     BaseValueScore = 3
                 },

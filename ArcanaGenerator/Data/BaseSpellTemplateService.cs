@@ -23,7 +23,7 @@ namespace ArcanaGenerator.Data
             return GetTemplatesPerSchool(school).Count;
         }
 
-        private List<SpellTemplate> GetTemplatesPerSchool(SchoolOfMagic school)
+        public List<SpellTemplate> GetTemplatesPerSchool(SchoolOfMagic school)
         {
             if (_templates == null)
                 _templates = CreateTemplates();

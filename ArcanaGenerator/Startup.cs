@@ -28,7 +28,6 @@ namespace ArcanaGenerator
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();//TODO - remove demo code
             services.AddSingleton<BuffTemplateService>();
             services.AddSingleton<DebuffTemplateService>();
             services.AddSingleton<UtilityTemplateService>();

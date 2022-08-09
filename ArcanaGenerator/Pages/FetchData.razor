@@ -1,46 +1,74 @@
 ﻿@page "/fetchdata"
 
-@using ArcanaGenerator.Data
-@inject WeatherForecastService ForecastService
+@using ArcanaGenerator
+@inject Data.DataTemplateService TemplateService
 
-<h1>Weather forecast</h1>
+<h1>Base Spell Templates</h1>
 
-<p>This component demonstrates fetching data from a service.</p>
+<p>A pre-set collection of templates is used to create original spells (except for pure damage spells, no templates are needed for those). This page allows you to view that collection.</p>
 
-@if (forecasts == null)
+@if (templates == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
+    <br/>
+    <p>@templates.Count templates were found.</p>
     <table class="table">
         <thead>
             <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Schools</th>
+                <th>Base Power Rating</th>
+                <th>Always AOE</th>
+                <th>Never AOE</th>
+                <th>Always Instant</th>
+                <th>Min. Duration</th>
+                <th>Always Ranged</th>
+                <th>Range is Self</th>
+                <th>Always Reaction</th>
+                <th>Doesn't Target Creatures</th>
+                <th>Min. Cast Time</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var forecast in forecasts)
+            @foreach (var template in templates)
             {
-                <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
-                </tr>
+            <tr>
+                <td>@template.Type</td>
+                <td>@template.Description</td>
+                <td>@String.Join(Environment.NewLine, template.Schools.Select(s => s.ToString()))</td>
+                <td>@template.BaseValueScore</td>
+                <td>@BoolToChar(template.IsAlwaysAoE)</td>
+                <td>@BoolToChar(template.IsNeverAoE)</td>
+                <td>@BoolToChar(template.IsAlwaysInstant)</td>
+                <td>@template.MinimumDuration</td>
+                <td>@BoolToChar(template.IsAlwaysRanged)</td>
+                <td>@BoolToChar(template.IsRangeAlwaysSelf)</td>
+                <td>@BoolToChar(template.IsAlwaysAReaction)</td>
+                <td>@BoolToChar(template.DoesNotTargetCreatures)</td>
+                <td>@template.MinimumCastTime</td>
+            </tr>
             }
         </tbody>
     </table>
 }
 
 @code {
-    private WeatherForecast[] forecasts;
+    private List<GeneratorEngine.Templates.SpellTemplate> templates;
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+        templates = new List<GeneratorEngine.Templates.SpellTemplate>();
+        templates.AddRange(await TemplateService.GetTemplatesAsync(EffectType.Buff, SchoolOfMagic.Any));
+        templates.AddRange(await TemplateService.GetTemplatesAsync(EffectType.Debuff, SchoolOfMagic.Any));
+        templates.AddRange(await TemplateService.GetTemplatesAsync(EffectType.Utility, SchoolOfMagic.Any));
+    }
+
+    private char BoolToChar(bool  value)
+    {
+        return value ? 'T' : '-';
     }
 }

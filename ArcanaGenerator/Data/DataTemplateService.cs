@@ -2,6 +2,8 @@
 using GeneratorEngine.Templates;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ArcanaGenerator.Data
 {
@@ -56,17 +58,18 @@ namespace ArcanaGenerator.Data
             };
         }
 
-        //TODO - use this to display all possible templates on another page
-        //public Task<List<SpellTemplate>> GetRandomSpellTemplatesAsync(DateTime startDate)
-        //{
-        //    //var rng = new Random();
-        //    //return Task.FromResult(Enumerable.Range(1, 5).Select(index => new WeatherForecast
-        //    //{
-        //    //    Date = startDate.AddDays(index),
-        //    //    TemperatureC = rng.Next(-20, 55),
-        //    //    Summary = Summaries[rng.Next(Summaries.Length)]
-        //    //}).ToArray());
-        //}
+        public Task<List<SpellTemplate>> GetTemplatesAsync(EffectType effectType, SchoolOfMagic school)
+        {
+            return Task.FromResult(effectType switch
+            {
+                EffectType.Buff => buffService.GetTemplatesPerSchool(school),
+                EffectType.Debuff => debuffService.GetTemplatesPerSchool(school),
+                EffectType.Utility => utilityService.GetTemplatesPerSchool(school),
+                EffectType.Penalty => penaltyService.GetTemplatesPerSchool(school),
+                EffectType.Damage => new List<SpellTemplate>(),
+                _ => throw new NotImplementedException(),
+            });
+        }
 
         public RequiredMaterialsTemplate GetRandomRequiredMaterialsTemplate(SchoolOfMagic school)
         {
