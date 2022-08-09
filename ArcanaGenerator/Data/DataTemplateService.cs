@@ -43,6 +43,19 @@ namespace ArcanaGenerator.Data
             };
         }
 
+        public int CountTemplates(EffectType effectType, SchoolOfMagic school)
+        {
+            return effectType switch
+            {
+                EffectType.Buff => buffService.CountTemplates(school),
+                EffectType.Debuff => debuffService.CountTemplates(school),
+                EffectType.Utility => utilityService.CountTemplates(school),
+                EffectType.Penalty => penaltyService.CountTemplates(school),
+                EffectType.Damage => 0,
+                _ => throw new NotImplementedException(),
+            };
+        }
+
         //TODO - use this to display all possible templates on another page
         //public Task<List<SpellTemplate>> GetRandomSpellTemplatesAsync(DateTime startDate)
         //{

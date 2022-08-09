@@ -12,10 +12,15 @@ namespace ArcanaGenerator.Data
 
         public SpellTemplate GetRandomTemplate(SchoolOfMagic school)
         {
-            var rng = new Random();
             var templatesForSchool = GetTemplatesPerSchool(school);
+            var rng = new Random();
             var roll = rng.Next(templatesForSchool.Count);
             return templatesForSchool.ElementAt(roll);
+        }
+
+        public int CountTemplates(SchoolOfMagic school)
+        {
+            return GetTemplatesPerSchool(school).Count;
         }
 
         private List<SpellTemplate> GetTemplatesPerSchool(SchoolOfMagic school)

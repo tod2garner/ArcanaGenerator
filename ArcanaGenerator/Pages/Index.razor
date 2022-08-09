@@ -45,76 +45,75 @@
         </InputSelect>
         <ValidationMessage For="@(() => inputs.PowerLevel)" />
     </div>
-    <br>
-    <button @onclick="GenerateSpell">Create a new spell</button>
-    <br>
-    <br>
-    <br>
-    @if (theSpell != null)
-    {
-        <table>
-            <tr>
-                <td>Name</td>
-                <td>@theSpell.Name</td>
-            </tr>
-            <tr>
-                <td>School</td>
-                <td>@theSpell.School</td>
-            </tr>
-            <tr>
-                <td>Type</td>
-                <td>@theSpell.Effect.Type</td>
-            </tr>
-            <tr>
-                <td>Cast Time</td>
-                <td>@theSpell.CastTime</td>
-            </tr>
-            @if (theSpell.Effect.Duration != Duration.Instant)
-            {
-                <tr>
-                    <td>Duration</td>
-                    <td>@theSpell.Effect.Duration</td>
-                </tr>
-                <tr>
-                    <td>Concentration</td>
-                    <td>@theSpell.RequiresConcentration</td>
-                </tr>
-            }
-            <tr>
-                <td>Effect</td>
-                <td>@theSpell.Effect.Description</td>
-            </tr>
-            <tr>
-                <td>Delivery</td>
-                <td>@theSpell.Delivery.Description</td>
-            </tr>
-            @if (theSpell.CasterPenaltyCost != null)
-            {
-                <tr>
-                    <td>Side effect</td>
-                    <td>@theSpell.CasterPenaltyCost.Description</td>
-                </tr>
-                <tr>
-                    <td>S.E. Duration</td>
-                    <td>@theSpell.CasterPenaltyCost.Duration</td>
-                </tr>
-            }
-            <tr>
-                <td>Components</td>
-                <td>@theSpell.Components.SummarizeIncludingSpecificMaterials()</td>
-            </tr>
-            <tr>
-                <td>Ritual</td>
-                <td>@theSpell.Ritual</td>
-            </tr>
-            <tr>
-                <td>Power Rating</td>
-                <td>@theSpell.GetFinalPowerRating()</td>
-            </tr>
-        </table>
-    }
-
 </EditForm>
+<br>
+<button @onclick="GenerateSpell">Create a new spell</button>
+<br>
+<br>
+<br>
+@if (theSpell != null)
+{
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>@theSpell.Name</td>
+        </tr>
+        <tr>
+            <td>School</td>
+            <td>@theSpell.School</td>
+        </tr>
+        <tr>
+            <td>Type</td>
+            <td>@theSpell.Effect.Type</td>
+        </tr>
+        <tr>
+            <td>Cast Time</td>
+            <td>@theSpell.CastTime</td>
+        </tr>
+        @if (theSpell.Effect.Duration != Duration.Instant)
+        {
+            <tr>
+                <td>Duration</td>
+                <td>@theSpell.Effect.Duration</td>
+            </tr>
+            <tr>
+                <td>Concentration</td>
+                <td>@theSpell.RequiresConcentration</td>
+            </tr>
+        }
+        <tr>
+            <td>Effect</td>
+            <td>@theSpell.Effect.Description</td>
+        </tr>
+        <tr>
+            <td>Delivery</td>
+            <td>@theSpell.Delivery.Description</td>
+        </tr>
+        @if (theSpell.CasterPenaltyCost != null)
+        {
+            <tr>
+                <td>Side effect</td>
+                <td>@theSpell.CasterPenaltyCost.Description</td>
+            </tr>
+            <tr>
+                <td>S.E. Duration</td>
+                <td>@theSpell.CasterPenaltyCost.Duration</td>
+            </tr>
+        }
+        <tr>
+            <td>Components</td>
+            <td>@theSpell.Components.SummarizeIncludingSpecificMaterials()</td>
+        </tr>
+        <tr>
+            <td>Ritual</td>
+            <td>@theSpell.Ritual</td>
+        </tr>
+        <tr>
+            <td>Power Rating</td>
+            <td>@theSpell.GetFinalPowerRating()</td>
+        </tr>
+    </table>
+}
 
 @code {
     private EditContext EditContext;
@@ -138,7 +137,7 @@
 
     private IEnumerable<string> GetSpellTypeOptions()
     {
-        var values = Enum.GetValues(typeof(GeneratorEngine.EffectType)).Cast<EffectType>();        
+        var values = Enum.GetValues(typeof(GeneratorEngine.EffectType)).Cast<EffectType>();
         return values.Select(v => v == EffectType.Penalty ? "Any" : v.ToString());
     }
 }
