@@ -1,8 +1,4 @@
 ﻿using GeneratorEngine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ArcanaGenerator
 {
@@ -11,5 +7,6 @@ namespace ArcanaGenerator
         public string EffectType;
         public SchoolOfMagic SchoolOfMagic;
         public PowerLevel PowerLevel;
+        public bool IncludeSideEffects;//TODO - turn penalty effects on/off
     }
 }

@@ -10,7 +10,7 @@
         <td>Spell Type</td>
         <td>
             <EditForm EditContext="@EditContext">
-                <InputSelect @bind-Value="@effectType">
+                <InputSelect @bind-Value="@effectType" >
 
                     @foreach (var etype in GetSpellTypeOptions())
                     {
@@ -21,10 +21,6 @@
         </td>
     </tr>
 </table>
-
-<br />
-
-<button class="btn btn-primary" @onclick="UpdateCounts">Update Count</button>
 
 <br />
 <br />
@@ -113,7 +109,17 @@
 
 @code {
     private EditContext EditContext;
-    private GeneratorEngine.EffectType effectType;
+
+    private GeneratorEngine.EffectType _effectType;
+    public GeneratorEngine.EffectType effectType
+    {
+        get => _effectType;
+        set
+        {
+            _effectType = value;
+            UpdateCounts();
+        }
+    }
 
     private int countAbjuration = 0;
     private int countConjuration = 0;
