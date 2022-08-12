@@ -18,7 +18,7 @@ namespace ArcanaGenerator.Data
                     MinimumDuration = Duration.OneHour,
                     BaseValueScore = 3
                 },
-                new SpellTemplate
+                new SpellTemplate // AC one hit
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
@@ -26,7 +26,7 @@ namespace ArcanaGenerator.Data
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 10
                 },
-                new SpellTemplate
+                new SpellTemplate // AC
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
@@ -34,21 +34,37 @@ namespace ArcanaGenerator.Data
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 20
                 },
-                new SpellTemplate
+                new SpellTemplate // Temp HP
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Necromancy },
                     Type = EffectType.Buff,
-                    Description = "gains 3d4 Temporary HP.",
+                    Description = "gains 3d6 Temporary HP.",
                     IsAlwaysInstant = true,
                     BaseValueScore = 10
                 },
-                new SpellTemplate
+                new SpellTemplate // Temp HP+
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Necromancy },
                     Type = EffectType.Buff,
-                    Description = "gains 3d8 Temporary HP.",
+                    Description = "gains 3d10 Temporary HP.",
                     IsAlwaysInstant = true,
-                    BaseValueScore = 20
+                    BaseValueScore = 15
+                },
+                new SpellTemplate // Max HP
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation, SchoolOfMagic.Necromancy },
+                    Type = EffectType.Buff,
+                    Description = "gains 4d4 HP and Maximum HP for the spell duration.",
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 4
+                },
+                new SpellTemplate // Max HP+
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation, SchoolOfMagic.Necromancy },
+                    Type = EffectType.Buff,
+                    Description = "gains 4d8 HP and Maximum HP for the spell duration.",
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 8
                 },
                 new SpellTemplate //Resist crit
                 {
@@ -66,11 +82,11 @@ namespace ArcanaGenerator.Data
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 20
                 },
-                new SpellTemplate
+                new SpellTemplate //Change incoming damage type
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
-                    Description = "can use a reaction to change damage they receive from one type to another. For example: when hit with lightning damage, treat it as bludgeoning damage instead.",
+                    Description = "can use a reaction anytime they suffer damage during the spell duration to change damage they receive from one type to another. For example: if hit with lightning damage, treat it as bludgeoning damage instead.",
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 20
                 },
@@ -240,11 +256,11 @@ namespace ArcanaGenerator.Data
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 6
                 },
-                new SpellTemplate //Percent bonus damage
+                new SpellTemplate //Percent bonus force damage
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
-                    Description = "gains 50% of all damage from weapon attacks as added force damage.",
+                    Description = "deals and extra 50% of all damage from weapon attacks as added force damage.",
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 15
                 },

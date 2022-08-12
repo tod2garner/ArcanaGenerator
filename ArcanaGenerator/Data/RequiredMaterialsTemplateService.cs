@@ -375,6 +375,186 @@ namespace ArcanaGenerator.Data
                     Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
                     Material = "a vial of vinegar"
                 },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "two cactus needles"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "crushed apple seeds"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "an apple seed"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "tomato seeds"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "an alligator tooth"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "a lizard claw"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "crushed egg shells"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "a small wax candle"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "a piece of charred leather"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "a bit of charcoal"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "ashes from a burned book"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "a pinch of sawdust"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "a small cork"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "two polished, wooden buttons"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "a few strands of horse hair"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "a small comb made from a sea shell"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "a piece of turtle shell"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "pressed flowers, gathered in direct sunlight"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "ivy flowers"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "pine needles"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "pine sap"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "a pinecone"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "sand from an anthill"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "braided blades of grass"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "a small leather braid"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "a spool of dark thread"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "a bit of cobweb"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "a piece of lace"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "soap carved into the shape of an acorn"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "soap carved into the shape of a leaf"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Conjuration, SchoolOfMagic.Transmutation, SchoolOfMagic.Illusion, SchoolOfMagic.Enchantment, SchoolOfMagic.Divination },
+                    Material = "soap carved into the shape of a bird"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "a thimble"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "powdered paint flakes"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "a little vial of paint"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "a scap of blank parchment"
+                },
+                new RequiredMaterialsTemplate
+                {
+                    Schools = new List<SchoolOfMagic>{ SchoolOfMagic.Any },
+                    Material = "a single link of chain"
+                },
             };
         }
     }
