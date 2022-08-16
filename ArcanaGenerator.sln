@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeneratorEngine", "Generato
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client", "Client\Client.csproj", "{74C0553D-5156-4F92-8B81-3620BD6A2C1A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{857AAAA5-A47C-4833-AF5B-CFA95BA591AB}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{74C0553D-5156-4F92-8B81-3620BD6A2C1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74C0553D-5156-4F92-8B81-3620BD6A2C1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74C0553D-5156-4F92-8B81-3620BD6A2C1A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{857AAAA5-A47C-4833-AF5B-CFA95BA591AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{857AAAA5-A47C-4833-AF5B-CFA95BA591AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{857AAAA5-A47C-4833-AF5B-CFA95BA591AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{857AAAA5-A47C-4833-AF5B-CFA95BA591AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
