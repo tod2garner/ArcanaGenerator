@@ -2,11 +2,11 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    background-color: gainsboro;
 }
 
 main {
     flex: 1;
-    background-color:gainsboro
 }
 
 .sidebar {
