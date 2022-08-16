@@ -1,0 +1,164 @@
+﻿@page "/counter"
+
+@using SpellGenerator.Client.Data
+@inject DataTemplateService DataTemplateService
+
+<h1>Template Counter</h1>
+
+<table>
+    <tr>
+        <td>Spell Type</td>
+        <td>
+            <EditForm EditContext="@EditContext">
+                <InputSelect @bind-Value="@effectType" >
+
+                    @foreach (var etype in GetSpellTypeOptions())
+                    {
+                        <option value="@etype">@etype</option>
+                    }
+                </InputSelect>
+            </EditForm>
+        </td>
+    </tr>
+</table>
+
+<br />
+<br />
+
+<div style="float:left">
+    <svg width="450" height="1000">
+        <rect x="0" y="0" width="50" height="@ScaleForGraph(countAbjuration)" fill="yellow" stroke="black" />
+        <rect x="50" y="0" width="50" height="@ScaleForGraph(countConjuration)" fill="orange" stroke="black" />
+        <rect x="100" y="0" width="50" height="@ScaleForGraph(countDivination)" fill="blue" stroke="black" />
+        <rect x="150" y="0" width="50" height="@ScaleForGraph(countEnchantment)" fill="pink" stroke="black" />
+        <rect x="200" y="0" width="50" height="@ScaleForGraph(countEvocation)" fill="red" stroke="black" />
+        <rect x="250" y="0" width="50" height="@ScaleForGraph(countIllusion)" fill="purple" stroke="black" />
+        <rect x="300" y="0" width="50" height="@ScaleForGraph(countNecromancy)" fill="gray" stroke="black" />
+        <rect x="350" y="0" width="50" height="@ScaleForGraph(countTransmutation)" fill="green" stroke="black" />
+    </svg>
+</div>
+<div style="float:left">
+    <table>
+        <tr>
+            <td>
+                <svg width="10" height="10">
+                    <rect width="10" height="10" fill="yellow" stroke="black" />
+                </svg>
+            </td>
+            <td>@countAbjuration  -  Abjuration</td>
+        </tr>
+        <tr>
+            <td>
+                <svg width="10" height="10">
+                    <rect width="10" height="10"  fill="orange" stroke="black" />
+                </svg>
+            </td>
+            <td>@countConjuration  -  Conjuration</td>
+        </tr>
+        <tr>
+            <td>
+                <svg width="10" height="10">
+                    <rect width="10" height="10"  fill="blue" stroke="black" />
+                </svg>
+            </td>
+            <td>@countDivination  -  Divination</td>
+        </tr>
+        <tr>
+            <td>
+                <svg width="10" height="10">
+                    <rect width="10" height="10"  fill="pink" stroke="black" />
+                </svg>
+            </td>
+            <td>@countEnchantment  -  Enchantment</td>
+        </tr>
+        <tr>
+            <td>
+                <svg width="10" height="10">
+                    <rect width="10" height="10"  fill="red" stroke="black" />
+                </svg>
+            </td>
+            <td>@countEvocation  -  Evocation</td>
+        </tr>
+        <tr>
+            <td>
+                <svg width="10" height="10">
+                    <rect width="10" height="10"  fill="purple" stroke="black" />
+                </svg>
+            </td>
+            <td>@countIllusion  -  Illusion</td>
+        </tr>
+        <tr>
+            <td>
+                <svg width="10" height="10">
+                    <rect width="10" height="10"  fill="grey" stroke="black" />
+                </svg>
+            </td>
+            <td>@countNecromancy  -  Necromancy</td>
+        </tr>
+        <tr>
+            <td>
+                <svg width="10" height="10">
+                    <rect width="10" height="10"  fill="green" stroke="black" />
+                </svg>
+            </td>
+            <td>@countTransmutation  -  Transmutation</td>
+        </tr>
+    </table>
+</div>
+
+
+@code {
+    private EditContext EditContext;
+
+    private GeneratorEngine.EffectType _effectType;
+    public GeneratorEngine.EffectType effectType
+    {
+        get => _effectType;
+        set
+        {
+            _effectType = value;
+            UpdateCounts();
+        }
+    }
+
+    private int countAbjuration = 0;
+    private int countConjuration = 0;
+    private int countDivination = 0;
+    private int countEnchantment = 0;
+    private int countEvocation = 0;
+    private int countIllusion = 0;
+    private int countNecromancy = 0;
+    private int countTransmutation = 0;
+
+    protected override void OnInitialized()
+    {
+        EditContext = new EditContext(effectType);
+        base.OnInitialized();
+        effectType = EffectType.Damage;
+        UpdateCounts();
+    }
+
+    private void UpdateCounts()
+    {
+        countAbjuration = DataTemplateService.CountTemplates(effectType, SchoolOfMagic.Abjuration);
+        countConjuration = DataTemplateService.CountTemplates(effectType, SchoolOfMagic.Conjuration);
+        countDivination = DataTemplateService.CountTemplates(effectType, SchoolOfMagic.Divination);
+        countEnchantment = DataTemplateService.CountTemplates(effectType, SchoolOfMagic.Enchantment);
+        countEvocation = DataTemplateService.CountTemplates(effectType, SchoolOfMagic.Evocation);
+        countIllusion = DataTemplateService.CountTemplates(effectType, SchoolOfMagic.Illusion);
+        countNecromancy = DataTemplateService.CountTemplates(effectType, SchoolOfMagic.Necromancy);
+        countTransmutation = DataTemplateService.CountTemplates(effectType, SchoolOfMagic.Transmutation);
+    }
+
+    private int ScaleForGraph(int count)
+    {
+        return 10 * count;
+    }
+
+    private IEnumerable<string> GetSpellTypeOptions()
+    {
+        var values = Enum.GetValues(typeof(GeneratorEngine.EffectType)).Cast<EffectType>().ToList();
+        values.Remove(EffectType.Penalty);
+        return values.Select(v => v.ToString());
+    }
+}
