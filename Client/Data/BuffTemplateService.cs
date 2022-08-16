@@ -288,6 +288,70 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 9
                 },
+                new SpellTemplate //Death ward, healing
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Necromancy },
+                    Type = EffectType.Buff,
+                    Description = "is temporarily protected from death. Next time they fall unconscious they instantly regain 4d8 + 8 HP and can stand up. This spell then ends early.",
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 8,
+                },
+                new SpellTemplate //Death ward, teleport
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Necromancy },
+                    Type = EffectType.Buff,
+                    Description = "is temporarily protected from death. Next time they fall unconscious they instantly regain 1 HP, stand up, and may teleport to a visible, unoccupied point up to 15 ft away. This spell then ends early.",
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 8,
+                },
+                new SpellTemplate //Death ward, temp AC
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Buff,
+                    Description = "is temporarily protected from death. Next time they fall unconscious they instantly regain 1 HP, stand up, and gain a +10 bonus to AC until the end of their next turn. This spell then ends early.",
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 8,
+                },
+                new SpellTemplate //Death ward, damage
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation },
+                    Type = EffectType.Buff,
+                    Description = "is temporarily protected from death. Next time they fall unconscious they instantly regain 1 HP, stand up, and a blast of energy deals 5d10 radiant damage to any enemies within 15 ft. This spell then ends early.",
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 8,
+                },
+                new SpellTemplate //Escalating temp HP while stationary
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Necromancy },
+                    Type = EffectType.Buff,
+                    Description = "gains 2d8 temp HP at the start of their turn. If they stay in the same location (i.e. do not move and are not moved by exterior forces) then this effect repeats at the start of each turn, with the temp HP stacking.",
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 8,
+                },
+                new SpellTemplate //Healed but restrained
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Necromancy },
+                    Type = EffectType.Buff,
+                    Description = "regains 3d4 + 3 HP but has their movement speed reduced to 0 for 1d3 rounds.",
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 10,
+                },
+                new SpellTemplate //Healed but blinded
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation, SchoolOfMagic.Divination },
+                    Type = EffectType.Buff,
+                    Description = "regains 3d6 + 3 HP but is blinded for 1d3 rounds.",
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 10,
+                },
+                new SpellTemplate //Healed but paralyzed
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation },
+                    Type = EffectType.Buff,
+                    Description = "regains 8d6 + 8 HP but is paralyzed for 1d3 rounds.",
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 25,
+                },
             };
 
             return templates;
