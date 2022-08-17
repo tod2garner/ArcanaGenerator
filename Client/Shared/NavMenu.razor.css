@@ -4,8 +4,8 @@
 
 .top-row {
     height: 3.5rem;
-    background-color: rgba(0,0,0,0.4);
-    padding: 0px 1px 0px 1px;
+    background-color: black;
+    padding: 0px 1rem 0px 1rem;
 }
 
 .navbar-brand {
