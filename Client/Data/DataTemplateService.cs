@@ -67,7 +67,7 @@ namespace SpellGenerator.Client.Data
             });
         }
 
-        public RequiredMaterialsTemplate GetRandomRequiredMaterialsTemplate(SchoolOfMagic school)
+        public MaterialsTemplate GetRandomRequiredMaterialsTemplate(SchoolOfMagic school)
         {
             return requiredMaterialsService.GetRandomTemplate(school);
         }
