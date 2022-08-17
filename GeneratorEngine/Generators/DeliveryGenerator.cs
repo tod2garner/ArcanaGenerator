@@ -130,7 +130,7 @@ namespace GeneratorEngine.Generators
 
             foreach (var choice in options)
             {
-                if (roll > choice.rollThreshold)
+                if (roll >= choice.rollThreshold)
                     return choice.type;
             }
 
