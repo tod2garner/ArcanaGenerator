@@ -114,8 +114,8 @@
 
     @code {
         private EditContext EditContext;
-        private GeneratorEngine.Spell theSpell;
-        private InputsForSpell inputs = new InputsForSpell();
+        private GeneratorEngine.Spell? theSpell;
+        private InputsForSpell inputs = new InputsForSpell{ PowerLevel = PowerLevel.Random };
 
         protected override void OnInitialized()
         {

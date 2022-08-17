@@ -135,9 +135,9 @@ namespace GeneratorEngine.Generators
                     return (60, 150);
                 case PowerLevel.Major:
                     return (150, 500);
-                case PowerLevel.Unlimited:
+                case PowerLevel.Random:
                 default:
-                    return (0, double.PositiveInfinity);
+                    return (Rnd.Next(250), Rnd.Next(500, int.MaxValue));
             };
         }
     }

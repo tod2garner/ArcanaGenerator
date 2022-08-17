@@ -134,6 +134,6 @@
         Lesser,
         Greater,
         Major,
-        Unlimited
+        Random
     }
 }
