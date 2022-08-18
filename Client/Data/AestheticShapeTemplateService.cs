@@ -75,7 +75,6 @@ namespace SpellGenerator.Client.Data
                 new AestheticShapeTemplate("an intangible, lupine spirit made of"),
                 new AestheticShapeTemplate("an intangible, feline spirit made of"),
                 new AestheticShapeTemplate("an intangible, canine spirit made of"),
-                new AestheticShapeTemplate("an intangible, fiendish spirit made of"),
                 new AestheticShapeTemplate("an intangible, ursine spirit made of"),
                 
 
