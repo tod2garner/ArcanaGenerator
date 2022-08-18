@@ -7,10 +7,10 @@ namespace GeneratorEngine.Templates
     public class AestheticShapeTemplate
     {
         public string Description;
-        public DeliveryType DeliveryType;
+        public DeliveryType? DeliveryType;
         public AreaOfEffectShape? AoEShape;
 
-        public AestheticShapeTemplate(string description, DeliveryType deliveryType, AreaOfEffectShape? aoEShape = null)
+        public AestheticShapeTemplate(string description, DeliveryType? deliveryType = null, AreaOfEffectShape? aoEShape = null)
         {
             Description = description;
             DeliveryType = deliveryType;
