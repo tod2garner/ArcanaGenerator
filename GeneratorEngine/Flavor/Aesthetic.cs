@@ -6,6 +6,12 @@ namespace GeneratorEngine.Flavor
 {
     public class Aesthetic
     {
+        public string ShapeDescription;
+        public string MaterialDescription;
+        public string MaterialType;
+
+        public string CombinedDescription => $"{ShapeDescription} of {MaterialDescription} {MaterialType}";
+
         //Examples:
         //a ball of swirling flames
         //a stream of burning metal 
@@ -17,18 +23,14 @@ namespace GeneratorEngine.Flavor
         //a lupine spirit made of writhing dirt
         //a blade made of translucent granite
 
-        public string ShapeDescription;
-        public string MaterialDescription;
-        public string MaterialType;
 
-        public string CombinedDescription => $"{ShapeDescription} of {MaterialDescription} {MaterialType}";
-
-        //Generator: 
-        /*
-         * AestheticShapeTemplate: Shape, Delivery Type, nullable AoE shape(s)?, projectile types?
-         * AdjectiveTemplate: Adjective, DamageTypes, Schools (uses damage types when present, otherwise uses schools as a backup)
-         * MaterialTemplate: Material, Schools
-         */
+        //Generator: Generic Templates - for any delivery (null in template)
+        //      None: ___ appears in the target's space for a moment before vanishing
+        //      touch: ___ appears in the caster's hand
+        //      weapon: on impact the weapon conjures ___ above the target's head
+        //      projectile: the projectile is ___ that vanishes on impact
+        //      Aoe projectile: the projectile is ___ that releases a burst of magic on impact
+        //      Area: the area eminates/radiates from ___
 
 
     }

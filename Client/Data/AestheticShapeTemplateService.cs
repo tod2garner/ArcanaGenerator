@@ -8,7 +8,7 @@ namespace SpellGenerator.Client.Data
         protected List<AestheticShapeTemplate>? _templates;
         public AestheticShapeTemplate GetRandomTemplate(DeliveryType delivery, AreaOfEffectShape? aoEShape = null)
         {
-            var templatesForGivenSchool = GetTemplates(delivery);
+            var templatesForGivenSchool = GetTemplates(delivery, aoEShape);
 
             var rng = new Random();
             var roll = rng.Next(templatesForGivenSchool.Count - 1);
@@ -26,9 +26,9 @@ namespace SpellGenerator.Client.Data
             return matches.ToList();
         }
 
-        protected void CreateTemplates()
+        private void CreateTemplates()
         {
-            var templates = new List<AestheticShapeTemplate>
+            _templates = new List<AestheticShapeTemplate>
             {
                 new AestheticShapeTemplate("", DeliveryType.None),
 
