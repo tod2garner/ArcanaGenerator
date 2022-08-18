@@ -18,6 +18,7 @@ namespace GeneratorEngine
         internal override void UpdateDescription()
         {
             base.UpdateDescription();
+            Description = Description.Replace("Projectile", $"{ProjectileType} Projectile");
             Description += $" and an {Area.Size} ft {Area.Shape} area";
         }
 
