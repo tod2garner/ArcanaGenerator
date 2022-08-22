@@ -8,11 +8,11 @@ namespace SpellGenerator.Client.Data
         protected List<AestheticAdjectiveTemplate>? _templates;
         public AestheticAdjectiveTemplate GetRandomTemplate(SchoolOfMagic school, DamageType? damageType = null)
         {
-            var templatesForGivenSchool = GetTemplates(school, damageType);
+            var matchingTemplates = GetTemplates(school, damageType);
 
             var rng = new Random();
-            var roll = rng.Next(templatesForGivenSchool.Count - 1);
-            return templatesForGivenSchool.ElementAt(roll);
+            var roll = rng.Next(matchingTemplates.Count - 1);
+            return matchingTemplates.ElementAt(roll);
         }
 
         private List<AestheticAdjectiveTemplate> GetTemplates(SchoolOfMagic school, DamageType? damageType = null)
@@ -41,7 +41,7 @@ namespace SpellGenerator.Client.Data
         {
             _templates = new List<AestheticAdjectiveTemplate>
             {
-                //example material: iron, dust, feathers, cobwebs, chains, water, flames, embers, sparks
+                new AestheticAdjectiveTemplate(string.Empty),//Option for no adjective - TODO revise to be more common possibility
 
                 new AestheticAdjectiveTemplate("burning", new List<DamageType>{ DamageType.Fire }),
                 new AestheticAdjectiveTemplate("flaming", new List<DamageType>{ DamageType.Fire }),
@@ -49,13 +49,10 @@ namespace SpellGenerator.Client.Data
                 new AestheticAdjectiveTemplate("boiling", new List<DamageType>{ DamageType.Fire }),
                 new AestheticAdjectiveTemplate("roiling", new List<DamageType>{ DamageType.Fire }),
                 new AestheticAdjectiveTemplate("searing", new List<DamageType>{ DamageType.Fire }),
-                //synonyms for hot
+
                 new AestheticAdjectiveTemplate("frozen", new List<DamageType>{ DamageType.Cold }),
-                new AestheticAdjectiveTemplate("frigid", new List<DamageType>{ DamageType.Cold }),                                
-                //synonyms for cold
-                //synonyms for sharp
-                //synonyms for fast, slow, sluggish, swift
-                //synonyms for large, huge, small, tiny, massive, giant, enlarged
+                new AestheticAdjectiveTemplate("frigid", new List<DamageType>{ DamageType.Cold }),
+
                 new AestheticAdjectiveTemplate("crude"),
                 new AestheticAdjectiveTemplate("simple"),
                 new AestheticAdjectiveTemplate("plain"),
@@ -69,31 +66,26 @@ namespace SpellGenerator.Client.Data
                 new AestheticAdjectiveTemplate("solid"),
                 new AestheticAdjectiveTemplate("thickened"),
                 new AestheticAdjectiveTemplate("thick"),
-                new AestheticAdjectiveTemplate("thin"),
                 new AestheticAdjectiveTemplate("heavy"),
                 new AestheticAdjectiveTemplate("mixed"),
                 new AestheticAdjectiveTemplate("tangled"),
-                new AestheticAdjectiveTemplate("jumbled"),
                 new AestheticAdjectiveTemplate("tapered"),
                 new AestheticAdjectiveTemplate("vibrant"),
                 new AestheticAdjectiveTemplate("iridescent"),
                 new AestheticAdjectiveTemplate("incandescent"),
                 new AestheticAdjectiveTemplate("luminescent"),
-                new AestheticAdjectiveTemplate("transparent"),//--illusion only?
                 new AestheticAdjectiveTemplate("translucent"),
                 new AestheticAdjectiveTemplate("sheer"),
                 new AestheticAdjectiveTemplate("lustrous"),
                 new AestheticAdjectiveTemplate("ornamental"),
                 new AestheticAdjectiveTemplate("mercurial"),
                 new AestheticAdjectiveTemplate("broken"),
-                new AestheticAdjectiveTemplate("arched"),
                 new AestheticAdjectiveTemplate("curved"),
-                new AestheticAdjectiveTemplate("curling"),
+                new AestheticAdjectiveTemplate("curled"),
                 new AestheticAdjectiveTemplate("sinuous"),
                 new AestheticAdjectiveTemplate("scented"),
                 new AestheticAdjectiveTemplate("bulbous"),
                 new AestheticAdjectiveTemplate("wriggling"),
-                new AestheticAdjectiveTemplate("sweeping"),
                 new AestheticAdjectiveTemplate("wrinkled"),
                 new AestheticAdjectiveTemplate("gnarled"),
                 new AestheticAdjectiveTemplate("squirming"),
@@ -113,7 +105,6 @@ namespace SpellGenerator.Client.Data
                 new AestheticAdjectiveTemplate("pulsing"),
                 new AestheticAdjectiveTemplate("twisted"),
                 new AestheticAdjectiveTemplate("twirling"),
-                new AestheticAdjectiveTemplate("curling"),
                 new AestheticAdjectiveTemplate("throbbing"),
                 new AestheticAdjectiveTemplate("osciallating"),
                 new AestheticAdjectiveTemplate("undulating"),
@@ -130,12 +121,8 @@ namespace SpellGenerator.Client.Data
                 new AestheticAdjectiveTemplate("tattered"),
                 new AestheticAdjectiveTemplate("flawless"),
                 new AestheticAdjectiveTemplate("billowing"),
-                new AestheticAdjectiveTemplate("demented"),
                 new AestheticAdjectiveTemplate("flattened"),
-                new AestheticAdjectiveTemplate("extruded"), //??
-                new AestheticAdjectiveTemplate("extended"),//??
                 new AestheticAdjectiveTemplate("warped"),
-                new AestheticAdjectiveTemplate("stretching"),
                 new AestheticAdjectiveTemplate("turbulent"),
                 new AestheticAdjectiveTemplate("cascading"),
                 new AestheticAdjectiveTemplate("bent"),
@@ -146,7 +133,6 @@ namespace SpellGenerator.Client.Data
                 new AestheticAdjectiveTemplate("coarse"),
                 new AestheticAdjectiveTemplate("corrosive", new List<DamageType>{ DamageType.Acid }),
                 new AestheticAdjectiveTemplate("venomous", new List<DamageType>{ DamageType.Poison }),
-                new AestheticAdjectiveTemplate("spiraled"),
                 new AestheticAdjectiveTemplate("spiraling"),
                 new AestheticAdjectiveTemplate("spinning"),
                 new AestheticAdjectiveTemplate("lopsided"),
@@ -161,7 +147,6 @@ namespace SpellGenerator.Client.Data
                 new AestheticAdjectiveTemplate("malformed", new List<DamageType>{ DamageType.Necrotic }),
                 new AestheticAdjectiveTemplate("pure"),
                 new AestheticAdjectiveTemplate("refined"),
-                new AestheticAdjectiveTemplate("inflated"),
                 new AestheticAdjectiveTemplate("crystalized"),
                 new AestheticAdjectiveTemplate("crystalline"),
                 new AestheticAdjectiveTemplate("sharpened"),
@@ -177,7 +162,6 @@ namespace SpellGenerator.Client.Data
                 new AestheticAdjectiveTemplate("bright"),
                 new AestheticAdjectiveTemplate("murky"),
                 new AestheticAdjectiveTemplate("muted"),
-                new AestheticAdjectiveTemplate("mutilated"),
                 new AestheticAdjectiveTemplate("intricate"),
                 new AestheticAdjectiveTemplate("compact"),
                 new AestheticAdjectiveTemplate("shimmering"),
@@ -191,18 +175,19 @@ namespace SpellGenerator.Client.Data
                 new AestheticAdjectiveTemplate("crooked"),
                 new AestheticAdjectiveTemplate("metallic"),
                 new AestheticAdjectiveTemplate("hollow"),
-                new AestheticAdjectiveTemplate("gilded"),
-                new AestheticAdjectiveTemplate("foul smelling"),
-                new AestheticAdjectiveTemplate("acrid"),
+                new AestheticAdjectiveTemplate("gilded", new List<DamageType>{ DamageType.Radiant }, new List<SchoolOfMagic>{ SchoolOfMagic.Divination }),
+                new AestheticAdjectiveTemplate("foul smelling", new List<DamageType>{ DamageType.Necrotic, DamageType.Acid, DamageType.Poison }),
+                new AestheticAdjectiveTemplate("acrid", new List<DamageType>{ DamageType.Necrotic, DamageType.Acid, DamageType.Poison }),
                 new AestheticAdjectiveTemplate("putrid", new List<DamageType>{ DamageType.Necrotic, DamageType.Acid }),
                 new AestheticAdjectiveTemplate("tarnished", new List<DamageType>{ DamageType.Necrotic, DamageType.Acid }),
                 new AestheticAdjectiveTemplate("gelatinous", new List<DamageType>{ DamageType.Necrotic, DamageType.Acid, DamageType.Poison }),
                 new AestheticAdjectiveTemplate("spectral"),
-                new AestheticAdjectiveTemplate("ghostly"),
+                new AestheticAdjectiveTemplate("ghostly", new List<DamageType>{ DamageType.Necrotic, DamageType.Psychic }, new List<SchoolOfMagic>{ SchoolOfMagic.Illusion, SchoolOfMagic.Necromancy, SchoolOfMagic.Enchantment }),
                 new AestheticAdjectiveTemplate("ridged", new List<DamageType>{ DamageType.Slashing }),
                 new AestheticAdjectiveTemplate("rigid"),
-                new AestheticAdjectiveTemplate("glowing"),
-                new AestheticAdjectiveTemplate("shining"),
+                new AestheticAdjectiveTemplate("gleaming", new List<DamageType>{ DamageType.Radiant, DamageType.Force, DamageType.Fire }),
+                new AestheticAdjectiveTemplate("glowing", new List<DamageType>{ DamageType.Radiant, DamageType.Force, DamageType.Fire }),
+                new AestheticAdjectiveTemplate("shining", new List<DamageType>{ DamageType.Radiant, DamageType.Force, DamageType.Fire }),
                 new AestheticAdjectiveTemplate("writhing"),
                 new AestheticAdjectiveTemplate("bulging"),
                 new AestheticAdjectiveTemplate("bubbling"),
@@ -221,11 +206,8 @@ namespace SpellGenerator.Client.Data
                 new AestheticAdjectiveTemplate("bloodied", new List<DamageType>{ DamageType.Necrotic }, new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy }),
                 new AestheticAdjectiveTemplate("tainted", new List<DamageType>{ DamageType.Necrotic, DamageType.Poison }, new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy }),
                 new AestheticAdjectiveTemplate("corrupted", new List<DamageType>{ DamageType.Necrotic, DamageType.Poison }, new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy }),
-                new AestheticAdjectiveTemplate("exuberant"),
                 new AestheticAdjectiveTemplate("filthy"),
-                new AestheticAdjectiveTemplate("gleaming"),
                 new AestheticAdjectiveTemplate("delicate"),
-                new AestheticAdjectiveTemplate("jittery"),
                 new AestheticAdjectiveTemplate("enigmatic"),
                 new AestheticAdjectiveTemplate("nondescript"),
                 new AestheticAdjectiveTemplate("muddied"),
@@ -237,45 +219,37 @@ namespace SpellGenerator.Client.Data
                 new AestheticAdjectiveTemplate("slanted"),
                 new AestheticAdjectiveTemplate("blunt", new List<DamageType>{ DamageType.Bludgeoning }),
                 new AestheticAdjectiveTemplate("blocky", new List<DamageType>{ DamageType.Bludgeoning }),
-                new AestheticAdjectiveTemplate("frantic"),
-                new AestheticAdjectiveTemplate("tense"),
                 new AestheticAdjectiveTemplate("chaotic"),
                 new AestheticAdjectiveTemplate("eerie"),
                 new AestheticAdjectiveTemplate("nightmarish", new List<DamageType>{ DamageType.Necrotic }),
                 new AestheticAdjectiveTemplate("bloated"),
-                new AestheticAdjectiveTemplate("repulsive"),
-                new AestheticAdjectiveTemplate("disturbing"),
                 new AestheticAdjectiveTemplate("decaying", new List<DamageType>{ DamageType.Necrotic, DamageType.Acid }),
-                new AestheticAdjectiveTemplate("disgusting"),
                 new AestheticAdjectiveTemplate("distended"),
                 new AestheticAdjectiveTemplate("disfigured"),
                 new AestheticAdjectiveTemplate("misshapen"),
+                new AestheticAdjectiveTemplate("powdered"),
                 new AestheticAdjectiveTemplate("deformed"),
-                new AestheticAdjectiveTemplate("damaged"),
                 new AestheticAdjectiveTemplate("mangled"),
-                new AestheticAdjectiveTemplate("repugnant"),
-                new AestheticAdjectiveTemplate("revolting"),
                 new AestheticAdjectiveTemplate("expanding"),
                 new AestheticAdjectiveTemplate("contracting"),
-                new AestheticAdjectiveTemplate("collapsing"),
                 new AestheticAdjectiveTemplate("erupting"),
                 new AestheticAdjectiveTemplate("imploding"),
                 new AestheticAdjectiveTemplate("contorted"),
                 new AestheticAdjectiveTemplate("convoluted"),
                 new AestheticAdjectiveTemplate("engraved"),
+                new AestheticAdjectiveTemplate("enlarged"),
                 new AestheticAdjectiveTemplate("uneven"),
                 new AestheticAdjectiveTemplate("angular"),
                 new AestheticAdjectiveTemplate("concave"),
                 new AestheticAdjectiveTemplate("layered"),
-                new AestheticAdjectiveTemplate("wild"),
                 new AestheticAdjectiveTemplate("soiled"),
                 new AestheticAdjectiveTemplate("abrasive"),
-                new AestheticAdjectiveTemplate("astral"),
+                new AestheticAdjectiveTemplate("astral", new List<DamageType>{ DamageType.Radiant, DamageType.Force }, new List<SchoolOfMagic>{ SchoolOfMagic.Divination, SchoolOfMagic.Illusion }),
                 new AestheticAdjectiveTemplate("lethargic"),
+                new AestheticAdjectiveTemplate("sluggish"),
                 new AestheticAdjectiveTemplate("rune-etched"),
-                new AestheticAdjectiveTemplate("ruined"),//? - better word
-                new AestheticAdjectiveTemplate("beautiful"),//? - better word
-                new AestheticAdjectiveTemplate("elegant"),//? - better word
+                new AestheticAdjectiveTemplate("beautiful"),
+                new AestheticAdjectiveTemplate("elegant"),
             };
         }
 

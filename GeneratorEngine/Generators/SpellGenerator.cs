@@ -105,6 +105,9 @@ namespace GeneratorEngine.Generators
 
         private static Aesthetic GenerateAesthetic(IDataTemplateService dataTemplateService, SchoolOfMagic school, EffectBase effect, Delivery delivery)
         {
+            if (effect.Type == EffectType.Utility)
+                return null;
+
             DamageType? damageType;
             switch (effect)
             {

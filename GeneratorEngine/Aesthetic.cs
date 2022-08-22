@@ -10,7 +10,7 @@ namespace GeneratorEngine
         public string MaterialAdjective;
         public string MaterialDescription;
 
-        public string CombinedDescription() => $"{ShapeDescription} of {MaterialAdjective} {MaterialDescription}";
+        public string CombinedDescription() => $"{ShapeDescription} {MaterialAdjective} {MaterialDescription}";
 
         //Examples:
         //a ball of swirling flames

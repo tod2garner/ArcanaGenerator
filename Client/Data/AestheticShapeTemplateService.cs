@@ -8,11 +8,11 @@ namespace SpellGenerator.Client.Data
         protected List<AestheticShapeTemplate>? _templates;
         public AestheticShapeTemplate GetRandomTemplate(DeliveryType delivery, AreaOfEffectShape? aoEShape = null)
         {
-            var templatesForGivenSchool = GetTemplates(delivery, aoEShape);
+            var matchingTemplates = GetTemplates(delivery, aoEShape);
 
             var rng = new Random();
-            var roll = rng.Next(templatesForGivenSchool.Count - 1);
-            return templatesForGivenSchool.ElementAt(roll);
+            var roll = rng.Next(matchingTemplates.Count - 1);
+            return matchingTemplates.ElementAt(roll);
         }
 
         private List<AestheticShapeTemplate> GetTemplates(DeliveryType delivery, AreaOfEffectShape? aoEShape = null)
@@ -91,6 +91,7 @@ namespace SpellGenerator.Client.Data
                 new AestheticShapeTemplate("a ball of"),
                 new AestheticShapeTemplate("a cube of"),
                 new AestheticShapeTemplate("a disk made of"),
+                new AestheticShapeTemplate("a shield made of"), //TODO - buffs only?
                 new AestheticShapeTemplate("an orb made of"),
                 new AestheticShapeTemplate("a blade made of"),
                 new AestheticShapeTemplate("a sword made of"),

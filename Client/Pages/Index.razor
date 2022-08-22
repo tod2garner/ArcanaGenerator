@@ -86,10 +86,13 @@
                 <td>Delivery</td>
                 <td>@theSpell.Delivery.Description</td>
             </tr>
-            <tr>
-                <td>Aesthetic</td>
-                <td>@theSpell.Aesthetic.CombinedDescription()</td>
-            </tr>
+            @if(theSpell.Aesthetic != null)
+            {
+                <tr>
+                    <td>Aesthetic</td>
+                    <td>@theSpell.Aesthetic.CombinedDescription()</td>
+                </tr>
+            }
             <tr>
                 <td>Effect</td>
                 <td>@theSpell.Effect.Description</td>

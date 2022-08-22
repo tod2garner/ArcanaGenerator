@@ -28,8 +28,7 @@ namespace SpellGenerator.Client.Data
                 new MaterialsTemplate("liquid"),
                 new MaterialsTemplate("foam"),
                 new MaterialsTemplate("viscous liquid"),
-                new MaterialsTemplate("energy"),
-                new MaterialsTemplate("rainbow"),//--enchantment, illusion
+                new MaterialsTemplate("energy"),                
                 new MaterialsTemplate("lightning"),
                 new MaterialsTemplate("flames"),//--remove and move to adjectives?
                 new MaterialsTemplate("embers"),
@@ -57,7 +56,6 @@ namespace SpellGenerator.Client.Data
                 new MaterialsTemplate("stone"),
                 new MaterialsTemplate("soil"),
                 new MaterialsTemplate("dirt"),
-                new MaterialsTemplate("powder"),
                 new MaterialsTemplate("dust"),
                 new MaterialsTemplate("sand"),
                 new MaterialsTemplate("granite"),
