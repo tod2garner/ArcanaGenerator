@@ -7,6 +7,7 @@ namespace GeneratorEngine.Templates
     public interface IDataTemplateService
     {
         SpellTemplate GetRandomSpellTemplate(EffectType effectType, SchoolOfMagic school);
-        MaterialsTemplate GetRandomRequiredMaterialsTemplate(SchoolOfMagic school);
+        Aesthetic GetRandomAesthetic(DeliveryType deliveryType, SchoolOfMagic school, DamageType? damageType, AreaOfEffectShape? aoEShape);
+        string GetRandomRequiredMaterialComponent(SchoolOfMagic school);
     }
 }

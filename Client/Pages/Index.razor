@@ -79,13 +79,22 @@
                 </tr>
             }
             <tr>
-                <td>Effect</td>
-                <td>@theSpell.Effect.Description</td>
+                <td>Ritual</td>
+                <td>@theSpell.Ritual</td>
             </tr>
             <tr>
                 <td>Delivery</td>
                 <td>@theSpell.Delivery.Description</td>
             </tr>
+            <tr>
+                <td>Aesthetic</td>
+                <td>@theSpell.Aesthetic.CombinedDescription()</td>
+            </tr>
+            <tr>
+                <td>Effect</td>
+                <td>@theSpell.Effect.Description</td>
+            </tr>
+            <br/>
             @if (theSpell.CasterPenaltyCost != null)
             {
                 <tr>
@@ -100,10 +109,6 @@
             <tr>
                 <td>Components</td>
                 <td>@theSpell.Components.SummarizeIncludingSpecificMaterials()</td>
-            </tr>
-            <tr>
-                <td>Ritual</td>
-                <td>@theSpell.Ritual</td>
             </tr>
             <tr>
                 <td>Power Rating</td>

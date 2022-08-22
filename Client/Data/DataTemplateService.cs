@@ -11,17 +11,27 @@ namespace SpellGenerator.Client.Data
         private readonly PenaltyTemplateService penaltyService;
         private readonly RequiredMaterialsTemplateService requiredMaterialsService;
 
+        private readonly AestheticShapeTemplateService aestheticShapeService;
+        private readonly AestheticMaterialsTemplateService aestheticMaterialsService;
+        private readonly AestheticAdjectiveTemplateService aestheticAdjectiveService;
+
         public DataTemplateService(BuffTemplateService buffTemplateService,
                                     DebuffTemplateService debuffTemplateService,
                                     UtilityTemplateService utilityTemplateService,
                                     PenaltyTemplateService penaltyTemplateService,
-                                    RequiredMaterialsTemplateService requiredMaterialsTemplateService)
+                                    RequiredMaterialsTemplateService requiredMaterialsTemplateService,
+                                    AestheticShapeTemplateService aestheticShapeTemplateService,
+                                    AestheticMaterialsTemplateService aestheticMaterialsTemplateService,
+                                    AestheticAdjectiveTemplateService aestheticAdjectiveTemplateService)
         {
             buffService = buffTemplateService;
             debuffService = debuffTemplateService;
             utilityService = utilityTemplateService;
             penaltyService = penaltyTemplateService;
             requiredMaterialsService = requiredMaterialsTemplateService;
+            aestheticShapeService = aestheticShapeTemplateService;
+            aestheticMaterialsService = aestheticMaterialsTemplateService;
+            aestheticAdjectiveService = aestheticAdjectiveTemplateService;
         }
 
         public SpellTemplate GetRandomSpellTemplate(EffectType effectType, SchoolOfMagic school)
@@ -67,9 +77,19 @@ namespace SpellGenerator.Client.Data
             });
         }
 
-        public MaterialsTemplate GetRandomRequiredMaterialsTemplate(SchoolOfMagic school)
+        public Aesthetic GetRandomAesthetic(DeliveryType deliveryType, SchoolOfMagic school, DamageType? damageType, AreaOfEffectShape? aoEShape)
         {
-            return requiredMaterialsService.GetRandomTemplate(school);
+            return new Aesthetic
+            {
+                ShapeDescription = aestheticShapeService.GetRandomTemplate(deliveryType, aoEShape).ShapeDescription,
+                MaterialAdjective = aestheticAdjectiveService.GetRandomTemplate(school, damageType).Adjective,
+                MaterialDescription = aestheticMaterialsService.GetRandomTemplate(school).Material
+            };
+        }
+
+        public string GetRandomRequiredMaterialComponent(SchoolOfMagic school)
+        {
+            return requiredMaterialsService.GetRandomTemplate(school).Material;
         }
     }
 }

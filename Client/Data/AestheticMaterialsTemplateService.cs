@@ -26,10 +26,12 @@ namespace SpellGenerator.Client.Data
 
                 new MaterialsTemplate("water"),
                 new MaterialsTemplate("liquid"),
+                new MaterialsTemplate("foam"),
                 new MaterialsTemplate("viscous liquid"),
                 new MaterialsTemplate("energy"),
+                new MaterialsTemplate("rainbow"),//--enchantment, illusion
                 new MaterialsTemplate("lightning"),
-                new MaterialsTemplate("flames"),
+                new MaterialsTemplate("flames"),//--remove and move to adjectives?
                 new MaterialsTemplate("embers"),
                 new MaterialsTemplate("sparks"),
                 new MaterialsTemplate("ice"),
@@ -106,6 +108,7 @@ namespace SpellGenerator.Client.Data
                 new MaterialsTemplate("vinegar", new List<SchoolOfMagic>{ SchoolOfMagic.Transmutation, SchoolOfMagic.Conjuration, SchoolOfMagic.Necromancy }),
                 new MaterialsTemplate("wax"),
                 new MaterialsTemplate("books"),
+                new MaterialsTemplate("wires"),
                 new MaterialsTemplate("buttons", new List<SchoolOfMagic>{ SchoolOfMagic.Conjuration }),
                 new MaterialsTemplate("thread", new List<SchoolOfMagic>{ SchoolOfMagic.Conjuration }),
                 new MaterialsTemplate("sawdust", new List<SchoolOfMagic>{ SchoolOfMagic.Transmutation, SchoolOfMagic.Conjuration }),
@@ -118,6 +121,8 @@ namespace SpellGenerator.Client.Data
                 new MaterialsTemplate("bubbles", new List<SchoolOfMagic>{ SchoolOfMagic.Conjuration, SchoolOfMagic.Abjuration }),
                 new MaterialsTemplate("ink", new List<SchoolOfMagic>{ SchoolOfMagic.Conjuration, SchoolOfMagic.Divination }),
                 new MaterialsTemplate("tar", new List<SchoolOfMagic>{ SchoolOfMagic.Conjuration, SchoolOfMagic.Transmutation }),
+                new MaterialsTemplate("letters", new List<SchoolOfMagic>{ SchoolOfMagic.Divination }),
+                new MaterialsTemplate("runes"),
             };
         }
     }

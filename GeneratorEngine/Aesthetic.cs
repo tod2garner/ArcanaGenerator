@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GeneratorEngine.Flavor
+namespace GeneratorEngine
 {
     public class Aesthetic
     {
         public string ShapeDescription;
+        public string MaterialAdjective;
         public string MaterialDescription;
-        public string MaterialType;
 
-        public string CombinedDescription => $"{ShapeDescription} of {MaterialDescription} {MaterialType}";
+        public string CombinedDescription() => $"{ShapeDescription} of {MaterialAdjective} {MaterialDescription}";
 
         //Examples:
         //a ball of swirling flames
@@ -23,15 +23,12 @@ namespace GeneratorEngine.Flavor
         //a lupine spirit made of writhing dirt
         //a blade made of translucent granite
 
-
-        //Generator: Generic Templates - for any delivery (null in template)
+        //Generics - for any delivery
         //      None: ___ appears in the target's space for a moment before vanishing
-        //      touch: ___ appears in the caster's hand
+        //      touch: ___ sprout from the caster's hand
         //      weapon: on impact the weapon conjures ___ above the target's head
         //      projectile: the projectile is ___ that vanishes on impact
         //      Aoe projectile: the projectile is ___ that releases a burst of magic on impact
         //      Area: the area eminates/radiates from ___
-
-
     }
 }

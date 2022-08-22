@@ -19,12 +19,14 @@ namespace GeneratorEngine.Generators
 
             var delivery = DeliveryGenerator.GenerateDelivery(spellTemplate);
             var effect = EffectGenerator.GenerateEffect(spellTemplate, school, delivery.Type);
+            var aesthetic = GenerateAesthetic(dataTemplateService, school, effect, delivery);
 
             var theSpell = new Spell
             {
                 School = school,
                 Effect = effect,
                 Delivery = delivery,
+                Aesthetic = aesthetic,
                 CastTime = GenerateCastTime(effectType, effect.Duration, spellTemplate.IsAlwaysAReaction, spellTemplate.DoesNotTargetCreatures),
                 Components = GenerateComponents(dataTemplateService, school),
                 RequiresConcentration = DetermineConcentration(effect.Duration),
@@ -90,7 +92,7 @@ namespace GeneratorEngine.Generators
         private static Components GenerateComponents(IDataTemplateService dataTemplateService, SchoolOfMagic school)
         {
             var needsMaterials = Rnd.Next(100) > 40;
-            var requiredMaterials = needsMaterials ? dataTemplateService.GetRandomRequiredMaterialsTemplate(school).Material : string.Empty;
+            var requiredMaterials = needsMaterials ? dataTemplateService.GetRandomRequiredMaterialComponent(school) : string.Empty;
 
             return new Components
             {
@@ -99,6 +101,36 @@ namespace GeneratorEngine.Generators
                 Material = needsMaterials,
                 RequiredMaterials = requiredMaterials
             };
+        }
+
+        private static Aesthetic GenerateAesthetic(IDataTemplateService dataTemplateService, SchoolOfMagic school, EffectBase effect, Delivery delivery)
+        {
+            DamageType? damageType;
+            switch (effect)
+            {
+                case DamageEffect damageEffect:
+                    damageType = damageEffect.DamageType;
+                    break;
+                default:
+                    damageType = null;
+                    break;
+            }
+
+            AreaOfEffectShape? aoEShape;
+            switch (delivery)
+            {
+                case AreaDelivery areaDelivery:
+                    aoEShape = areaDelivery.Area.Shape;
+                    break;
+                case AreaProjectileDelivery areaProjectileDelivery:
+                    aoEShape = areaProjectileDelivery.Area.Shape;
+                    break;
+                default:
+                    aoEShape = null;
+                    break;
+            }
+
+            return dataTemplateService.GetRandomAesthetic(delivery.Type, school, damageType, aoEShape);
         }
 
         private static bool DetermineConcentration(Duration duration)
