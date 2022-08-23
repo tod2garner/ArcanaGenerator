@@ -97,11 +97,11 @@ namespace SpellGenerator.Client.Data
                 new AestheticShapeTemplate("a sword made of"),
                 new AestheticShapeTemplate("a hammer made of"),
                 new AestheticShapeTemplate("a hook made of"),
-                new AestheticShapeTemplate("a shepherd's crook made of"),
+                new AestheticShapeTemplate("a shepherd's crook made of"),//TODO - buffs and melee only?
                 new AestheticShapeTemplate("a bowl filled with"),
                 new AestheticShapeTemplate("a net made of"),
                 new AestheticShapeTemplate("a crown made of"),
-                new AestheticShapeTemplate("a diamon shaped chunk of"),
+                new AestheticShapeTemplate("a diamond-shaped chunk of"),
                 new AestheticShapeTemplate("a star made of"),
                 new AestheticShapeTemplate("a wheel made of"),
                 new AestheticShapeTemplate("a scroll made of"),
