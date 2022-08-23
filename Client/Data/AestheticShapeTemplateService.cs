@@ -50,7 +50,7 @@ namespace SpellGenerator.Client.Data
                 new AestheticShapeTemplate("raindrops made of", DeliveryType.AreaOfEffect),
 
                 new AestheticShapeTemplate("an explosion of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Sphere),
-                new AestheticShapeTemplate("a cloud made of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Sphere),
+                new AestheticShapeTemplate("a cloud of droplets of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Sphere),
 
                 new AestheticShapeTemplate("a stream of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Line),
                 new AestheticShapeTemplate("a river of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Line),
