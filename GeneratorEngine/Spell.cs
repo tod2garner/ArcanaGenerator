@@ -18,6 +18,8 @@ namespace GeneratorEngine
 
         public Delivery Delivery;
 
+        public Aesthetic Aesthetic;
+
         public bool RequiresConcentration;
 
         public bool Ritual;

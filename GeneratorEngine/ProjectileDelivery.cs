@@ -8,6 +8,12 @@ namespace GeneratorEngine
     {
         public ProjectileType ProjectileType;
 
+        internal override void UpdateDescription()
+        {
+            base.UpdateDescription();
+            Description = Description.Replace("Projectile", $"{ProjectileType} Projectile");
+        }
+
         public override double GetPowerRatingModifier()
         {
             return base.GetPowerRatingModifier() * ((double)ProjectileType / 100.0);
