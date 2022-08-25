@@ -44,7 +44,8 @@ namespace GeneratorEngine.Generators
             if (spellPower > minValue && Rnd.Next(100) > 40) // 60%
             {
                 var penaltyTemplate = dataTemplateService.GetRandomSpellTemplate(EffectType.Penalty, SchoolOfMagic.Any);
-                var penalty = EffectGenerator.GeneratePenaltyEffect(penaltyTemplate, 0.5 * spellPower);                
+                var penalty = EffectGenerator.GeneratePenaltyEffect(penaltyTemplate, 0.5 * spellPower);
+                penalty.UpdateDescription();
 
                 if (penalty.GetPowerRating() < spellPower - 1)
                     theSpell.CasterPenaltyCost = penalty; ;

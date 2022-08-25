@@ -6,6 +6,10 @@ namespace GeneratorEngine
 {
     public class PenaltyEffect : DebuffEffect
     {
-        public string targetDescriptor = "the caster";//for buffs, change to "the target"
+        internal override void UpdateDescription()
+        {
+            var describeDuration = (Duration == Duration.Instant) ? "an Instant" : Duration.ToString();
+            Description = $"{Description} This side effect lasts for {describeDuration}.";            
+        }
     }
 }
