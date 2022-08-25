@@ -68,18 +68,19 @@ namespace GeneratorEngine.Generators
             {
                 _formats = new List<string>()
                 {
-                    $"{ADJECTIVE} {CORE}",
                     $"{POSSESIVE} {CORE}",
                     $"{POSSESIVE} {EMOTION}",
-                    $"{CORE} of {MATERIAL}",
                     $"{CORE} of {EMOTION}",
+                    $"{MATERIAL} of {EMOTION}",
+                    $"{CORE} of {ADJECTIVE} {MATERIAL}",
+                    $"{CORE} of {ADJECTIVE} {EMOTION}",
+                    $"{ADJECTIVE} {CORE} of {EMOTION}",
                     $"{POSSESIVE} {ADJECTIVE} {CORE}",
                     $"{POSSESIVE} {ADJECTIVE} {EMOTION}",
                     $"{POSSESIVE} {ADJECTIVE} {MATERIAL}",
                     $"{POSSESIVE} {CORE} of {EMOTION}",
+                    $"{POSSESIVE} {CORE} of {MATERIAL}",
                     $"{POSSESIVE} {MATERIAL} of {EMOTION}",
-                    $"{CORE} of {ADJECTIVE} {MATERIAL}",
-                    $"{CORE} of {ADJECTIVE} {EMOTION}",
                     $"{POSSESIVE} {CORE} of {ADJECTIVE} {MATERIAL}",
                     $"{POSSESIVE} {CORE} of {ADJECTIVE} {EMOTION}"
                 };

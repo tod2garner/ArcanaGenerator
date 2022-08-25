@@ -250,49 +250,6 @@ namespace SpellGenerator.Client.Data
                 new AestheticAdjectiveTemplate("rune-etched"),
                 new AestheticAdjectiveTemplate("beautiful"),
                 new AestheticAdjectiveTemplate("elegant"),
-
-                /*
-                 * Adjectives that were removed from this list. TODO: relocate these to the name adjective list
-                 * exuberant
-                 * gleaming
-                 * jittery
-                 * lucky
-                 * disgusting
-                 * repulsive
-                 * disturbing                 
-                 * repugnant
-                 * revolting
-                 * collapsing
-                 * extruded
-                 * thin
-                 * jumbled
-                 * transparent ??
-                 * arched
-                 * sweeping
-                 * curling
-                 * demented
-                 * extended
-                 * spiraled
-                 * inflated
-                 * mutilated
-                 * frantic
-                 * tense
-                 * calm
-                 * wild
-                 * ruined
-                 * 
-                 * rainbow (use as noun or adj?)
-                 * 
-                 * hot
-                 * cold
-                 * sharp
-                 * fast
-                 * slow
-                 * swift
-                 * large
-                 * small
-                 * giant                
-                 */
             };
         }
 

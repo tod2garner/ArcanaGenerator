@@ -99,57 +99,114 @@ namespace SpellGenerator.Client.Data
             {
                 new GenericTemplate("Comfort"),
                 new GenericTemplate("Joy"),
-                new GenericTemplate("Mercy"),                
+                new GenericTemplate("Delight"),
+                new GenericTemplate("Mercy"),             
                 new GenericTemplate("Grace"),                
                 new GenericTemplate("Purity"),                
                 new GenericTemplate("Vitality"),                
                 new GenericTemplate("Zealotry"),                
                 new GenericTemplate("Zeal"),                
                 new GenericTemplate("Redemption"),                
-                new GenericTemplate("Clarity"),                
+                new GenericTemplate("Admiration"),           
+                new GenericTemplate("Jealousy", new List<SchoolOfMagic>{ SchoolOfMagic.Illusion, SchoolOfMagic.Enchantment }),           
+                new GenericTemplate("Anxiety"),           
+                new GenericTemplate("Awe"),           
+                new GenericTemplate("Pain", new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy, SchoolOfMagic.Evocation }),           
+                new GenericTemplate("Horror", new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy, SchoolOfMagic.Enchantment }),           
+                new GenericTemplate("Clarity", new List<SchoolOfMagic>{ SchoolOfMagic.Divination, SchoolOfMagic.Illusion }),                
                 new GenericTemplate("Delight"),
                 new GenericTemplate("Hunger"),
-                new GenericTemplate("Protection"),//adjective? protective, warding
-                new GenericTemplate("Precision"),//adjective? precise
+                new GenericTemplate("Precision"),
                 new GenericTemplate("Anger"),
                 new GenericTemplate("Wrath"),
                 new GenericTemplate("Spite"),
                 new GenericTemplate("Scorn"),
                 new GenericTemplate("Hatred"),
                 new GenericTemplate("Sorrow"),                
-                new GenericTemplate("Doubt"),                
-                new GenericTemplate("Truth"),            
+                new GenericTemplate("Grief"),                
+                new GenericTemplate("Despair", new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy, SchoolOfMagic.Enchantment }),                
+                new GenericTemplate("Doubt", new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy, SchoolOfMagic.Illusion }),                
+                new GenericTemplate("Truth", new List<SchoolOfMagic>{ SchoolOfMagic.Divination, SchoolOfMagic.Abjuration }),            
                 new GenericTemplate("Pride"),
                 new GenericTemplate("Determination"),
+                new GenericTemplate("Bitterness"),
+                new GenericTemplate("Isolation"),
                 new GenericTemplate("Defiance"),
                 new GenericTemplate("Dread"),
-                new GenericTemplate("Malevolence"),
+                new GenericTemplate("Malevolence", new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy, SchoolOfMagic.Evocation }),
                 new GenericTemplate("Indignation"),
                 new GenericTemplate("Discipline"),                
-                new GenericTemplate("Corruption"),
+                new GenericTemplate("Corruption", new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy, SchoolOfMagic.Transmutation }),
                 new GenericTemplate("Darkness"),
                 new GenericTemplate("Greed"),
                 new GenericTemplate("Contempt"),
                 new GenericTemplate("Torment"),
                 new GenericTemplate("Woe"),
+                new GenericTemplate("Loneliness"),
                 new GenericTemplate("Fear"),
                 new GenericTemplate("Envy"),
                 new GenericTemplate("Misery"),
+                new GenericTemplate("Disgust"),
                 new GenericTemplate("Anguish"),
                 new GenericTemplate("Suffering"),
                 new GenericTemplate("Loathing"),
+                new GenericTemplate("Nostalgia"),
+            };
+        }
 
-                //move to adjectives for jarunds?
+        //Core - Vision, Prophecy, Guidance, Foresight (for divination utility)
+        //hunter / hunting (adjective... or core?)
+        //warding, protective adjective
+
+
+        /*
+         * Adjectives that were removed from this list. TODO: relocate these to the name adjective list
+         * exuberant
+         * gleaming
+         * jittery
+         * lucky
+         * repulsive
+         * disturbing                 
+         * repugnant
+         * revolting
+         * collapsing
+         * extruded
+         * thin
+         * jumbled
+         * transparent ??
+         * arched
+         * sweeping
+         * curling
+         * demented
+         * extended
+         * spiraled
+         * inflated
+         * mutilated
+         * frantic
+         * tense
+         * calm
+         * wild
+         * ruined
+         * 
+         * rainbow (use as noun or adj?)
+         * 
+         * hot
+         * cold
+         * sharp
+         * fast
+         * slow
+         * swift
+         * large
+         * small
+         * giant
+         * 
+         * //move to adjectives for jarunds?
                 new GenericTemplate("Whispering"),
                 new GenericTemplate("Muttering"),
                 new GenericTemplate("Weeping"),
                 new GenericTemplate("Wailing"),
                 new GenericTemplate("Screaming"),
                 new GenericTemplate("Shrieking"),
-            };
-        }
-
-        //Core - Vision, Prophecy, Guidance, Foresight (for divination utility)
-        //hunter / hunting (adjective... or core?)
+         */
     }
 }
