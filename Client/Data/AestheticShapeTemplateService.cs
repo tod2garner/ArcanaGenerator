@@ -41,11 +41,14 @@ namespace SpellGenerator.Client.Data
                 new AestheticShapeTemplate("weapon", "the weapon takes on the appearance of", DeliveryType.Weapon),
 
                 new AestheticShapeTemplate("bolt", "a bolt of", DeliveryType.Projectile),
+                new AestheticShapeTemplate("missile", "a missile of", DeliveryType.Projectile),
                 new AestheticShapeTemplate("arrow", "an arrow made of", DeliveryType.Projectile),
                 new AestheticShapeTemplate("spear", "a spear made of", DeliveryType.Projectile),
+                new AestheticShapeTemplate("javelin", "a javelin made of", DeliveryType.Projectile),
                                             
                 new AestheticShapeTemplate("burst", "a burst of", DeliveryType.AreaOfEffect),
                 new AestheticShapeTemplate("blast", "a blast of", DeliveryType.AreaOfEffect),
+                new AestheticShapeTemplate("shockwave", "a shockwave caused by", DeliveryType.AreaOfEffect),
                 new AestheticShapeTemplate("patch", "a patch of", DeliveryType.AreaOfEffect),
                 new AestheticShapeTemplate("rain", "raindrops made of", DeliveryType.AreaOfEffect),
                                             
@@ -93,6 +96,7 @@ namespace SpellGenerator.Client.Data
                 new AestheticShapeTemplate("disk", "a disk made of"),
                 new AestheticShapeTemplate("shield", "a shield made of"), //TODO - buffs only?
                 new AestheticShapeTemplate("orb", "an orb made of"),
+                new AestheticShapeTemplate("sphere", "a sphere made of"),
                 new AestheticShapeTemplate("blade", "a blade made of"),
                 new AestheticShapeTemplate("sword", "a sword made of"),
                 new AestheticShapeTemplate("hammer", "a hammer made of"),

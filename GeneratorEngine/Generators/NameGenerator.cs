@@ -90,7 +90,7 @@ namespace GeneratorEngine.Generators
                                         ? _formats.Where(f => !f.Contains(MATERIAL)).ToList()
                                         : _formats.ToList();
 
-            return formatsToChooseFrom.ElementAt(rnd.Next(_formats.Count));
+            return formatsToChooseFrom.ElementAt(rnd.Next(formatsToChooseFrom.Count));
         }
     }
 }
