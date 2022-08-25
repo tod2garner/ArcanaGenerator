@@ -83,13 +83,13 @@ namespace SpellGenerator.Client.Data
             {
                 ShapeDescription = aestheticShapeService.GetRandomTemplate(deliveryType, aoEShape).ShapeDescription,
                 MaterialAdjective = aestheticAdjectiveService.GetRandomTemplate(school, damageType).Adjective,
-                MaterialDescription = aestheticMaterialsService.GetRandomTemplate(school).Material
+                MaterialDescription = aestheticMaterialsService.GetRandomTemplate(school).Value
             };
         }
 
         public string GetRandomRequiredMaterialComponent(SchoolOfMagic school)
         {
-            return requiredMaterialsService.GetRandomTemplate(school).Material;
+            return requiredMaterialsService.GetRandomTemplate(school).Value;
         }
     }
 }
