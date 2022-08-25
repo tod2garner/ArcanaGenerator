@@ -31,13 +31,14 @@ namespace GeneratorEngine.Generators
                 Aesthetic = aesthetic,
                 CastTime = GenerateCastTime(effectType, effect.Duration, spellTemplate.IsAlwaysAReaction, spellTemplate.DoesNotTargetCreatures),
                 Components = GenerateComponents(dataTemplateService, school),
-                RequiresConcentration = DetermineConcentration(effect.Duration),
+                RequiresConcentration = true,
                 Ritual = DetermineRitual(effectType),
                 CasterPenaltyCost = null,
             };
 
             (var minValue, var maxValue) = LookupPowerScores(inputPowerLevel);
             theSpell.AdjustForTargetValueScore(spellTemplate, minValue, maxValue);
+            theSpell.RequiresConcentration = DetermineConcentration(theSpell.Effect.Duration);
 
             var spellPower = theSpell.GetFinalPowerRating();
             if (spellPower > minValue && Rnd.Next(100) > 40) // 60%
