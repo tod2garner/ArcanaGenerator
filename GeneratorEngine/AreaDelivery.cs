@@ -25,14 +25,17 @@ namespace GeneratorEngine
 
             if (scalingRatio < 1.0) //make it weaker
             {
-                Area.Size = Math.Max(15, Math.Round(scalingRatio.Value * Area.Size / 5.0) * 5);
+                Area.Size = Math.Max(15, RoundToNearest(scalingRatio.Value * Area.Size, 5));
             }
             else if (scalingRatio > 1.0) //make it stronger
             {
-                Area.Size = Math.Min(60, Math.Round(scalingRatio.Value * Area.Size / 5.0) * 5);
+                Area.Size = Math.Min(60, RoundToNearest(scalingRatio.Value * Area.Size, 5));
             }
 
             base.ScalePower(scalingRatio);
         }
+
+
+        private double RoundToNearest(double valueToRound, double tolerance) => Math.Round(valueToRound / tolerance) * tolerance;
     }
 }
