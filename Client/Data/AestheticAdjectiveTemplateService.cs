@@ -11,7 +11,7 @@ namespace SpellGenerator.Client.Data
             var matchingTemplates = GetTemplates(school, damageType);
 
             var rng = new Random();
-            var roll = rng.Next(matchingTemplates.Count - 1);
+            var roll = rng.Next(matchingTemplates.Count);
             return matchingTemplates.ElementAt(roll);
         }
 
