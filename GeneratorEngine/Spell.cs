@@ -33,7 +33,9 @@ namespace GeneratorEngine
 
         internal double MiscPowerRatingModifier()
         {
-            return 1.0;//TODO - add cast time, components, concentration, ritual
+            var ritualFactor = Ritual ? 2.0 : 1.0;
+            var concentrationFactor = (!RequiresConcentration && Effect.Duration != Duration.Instant && Effect.Duration != Duration.OneRound) ? 3.0 : 1.0;
+            return concentrationFactor * ritualFactor;//TODO - add cast time & components
         }
 
         public void AdjustForTargetValueScore(Templates.SpellTemplate spellTemplate, double minScore, double maxScore)
