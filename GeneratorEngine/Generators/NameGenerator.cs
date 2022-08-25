@@ -1,6 +1,8 @@
 ﻿using GeneratorEngine.Templates;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 
 namespace GeneratorEngine.Generators
 {
@@ -17,11 +19,11 @@ namespace GeneratorEngine.Generators
         {
             var rnd = new Random();
 
-            var name = GetRandomNameFormat(rnd);
+            var name = GetRandomNameFormat(rnd, effectType);
 
             if(name.Contains(CORE)) 
             {
-                var core = (rnd.NextDouble() > 0.5) 
+                var core = (aesthetic != null && rnd.NextDouble() > 0.5) 
                             ? aesthetic.ShapeCore 
                             : dataTemplateService.GetRandomNameCore(school, effectType);
                 name = name.Replace(CORE, core);
@@ -29,10 +31,18 @@ namespace GeneratorEngine.Generators
 
             if (name.Contains(ADJECTIVE))
             {
-                var adj = (!string.IsNullOrEmpty(aesthetic.MaterialAdjective) && rnd.NextDouble() > 0.5) 
+                var adj = (!string.IsNullOrEmpty(aesthetic?.MaterialAdjective) && rnd.NextDouble() > 0.7) 
                             ? aesthetic.MaterialAdjective 
                             : dataTemplateService.GetRandomNameAdjective(school, effectType);
                 name = name.Replace(ADJECTIVE, adj);
+            }
+
+            if (name.Contains(MATERIAL))
+            {
+                var material = (aesthetic != null)
+                                ? aesthetic.MaterialDescription
+                                : "energy";
+                name = name.Replace(MATERIAL, material);
             }
 
             if (name.Contains(POSSESIVE))
@@ -41,13 +51,18 @@ namespace GeneratorEngine.Generators
             if (name.Contains(EMOTION))
                 name = name.Replace(EMOTION, dataTemplateService.GetRandomNameEmotion(school));            
 
-            if (name.Contains(MATERIAL))            
-                name = name.Replace(MATERIAL, aesthetic.MaterialDescription);            
-
-            return name;
+            return name.ToTitleCase();
         }
 
-        private static string GetRandomNameFormat(Random rnd)
+        /// <summary>
+        /// Capitalizes the first letter of each word in the string (except 'of')
+        /// </summary>
+        private static string ToTitleCase(this string text)
+        {
+            return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(text).Replace("Of", "of");
+        }
+
+        private static string GetRandomNameFormat(Random rnd, EffectType effectType)
         {
             if(_formats is null || _formats.Count == 0)
             {
@@ -56,7 +71,7 @@ namespace GeneratorEngine.Generators
                     $"{ADJECTIVE} {CORE}",
                     $"{POSSESIVE} {CORE}",
                     $"{POSSESIVE} {EMOTION}",
-                    $"{CORE} of {ADJECTIVE}",
+                    $"{CORE} of {MATERIAL}",
                     $"{CORE} of {EMOTION}",
                     $"{POSSESIVE} {ADJECTIVE} {CORE}",
                     $"{POSSESIVE} {ADJECTIVE} {EMOTION}",
@@ -70,7 +85,11 @@ namespace GeneratorEngine.Generators
                 };
             }
 
-            return _formats[rnd.Next(_formats.Count)];
+            var formatsToChooseFrom = (effectType == EffectType.Utility)
+                                        ? _formats.Where(f => !f.Contains(MATERIAL)).ToList()
+                                        : _formats.ToList();
+
+            return formatsToChooseFrom.ElementAt(rnd.Next(_formats.Count));
         }
     }
 }
