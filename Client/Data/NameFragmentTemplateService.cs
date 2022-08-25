@@ -6,7 +6,7 @@ namespace SpellGenerator.Client.Data
     public class NameFragmentTemplateService
     {
         private List<GenericTemplatePerSchool> _possesives = new();
-        private List<GenericTemplatePerSchool> _emotions = new();
+        private List<GenericTemplatePerEffectType> _emotions = new();
         private List<GenericTemplatePerEffectType> _cores = new();
         private List<GenericTemplatePerEffectType> _adjectives = new();
 
@@ -18,12 +18,12 @@ namespace SpellGenerator.Client.Data
             return GetRandomTemplate(school, _possesives).Value;
         }
 
-        public string GetRandomNameEmotion(SchoolOfMagic school)
+        public string GetRandomNameEmotion(SchoolOfMagic school, EffectType effectType)
         {
             if (_emotions.Count == 0)
                 CreateEmotionsList();
 
-            return GetRandomTemplate(school, _emotions).Value;
+            return GetRandomTemplate(school, effectType, _emotions).Value;
         }
 
         public string GetRandomNameCore(SchoolOfMagic school, EffectType effectType)
@@ -113,63 +113,63 @@ namespace SpellGenerator.Client.Data
 
         private void CreateEmotionsList()
         {
-            _emotions = new List<GenericTemplatePerSchool>()
+            _emotions = new List<GenericTemplatePerEffectType>()
             {
-                new GenericTemplatePerSchool("Comfort"),
-                new GenericTemplatePerSchool("Joy"),
-                new GenericTemplatePerSchool("Delight"),
-                new GenericTemplatePerSchool("Mercy"),             
-                new GenericTemplatePerSchool("Grace"),                
-                new GenericTemplatePerSchool("Curiousity"),                
-                new GenericTemplatePerSchool("Purity"),                
-                new GenericTemplatePerSchool("Vitality"),                
-                new GenericTemplatePerSchool("Zealotry"),                
-                new GenericTemplatePerSchool("Zeal"),                
-                new GenericTemplatePerSchool("Redemption"),                
-                new GenericTemplatePerSchool("Admiration"),           
-                new GenericTemplatePerSchool("Jealousy", new List<SchoolOfMagic>{ SchoolOfMagic.Illusion, SchoolOfMagic.Enchantment }),           
-                new GenericTemplatePerSchool("Anxiety"),           
-                new GenericTemplatePerSchool("Awe"),           
-                new GenericTemplatePerSchool("Pain", new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy, SchoolOfMagic.Evocation }),           
-                new GenericTemplatePerSchool("Horror", new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy, SchoolOfMagic.Enchantment }),           
-                new GenericTemplatePerSchool("Clarity", new List<SchoolOfMagic>{ SchoolOfMagic.Divination, SchoolOfMagic.Illusion }),                
-                new GenericTemplatePerSchool("Delight"),
-                new GenericTemplatePerSchool("Hunger"),
-                new GenericTemplatePerSchool("Precision"),
-                new GenericTemplatePerSchool("Anger"),
-                new GenericTemplatePerSchool("Wrath"),
-                new GenericTemplatePerSchool("Spite"),
-                new GenericTemplatePerSchool("Scorn"),
-                new GenericTemplatePerSchool("Hatred"),
-                new GenericTemplatePerSchool("Sorrow"),                
-                new GenericTemplatePerSchool("Grief"),                
-                new GenericTemplatePerSchool("Despair", new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy, SchoolOfMagic.Enchantment }),                
-                new GenericTemplatePerSchool("Doubt", new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy, SchoolOfMagic.Illusion }),                
-                new GenericTemplatePerSchool("Truth", new List<SchoolOfMagic>{ SchoolOfMagic.Divination, SchoolOfMagic.Abjuration }),            
-                new GenericTemplatePerSchool("Pride"),
-                new GenericTemplatePerSchool("Determination"),
-                new GenericTemplatePerSchool("Bitterness"),
-                new GenericTemplatePerSchool("Isolation"),
-                new GenericTemplatePerSchool("Defiance"),
-                new GenericTemplatePerSchool("Dread"),
-                new GenericTemplatePerSchool("Malevolence", new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy, SchoolOfMagic.Evocation }),
-                new GenericTemplatePerSchool("Indignation"),
-                new GenericTemplatePerSchool("Discipline"),                
-                new GenericTemplatePerSchool("Corruption", new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy, SchoolOfMagic.Transmutation }),
-                new GenericTemplatePerSchool("Darkness"),
-                new GenericTemplatePerSchool("Greed"),
-                new GenericTemplatePerSchool("Contempt"),
-                new GenericTemplatePerSchool("Torment"),
-                new GenericTemplatePerSchool("Woe"),
-                new GenericTemplatePerSchool("Loneliness"),
-                new GenericTemplatePerSchool("Fear"),
-                new GenericTemplatePerSchool("Envy"),
-                new GenericTemplatePerSchool("Misery"),
-                new GenericTemplatePerSchool("Disgust"),
-                new GenericTemplatePerSchool("Anguish"),
-                new GenericTemplatePerSchool("Suffering"),
-                new GenericTemplatePerSchool("Loathing"),
-                new GenericTemplatePerSchool("Nostalgia"),
+                new GenericTemplatePerEffectType("Comfort", new List<EffectType>{ EffectType.Buff, EffectType.Utility }),
+                new GenericTemplatePerEffectType("Joy", new List<EffectType>{ EffectType.Buff, EffectType.Utility }),
+                new GenericTemplatePerEffectType("Delight", new List<EffectType>{ EffectType.Buff, EffectType.Utility }),
+                new GenericTemplatePerEffectType("Mercy"),             
+                new GenericTemplatePerEffectType("Grace"),                
+                new GenericTemplatePerEffectType("Curiousity", new List<EffectType>{ EffectType.Buff, EffectType.Utility }),                
+                new GenericTemplatePerEffectType("Purity"),                
+                new GenericTemplatePerEffectType("Vitality", new List<EffectType>{ EffectType.Buff }),                
+                new GenericTemplatePerEffectType("Zealotry"),                
+                new GenericTemplatePerEffectType("Zeal"),                
+                new GenericTemplatePerEffectType("Redemption", new List<EffectType>{ EffectType.Buff }),                
+                new GenericTemplatePerEffectType("Admiration", new List<EffectType>{ EffectType.Buff }),           
+                new GenericTemplatePerEffectType("Jealousy", new List<SchoolOfMagic>{ SchoolOfMagic.Illusion, SchoolOfMagic.Enchantment }),           
+                new GenericTemplatePerEffectType("Anxiety"),           
+                new GenericTemplatePerEffectType("Awe"),           
+                new GenericTemplatePerEffectType("Pain", new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy, SchoolOfMagic.Evocation }, new List<EffectType>{ EffectType.Debuff, EffectType.Damage }),           
+                new GenericTemplatePerEffectType("Horror", new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy, SchoolOfMagic.Enchantment }),           
+                new GenericTemplatePerEffectType("Clarity", new List<SchoolOfMagic>{ SchoolOfMagic.Divination, SchoolOfMagic.Illusion }),                
+                new GenericTemplatePerEffectType("Delight", new List<EffectType>{ EffectType.Buff, EffectType.Utility }),
+                new GenericTemplatePerEffectType("Hunger"),
+                new GenericTemplatePerEffectType("Precision"),
+                new GenericTemplatePerEffectType("Anger"),
+                new GenericTemplatePerEffectType("Wrath"),
+                new GenericTemplatePerEffectType("Spite"),
+                new GenericTemplatePerEffectType("Scorn"),
+                new GenericTemplatePerEffectType("Hatred"),
+                new GenericTemplatePerEffectType("Sorrow"),                
+                new GenericTemplatePerEffectType("Grief"),                
+                new GenericTemplatePerEffectType("Despair", new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy, SchoolOfMagic.Enchantment }),                
+                new GenericTemplatePerEffectType("Doubt", new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy, SchoolOfMagic.Illusion }),                
+                new GenericTemplatePerEffectType("Truth", new List<SchoolOfMagic>{ SchoolOfMagic.Divination, SchoolOfMagic.Abjuration }),            
+                new GenericTemplatePerEffectType("Pride"),
+                new GenericTemplatePerEffectType("Determination"),
+                new GenericTemplatePerEffectType("Bitterness"),
+                new GenericTemplatePerEffectType("Isolation"),
+                new GenericTemplatePerEffectType("Defiance"),
+                new GenericTemplatePerEffectType("Dread"),
+                new GenericTemplatePerEffectType("Malevolence", new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy, SchoolOfMagic.Evocation }),
+                new GenericTemplatePerEffectType("Indignation"),
+                new GenericTemplatePerEffectType("Discipline"),                
+                new GenericTemplatePerEffectType("Corruption", new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy, SchoolOfMagic.Transmutation }),
+                new GenericTemplatePerEffectType("Darkness"),
+                new GenericTemplatePerEffectType("Greed"),
+                new GenericTemplatePerEffectType("Contempt"),
+                new GenericTemplatePerEffectType("Torment"),
+                new GenericTemplatePerEffectType("Woe"),
+                new GenericTemplatePerEffectType("Loneliness"),
+                new GenericTemplatePerEffectType("Fear"),
+                new GenericTemplatePerEffectType("Envy"),
+                new GenericTemplatePerEffectType("Misery"),
+                new GenericTemplatePerEffectType("Disgust"),
+                new GenericTemplatePerEffectType("Anguish"),
+                new GenericTemplatePerEffectType("Suffering"),
+                new GenericTemplatePerEffectType("Loathing"),
+                new GenericTemplatePerEffectType("Nostalgia"),
             };
         }
 
@@ -187,8 +187,7 @@ namespace SpellGenerator.Client.Data
                 new GenericTemplatePerEffectType("undoing"),
                 new GenericTemplatePerEffectType("folly"),
                 new GenericTemplatePerEffectType("respite"),
-                new GenericTemplatePerEffectType("defense", new List<SchoolOfMagic>{ SchoolOfMagic.Any }, new List<EffectType>{ EffectType.Buff }),
-                new GenericTemplatePerEffectType("mire"),
+                new GenericTemplatePerEffectType("defense", new List<EffectType>{ EffectType.Buff }),
                 new GenericTemplatePerEffectType("zenith"),
                 new GenericTemplatePerEffectType("pinnacle"),
                 new GenericTemplatePerEffectType("step", new List<SchoolOfMagic>{ SchoolOfMagic.Conjuration }, new List<EffectType>{ EffectType.Utility }),
@@ -204,17 +203,17 @@ namespace SpellGenerator.Client.Data
         {
             _adjectives = new List<GenericTemplatePerEffectType>
             {
-                new GenericTemplatePerEffectType("warding"),
-                new GenericTemplatePerEffectType("protective"),
+                new GenericTemplatePerEffectType("warding", new List<EffectType>{ EffectType.Buff }),
+                new GenericTemplatePerEffectType("protective", new List<EffectType>{ EffectType.Buff }),
                 new GenericTemplatePerEffectType("exuberant"),
                 new GenericTemplatePerEffectType("gleaming"),
                 new GenericTemplatePerEffectType("jittery"),
-                new GenericTemplatePerEffectType("haunting"),
+                new GenericTemplatePerEffectType("haunting", new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy, SchoolOfMagic.Illusion }, new List<EffectType>{ EffectType.Damage, EffectType.Debuff }),
                 new GenericTemplatePerEffectType("lucky"),
-                new GenericTemplatePerEffectType("repulsive"),
-                new GenericTemplatePerEffectType("disturbing"),
-                new GenericTemplatePerEffectType("repugnant"),
-                new GenericTemplatePerEffectType("revolting"),
+                new GenericTemplatePerEffectType("repulsive", new List<EffectType>{ EffectType.Damage, EffectType.Debuff }),
+                new GenericTemplatePerEffectType("disturbing", new List<EffectType>{ EffectType.Damage, EffectType.Debuff }),
+                new GenericTemplatePerEffectType("repugnant", new List<EffectType>{ EffectType.Damage, EffectType.Debuff }),
+                new GenericTemplatePerEffectType("revolting", new List<EffectType>{ EffectType.Damage, EffectType.Debuff }),
                 new GenericTemplatePerEffectType("collapsing"),
                 new GenericTemplatePerEffectType("extruded"),
                 new GenericTemplatePerEffectType("thin"),
@@ -225,14 +224,15 @@ namespace SpellGenerator.Client.Data
                 new GenericTemplatePerEffectType("sweeping"),
                 new GenericTemplatePerEffectType("demented"),
                 new GenericTemplatePerEffectType("extended"),
+                new GenericTemplatePerEffectType("consuming"),
                 new GenericTemplatePerEffectType("inflated"),
                 new GenericTemplatePerEffectType("mutilated"),
                 new GenericTemplatePerEffectType("frantic"),
                 new GenericTemplatePerEffectType("tense"),
-                new GenericTemplatePerEffectType("calm"),
+                new GenericTemplatePerEffectType("calm", new List<EffectType>{ EffectType.Buff }),
                 new GenericTemplatePerEffectType("wild"),
                 new GenericTemplatePerEffectType("ruined"),
-                new GenericTemplatePerEffectType("benign"),
+                new GenericTemplatePerEffectType("benign", new List<EffectType>{ EffectType.Buff }),
                 new GenericTemplatePerEffectType("cryptic"),
                 new GenericTemplatePerEffectType("curious"),
                 new GenericTemplatePerEffectType("whimsical"),
@@ -245,18 +245,18 @@ namespace SpellGenerator.Client.Data
 
                 new GenericTemplatePerEffectType("hot"),
                 new GenericTemplatePerEffectType("cold"),
-                new GenericTemplatePerEffectType("sharp"),
+                new GenericTemplatePerEffectType("sharp", new List<EffectType>{ EffectType.Damage }),
                 new GenericTemplatePerEffectType("swift"),
                 new GenericTemplatePerEffectType("slow"),
-                new GenericTemplatePerEffectType("looming"),
-                new GenericTemplatePerEffectType("giant"),
+                new GenericTemplatePerEffectType("looming", new List<EffectType>{ EffectType.Damage, EffectType.Debuff }),
+                new GenericTemplatePerEffectType("swelling"),
 
                 new GenericTemplatePerEffectType("Whispering"),
                 new GenericTemplatePerEffectType("Muttering"),
-                new GenericTemplatePerEffectType("Weeping"),
-                new GenericTemplatePerEffectType("Wailing"),
-                new GenericTemplatePerEffectType("Screaming"),
-                new GenericTemplatePerEffectType("Shrieking"),
+                new GenericTemplatePerEffectType("Weeping", new List<EffectType>{ EffectType.Damage, EffectType.Debuff }),
+                new GenericTemplatePerEffectType("Wailing", new List<EffectType>{ EffectType.Damage, EffectType.Debuff }),
+                new GenericTemplatePerEffectType("Screaming", new List<EffectType>{ EffectType.Damage, EffectType.Debuff }),
+                new GenericTemplatePerEffectType("Shrieking", new List<EffectType>{ EffectType.Damage, EffectType.Debuff }),
             };
         }
     }

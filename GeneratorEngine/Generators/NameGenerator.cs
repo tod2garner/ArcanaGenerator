@@ -49,7 +49,7 @@ namespace GeneratorEngine.Generators
                 name = name.Replace(POSSESIVE, dataTemplateService.GetRandomNamePossesive(school));            
 
             if (name.Contains(EMOTION))
-                name = name.Replace(EMOTION, dataTemplateService.GetRandomNameEmotion(school));            
+                name = name.Replace(EMOTION, dataTemplateService.GetRandomNameEmotion(school, effectType));            
 
             return name.ToTitleCase();
         }
@@ -70,8 +70,7 @@ namespace GeneratorEngine.Generators
                 {
                     $"{POSSESIVE} {CORE}",
                     $"{POSSESIVE} {EMOTION}",
-                    $"{CORE} of {EMOTION}",
-                    $"{MATERIAL} of {EMOTION}",
+                    $"{ADJECTIVE} {MATERIAL} of {EMOTION}",
                     $"{CORE} of {ADJECTIVE} {MATERIAL}",
                     $"{CORE} of {ADJECTIVE} {EMOTION}",
                     $"{ADJECTIVE} {CORE} of {EMOTION}",
@@ -81,8 +80,7 @@ namespace GeneratorEngine.Generators
                     $"{POSSESIVE} {CORE} of {EMOTION}",
                     $"{POSSESIVE} {CORE} of {MATERIAL}",
                     $"{POSSESIVE} {MATERIAL} of {EMOTION}",
-                    $"{POSSESIVE} {CORE} of {ADJECTIVE} {MATERIAL}",
-                    $"{POSSESIVE} {CORE} of {ADJECTIVE} {EMOTION}"
+                    $"{POSSESIVE} {CORE} of {ADJECTIVE} {MATERIAL}"
                 };
             }
 

@@ -66,6 +66,7 @@ namespace SpellGenerator.Client.Data
                 new AestheticShapeTemplate("scythe", "a scythe made of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Line),
                                            
                 new AestheticShapeTemplate("pool", "a pool of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cylinder),
+                new AestheticShapeTemplate("mire", "a mire made of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cylinder),
                 new AestheticShapeTemplate("shower", "a shower of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cylinder),
                 new AestheticShapeTemplate("fountain", "a fountain of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cylinder),
                 new AestheticShapeTemplate("cauldron", "a cauldron that spews", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cylinder),

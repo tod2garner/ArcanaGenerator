@@ -111,9 +111,9 @@ namespace SpellGenerator.Client.Data
             return nameFragmentService.GetRandomNamePossesive(school);
         }
 
-        public string GetRandomNameEmotion(SchoolOfMagic school)
+        public string GetRandomNameEmotion(SchoolOfMagic school, EffectType effectType)
         {
-            return nameFragmentService.GetRandomNameEmotion(school);
+            return nameFragmentService.GetRandomNameEmotion(school, effectType);
         }
     }
 }

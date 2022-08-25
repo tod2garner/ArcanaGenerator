@@ -13,6 +13,11 @@ namespace GeneratorEngine.Templates
             EffectTypes = null;
         }
 
+        public GenericTemplatePerEffectType(string value, List<EffectType> effectTypes) : base(value)
+        {
+            EffectTypes = effectTypes;
+        }
+
         public GenericTemplatePerEffectType(string value, List<SchoolOfMagic> schools) : base(value, schools)
         {
             EffectTypes = null;

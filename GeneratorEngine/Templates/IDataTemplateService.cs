@@ -11,7 +11,7 @@ namespace GeneratorEngine.Templates
         string GetRandomRequiredMaterialComponent(SchoolOfMagic school);
         string GetRandomNameCore(SchoolOfMagic school, EffectType effectType);
         string GetRandomNameAdjective(SchoolOfMagic school, EffectType effectType);
+        string GetRandomNameEmotion(SchoolOfMagic school, EffectType effectType);
         string GetRandomNamePossesive(SchoolOfMagic school);
-        string GetRandomNameEmotion(SchoolOfMagic school);
     }
 }
