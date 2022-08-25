@@ -5,17 +5,17 @@ namespace SpellGenerator.Client.Data
 {
     public abstract class BaseMaterialsTemplateService
     {
-        protected List<MaterialsTemplate>? _templates;
-        public MaterialsTemplate GetRandomTemplate(SchoolOfMagic school)
+        protected List<GenericTemplatePerSchool>? _templates;
+        public GenericTemplatePerSchool GetRandomTemplate(SchoolOfMagic school)
         {
             var templatesForGivenSchool = GetTemplates(school);
 
             var rng = new Random();
-            var roll = rng.Next(templatesForGivenSchool.Count - 1);
+            var roll = rng.Next(templatesForGivenSchool.Count);
             return templatesForGivenSchool.ElementAt(roll);
         }
 
-        public List<MaterialsTemplate> GetTemplates(SchoolOfMagic school)
+        public List<GenericTemplatePerSchool> GetTemplates(SchoolOfMagic school)
         {
             if (_templates == null)
                 CreateTemplates();

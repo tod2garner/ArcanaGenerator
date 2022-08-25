@@ -2,20 +2,20 @@
 
 namespace GeneratorEngine.Templates
 {
-    public class MaterialsTemplate
+    public class GenericTemplatePerSchool
     {
-        public string Material;
+        public string Value;
         public List<SchoolOfMagic> Schools;
 
-        public MaterialsTemplate(string material, List<SchoolOfMagic> schools)
+        public GenericTemplatePerSchool(string value, List<SchoolOfMagic> schools)
         {
-            Material = material;
+            Value = value;
             Schools = schools;
         }
 
-        public MaterialsTemplate(string material)
+        public GenericTemplatePerSchool(string value)
         {
-            Material = material;
+            Value = value;
             Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any};
         }
     }

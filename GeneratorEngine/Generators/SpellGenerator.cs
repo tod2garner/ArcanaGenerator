@@ -13,16 +13,18 @@ namespace GeneratorEngine.Generators
             var effectType = inputEffectType ?? GenerateEffectType();
             var spellTemplate = dataTemplateService.GetRandomSpellTemplate(effectType, inputSchoolOfMagic);
 
-            var school = (inputSchoolOfMagic != SchoolOfMagic.Any) ? inputSchoolOfMagic: spellTemplate.Schools.ElementAt(Rnd.Next(0, spellTemplate.Schools.Count - 1));
+            var school = (inputSchoolOfMagic != SchoolOfMagic.Any) ? inputSchoolOfMagic: spellTemplate.Schools.ElementAt(Rnd.Next(spellTemplate.Schools.Count));
             if(school == SchoolOfMagic.Any)
                 school = GetRandomSchool();
 
             var delivery = DeliveryGenerator.GenerateDelivery(spellTemplate);
             var effect = EffectGenerator.GenerateEffect(spellTemplate, school, delivery.Type);
             var aesthetic = GenerateAesthetic(dataTemplateService, school, effect, delivery);
+            var name = NameGenerator.GenerateName(dataTemplateService, school, effectType, aesthetic);
 
             var theSpell = new Spell
             {
+                Name = name,
                 School = school,
                 Effect = effect,
                 Delivery = delivery,
@@ -32,7 +34,6 @@ namespace GeneratorEngine.Generators
                 RequiresConcentration = DetermineConcentration(effect.Duration),
                 Ritual = DetermineRitual(effectType),
                 CasterPenaltyCost = null,
-                Name = "Create name generator"
             };
 
             (var minValue, var maxValue) = LookupPowerScores(inputPowerLevel);

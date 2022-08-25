@@ -6,6 +6,7 @@ namespace GeneratorEngine
 {
     public class Aesthetic
     {
+        public string ShapeCore;
         public string ShapeDescription;
         public string MaterialAdjective;
         public string MaterialDescription;

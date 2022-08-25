@@ -11,7 +11,7 @@ namespace SpellGenerator.Client.Data
             var matchingTemplates = GetTemplates(school, damageType);
 
             var rng = new Random();
-            var roll = rng.Next(matchingTemplates.Count - 1);
+            var roll = rng.Next(matchingTemplates.Count);
             return matchingTemplates.ElementAt(roll);
         }
 
@@ -41,8 +41,6 @@ namespace SpellGenerator.Client.Data
         {
             _templates = new List<AestheticAdjectiveTemplate>
             {
-                new AestheticAdjectiveTemplate(string.Empty),//Option for no adjective - TODO revise to be more common possibility
-
                 new AestheticAdjectiveTemplate("burning", new List<DamageType>{ DamageType.Fire }),
                 new AestheticAdjectiveTemplate("flaming", new List<DamageType>{ DamageType.Fire }),
                 new AestheticAdjectiveTemplate("fiery", new List<DamageType>{ DamageType.Fire }),
@@ -208,10 +206,7 @@ namespace SpellGenerator.Client.Data
                 new AestheticAdjectiveTemplate("corrupted", new List<DamageType>{ DamageType.Necrotic, DamageType.Poison }, new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy }),
                 new AestheticAdjectiveTemplate("filthy"),
                 new AestheticAdjectiveTemplate("delicate"),
-                new AestheticAdjectiveTemplate("enigmatic"),
-                new AestheticAdjectiveTemplate("nondescript"),
                 new AestheticAdjectiveTemplate("muddied"),
-                new AestheticAdjectiveTemplate("grotesquely shaped"),
                 new AestheticAdjectiveTemplate("elongated"),
                 new AestheticAdjectiveTemplate("stunted"),
                 new AestheticAdjectiveTemplate("sticky"),
@@ -232,8 +227,6 @@ namespace SpellGenerator.Client.Data
                 new AestheticAdjectiveTemplate("mangled"),
                 new AestheticAdjectiveTemplate("expanding"),
                 new AestheticAdjectiveTemplate("contracting"),
-                new AestheticAdjectiveTemplate("erupting"),
-                new AestheticAdjectiveTemplate("imploding"),
                 new AestheticAdjectiveTemplate("contorted"),
                 new AestheticAdjectiveTemplate("convoluted"),
                 new AestheticAdjectiveTemplate("engraved"),
@@ -250,49 +243,6 @@ namespace SpellGenerator.Client.Data
                 new AestheticAdjectiveTemplate("rune-etched"),
                 new AestheticAdjectiveTemplate("beautiful"),
                 new AestheticAdjectiveTemplate("elegant"),
-
-                /*
-                 * Adjectives that were removed from this list. TODO: relocate these to the name adjective list
-                 * exuberant
-                 * gleaming
-                 * jittery
-                 * lucky
-                 * disgusting
-                 * repulsive
-                 * disturbing                 
-                 * repugnant
-                 * revolting
-                 * collapsing
-                 * extruded
-                 * thin
-                 * jumbled
-                 * transparent ??
-                 * arched
-                 * sweeping
-                 * curling
-                 * demented
-                 * extended
-                 * spiraled
-                 * inflated
-                 * mutilated
-                 * frantic
-                 * tense
-                 * calm
-                 * wild
-                 * ruined
-                 * 
-                 * rainbow (use as noun or adj?)
-                 * 
-                 * hot
-                 * cold
-                 * sharp
-                 * fast
-                 * slow
-                 * swift
-                 * large
-                 * small
-                 * giant                
-                 */
             };
         }
 

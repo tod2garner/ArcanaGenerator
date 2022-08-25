@@ -10,10 +10,10 @@ namespace SpellGenerator.Client.Data
         private readonly UtilityTemplateService utilityService;
         private readonly PenaltyTemplateService penaltyService;
         private readonly RequiredMaterialsTemplateService requiredMaterialsService;
-
         private readonly AestheticShapeTemplateService aestheticShapeService;
         private readonly AestheticMaterialsTemplateService aestheticMaterialsService;
         private readonly AestheticAdjectiveTemplateService aestheticAdjectiveService;
+        private readonly NameFragmentTemplateService nameFragmentService;
 
         public DataTemplateService(BuffTemplateService buffTemplateService,
                                     DebuffTemplateService debuffTemplateService,
@@ -22,7 +22,8 @@ namespace SpellGenerator.Client.Data
                                     RequiredMaterialsTemplateService requiredMaterialsTemplateService,
                                     AestheticShapeTemplateService aestheticShapeTemplateService,
                                     AestheticMaterialsTemplateService aestheticMaterialsTemplateService,
-                                    AestheticAdjectiveTemplateService aestheticAdjectiveTemplateService)
+                                    AestheticAdjectiveTemplateService aestheticAdjectiveTemplateService,
+                                    NameFragmentTemplateService nameFragmentTemplateService)
         {
             buffService = buffTemplateService;
             debuffService = debuffTemplateService;
@@ -32,6 +33,7 @@ namespace SpellGenerator.Client.Data
             aestheticShapeService = aestheticShapeTemplateService;
             aestheticMaterialsService = aestheticMaterialsTemplateService;
             aestheticAdjectiveService = aestheticAdjectiveTemplateService;
+            nameFragmentService = nameFragmentTemplateService;
         }
 
         public SpellTemplate GetRandomSpellTemplate(EffectType effectType, SchoolOfMagic school)
@@ -79,17 +81,40 @@ namespace SpellGenerator.Client.Data
 
         public Aesthetic GetRandomAesthetic(DeliveryType deliveryType, SchoolOfMagic school, DamageType? damageType, AreaOfEffectShape? aoEShape)
         {
+            var shape = aestheticShapeService.GetRandomTemplate(deliveryType, aoEShape);
+            var adjective = (new Random().NextDouble() > 0.5) ? string.Empty : aestheticAdjectiveService.GetRandomTemplate(school, damageType).Adjective;
             return new Aesthetic
             {
-                ShapeDescription = aestheticShapeService.GetRandomTemplate(deliveryType, aoEShape).ShapeDescription,
-                MaterialAdjective = aestheticAdjectiveService.GetRandomTemplate(school, damageType).Adjective,
-                MaterialDescription = aestheticMaterialsService.GetRandomTemplate(school).Material
+                ShapeCore = shape.ShapeCore,
+                ShapeDescription = shape.ShapeDescription,
+                MaterialAdjective = adjective,
+                MaterialDescription = aestheticMaterialsService.GetRandomTemplate(school).Value
             };
         }
 
         public string GetRandomRequiredMaterialComponent(SchoolOfMagic school)
         {
-            return requiredMaterialsService.GetRandomTemplate(school).Material;
+            return requiredMaterialsService.GetRandomTemplate(school).Value;
+        }
+
+        public string GetRandomNameCore(SchoolOfMagic school, EffectType effectType)
+        {
+            return nameFragmentService.GetRandomNameCore(school, effectType);
+        }
+
+        public string GetRandomNameAdjective(SchoolOfMagic school, EffectType effectType)
+        {
+            return nameFragmentService.GetRandomNameAdjective(school, effectType);
+        }
+
+        public string GetRandomNamePossesive(SchoolOfMagic school)
+        {
+            return nameFragmentService.GetRandomNamePossesive(school);
+        }
+
+        public string GetRandomNameEmotion(SchoolOfMagic school, EffectType effectType)
+        {
+            return nameFragmentService.GetRandomNameEmotion(school, effectType);
         }
     }
 }
