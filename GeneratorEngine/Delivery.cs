@@ -56,7 +56,8 @@ namespace GeneratorEngine
             {
                 if(scalingRatio > 2.0 && RangeType != RangeType.Self)
                 {
-                    var newNumberOfTargets = Math.Min(8, (int)Math.Ceiling(scalingRatio.Value * NumberOfTargets));
+                    var maxTargets = (Type == DeliveryType.AreaOfEffect || Type == DeliveryType.AreaProjectile || Type == DeliveryType.Touch || RangeType == RangeType.Melee) ? 3 : 8;
+                    var newNumberOfTargets = Math.Min(maxTargets, (int)Math.Ceiling(scalingRatio.Value * NumberOfTargets));
                     scalingRatio *= (NumberOfTargets / newNumberOfTargets);
                     NumberOfTargets = newNumberOfTargets;
                 }
