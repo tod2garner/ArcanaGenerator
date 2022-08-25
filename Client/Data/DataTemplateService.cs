@@ -10,10 +10,10 @@ namespace SpellGenerator.Client.Data
         private readonly UtilityTemplateService utilityService;
         private readonly PenaltyTemplateService penaltyService;
         private readonly RequiredMaterialsTemplateService requiredMaterialsService;
-
         private readonly AestheticShapeTemplateService aestheticShapeService;
         private readonly AestheticMaterialsTemplateService aestheticMaterialsService;
         private readonly AestheticAdjectiveTemplateService aestheticAdjectiveService;
+        private readonly NameFragmentTemplateService nameFragmentService;
 
         public DataTemplateService(BuffTemplateService buffTemplateService,
                                     DebuffTemplateService debuffTemplateService,
@@ -22,7 +22,8 @@ namespace SpellGenerator.Client.Data
                                     RequiredMaterialsTemplateService requiredMaterialsTemplateService,
                                     AestheticShapeTemplateService aestheticShapeTemplateService,
                                     AestheticMaterialsTemplateService aestheticMaterialsTemplateService,
-                                    AestheticAdjectiveTemplateService aestheticAdjectiveTemplateService)
+                                    AestheticAdjectiveTemplateService aestheticAdjectiveTemplateService,
+                                    NameFragmentTemplateService nameFragmentTemplateService)
         {
             buffService = buffTemplateService;
             debuffService = debuffTemplateService;
@@ -32,6 +33,7 @@ namespace SpellGenerator.Client.Data
             aestheticShapeService = aestheticShapeTemplateService;
             aestheticMaterialsService = aestheticMaterialsTemplateService;
             aestheticAdjectiveService = aestheticAdjectiveTemplateService;
+            nameFragmentService = nameFragmentTemplateService;
         }
 
         public SpellTemplate GetRandomSpellTemplate(EffectType effectType, SchoolOfMagic school)
@@ -79,9 +81,11 @@ namespace SpellGenerator.Client.Data
 
         public Aesthetic GetRandomAesthetic(DeliveryType deliveryType, SchoolOfMagic school, DamageType? damageType, AreaOfEffectShape? aoEShape)
         {
+            var shape = aestheticShapeService.GetRandomTemplate(deliveryType, aoEShape);
             return new Aesthetic
             {
-                ShapeDescription = aestheticShapeService.GetRandomTemplate(deliveryType, aoEShape).ShapeDescription,
+                ShapeCore = shape.ShapeCore,
+                ShapeDescription = shape.ShapeDescription,
                 MaterialAdjective = aestheticAdjectiveService.GetRandomTemplate(school, damageType).Adjective,
                 MaterialDescription = aestheticMaterialsService.GetRandomTemplate(school).Value
             };
@@ -90,6 +94,26 @@ namespace SpellGenerator.Client.Data
         public string GetRandomRequiredMaterialComponent(SchoolOfMagic school)
         {
             return requiredMaterialsService.GetRandomTemplate(school).Value;
+        }
+
+        public string GetRandomNameCore(SchoolOfMagic school, EffectType effectType)
+        {
+            return nameFragmentService.GetRandomNameCore(school, effectType);
+        }
+
+        public string GetRandomNameAdjective(SchoolOfMagic school, EffectType effectType)
+        {
+            return nameFragmentService.GetRandomNameAdjective(school, effectType);
+        }
+
+        public string GetRandomNamePossesive(SchoolOfMagic school)
+        {
+            return nameFragmentService.GetRandomNamePossesive(school);
+        }
+
+        public string GetRandomNameEmotion(SchoolOfMagic school)
+        {
+            return nameFragmentService.GetRandomNameEmotion(school);
         }
     }
 }

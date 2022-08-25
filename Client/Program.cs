@@ -17,6 +17,7 @@ builder.Services.AddSingleton<RequiredMaterialsTemplateService>();
 builder.Services.AddSingleton<AestheticShapeTemplateService>();
 builder.Services.AddSingleton<AestheticAdjectiveTemplateService>();
 builder.Services.AddSingleton<AestheticMaterialsTemplateService>();
+builder.Services.AddSingleton<NameFragmentTemplateService>();
 builder.Services.AddSingleton<DataTemplateService>();
 
 
