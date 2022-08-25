@@ -71,7 +71,6 @@ namespace GeneratorEngine.Generators
                     $"{POSSESIVE} {CORE}",
                     $"{POSSESIVE} {EMOTION}",
                     $"{ADJECTIVE} {MATERIAL} of {EMOTION}",
-                    $"{CORE} of {ADJECTIVE} {MATERIAL}",
                     $"{CORE} of {ADJECTIVE} {EMOTION}",
                     $"{ADJECTIVE} {CORE} of {EMOTION}",
                     $"{POSSESIVE} {ADJECTIVE} {CORE}",

@@ -30,7 +30,7 @@ namespace SpellGenerator.Client.Data
         {
             _templates = new List<AestheticShapeTemplate>
             {
-                new AestheticShapeTemplate("instant", "", DeliveryType.None),
+                new AestheticShapeTemplate("spell", "", DeliveryType.None),
 
                 new AestheticShapeTemplate("hand", "the caster's hand is covered with", DeliveryType.Touch),
                 new AestheticShapeTemplate("hand", "on contact the caster's hand creates a flash of", DeliveryType.Touch),

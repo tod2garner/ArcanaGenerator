@@ -82,11 +82,12 @@ namespace SpellGenerator.Client.Data
         public Aesthetic GetRandomAesthetic(DeliveryType deliveryType, SchoolOfMagic school, DamageType? damageType, AreaOfEffectShape? aoEShape)
         {
             var shape = aestheticShapeService.GetRandomTemplate(deliveryType, aoEShape);
+            var adjective = (new Random().NextDouble() > 0.5) ? string.Empty : aestheticAdjectiveService.GetRandomTemplate(school, damageType).Adjective;
             return new Aesthetic
             {
                 ShapeCore = shape.ShapeCore,
                 ShapeDescription = shape.ShapeDescription,
-                MaterialAdjective = aestheticAdjectiveService.GetRandomTemplate(school, damageType).Adjective,
+                MaterialAdjective = adjective,
                 MaterialDescription = aestheticMaterialsService.GetRandomTemplate(school).Value
             };
         }

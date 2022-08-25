@@ -41,8 +41,6 @@ namespace SpellGenerator.Client.Data
         {
             _templates = new List<AestheticAdjectiveTemplate>
             {
-                new AestheticAdjectiveTemplate(string.Empty),//Option for no adjective - TODO revise to be more common possibility
-
                 new AestheticAdjectiveTemplate("burning", new List<DamageType>{ DamageType.Fire }),
                 new AestheticAdjectiveTemplate("flaming", new List<DamageType>{ DamageType.Fire }),
                 new AestheticAdjectiveTemplate("fiery", new List<DamageType>{ DamageType.Fire }),
@@ -208,10 +206,7 @@ namespace SpellGenerator.Client.Data
                 new AestheticAdjectiveTemplate("corrupted", new List<DamageType>{ DamageType.Necrotic, DamageType.Poison }, new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy }),
                 new AestheticAdjectiveTemplate("filthy"),
                 new AestheticAdjectiveTemplate("delicate"),
-                new AestheticAdjectiveTemplate("enigmatic"),
-                new AestheticAdjectiveTemplate("nondescript"),
                 new AestheticAdjectiveTemplate("muddied"),
-                new AestheticAdjectiveTemplate("grotesquely shaped"),
                 new AestheticAdjectiveTemplate("elongated"),
                 new AestheticAdjectiveTemplate("stunted"),
                 new AestheticAdjectiveTemplate("sticky"),
@@ -232,8 +227,6 @@ namespace SpellGenerator.Client.Data
                 new AestheticAdjectiveTemplate("mangled"),
                 new AestheticAdjectiveTemplate("expanding"),
                 new AestheticAdjectiveTemplate("contracting"),
-                new AestheticAdjectiveTemplate("erupting"),
-                new AestheticAdjectiveTemplate("imploding"),
                 new AestheticAdjectiveTemplate("contorted"),
                 new AestheticAdjectiveTemplate("convoluted"),
                 new AestheticAdjectiveTemplate("engraved"),
