@@ -1,0 +1,24 @@
+﻿.grid-container {
+    display: grid;
+    grid-row-gap: 8px;
+    grid-template-columns: 80px auto;
+}
+
+.grid-container > div:nth-child(4n+1),
+.grid-container > div:nth-child(4n+2) {
+    background-color: lightgray;
+}
+
+.grid-item {
+    font-size: small;
+}
+
+
+.col1 {
+    font-weight: bold;
+    text-align: right;
+}
+.col2 {
+    font-weight: normal;
+    padding: 0px 0px 0px 40px;
+}
