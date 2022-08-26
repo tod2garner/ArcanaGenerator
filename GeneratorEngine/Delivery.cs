@@ -29,6 +29,12 @@ namespace GeneratorEngine
             var targetingText = NumberOfTargets > 0 ? $"Can target {NumberOfTargets} {typeOfTargets}. " : "";
             var deliveryTypeText = (Type == DeliveryType.None) ? "Instant effect" : $"{Type} delivery";
             var rangeText = (RangeType == RangeType.Self) ? "self" : $"{RangeDistance} ft";
+
+            if (Type == DeliveryType.Weapon)
+            {
+                var doubleOrTypical = RangeType == RangeType.Melee ? string.Empty : " double";
+                rangeText += $" or{doubleOrTypical} the weapon's typical range, whichever is smaller";
+            }                
             
             Description = $"{targetingText}{deliveryTypeText} with a range of {rangeText}.";
         }
