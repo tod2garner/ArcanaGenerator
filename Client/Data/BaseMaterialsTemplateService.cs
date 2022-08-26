@@ -5,8 +5,8 @@ namespace SpellGenerator.Client.Data
 {
     public abstract class BaseMaterialsTemplateService
     {
-        protected List<GenericTemplatePerSchool>? _templates;
-        public GenericTemplatePerSchool GetRandomTemplate(SchoolOfMagic school)
+        protected List<TemplatePerSchool>? _templates;
+        public TemplatePerSchool GetRandomTemplate(SchoolOfMagic school)
         {
             var templatesForGivenSchool = GetTemplates(school);
 
@@ -15,7 +15,7 @@ namespace SpellGenerator.Client.Data
             return templatesForGivenSchool.ElementAt(roll);
         }
 
-        public List<GenericTemplatePerSchool> GetTemplates(SchoolOfMagic school)
+        public List<TemplatePerSchool> GetTemplates(SchoolOfMagic school)
         {
             if (_templates == null)
                 CreateTemplates();
