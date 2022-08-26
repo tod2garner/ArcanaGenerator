@@ -97,6 +97,15 @@ namespace GeneratorEngine.Generators
             var needsMaterials = Rnd.Next(100) > 40;
             var requiredMaterials = needsMaterials ? dataTemplateService.GetRandomRequiredMaterialComponent(school) : string.Empty;
 
+            if(needsMaterials && Rnd.Next(100) > 80) //20% chance for multiple materials
+            {
+                var newMaterial = dataTemplateService.GetRandomRequiredMaterialComponent(school);
+                var bothOrEither = (Rnd.Next(100) > 50) ? "and" : "or";
+
+                if(newMaterial != requiredMaterials)
+                    requiredMaterials += $" {bothOrEither} {newMaterial}";
+            }
+
             return new Components
             {
                 Verbal = Rnd.Next(100) > 40,
