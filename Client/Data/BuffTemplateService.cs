@@ -95,7 +95,7 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Buff,
                     Description = "can choose one damage type to temporarily heal instead of harm them.",
                     MinimumDuration = Duration.OneRound,
-                    BaseValueScore = 60
+                    BaseValueScore = 80
                 },
                 new SpellTemplate //Resist elements
                 {

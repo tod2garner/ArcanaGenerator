@@ -31,6 +31,41 @@ namespace GeneratorEngine
             return Math.Round(Effect.GetPowerRating() * Delivery.GetPowerRatingModifier() * MiscPowerRatingModifier() - (CasterPenaltyCost?.GetPowerRating() ?? 0));
         }
 
+        public string GetSpellLevelSummary()
+        {
+            int low;
+            int high;
+            var power = GetFinalPowerRating();
+
+            if(power < 30)
+            {
+                low = 0;
+                high = 2;
+            }
+            else if (power < 60)
+            {
+                low = 1;
+                high = 4;
+            }
+            else if (power < 100)
+            {
+                low = 3;
+                high = 6;
+            }
+            else if (power < 200)
+            {
+                low = 6;
+                high = 9;
+            }
+            else
+            {
+                low = 7;
+                high = 10;
+            }
+
+            return $"Up to DM - between {low} and {high}+ suggested";
+        }
+
         internal double MiscPowerRatingModifier()
         {
             var ritualFactor = Ritual ? 2.0 : 1.0;
@@ -57,6 +92,6 @@ namespace GeneratorEngine
                 return minScore / powerRating;            
             else
                 return null;
-        } 
+        }
     }
 }

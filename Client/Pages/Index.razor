@@ -60,8 +60,16 @@
                 <td>@theSpell.School</td>
             </tr>
             <tr>
+                <td>Spell Level</td>
+                <td>@theSpell.GetSpellLevelSummary()</td>
+            </tr>
+            <tr>
                 <td>Type</td>
                 <td>@theSpell.Effect.Type</td>
+            </tr>
+            <tr>
+                <td>Components</td>
+                <td>@theSpell.Components.SummarizeIncludingSpecificMaterials()</td>
             </tr>
             <tr>
                 <td>Cast Time</td>
@@ -82,6 +90,7 @@
                 <td>Ritual</td>
                 <td>@theSpell.Ritual</td>
             </tr>
+            <br/>
             <tr>
                 <td>Delivery</td>
                 <td>@theSpell.Delivery.Description</td>
@@ -104,15 +113,8 @@
                     <td>Side effect</td>
                     <td>@theSpell.CasterPenaltyCost.Description</td>
                 </tr>
-                <tr>
-                    <td>S.E. Duration</td>
-                    <td>@theSpell.CasterPenaltyCost.Duration</td>
-                </tr>
             }
-            <tr>
-                <td>Components</td>
-                <td>@theSpell.Components.SummarizeIncludingSpecificMaterials()</td>
-            </tr>
+            <br/>
             <tr>
                 <td>Power Rating</td>
                 <td>@theSpell.GetFinalPowerRating()</td>

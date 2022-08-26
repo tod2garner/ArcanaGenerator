@@ -19,7 +19,7 @@ namespace GeneratorEngine
         {
             base.UpdateDescription();
             Description = Description.Replace("AreaProjectile", $"{ProjectileType} AreaProjectile");
-            Description += $" and an {Area.Size} ft {Area.Shape} area of effect";
+            Description += $" and a {Area.Size} ft {Area.Shape} area of effect";
         }
 
         internal override void ScalePower(double? scalingRatio)
@@ -27,15 +27,18 @@ namespace GeneratorEngine
             if (!scalingRatio.HasValue)
                 return;
 
-            if (scalingRatio < 1.0 && Area.Size > 15) //make it weaker
+            var newAreaSize = Area.Size;
+            if (scalingRatio < 1.0) //make it weaker
             {
-                Area.Size = Math.Max(15, scalingRatio.Value * Area.Size);
+                newAreaSize = Math.Max(15, scalingRatio.Value * Area.Size);
             }
-            else if (scalingRatio > 1.0 && Area.Size < 60) //make it stronger
+            else if (scalingRatio > 1.0) //make it stronger
             {
-                Area.Size = Math.Min(60, scalingRatio.Value * Area.Size);
+                newAreaSize = Math.Min(60, scalingRatio.Value * Area.Size);
             }
 
+            scalingRatio *= Area.Size / newAreaSize;
+            Area.Size = newAreaSize.RoundToNearest(5);
             base.ScalePower(scalingRatio);
         }
     }
