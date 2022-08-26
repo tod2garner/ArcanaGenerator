@@ -8,7 +8,10 @@ namespace SpellGenerator.Client.Data
         protected List<AestheticShapeTemplate>? _templates;
         public AestheticShapeTemplate GetRandomTemplate(DeliveryType delivery, AreaOfEffectShape? aoEShape = null)
         {
-            var matchingTemplates = GetTemplates(delivery, aoEShape);
+            var deliveryToUse = (delivery == DeliveryType.AreaProjectile) ? DeliveryType.Projectile : delivery;
+            var matchingTemplates = GetTemplates(deliveryToUse, aoEShape);
+
+            //TODO - weight non-universal heavier than universal? quanity is very skewed
 
             var rng = new Random();
             var roll = rng.Next(matchingTemplates.Count);
@@ -46,11 +49,11 @@ namespace SpellGenerator.Client.Data
                 new AestheticShapeTemplate("spear", "a spear made of", DeliveryType.Projectile),
                 new AestheticShapeTemplate("javelin", "a javelin made of", DeliveryType.Projectile),
                                             
-                new AestheticShapeTemplate("burst", "a burst of", DeliveryType.AreaOfEffect),
-                new AestheticShapeTemplate("blast", "a blast of", DeliveryType.AreaOfEffect),
-                new AestheticShapeTemplate("shockwave", "a shockwave caused by", DeliveryType.AreaOfEffect),
+                new AestheticShapeTemplate("burst", "a burst of", DeliveryType.AreaOfEffect),//universal
+                new AestheticShapeTemplate("blast", "a blast of", DeliveryType.AreaOfEffect),//universal
+                new AestheticShapeTemplate("shockwave", "a shockwave caused by", DeliveryType.AreaOfEffect),//universal
                 new AestheticShapeTemplate("patch", "a patch of", DeliveryType.AreaOfEffect),
-                new AestheticShapeTemplate("rain", "raindrops made of", DeliveryType.AreaOfEffect),
+                new AestheticShapeTemplate("rain", "raindrops made of", DeliveryType.AreaOfEffect),//universal
                                             
                 new AestheticShapeTemplate("explosion", "an explosion of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Sphere),
                 new AestheticShapeTemplate("cloud", "a cloud of droplets of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Sphere),
@@ -62,36 +65,31 @@ namespace SpellGenerator.Client.Data
                 new AestheticShapeTemplate("jet", "a jet of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Line),
                 new AestheticShapeTemplate("wave", "a wave of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Line),
                 new AestheticShapeTemplate("trail", "a trail of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Line),
-                new AestheticShapeTemplate("lance", "a lance made of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Line),
-                new AestheticShapeTemplate("scythe", "a scythe made of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Line),
+                new AestheticShapeTemplate("lance", "a lance made of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Line),//universal
+                new AestheticShapeTemplate("scythe", "a scythe made of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Line),//universal
                                            
                 new AestheticShapeTemplate("pool", "a pool of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cylinder),
                 new AestheticShapeTemplate("mire", "a mire made of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cylinder),
-                new AestheticShapeTemplate("shower", "a shower of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cylinder),
+                new AestheticShapeTemplate("shower", "a shower of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cylinder),//universal (almost)
                 new AestheticShapeTemplate("fountain", "a fountain of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cylinder),
                 new AestheticShapeTemplate("cauldron", "a cauldron that spews", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cylinder),
-                new AestheticShapeTemplate("circle", "a circle of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cylinder),
-                new AestheticShapeTemplate("ring", "a large ring made of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cylinder),
+                new AestheticShapeTemplate("circle", "a circle of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cylinder),//universal (almost)
+                new AestheticShapeTemplate("ring", "a large ring made of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cylinder),//universal (almost)
                 new AestheticShapeTemplate("column", "a column of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cylinder),
                 new AestheticShapeTemplate("pillar", "a pillar of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cylinder),
                 new AestheticShapeTemplate("beam", "a beam of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cylinder),
                 new AestheticShapeTemplate("tree", "a tree made of", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cylinder),
                                            
-                new AestheticShapeTemplate("head", "a head that breathes", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cone),
+                new AestheticShapeTemplate("head", "a head that breathes", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cone),//universal
                 new AestheticShapeTemplate("mouth", "a mouth that breathes", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cone),
                 new AestheticShapeTemplate("face", "a face that spews", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cone),
-                new AestheticShapeTemplate("horn", "a horn that spews", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cone),
+                new AestheticShapeTemplate("horn", "a horn that spews", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cone),//universal
                                            
                 new AestheticShapeTemplate("window", "a window that spews", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cube),
                 new AestheticShapeTemplate("door", "a door that spews", DeliveryType.AreaOfEffect, AreaOfEffectShape.Cube),
                 
-                //Generics - for any delivery
-                //      None: ___ appears in the target's space for a moment before vanishing
-                //      touch: ___ sprout from the caster's hand
-                //      weapon: on impact the weapon conjures ___ above the target's head
-                //      projectile: the projectile is ___ that vanishes on impact
-                //      Aoe projectile: the projectile is ___ that releases a burst of magic on impact
-                //      Area: the area eminates/radiates from ___
+                //Universal templates - any delivery type
+                //      TODO - limit effect type for some                
                 new AestheticShapeTemplate("ball", "a ball of"),
                 new AestheticShapeTemplate("cube", "a cube of"),
                 new AestheticShapeTemplate("disk", "a disk made of"),
@@ -117,7 +115,6 @@ namespace SpellGenerator.Client.Data
                 new AestheticShapeTemplate("chunks", "chunks of"),
                 new AestheticShapeTemplate("globs", "globs of"),
                 new AestheticShapeTemplate("orbs", "orbs made of"),
-                new AestheticShapeTemplate("bits", "bits of"),
                 new AestheticShapeTemplate("streaks", "streaks of"),
                 new AestheticShapeTemplate("flecks", "flecks of"),
                 new AestheticShapeTemplate("clumps", "clumps of"),
