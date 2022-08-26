@@ -19,7 +19,7 @@ namespace GeneratorEngine
         {
             base.UpdateDescription();
             Description = Description.Replace("AreaProjectile", $"{ProjectileType} AreaProjectile");
-            Description += $" and an {Area.Size} ft {Area.Shape} area of effect";
+            Description += $" and a {Area.Size} ft {Area.Shape} area of effect";
         }
 
         internal override void ScalePower(double? scalingRatio)
