@@ -217,7 +217,7 @@ namespace SpellGenerator.Client.Data
                     IsNeverAoE = true,
                     IsAlwaysInstant = true,
                     IsAlwaysRanged = true,
-                    BaseValueScore = 15
+                    BaseValueScore = 10
                 },
                 new SpellTemplate
                 {
@@ -335,11 +335,11 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Utility,
-                    Description = "You conjure a rough, rope-style ladder made of vines and branches, hanging from a visible location in range. The ladder has a maximum length of 4d6 X 5ft and lasts for 10 minutes before vanishing.",
+                    Description = "You conjure a rough, rope-style ladder made of vines and branches, hanging from a visible location in range. The ladder has a maximum length of 4d6 X 5ft and for the spell duration before vanishing.",
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsAlwaysRanged = true,
-                    IsAlwaysInstant = true,
+                    MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 5
                 },
                 new SpellTemplate //Create false footprints
@@ -357,12 +357,12 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Utility,
-                    Description = "You conjure a giant mushroom, which sprouts from any surface in range - ground, roof, or wall. The mushroom can be up to 15ft tall, 20ft wide in any direction, and lasts for 15 minutes before vanishing. " +
+                    Description = "You conjure a giant mushroom, which sprouts from any surface in range - ground, roof, or wall. The mushroom can be up to 15ft tall, 20ft wide in any direction, and vanishes when the spell ends. " +
                                     "Any creatures in the space where it appears are harmlessly lifted or held by it.",
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsAlwaysRanged = true,
-                    IsAlwaysInstant = true,
+                    MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 5
                 },
                 new SpellTemplate //Resurrection by consuming magical item(s)
