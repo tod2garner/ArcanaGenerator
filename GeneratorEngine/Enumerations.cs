@@ -84,7 +84,7 @@
         StraightLine = 100,
         OverheadArcing = 101,
         Meteor = 102,
-        Rolling = 80,
+        GroundLevel = 80,
         Bouncing = 125,
         Chaining = 150,
         Piercing = 151,

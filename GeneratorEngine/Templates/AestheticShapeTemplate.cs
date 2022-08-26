@@ -18,27 +18,24 @@ namespace GeneratorEngine.Templates
             ShapeDescription = description;
         }
 
-        public AestheticShapeTemplate(DeliveryType? deliveryType, string shapeCore, string description)
+        public AestheticShapeTemplate(DeliveryType? deliveryType, string shapeCore, string description) : this(shapeCore, description)
         {
-            ShapeCore = shapeCore;
-            ShapeDescription = description;
             DeliveryType = deliveryType;
         }
 
-        public AestheticShapeTemplate(DeliveryType? deliveryType, string shapeCore, string description, string context)
+        public AestheticShapeTemplate(DeliveryType? deliveryType, string shapeCore, string description, string context) : this(deliveryType, shapeCore, description)
         {
-            ShapeCore = shapeCore;
-            ShapeDescription = description;
-            DeliveryType = deliveryType;
             Context = context;
         }
 
-        public AestheticShapeTemplate(DeliveryType? deliveryType, AreaOfEffectShape? aoEShape, string shapeCore, string description)
+        public AestheticShapeTemplate(DeliveryType? deliveryType, AreaOfEffectShape? aoEShape, string shapeCore, string description) : this(deliveryType, shapeCore, description)
         {
-            ShapeCore = shapeCore;
-            ShapeDescription = description;
-            DeliveryType = deliveryType;
             AoEShape = aoEShape;
+        }
+
+        public AestheticShapeTemplate(DeliveryType? deliveryType, AreaOfEffectShape? aoEShape, string shapeCore, string description, string context) : this(deliveryType, aoEShape, shapeCore, description)
+        {
+            Context = context;
         }
     }
 }

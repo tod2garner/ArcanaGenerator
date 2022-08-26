@@ -231,7 +231,7 @@ namespace GeneratorEngine.Generators
                 (ProjectileType.Splitting, 98),     //  2%
                 (ProjectileType.Piercing, 95),      //  3%
                 (ProjectileType.Chaining, 90),      //  5%
-                (ProjectileType.Rolling, 85),       //  5%
+                (ProjectileType.GroundLevel, 85),   //  5%
                 (ProjectileType.Bouncing, 80),      // 10%
                 (ProjectileType.Homing, 70),        // 10%
                 (ProjectileType.Meteor, 60),        // 10%
