@@ -135,7 +135,6 @@ namespace SpellGenerator.Client.Data
                 new AestheticShapeTemplate("sigil", "an intangible sigil in the air made of"),
                 new AestheticShapeTemplate("totem", "an intangible totem made of"),
                 new AestheticShapeTemplate("apparation", "an intangible, lupine apparition made of"),
-                new AestheticShapeTemplate("apparation", "an intangible, feline apparition made of"),
                 new AestheticShapeTemplate("apparation", "an intangible, ursine apparition made of"),
                 new AestheticShapeTemplate("apparation", "an intangible, avian apparition made of"),
                 new AestheticShapeTemplate("apparation", "an intangible, skeletal apparition made of"),                

@@ -83,8 +83,6 @@ namespace GeneratorEngine.Generators
             var areaOnlyContexts = new List<string>
             {
                 $"You conjure {Aesthetic.DESCRIPTION_PLACEHOLDER} at the target area",
-                $"You unleash {Aesthetic.DESCRIPTION_PLACEHOLDER}",
-                $"You summon {Aesthetic.DESCRIPTION_PLACEHOLDER} at the target area",
                 $"You create {Aesthetic.DESCRIPTION_PLACEHOLDER} at the target area",
             };
 
@@ -97,20 +95,13 @@ namespace GeneratorEngine.Generators
                     break;
                 case AreaOfEffectShape.Sphere:
                     areaOnlyContexts.Add($"{Aesthetic.DESCRIPTION_PLACEHOLDER} fills target area");
-                    //TODO
                     break;
                 case AreaOfEffectShape.Cube:
-                    //TODO
+                case AreaOfEffectShape.Square:
+                case AreaOfEffectShape.Cone:
+                    areaOnlyContexts.Add($"You conjure {Aesthetic.DESCRIPTION_PLACEHOLDER} across the target area");
                     break;
                 case AreaOfEffectShape.Cylinder:
-                    //TODO
-                    break;
-                case AreaOfEffectShape.Square:
-                    //TODO
-                    break;
-                case AreaOfEffectShape.Cone:
-                    //TODO
-                    break;
                 case null:
                 default:
                     break;//Add nothing
