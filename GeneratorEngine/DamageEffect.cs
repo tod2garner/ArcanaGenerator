@@ -18,6 +18,12 @@ namespace GeneratorEngine
             return base.GetPowerRating();
         }
 
+        public string AttackOrSaveDescription()
+        {
+            var savingThrow = SavingThrowType.HasValue ? $" [{SavingThrowType.Value}]" : string.Empty;
+            return $"{AttackOrSaveWhenCast}{savingThrow}";
+        }
+
         internal override void UpdateDescription()
         {
             Description = $"Any creature affected by this spell suffers {NumberOfDice}{DiceSize} {DamageType} damage.";
