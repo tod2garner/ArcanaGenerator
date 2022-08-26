@@ -23,19 +23,19 @@ namespace GeneratorEngine
             if (!scalingRatio.HasValue)
                 return;
 
+            var newAreaSize = Area.Size;
             if (scalingRatio < 1.0) //make it weaker
             {
-                Area.Size = Math.Max(15, RoundToNearest(scalingRatio.Value * Area.Size, 5));
+                newAreaSize = Math.Max(15, scalingRatio.Value * Area.Size);
             }
             else if (scalingRatio > 1.0) //make it stronger
             {
-                Area.Size = Math.Min(60, RoundToNearest(scalingRatio.Value * Area.Size, 5));
+                newAreaSize = Math.Min(60, scalingRatio.Value * Area.Size);
             }
 
+            scalingRatio *= Area.Size / newAreaSize;
+            Area.Size = newAreaSize.RoundToNearest(5);
             base.ScalePower(scalingRatio);
         }
-
-
-        private double RoundToNearest(double valueToRound, double tolerance) => Math.Round(valueToRound / tolerance) * tolerance;
     }
 }

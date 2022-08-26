@@ -54,14 +54,6 @@ namespace GeneratorEngine.Generators
             return name.ToTitleCase();
         }
 
-        /// <summary>
-        /// Capitalizes the first letter of each word in the string (except 'of')
-        /// </summary>
-        private static string ToTitleCase(this string text)
-        {
-            return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(text).Replace("Of", "of");
-        }
-
         private static string GetRandomNameFormat(Random rnd, EffectType effectType)
         {
             if(_formats is null || _formats.Count == 0)
