@@ -121,17 +121,17 @@ namespace GeneratorEngine.Generators
         }
 
         private static AttackOrSavingThrow GenerateAttackOrSave(DeliveryType deliveryType)
-        {
-            //TODO - AoE always save, Weapon always Attack
-            
-            var canBeAttack = deliveryType == DeliveryType.Touch || deliveryType == DeliveryType.Weapon || deliveryType == DeliveryType.Projectile;
+        {   
+            var canBeAttack = new List<DeliveryType> { DeliveryType.Touch, DeliveryType.Projectile, DeliveryType.Weapon }.Any(x => x == deliveryType);
+            var canBeSave = new List<DeliveryType> { DeliveryType.None, DeliveryType.Touch, DeliveryType.Projectile, DeliveryType.AreaOfEffect, DeliveryType.AreaProjectile }.Any(x => x == deliveryType);
+
             var roll = Rnd.Next(100);
-            if (roll > 95)
-                return AttackOrSavingThrow.CannotMiss;// 5%
-            else if (roll > 55 && canBeAttack)
+            if (roll > 45 && canBeSave || roll > 5 && !canBeAttack)
+                return AttackOrSavingThrow.SavingThrow; // 55%
+            else if (roll > 5 && canBeAttack)
                 return AttackOrSavingThrow.AttackRoll;// 40%
             else
-                return AttackOrSavingThrow.SavingThrow; // 55%
+                return AttackOrSavingThrow.CannotMiss;// 5%
         }
 
         private static SavingThrowType? GenerateSavingThrowType(AttackOrSavingThrow attackOrSavingThrow, EffectType effectType)
