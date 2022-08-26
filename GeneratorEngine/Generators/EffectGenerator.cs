@@ -30,11 +30,14 @@ namespace GeneratorEngine.Generators
 
         private static DamageEffect CreateDamageEffect(SchoolOfMagic school, DeliveryType deliveryType)
         {
+            var attackOrSave = GenerateAttackOrSave(deliveryType);
+
             return new DamageEffect
             {
                 Type = EffectType.Damage,
                 BasePowerRating = 0,//not set here, calculated based on dice later
-                AttackOrSaveWhenCast = GenerateAttackOrSave(deliveryType),
+                AttackOrSaveWhenCast = attackOrSave,
+                SavingThrowType = GenerateSavingThrowType(attackOrSave, EffectType.Damage),
                 DamageType = GenerateDamageType(school),
                 Duration = GenerateDuration(EffectType.Damage, Duration.Instant, Duration.TenMinutes),
                 DiceSize = GetRandomWeightedDiceSize(),
@@ -47,11 +50,13 @@ namespace GeneratorEngine.Generators
         {
             var minDuration = template.MinimumDuration ?? Duration.Instant;
             var maxDuration = (template.IsAlwaysInstant) ? Duration.Instant : Duration.OneMonth;
+            var attackOrSave = GenerateAttackOrSave(deliveryType);
 
             return new DebuffEffect
             {
                 Type = EffectType.Debuff,
-                AttackOrSaveWhenCast = GenerateAttackOrSave(deliveryType),
+                AttackOrSaveWhenCast = attackOrSave,
+                SavingThrowType = GenerateSavingThrowType(attackOrSave, EffectType.Debuff),
                 BasePowerRating = template.BaseValueScore,
                 Description = template.Description,
                 Duration = GenerateDuration(EffectType.Debuff, minDuration, maxDuration)
@@ -116,21 +121,60 @@ namespace GeneratorEngine.Generators
         }
 
         private static AttackOrSavingThrow GenerateAttackOrSave(DeliveryType deliveryType)
-        {
-            var canBeAttack = deliveryType == DeliveryType.Touch || deliveryType == DeliveryType.Weapon || deliveryType == DeliveryType.Projectile;
+        {   
+            var canBeAttack = new List<DeliveryType> { DeliveryType.Touch, DeliveryType.Projectile, DeliveryType.Weapon }.Any(x => x == deliveryType);
+            var canBeSave = new List<DeliveryType> { DeliveryType.None, DeliveryType.Touch, DeliveryType.Projectile, DeliveryType.AreaOfEffect, DeliveryType.AreaProjectile }.Any(x => x == deliveryType);
+
             var roll = Rnd.Next(100);
-            if (roll > 95)
-                return AttackOrSavingThrow.CannotMiss;// 5%
-            else if (roll > 55 && canBeAttack)
+            if (roll > 45 && canBeSave || roll > 5 && !canBeAttack)
+                return AttackOrSavingThrow.SavingThrow; // 55%
+            else if (roll > 5 && canBeAttack)
                 return AttackOrSavingThrow.AttackRoll;// 40%
             else
-                return AttackOrSavingThrow.SavingThrow; // 55%
+                return AttackOrSavingThrow.CannotMiss;// 5%
+        }
+
+        private static SavingThrowType? GenerateSavingThrowType(AttackOrSavingThrow attackOrSavingThrow, EffectType effectType)
+        {
+            if (attackOrSavingThrow == AttackOrSavingThrow.CannotMiss || attackOrSavingThrow == AttackOrSavingThrow.AttackRoll)
+                return null;
+
+            var options = new List<(SavingThrowType type, int rollThreshold)>();
+            if (effectType == EffectType.Damage)
+            {
+                options.Add((SavingThrowType.INT, 90));   // 10%
+                options.Add((SavingThrowType.WIS, 80));   // 10%
+                options.Add((SavingThrowType.CHA, 60));   // 10%
+                options.Add((SavingThrowType.STR, 50));   // 20%
+                options.Add((SavingThrowType.CON, 30));   // 20%
+                options.Add((SavingThrowType.DEX, 0));    // 30%
+            }
+            else if (effectType == EffectType.Debuff)
+            {
+                options.Add((SavingThrowType.INT, 90));   // 10%
+                options.Add((SavingThrowType.STR, 80));   // 10%
+                options.Add((SavingThrowType.CON, 60));   // 10%
+                options.Add((SavingThrowType.DEX, 50));   // 20%
+                options.Add((SavingThrowType.CHA, 30));   // 20%
+                options.Add((SavingThrowType.WIS, 0));    // 30%
+            }
+            else
+            {
+                throw new NotImplementedException("Unrecognized effect type for saving throw.");
+            }
+
+            var roll = Rnd.Next(100);
+            foreach (var choice in options)
+            {
+                if (roll > choice.rollThreshold)
+                    return choice.type;
+            }
+
+            return SavingThrowType.DEX;
         }
 
         private static DamageType GenerateDamageType(SchoolOfMagic school)
         {
-            var roll = Rnd.Next(100);
-
             var options = new List<(DamageType type, int rollThreshold)>();
             switch (school)
             {
@@ -193,6 +237,7 @@ namespace GeneratorEngine.Generators
                     break;
             }
 
+            var roll = Rnd.Next(100);
             foreach (var choice in options)
             {
                 if (roll > choice.rollThreshold)

@@ -109,6 +109,20 @@
             <td>Delivery</td>
             <td>@theSpell.Delivery.Description</td>
         </tr>
+        @if(theSpell.Effect is DamageEffect damageEffect)
+        {
+            <tr>
+                <td>Accuracy</td>
+                <td>@damageEffect.AttackOrSaveDescription()</td>
+            </tr>
+        }
+        else if (theSpell.Effect is DebuffEffect debuffEffect)
+        {
+            <tr>
+                <td>Accuracy</td>
+                <td>@debuffEffect.AttackOrSaveDescription()</td>
+            </tr>
+        }
         <tr>
             <td>Effect</td>
             <td>@theSpell.Effect.Description</td>

@@ -7,8 +7,17 @@ namespace GeneratorEngine
     public class DebuffEffect : EffectBase
     {
         public AttackOrSavingThrow AttackOrSaveWhenCast;
-        SavingThrowType? SavingThrowType;
-        bool CannotEndEffectEarly;//When true, increase impact of duration modifier
-        
+        public SavingThrowType? SavingThrowType;
+
+        public override double GetPowerRating()
+        {            
+            return base.GetPowerRating() * ((double)AttackOrSaveWhenCast / 100.0);
+        }
+
+        public string AttackOrSaveDescription()
+        {
+            var savingThrow = SavingThrowType.HasValue ? $" [{SavingThrowType.Value}]" : string.Empty;
+            return $"{AttackOrSaveWhenCast}{savingThrow}";
+        }
     }
 }
