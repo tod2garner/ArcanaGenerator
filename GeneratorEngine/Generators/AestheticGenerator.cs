@@ -60,7 +60,7 @@ namespace GeneratorEngine.Generators
                 new TemplatePerDeliveryType(DeliveryType.Touch, $"You stretch out your hand and {Aesthetic.DESCRIPTION_PLACEHOLDER} appear(s) in it"),
 
                 new TemplatePerDeliveryType(DeliveryType.AreaOfEffect, $"You conjure {Aesthetic.DESCRIPTION_PLACEHOLDER} that radiate(s) magic in the target area"),
-                new TemplatePerDeliveryType(DeliveryType.AreaOfEffect, $"You create {Aesthetic.DESCRIPTION_PLACEHOLDER} that warp(s) the surrounding area"),
+                new TemplatePerDeliveryType(DeliveryType.AreaOfEffect, $"You create {Aesthetic.DESCRIPTION_PLACEHOLDER} that warp(s) the target area"),
                 new TemplatePerDeliveryType(DeliveryType.AreaOfEffect, $"Magic fills the area, radiating from {Aesthetic.DESCRIPTION_PLACEHOLDER}"),
 
                 new TemplatePerDeliveryType(DeliveryType.Projectile, $"You launch {Aesthetic.DESCRIPTION_PLACEHOLDER}"),
