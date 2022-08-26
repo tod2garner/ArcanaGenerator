@@ -21,5 +21,10 @@ namespace GeneratorEngine
         {
             return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(text).Replace("Of", "of");
         }
+
+        public static string ToUpperFirstCharOnly(this string text)
+        {
+            return char.ToUpper(text[0]) + text.Substring(1);
+        }
     }
 }

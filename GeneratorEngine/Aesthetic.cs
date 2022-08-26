@@ -13,7 +13,7 @@ namespace GeneratorEngine
         public string Context;
 
         public const string DESCRIPTION_PLACEHOLDER = "DESCRIPTION";
-        public string CombinedDescription() => Context.Replace(DESCRIPTION_PLACEHOLDER, BaseDescription());
+        public string CombinedDescription() => Context.Replace(DESCRIPTION_PLACEHOLDER, BaseDescription().Trim()).ToUpperFirstCharOnly();
         public string BaseDescription() => $"{ShapeDescription} {MaterialAdjective} {MaterialDescription}";
 
         //Examples:
