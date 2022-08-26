@@ -49,7 +49,7 @@
     {
         Self,
         Melee,
-        Distance //Value is adjusted later by actual distance, not built-in here
+        Distance
     }
 
     public enum DeliveryType

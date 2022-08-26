@@ -11,9 +11,6 @@ namespace GeneratorEngine.Generators
 
         internal static Delivery GenerateDelivery(SpellTemplate template)
         {
-            //TODO
-            //template.DoesNotTargetCreatures
-
             var rangeType = GenerateRangeType(template.IsRangeAlwaysSelf, template.IsAlwaysRanged);
             var deliveryType = GenerateDeliveryType(template.Type, rangeType, template.IsAlwaysAoE, template.IsNeverAoE);
             var rangeDistance = GenerateRangeDistance(template.Type, rangeType);
