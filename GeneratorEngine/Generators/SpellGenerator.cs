@@ -145,7 +145,7 @@ namespace GeneratorEngine.Generators
                     break;
             }
 
-            return dataTemplateService.GetRandomAesthetic(delivery.Type, school, damageType, aoEShape);
+            return AestheticGenerator.GetRandomAesthetic(dataTemplateService, delivery.Type, school, damageType, aoEShape);
         }
 
         private static bool DetermineConcentration(Duration duration)
