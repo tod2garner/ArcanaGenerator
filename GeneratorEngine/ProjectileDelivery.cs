@@ -16,7 +16,7 @@ namespace GeneratorEngine
 
         public override double GetPowerRatingModifier()
         {
-            return base.GetPowerRatingModifier() * ((double)ProjectileType / 100.0);
+            return base.GetPowerRatingModifier() * ProjectileType.GetPowerRatingFactor();
         }
     }
 }
