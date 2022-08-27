@@ -228,12 +228,11 @@ namespace GeneratorEngine.Generators
         {
             var options = new List<(ProjectileType value, int rollThreshold)>
             {
-                (ProjectileType.Splitting, 98),     //  2%
-                (ProjectileType.Piercing, 95),      //  3%
-                (ProjectileType.Chaining, 90),      //  5%
-                (ProjectileType.GroundLevel, 85),   //  5%
-                (ProjectileType.Bouncing, 80),      // 10%
-                (ProjectileType.Homing, 70),        // 10%
+                (ProjectileType.Splitting, 95),     //  5%
+                (ProjectileType.Piercing, 90),      //  5%
+                (ProjectileType.Chaining, 85),      //  5%
+                (ProjectileType.GroundLevel, 80),   // 10%
+                (ProjectileType.Bouncing, 70),      // 10%
                 (ProjectileType.Meteor, 60),        // 10%
                 (ProjectileType.OverheadArcing, 30),// 30%
                 (ProjectileType.StraightLine, 0),   // 30%

@@ -21,6 +21,7 @@ namespace GeneratorEngine.Generators
             var effect = EffectGenerator.GenerateEffect(spellTemplate, school, delivery.Type);
             var aesthetic = GenerateAesthetic(dataTemplateService, school, effect, delivery);
             var name = NameGenerator.GenerateName(dataTemplateService, school, effectType, aesthetic);
+            var castTime = GenerateCastTime(effectType, effect.Duration, spellTemplate.IsAlwaysAReaction, spellTemplate.DoesNotTargetCreatures);
 
             var theSpell = new Spell
             {
@@ -29,10 +30,10 @@ namespace GeneratorEngine.Generators
                 Effect = effect,
                 Delivery = delivery,
                 Aesthetic = aesthetic,
-                CastTime = GenerateCastTime(effectType, effect.Duration, spellTemplate.IsAlwaysAReaction, spellTemplate.DoesNotTargetCreatures),
+                CastTime = castTime,
                 Components = GenerateComponents(dataTemplateService, school),
                 RequiresConcentration = true,
-                Ritual = DetermineRitual(effectType),
+                Ritual = DetermineRitual(effectType, castTime),
                 CasterPenaltyCost = null,
             };
 
