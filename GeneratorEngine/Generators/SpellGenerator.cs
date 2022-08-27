@@ -159,9 +159,9 @@ namespace GeneratorEngine.Generators
                 return true;
         }
 
-        private static bool DetermineRitual(EffectType effectType)
+        private static bool DetermineRitual(EffectType effectType, CastTime castTime)
         {
-            if (effectType != EffectType.Utility)
+            if (effectType != EffectType.Utility || castTime == CastTime.Reaction)
                 return false;
 
             if (Rnd.Next(100) > 70)
