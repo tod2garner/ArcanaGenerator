@@ -11,7 +11,7 @@ namespace GeneratorEngine
 
         public override double GetPowerRating()
         {            
-            return base.GetPowerRating() * ((double)AttackOrSaveWhenCast / 100.0);
+            return base.GetPowerRating() * AttackOrSaveWhenCast.GetPowerRatingFactor();
         }
 
         public string AttackOrSaveDescription()

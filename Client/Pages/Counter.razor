@@ -5,105 +5,100 @@
 
 <h1>Template Counter</h1>
 
-<table>
-    <tr>
-        <td>Spell Type</td>
-        <td>
-            <EditForm EditContext="@EditContext">
-                <InputSelect @bind-Value="@effectType" >
+<div class="flex-container">
+    <div>Spell Type</div>
+    <EditForm EditContext="@EditContext">
+        <InputSelect @bind-Value="@effectType">
 
-                    @foreach (var etype in GetSpellTypeOptions())
-                    {
-                        <option value="@etype">@etype</option>
-                    }
-                </InputSelect>
-            </EditForm>
-        </td>
-    </tr>
-</table>
-
-<br />
-<br />
-
-<div style="float:left">
-    <svg width="450" height="1000">
-        <rect x="0" y="0" width="40" height="@ScaleForGraph(countAbjuration)" fill="yellow" stroke="black" />
-        <rect x="40" y="0" width="40" height="@ScaleForGraph(countConjuration)" fill="orange" stroke="black" />
-        <rect x="80" y="0" width="40" height="@ScaleForGraph(countDivination)" fill="blue" stroke="black" />
-        <rect x="120" y="0" width="40" height="@ScaleForGraph(countEnchantment)" fill="pink" stroke="black" />
-        <rect x="160" y="0" width="40" height="@ScaleForGraph(countEvocation)" fill="red" stroke="black" />
-        <rect x="200" y="0" width="40" height="@ScaleForGraph(countIllusion)" fill="purple" stroke="black" />
-        <rect x="240" y="0" width="40" height="@ScaleForGraph(countNecromancy)" fill="gray" stroke="black" />
-        <rect x="280" y="0" width="40" height="@ScaleForGraph(countTransmutation)" fill="green" stroke="black" />
-    </svg>
+            @foreach (var etype in GetSpellTypeOptions())
+            {
+                <option value="@etype">@etype</option>
+            }
+        </InputSelect>
+    </EditForm>
 </div>
-<div style="float:left">
-    <table>
-        <tr>
-            <td>
-                <svg width="10" height="10">
-                    <rect width="10" height="10" fill="yellow" stroke="black" />
-                </svg>
-            </td>
-            <td>@countAbjuration  -  Abjuration</td>
-        </tr>
-        <tr>
-            <td>
-                <svg width="10" height="10">
-                    <rect width="10" height="10"  fill="orange" stroke="black" />
-                </svg>
-            </td>
-            <td>@countConjuration  -  Conjuration</td>
-        </tr>
-        <tr>
-            <td>
-                <svg width="10" height="10">
-                    <rect width="10" height="10"  fill="blue" stroke="black" />
-                </svg>
-            </td>
-            <td>@countDivination  -  Divination</td>
-        </tr>
-        <tr>
-            <td>
-                <svg width="10" height="10">
-                    <rect width="10" height="10"  fill="pink" stroke="black" />
-                </svg>
-            </td>
-            <td>@countEnchantment  -  Enchantment</td>
-        </tr>
-        <tr>
-            <td>
-                <svg width="10" height="10">
-                    <rect width="10" height="10"  fill="red" stroke="black" />
-                </svg>
-            </td>
-            <td>@countEvocation  -  Evocation</td>
-        </tr>
-        <tr>
-            <td>
-                <svg width="10" height="10">
-                    <rect width="10" height="10"  fill="purple" stroke="black" />
-                </svg>
-            </td>
-            <td>@countIllusion  -  Illusion</td>
-        </tr>
-        <tr>
-            <td>
-                <svg width="10" height="10">
-                    <rect width="10" height="10"  fill="grey" stroke="black" />
-                </svg>
-            </td>
-            <td>@countNecromancy  -  Necromancy</td>
-        </tr>
-        <tr>
-            <td>
-                <svg width="10" height="10">
-                    <rect width="10" height="10"  fill="green" stroke="black" />
-                </svg>
-            </td>
-            <td>@countTransmutation  -  Transmutation</td>
-        </tr>
-    </table>
+
+<br />
+<br />
+
+<div class="flex-container">    
+    <div>
+        <svg width="320" height="250">
+            <rect x="0" y="0" width="40" height="@ScaleForGraph(countAbjuration)" fill="yellow" stroke="black" />
+            <rect x="40" y="0" width="40" height="@ScaleForGraph(countConjuration)" fill="orange" stroke="black" />
+            <rect x="80" y="0" width="40" height="@ScaleForGraph(countDivination)" fill="blue" stroke="black" />
+            <rect x="120" y="0" width="40" height="@ScaleForGraph(countEnchantment)" fill="pink" stroke="black" />
+            <rect x="160" y="0" width="40" height="@ScaleForGraph(countEvocation)" fill="red" stroke="black" />
+            <rect x="200" y="0" width="40" height="@ScaleForGraph(countIllusion)" fill="purple" stroke="black" />
+            <rect x="240" y="0" width="40" height="@ScaleForGraph(countNecromancy)" fill="gray" stroke="black" />
+            <rect x="280" y="0" width="40" height="@ScaleForGraph(countTransmutation)" fill="green" stroke="black" />
+        </svg>
+    </div>
+    <div class="grid-container">        
+        <div>@countAbjuration</div>
+        <div>Abjuration</div>
+        <div>
+            <svg width="10" height="10">
+                <rect width="10" height="10" fill="yellow" stroke="black" />
+            </svg>
+        </div>
+
+        <div>@countConjuration</div>
+        <div>Conjuration</div>
+        <div>
+            <svg width="10" height="10">
+                <rect width="10" height="10" fill="orange" stroke="black" />
+            </svg>
+        </div>
+
+        <div>@countDivination</div>
+        <div>Divination</div>
+        <div>
+            <svg width="10" height="10">
+                <rect width="10" height="10" fill="blue" stroke="black" />
+            </svg>
+        </div>
+
+        <div>@countEnchantment</div>
+        <div>Enchantment</div>
+        <div>
+            <svg width="10" height="10">
+                <rect width="10" height="10" fill="pink" stroke="black" />
+            </svg>
+        </div>
+                
+        <div>@countEvocation</div>
+        <div>Evocation</div>
+        <div>
+            <svg width="10" height="10">
+                <rect width="10" height="10" fill="red" stroke="black" />
+            </svg>
+        </div>
+                
+        <div>@countIllusion</div>
+        <div>Illusion</div>
+        <div>
+            <svg width="10" height="10">
+                <rect width="10" height="10" fill="purple" stroke="black" />
+            </svg>
+        </div>
+                
+        <div>@countNecromancy</div>
+        <div>Necromancy</div>
+        <div>
+            <svg width="10" height="10">
+                <rect width="10" height="10" fill="grey" stroke="black" />
+            </svg>
+        </div>
+                
+        <div>@countTransmutation</div>
+        <div>Transmutation</div>
+        <div>
+            <svg width="10" height="10">
+                <rect width="10" height="10" fill="green" stroke="black" />
+            </svg>
+        </div>
+    </div>
 </div>
 
 
@@ -121,6 +116,7 @@
         }
     }
 
+    private int maxValue = 0;
     private int countAbjuration = 0;
     private int countConjuration = 0;
     private int countDivination = 0;
@@ -148,11 +144,12 @@
         countIllusion = DataTemplateService.CountTemplates(effectType, SchoolOfMagic.Illusion);
         countNecromancy = DataTemplateService.CountTemplates(effectType, SchoolOfMagic.Necromancy);
         countTransmutation = DataTemplateService.CountTemplates(effectType, SchoolOfMagic.Transmutation);
+        maxValue = new List<int>{ countAbjuration, countConjuration, countDivination, countEnchantment, countEvocation, countIllusion, countNecromancy, countTransmutation }.Max();
     }
 
     private int ScaleForGraph(int count)
     {
-        return 10 * count;
+        return (maxValue == 0) ? 0 : count * (250 / maxValue);
     }
 
     private IEnumerable<string> GetSpellTypeOptions()

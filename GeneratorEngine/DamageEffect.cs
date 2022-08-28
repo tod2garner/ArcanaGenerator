@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GeneratorEngine
 {
@@ -14,7 +12,7 @@ namespace GeneratorEngine
 
         public override double GetPowerRating()
         {
-            BasePowerRating = NumberOfDice * (int) DiceSize * ((double)DamageType / 100.0) * ((double)AttackOrSaveWhenCast / 100.0);
+            BasePowerRating = NumberOfDice * (int) DiceSize * DamageType.GetPowerRatingFactor() * AttackOrSaveWhenCast.GetPowerRatingFactor();
             return base.GetPowerRating();
         }
 

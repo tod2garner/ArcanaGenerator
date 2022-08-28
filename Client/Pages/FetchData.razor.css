@@ -1,0 +1,26 @@
+﻿.grid-container {
+    display: grid;
+    grid-row-gap: 8px;
+    grid-template-columns: auto 400px auto auto auto auto auto auto auto auto auto auto auto;
+}
+
+.grid-container > div:nth-child(26n+14),
+.grid-container > div:nth-child(26n+15),
+.grid-container > div:nth-child(26n+16),
+.grid-container > div:nth-child(26n+17),
+.grid-container > div:nth-child(26n+18),
+.grid-container > div:nth-child(26n+19),
+.grid-container > div:nth-child(26n+20),
+.grid-container > div:nth-child(26n+21),
+.grid-container > div:nth-child(26n+22),
+.grid-container > div:nth-child(26n+23),
+.grid-container > div:nth-child(26n+24),
+.grid-container > div:nth-child(26n+25),
+.grid-container > div:nth-child(26n+26) {
+    background-color: rgb(235 235 235);
+}
+
+.grid-item {
+    font-size: small;
+    padding: 0px 3px 0px 3px;
+}

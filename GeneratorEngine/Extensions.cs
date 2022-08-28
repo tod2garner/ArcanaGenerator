@@ -26,5 +26,109 @@ namespace GeneratorEngine
         {
             return char.ToUpper(text[0]) + text.Substring(1);
         }
+
+        public static double GetPowerRatingFactor(this CastTime castTime)
+        {
+            switch (castTime)
+            {
+                case CastTime.BonusAction:
+                    return 1.5;
+                case CastTime.OneMinute:
+                    return 0.5;
+                case CastTime.OneHour:
+                    return 0.1;
+                case CastTime.Action:
+                case CastTime.Reaction:
+                default:
+                    return 1.0;
+            };
+        }
+
+        public static double GetPowerRatingFactor(this Duration duration)
+        {
+            switch (duration)
+            {             
+                case Duration.OneMinute:
+                    return 3.0;
+                case Duration.TenMinutes:
+                    return 5.0;
+                case Duration.OneHour:
+                    return 10.0;
+                case Duration.EightHours:
+                    return 20.0;
+                case Duration.UntilNextShortRest:
+                    return 30.0;
+                case Duration.UntilNextLongRest:
+                    return 40.0;
+                case Duration.OneDay:
+                    return 50.0;
+                case Duration.OneMonth:
+                    return 100.0;
+                case Duration.Instant:
+                case Duration.OneRound:
+                default:
+                    return 1.0;
+            }
+        }
+
+        public static double GetPowerRatingFactor(this AttackOrSavingThrow attackOrSave)
+        {
+            switch (attackOrSave)
+            {                
+                case AttackOrSavingThrow.SavingThrow:
+                    return 1.25;
+                case AttackOrSavingThrow.CannotMiss:
+                    return 2.5;
+                case AttackOrSavingThrow.AttackRoll:
+                default:
+                    return 1.0;
+            };
+        }
+
+        public static double GetPowerRatingFactor(this ProjectileType projectileType)
+        {
+            switch (projectileType)
+            {   
+                case ProjectileType.GroundLevel:
+                    return 0.8;
+                case ProjectileType.Bouncing:
+                    return 1.25;
+                case ProjectileType.Chaining:                    
+                case ProjectileType.Piercing:                    
+                case ProjectileType.Splitting:
+                    return 1.5;
+                case ProjectileType.StraightLine:
+                case ProjectileType.OverheadArcing:
+                case ProjectileType.Meteor:
+                default:
+                    return 1.0;
+            };
+        }
+
+        public static double GetPowerRatingFactor(this DamageType damageType)
+        {
+            switch (damageType)
+            {                
+                case DamageType.Necrotic:                    
+                case DamageType.Fire:
+                    return 1.3;
+                case DamageType.Cold:                    
+                case DamageType.Lightning:                    
+                case DamageType.Thunder:                    
+                case DamageType.Acid:                    
+                case DamageType.Poison:
+                    return 1.5;
+                case DamageType.Psychic:
+                    return 1.6;
+                case DamageType.Radiant:                    
+                case DamageType.Force:
+                    return 2.0;
+                case DamageType.Piercing:
+                case DamageType.Slashing:
+                case DamageType.Bludgeoning:
+                default:
+                    return 1.0;
+            };
+        }
     }
 }

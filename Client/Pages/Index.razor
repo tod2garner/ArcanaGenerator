@@ -3,20 +3,13 @@
 @using SpellGenerator.Client.Data
 @inject DataTemplateService DataTemplateService
 
-<style>
-    /*temporary - until tables are replaced by grid layouts*/
-    td {
-        padding: 0px 2rem 1px 0px;        
-    }
-</style>
-
 <h1>Procedural Spell Generator</h1>
 <br>
 
 <EditForm EditContext="@EditContext">
 
     <div class="form-group">
-        <label for="body">Spell type: </label>
+        <label for="body">Spell type </label>
 
         <InputSelect @bind-Value="@inputs.EffectType">
 
@@ -27,7 +20,7 @@
         </InputSelect>
     </div>
     <div class="form-group">
-        <label for="body">School: </label>
+        <label for="body">School </label>
 
         <InputSelect @bind-Value="@inputs.SchoolOfMagic">
 
@@ -38,7 +31,7 @@
         </InputSelect>
     </div>
     <div class="form-group">
-        <label for="body">Power Level: </label>
+        <label for="body">Power Level </label>
 
         <InputSelect @bind-Value="@inputs.PowerLevel">
 
@@ -57,90 +50,70 @@
 <br>
 @if (theSpell != null)
 {
-    <table>
-        <tr>
-            <td>Name</td>
-            <td>@theSpell.Name</td>
-        </tr>
-        <tr>
-            <td>School</td>
-            <td>@theSpell.School</td>
-        </tr>
-        <tr>
-            <td>Spell Level</td>
-            <td>@theSpell.GetSpellLevelSummary()</td>
-        </tr>
-        <tr>
-            <td>Type</td>
-            <td>@theSpell.Effect.Type</td>
-        </tr>
-        <tr>
-            <td>Components</td>
-            <td>@theSpell.Components.SummarizeIncludingSpecificMaterials()</td>
-        </tr>
-        <tr>
-            <td>Cast Time</td>
-            <td>@theSpell.CastTime</td>
-        </tr>
+    <div class="grid-container">
+
+        <div class="grid-item col1" >Name</div>
+        <div class="grid-item col2">@theSpell.Name</div>
+
+        <div class="grid-item col1">School</div>
+        <div class="grid-item col2">@theSpell.School</div>
+
+        <div class="grid-item col1">Spell Level</div>
+        <div class="grid-item col2">@theSpell.GetSpellLevelSummary()</div>
+
+        <div class="grid-item col1">Type</div>
+        <div class="grid-item col2">@theSpell.Effect.Type</div>
+
+        <div class="grid-item col1">Components</div>
+        <div class="grid-item col2">@theSpell.Components.SummarizeIncludingSpecificMaterials()</div>
+
+        <div class="grid-item col1">Cast Time</div>
+        <div class="grid-item col2">@theSpell.CastTime</div>
+
         @if (theSpell.Effect.Duration != Duration.Instant)
         {
-            <tr>
-                <td>Duration</td>
-                <td>@theSpell.Effect.Duration</td>
-            </tr>
-            <tr>
-                <td>Concentration</td>
-                <td>@theSpell.RequiresConcentration</td>
-            </tr>
+            <div class="grid-item col1" td>Duration</div>
+            <div class="grid-item col2">@theSpell.Effect.Duration</div>
+
+            <div class="grid-item col1">Concentration</div>
+            <div class="grid-item col2">@theSpell.RequiresConcentration</div>
         }
-        <tr>
-            <td>Ritual</td>
-            <td>@theSpell.Ritual</td>
-        </tr>
-        <br/>
+
+        <div class="grid-item col1">Ritual</div>
+        <div class="grid-item col2">@theSpell.Ritual</div>
+
+        <div class="grid-item col1">Delivery</div>
+        <div class="grid-item col2">@theSpell.Delivery.Description</div>
+
         @if (theSpell.Aesthetic != null)
         {
-            <tr>
-                <td>Aesthetic</td>
-                <td>@theSpell.Aesthetic.CombinedDescription()</td>
-            </tr>
+            <div class="grid-item col1">Aesthetic</div>
+            <div class="grid-item col2">@theSpell.Aesthetic.CombinedDescription()</div>
         }
-        <tr>
-            <td>Delivery</td>
-            <td>@theSpell.Delivery.Description</td>
-        </tr>
+
         @if(theSpell.Effect is DamageEffect damageEffect)
         {
-            <tr>
-                <td>Accuracy</td>
-                <td>@damageEffect.AttackOrSaveDescription()</td>
-            </tr>
+            <div class="grid-item col1">Accuracy</div>
+            <div class="grid-item col2">@damageEffect.AttackOrSaveDescription()</div>
         }
         else if (theSpell.Effect is DebuffEffect debuffEffect)
         {
-            <tr>
-                <td>Accuracy</td>
-                <td>@debuffEffect.AttackOrSaveDescription()</td>
-            </tr>
+            <div class="grid-item col1">Accuracy</div>
+            <div class="grid-item col2">@debuffEffect.AttackOrSaveDescription()</div>
         }
-        <tr>
-            <td>Effect</td>
-            <td>@theSpell.Effect.Description</td>
-        </tr>
-        <br/>
+
+        <div class="grid-item col1">Effect</div>
+        <div class="grid-item col2">@theSpell.Effect.Description</div>
+        
         @if (theSpell.CasterPenaltyCost != null)
         {
-            <tr>
-                <td>Side effect</td>
-                <td>@theSpell.CasterPenaltyCost.Description</td>
-            </tr>
+            <div class="grid-item col1">Side effect</div>
+            <div class="grid-item col2">@theSpell.CasterPenaltyCost.Description</div>
         }
-        <br/>
-        <tr>
-            <td>Power Rating</td>
-            <td>@theSpell.GetFinalPowerRating()</td>
-        </tr>
-    </table>
+
+        <div class="grid-item col1">Power Rating</div>
+        <div class="grid-item col2">@theSpell.GetFinalPowerRating()</div>
+    </div>
 }
 
 @code {

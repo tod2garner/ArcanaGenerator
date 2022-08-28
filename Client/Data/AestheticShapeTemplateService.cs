@@ -59,6 +59,7 @@ namespace SpellGenerator.Client.Data
                 new AestheticShapeTemplate(DeliveryType.AreaOfEffect, "blast", "a blast of"),
                 new AestheticShapeTemplate(DeliveryType.AreaOfEffect, "shockwave", "a shockwave caused by", $"You trigger {Aesthetic.DESCRIPTION_PLACEHOLDER}"),
                 new AestheticShapeTemplate(DeliveryType.AreaOfEffect, "patch", "a patch of"),
+                new AestheticShapeTemplate(DeliveryType.AreaOfEffect, "ripple", "ripples of", $"{Aesthetic.DESCRIPTION_PLACEHOLDER} roll throughout the target area"),
                 new AestheticShapeTemplate(DeliveryType.AreaOfEffect, "rain", "raindrops made of", $"{Aesthetic.DESCRIPTION_PLACEHOLDER} pour over the target area"),
                                             
                 new AestheticShapeTemplate(DeliveryType.AreaOfEffect, AreaOfEffectShape.Sphere, "explosion", "an explosion of"),

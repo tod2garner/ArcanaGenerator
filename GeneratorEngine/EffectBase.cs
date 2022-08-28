@@ -15,7 +15,7 @@ namespace GeneratorEngine
 
         public virtual double GetPowerRating()
         {
-            return BasePowerRating * (double)Duration / 100.0;
+            return BasePowerRating * Duration.GetPowerRatingFactor();
         }
 
         internal virtual void UpdateDescription()

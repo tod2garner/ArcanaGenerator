@@ -14,45 +14,38 @@ else
 {
     <br/>
     <p>@templates.Count templates were found.</p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Type</th>
-                <th>Description</th>
-                <th>Schools</th>
-                <th>Base Power Rating</th>
-                <th>Always AOE</th>
-                <th>Never AOE</th>
-                <th>Always Instant</th>
-                <th>Min. Duration</th>
-                <th>Always Ranged</th>
-                <th>Range is Self</th>
-                <th>Always Reaction</th>
-                <th>Doesn't Target Creatures</th>
-                <th>Min. Cast Time</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var template in templates)
-            {
-            <tr>
-                <td>@template.Type</td>
-                <td>@template.Description</td>
-                <td>@String.Join(Environment.NewLine, template.Schools.Select(s => s.ToString()))</td>
-                <td>@template.BaseValueScore</td>
-                <td>@BoolToChar(template.IsAlwaysAoE)</td>
-                <td>@BoolToChar(template.IsNeverAoE)</td>
-                <td>@BoolToChar(template.IsAlwaysInstant)</td>
-                <td>@template.MinimumDuration</td>
-                <td>@BoolToChar(template.IsAlwaysRanged)</td>
-                <td>@BoolToChar(template.IsRangeAlwaysSelf)</td>
-                <td>@BoolToChar(template.IsAlwaysAReaction)</td>
-                <td>@BoolToChar(template.DoesNotTargetCreatures)</td>
-                <td>@template.MinimumCastTime</td>
-            </tr>
-            }
-        </tbody>
-    </table>
+    <div class="grid-container">
+        <div class="grid-item fw-bold">Type</div>
+        <div class="grid-item fw-bold">Description</div>
+        <div class="grid-item fw-bold">Schools</div>
+        <div class="grid-item fw-bold">Base Power Rating</div>
+        <div class="grid-item fw-bold">Always AOE</div>
+        <div class="grid-item fw-bold">Never AOE</div>
+        <div class="grid-item fw-bold">Always Instant</div>
+        <div class="grid-item fw-bold">Min. Duration</div>
+        <div class="grid-item fw-bold">Always Ranged</div>
+        <div class="grid-item fw-bold">Range is Self</div>
+        <div class="grid-item fw-bold">Always Reaction</div>
+        <div class="grid-item fw-bold">Doesn't Target Creatures</div>
+        <div class="grid-item fw-bold">Min. Cast Time</div>
+
+        @foreach (var template in templates)
+        {
+            <div class="grid-item">@template.Type</div>
+            <div class="grid-item">@template.Description</div>
+            <div class="grid-item">@String.Join(Environment.NewLine, template.Schools.Select(s => s.ToString()))</div>
+            <div class="grid-item text-center">@template.BaseValueScore</div>
+            <div class="grid-item text-center">@BoolToChar(template.IsAlwaysAoE)</div>
+            <div class="grid-item text-center">@BoolToChar(template.IsNeverAoE)</div>
+            <div class="grid-item text-center">@BoolToChar(template.IsAlwaysInstant)</div>
+            <div class="grid-item text-center">@template.MinimumDuration</div>
+            <div class="grid-item text-center">@BoolToChar(template.IsAlwaysRanged)</div>
+            <div class="grid-item text-center">@BoolToChar(template.IsRangeAlwaysSelf)</div>
+            <div class="grid-item text-center">@BoolToChar(template.IsAlwaysAReaction)</div>
+            <div class="grid-item text-center">@BoolToChar(template.DoesNotTargetCreatures)</div>
+            <div class="grid-item text-center">@template.MinimumCastTime</div>
+        }
+    </div>
 }
 
 @code {

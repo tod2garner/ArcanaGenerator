@@ -33,16 +33,16 @@
 
     public enum Duration
     {
-        Instant = 100,
-        OneRound = 101,
-        OneMinute = 300,
-        TenMinutes = 500,
-        OneHour = 1000,
-        EightHours = 2000,
-        UntilNextShortRest = 3000,
-        UntilNextLongRest = 4000,
-        OneDay = 5000,
-        OneMonth = 10000
+        Instant,
+        OneRound,
+        OneMinute,
+        TenMinutes,
+        OneHour,
+        EightHours,
+        UntilNextShortRest,
+        UntilNextLongRest,
+        OneDay,
+        OneMonth
     }
 
     public enum RangeType
@@ -64,9 +64,9 @@
 
     public enum AttackOrSavingThrow
     {
-        AttackRoll = 100,
-        SavingThrow = 125,
-        CannotMiss = 250
+        AttackRoll,
+        SavingThrow,
+        CannotMiss
     }
 
     public enum SavingThrowType
@@ -81,15 +81,14 @@
 
     public enum ProjectileType
     {
-        StraightLine = 100,
-        OverheadArcing = 101,
-        Meteor = 102,
-        GroundLevel = 80,
-        Bouncing = 125,
-        Chaining = 150,
-        Piercing = 151,
-        Splitting = 152,
-        Homing = 175
+        StraightLine,
+        OverheadArcing,
+        Meteor,
+        GroundLevel,
+        Bouncing,
+        Chaining,
+        Piercing,
+        Splitting
     }
 
     public enum AreaOfEffectShape
@@ -104,19 +103,19 @@
 
     public enum DamageType
     {
-        Piercing = 100,
-        Slashing = 101,
-        Bludgeoning = 102,
-        Necrotic = 130,
-        Fire = 131,
-        Cold = 150,
-        Lightning = 151,
-        Thunder = 152,
-        Acid = 153,
-        Poison = 154,
-        Psychic = 160,
-        Radiant = 200,
-        Force = 201
+        Piercing,
+        Slashing,
+        Bludgeoning,
+        Necrotic,
+        Fire,
+        Cold,
+        Lightning,
+        Thunder,
+        Acid,
+        Poison,
+        Psychic,
+        Radiant,
+        Force
     }
 
     public enum DiceSize

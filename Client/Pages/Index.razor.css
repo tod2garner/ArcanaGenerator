@@ -1,0 +1,27 @@
+﻿label {
+    min-width: 120px;
+}
+
+.grid-container {
+    display: grid;
+    grid-row-gap: 8px;
+    grid-template-columns: 90px auto;
+}
+
+.grid-container > div:nth-child(4n+3),
+.grid-container > div:nth-child(4n+4) {
+    background-color: rgb(235 235 235);
+}
+
+.grid-item {
+    font-size: small;
+}
+
+.col1 {
+    font-weight: bold;
+    text-align: right;
+}
+.col2 {
+    font-weight: normal;
+    padding: 0px 0px 0px 35px;
+}
