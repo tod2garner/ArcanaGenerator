@@ -24,3 +24,7 @@
     font-size: small;
     padding: 0px 3px 0px 3px;
 }
+
+label {
+    margin-right: 8px;
+}
