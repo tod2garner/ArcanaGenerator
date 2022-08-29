@@ -67,7 +67,7 @@ else
     private List<GeneratorEngine.Templates.SpellTemplate>? matchingTemplates;
     private EditContext? EditContext;
 
-    private string _searchText;
+    private string _searchText = string.Empty;
     public string SearchText
     {
         get => _searchText;
@@ -80,7 +80,6 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        _searchText = string.Empty;
         EditContext = new EditContext(SearchText);
         base.OnInitialized();
 

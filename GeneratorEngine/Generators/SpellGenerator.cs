@@ -8,7 +8,12 @@ namespace GeneratorEngine.Generators
     {
         private static readonly Random Rnd = new Random();
 
-        public static Spell CreateSpell(IDataTemplateService dataTemplateService, SchoolOfMagic inputSchoolOfMagic, EffectType? inputEffectType, PowerLevel inputPowerLevel)
+        public static Spell CreateSpell(
+                                IDataTemplateService dataTemplateService, 
+                                SchoolOfMagic inputSchoolOfMagic, 
+                                EffectType? inputEffectType, 
+                                PowerLevel inputPowerLevel, 
+                                bool includeSideEffect)
         {
             var effectType = inputEffectType ?? GenerateEffectType();
             var spellTemplate = dataTemplateService.GetRandomSpellTemplate(effectType, inputSchoolOfMagic);
@@ -42,7 +47,7 @@ namespace GeneratorEngine.Generators
             theSpell.RequiresConcentration = DetermineConcentration(theSpell.Effect.Duration);
 
             var spellPower = theSpell.GetFinalPowerRating();
-            if (spellPower > minValue && Rnd.Next(100) > 40) // 60%
+            if (includeSideEffect && spellPower > minValue && Rnd.Next(100) > 40) // 60%
             {
                 var penaltyTemplate = dataTemplateService.GetRandomSpellTemplate(EffectType.Penalty, SchoolOfMagic.Any);
                 var penalty = EffectGenerator.GeneratePenaltyEffect(penaltyTemplate, 0.5 * spellPower);
