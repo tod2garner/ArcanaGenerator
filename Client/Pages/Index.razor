@@ -31,6 +31,13 @@
         </InputSelect>
     </div>
     <div class="form-group">
+        <label for="body">Side Effects</label>
+        <InputSelect @bind-Value="@inputs.IncludeSideEffects">
+            <option value="true">Allow</option>
+            <option value="false">Disable</option>
+        </InputSelect>
+    </div>
+    <div class="form-group">
         <label for="body">Power Level </label>
 
         <InputSelect @bind-Value="@inputs.PowerLevel">
@@ -40,6 +47,9 @@
                 <option value="@option">@option</option>
             }
         </InputSelect>
+        <span class="oi oi-info" aria-hidden="true">
+            <span class="customTooltip">Spells are <u>not</u> balanced by the generator. It aims for a general ballpark but sometimes misses.</span>
+        </span>
     </div>
 </EditForm>
 
@@ -118,9 +128,9 @@
 }
 
 @code {
-    private EditContext EditContext;
+    private EditContext? EditContext;
     private GeneratorEngine.Spell? theSpell;
-    private InputsForSpell inputs = new InputsForSpell{ PowerLevel = PowerLevel.Random };
+    private InputsForSpell inputs = new InputsForSpell();
 
     protected override void OnInitialized()
     {
@@ -134,7 +144,7 @@
         EffectType? inputType = null;
         if (typeExists) inputType = spellType;
 
-        theSpell = GeneratorEngine.Generators.SpellGenerator.CreateSpell(DataTemplateService, inputs.SchoolOfMagic, inputType, inputs.PowerLevel);
+        theSpell = GeneratorEngine.Generators.SpellGenerator.CreateSpell(DataTemplateService, inputs.SchoolOfMagic, inputType, inputs.PowerLevel, inputs.IncludeSideEffects);
     }
 
     private IEnumerable<string> GetSpellTypeOptions()

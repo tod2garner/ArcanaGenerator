@@ -7,6 +7,14 @@ namespace SpellGenerator.Client
         public string EffectType;
         public SchoolOfMagic SchoolOfMagic;
         public PowerLevel PowerLevel;
-        public bool IncludeSideEffects;//TODO - turn penalty effects on/off
+        public bool IncludeSideEffects;
+
+        public InputsForSpell()
+        {
+            EffectType = "Any";
+            SchoolOfMagic = SchoolOfMagic.Any;
+            PowerLevel = PowerLevel.Random;
+            IncludeSideEffects = true;
+        }
     }
 }
