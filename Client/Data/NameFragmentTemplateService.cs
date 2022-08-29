@@ -189,8 +189,7 @@ namespace SpellGenerator.Client.Data
                 new TemplatePerEffectType("trespass"),
                 new TemplatePerEffectType("tumult", new List < EffectType > { EffectType.Debuff, EffectType.Damage }),
                 new TemplatePerEffectType("pandemonium", new List < EffectType > { EffectType.Debuff, EffectType.Damage }),
-                new TemplatePerEffectType("bedlam", new List < EffectType > { EffectType.Debuff, EffectType.Damage }),
-                new TemplatePerEffectType("aim"),
+                new TemplatePerEffectType("bedlam", new List < EffectType > { EffectType.Debuff, EffectType.Damage }),                
                 new TemplatePerEffectType("hunt", new List < EffectType > { EffectType.Debuff, EffectType.Damage , EffectType.Utility }),
                 new TemplatePerEffectType("persuit", new List < EffectType > { EffectType.Debuff, EffectType.Damage , EffectType.Utility }),
                 new TemplatePerEffectType("blasphemy", new List < EffectType > { EffectType.Debuff, EffectType.Damage }),
@@ -265,9 +264,10 @@ namespace SpellGenerator.Client.Data
 
                 new TemplatePerEffectType("rainbow"),
                 new TemplatePerEffectType("blackened"),
-                new TemplatePerEffectType("blue"),
-                new TemplatePerEffectType("red"),
-                new TemplatePerEffectType("green"),
+                new TemplatePerEffectType("azure"),
+                new TemplatePerEffectType("crimson"),
+                new TemplatePerEffectType("scarlet"),
+                new TemplatePerEffectType("celadon"),
 
                 new TemplatePerEffectType("sharp", new List<EffectType>{ EffectType.Damage }),
                 new TemplatePerEffectType("swift"),
