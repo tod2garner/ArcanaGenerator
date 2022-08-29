@@ -6,14 +6,27 @@
 
 <p>A pre-set collection of templates is used to create original spells (except for pure damage spells, no templates are needed for those). This page allows you to view that collection.</p>
 
-@if (templates == null)
+<div style="display: flex; align-items: center;">
+    <label>Search template descriptions:</label>
+    <EditForm EditContext="@EditContext">
+        <InputText @bind-Value="SearchText" type="search" />
+    </EditForm>
+</div>
+
+
+<br />
+
+@if (matchingTemplates == null)
 {
     <p><em>Loading...</em></p>
 }
+else if (matchingTemplates.Count == 0)
+{
+    <p><em>No matching templates were found - try another search...</em></p>
+}
 else
 {
-    <br/>
-    <p>@templates.Count templates were found.</p>
+    <p>@matchingTemplates.Count templates were found.</p>
     <div class="grid-container">
         <div class="grid-item fw-bold">Type</div>
         <div class="grid-item fw-bold">Description</div>
@@ -29,7 +42,7 @@ else
         <div class="grid-item fw-bold">Doesn't Target Creatures</div>
         <div class="grid-item fw-bold">Min. Cast Time</div>
 
-        @foreach (var template in templates)
+        @foreach (var template in matchingTemplates)
         {
             <div class="grid-item">@template.Type</div>
             <div class="grid-item">@template.Description</div>
@@ -46,21 +59,56 @@ else
             <div class="grid-item text-center">@template.MinimumCastTime</div>
         }
     </div>
+    <br />
 }
 
 @code {
-    private List<GeneratorEngine.Templates.SpellTemplate> templates;
+    private List<GeneratorEngine.Templates.SpellTemplate>? templates;
+    private List<GeneratorEngine.Templates.SpellTemplate>? matchingTemplates;
+    private EditContext? EditContext;
+
+    private string _searchText;
+    public string SearchText
+    {
+        get => _searchText;
+        set
+        {
+            _searchText = value;
+            UpdateMatchingTemplates();
+        }
+    }
 
     protected override async Task OnInitializedAsync()
     {
+        _searchText = string.Empty;
+        EditContext = new EditContext(SearchText);
+        base.OnInitialized();
+
         templates = new List<GeneratorEngine.Templates.SpellTemplate>();
         templates.AddRange(await TemplateService.GetTemplatesAsync(EffectType.Buff, SchoolOfMagic.Any));
         templates.AddRange(await TemplateService.GetTemplatesAsync(EffectType.Debuff, SchoolOfMagic.Any));
         templates.AddRange(await TemplateService.GetTemplatesAsync(EffectType.Utility, SchoolOfMagic.Any));
+        UpdateMatchingTemplates();
     }
 
     private char BoolToChar(bool  value)
     {
         return value ? 'T' : '-';
+    }
+
+    private void UpdateMatchingTemplates()
+    {
+        if (templates is null || !templates.Any())
+        {
+            return;
+        }
+        else if(string.IsNullOrWhiteSpace(SearchText))
+        {
+            matchingTemplates = templates.ToList();
+        }
+        else
+        {
+            matchingTemplates = templates.Where(t => t.Description.Contains(SearchText)).ToList();
+        }
     }
 }
