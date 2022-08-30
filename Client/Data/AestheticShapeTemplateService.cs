@@ -36,7 +36,7 @@ namespace SpellGenerator.Client.Data
         {
             _templates = new List<AestheticShapeTemplate>
             {
-                new AestheticShapeTemplate(DeliveryType.None, "spell", string.Empty),
+                new AestheticShapeTemplate(DeliveryType.None, "incantation", string.Empty),
 
                 new AestheticShapeTemplate(DeliveryType.Touch, "hand", string.Empty, $"{Aesthetic.DESCRIPTION_PLACEHOLDER} sprouts from your hand on contact"),
                 new AestheticShapeTemplate(DeliveryType.Touch, "hand", string.Empty, $"Your hand is momentarily covered with {Aesthetic.DESCRIPTION_PLACEHOLDER}"),
