@@ -116,7 +116,7 @@ namespace SpellGenerator.Client.Data
                 new AestheticShapeTemplate("diamond", "a diamond-shaped chunk of"),
                 new AestheticShapeTemplate("star", "a star made of"),
                 new AestheticShapeTemplate("wheel", "a wheel made of"),
-                new AestheticShapeTemplate("scroll", "a scroll made of"),
+                new AestheticShapeTemplate("scroll", "a scroll made of"), //buff and utility only?
                 new AestheticShapeTemplate("globe", "a globe made of"),
                 new AestheticShapeTemplate("bottle", "a bottle of"),
 
