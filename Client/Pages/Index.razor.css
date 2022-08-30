@@ -29,15 +29,19 @@
 .customTooltip {
     visibility: hidden;
     background-color: black;
-    width: 200px;
+    width: 180px;
     color: #fff;
     text-align: center;
     align-content: center;
     padding: 5px 5px 5px 5px;
     border-radius: 6px;
-
     position: absolute;
     z-index: 1;
+}
+
+.oi{
+    font-size: smaller;
+    margin: 0px 4px;
 }
 
 .oi:hover .customTooltip {

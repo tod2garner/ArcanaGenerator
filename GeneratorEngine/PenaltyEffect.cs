@@ -8,8 +8,10 @@ namespace GeneratorEngine
     {
         internal override void UpdateDescription()
         {
-            var describeDuration = (Duration == Duration.Instant) ? "an Instant" : Duration.ToString();
-            Description = $"{Description} This side effect lasts for {describeDuration}.";            
+            if(Duration != Duration.Instant)
+            {
+                Description = $"{Description} This side effect lasts for {Duration}.";
+            }
         }
     }
 }

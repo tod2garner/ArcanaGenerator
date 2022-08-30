@@ -180,6 +180,7 @@ namespace SpellGenerator.Client.Data
         {
             _cores = new List<TemplatePerEffectType>
             {
+                new TemplatePerEffectType("incantation"),
                 new TemplatePerEffectType("paradox"),
                 new TemplatePerEffectType("theory"),
                 new TemplatePerEffectType("premise"),
