@@ -214,7 +214,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
                     Type = EffectType.Utility,
                     Description = "You teleport a visible unconscious creature to your feet (or the nearest unoccupied space) and put them into a brief stasis. " +
-                                    "They are not fully stabalized, but for the next 1d4 rounds they do not need to make death saving throws (they neither pass nor fail). " +
+                                    "They are not fully stabilized, but for the next 1d4 rounds they do not need to make death saving throws (they neither pass nor fail). " +
                                     "After the rounds of stasis have passesd they must resume making death saving throws as normal.",
                     IsNeverAoE = true,
                     IsAlwaysInstant = true,
