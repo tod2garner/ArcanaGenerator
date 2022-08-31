@@ -53,7 +53,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
                     Type = EffectType.Penalty,
-                    Description = "A powerful smell of rot and decay from an invisible source fills the area around you (20 ft radius).",
+                    Description = "A powerful smell of rot and decay from an invisible source fills the area around you ([15-30@5] ft radius).",
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 1
                 },
@@ -93,7 +93,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
                     Type = EffectType.Penalty,
-                    Description = "A loud, booming noise echoes from below your feet. The sound is clearly audible for a distance of 50 ft.",
+                    Description = "A loud, booming noise echoes from below your feet. The sound is clearly audible for a distance of [30-60@10] ft.",
                     IsAlwaysInstant = true,
                     BaseValueScore = 3
                 },
@@ -109,7 +109,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
                     Type = EffectType.Penalty,
-                    Description = "You suffer a intense surge of vertigo. Your movement speed is reduced by 10 ft.",
+                    Description = "You suffer a intense surge of vertigo. Your movement speed is reduced by [5-15@5] ft.",
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 3
                 },
@@ -134,8 +134,8 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
                     Type = EffectType.Penalty,
-                    Description = "An extensive numbness fills your mind. You must make a saving throw (DC 15) using your spell casting modifier - on" +
-                                    "a failure you are unable to concentrate on any other spells.",
+                    Description = "An extensive numbness fills your mind. You must make a saving throw (DC 15) using your spell casting modifier - on " +
+                                    "a failure you are unable to concentrate on any spells for 1d4 rounds.",
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 5
                 },
@@ -143,7 +143,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
                     Type = EffectType.Penalty,
-                    Description = "You are struck by a backlash of magical energy and become vulnerable to physical damage. Roll 1d4 to determine the extent.\n" +
+                    Description = "You are struck by a backlash of magical energy and become vulnerable to physical damage. Roll 1d4 to determine the type. \n" +
                                     "4 = Piercing, 3 = Slashing, 2 = Bludgeoning, and 1 indicates all three.",
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 5
@@ -152,7 +152,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
                     Type = EffectType.Penalty,
-                    Description = "You are struck by a backlash of magical energy and become vulnerable to elemental damage. Roll 1d4 to determine the type.\n" +
+                    Description = "You are struck by a backlash of magical energy and become vulnerable to elemental damage. Roll 1d4 to determine the type. \n" +
                                     "4 = Fire, 3 = Cold, 2 = Lightning, and 1 = Thunder.",
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 5
@@ -161,7 +161,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
                     Type = EffectType.Penalty,
-                    Description = "You immediately lose 2d6 HP when you cast this spell.",
+                    Description = "You immediately lose 2[dice] HP when you cast this spell.",
                     IsAlwaysInstant = true,
                     BaseValueScore = 9
                 },
@@ -169,7 +169,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
                     Type = EffectType.Penalty,
-                    Description = "You stagger with a severe limp and suffer a penalty of -2 AC.",
+                    Description = "You stagger with a severe limp and suffer a -[1-3] penalty to AC.",
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 9
                 }

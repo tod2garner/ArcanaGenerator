@@ -21,7 +21,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Conjuration, SchoolOfMagic.Evocation },
                     Type = EffectType.Debuff,
-                    Description = "is knocked back 5 ft",
+                    Description = "is knocked back [5-30@5] ft",
                     IsAlwaysInstant = true,
                     BaseValueScore = 2
                 },
@@ -61,7 +61,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
                     Type = EffectType.Debuff,
-                    Description = "is pulled closer by 15 ft",
+                    Description = "is pulled closer by [10-20@5] ft",
                     IsAlwaysInstant = true,
                     IsAlwaysRanged = true,
                     BaseValueScore = 10
@@ -70,7 +70,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
                     Type = EffectType.Debuff,
-                    Description = "is pulled closer by 15 ft and restrained",
+                    Description = "is pulled closer by [10-25@5] ft and restrained",
                     IsAlwaysInstant = true,
                     IsAlwaysRanged = true,
                     BaseValueScore = 20
@@ -79,15 +79,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Conjuration, SchoolOfMagic.Evocation },
                     Type = EffectType.Debuff,
-                    Description = "is knocked back 15 ft",
-                    IsAlwaysInstant = true,
-                    BaseValueScore = 10
-                },
-                new SpellTemplate
-                {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Conjuration, SchoolOfMagic.Evocation },
-                    Type = EffectType.Debuff,
-                    Description = "is knocked back 25 ft and falls prone",
+                    Description = "is knocked back [10-35@5] ft and falls prone",
                     IsAlwaysInstant = true,
                     BaseValueScore = 15
                 },
@@ -143,7 +135,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment, SchoolOfMagic.Necromancy },
                     Type = EffectType.Debuff,
-                    Description = "falls into a deep coma. They drop prone to the ground and cannot be roused by normal means. Taking damage will not wake them",
+                    Description = "falls into a deep coma. They drop prone to the ground and cannot be roused by non-magical means. Taking damage will not wake them",
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 60
                 },
@@ -219,7 +211,7 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Debuff,
                     Description = "experiences a delayed teleportation that is triggered at the end of the spell's duration " +
                                     "back to the point where they used to be when it was cast (or the nearest unoccupied space). " +
-                                    "This spell cannot cross between planes. When they are teleported they suffer 2d8 psychic damage",
+                                    "This spell cannot cross between planes. When they are teleported they suffer [2-4][dice] psychic damage",
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 20
                 },
@@ -227,7 +219,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Transmutation, SchoolOfMagic.Necromancy },
                     Type = EffectType.Debuff,
-                    Description = "suffers a -2 penalty to all attack rolls (accuracy, not damage).",
+                    Description = "suffers a -[1-3] penalty to all attack rolls (accuracy, not damage).",
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 5
                 },
@@ -235,7 +227,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Transmutation, SchoolOfMagic.Necromancy },
                     Type = EffectType.Debuff,
-                    Description = "suffers a -4 penalty to their first attack roll on their turn (accuracy only, not damage).",
+                    Description = "suffers a -[4-6] penalty to their first attack roll on their turn (accuracy only, not damage).",
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 5
                 },
@@ -243,7 +235,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Transmutation },
                     Type = EffectType.Debuff,
-                    Description = "suffers a -1d12 penalty to initiative.",
+                    Description = "suffers a -1[dice] penalty to initiative.",
                     MinimumDuration = Duration.OneHour,
                     BaseValueScore = 2
                 },
@@ -251,7 +243,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation, SchoolOfMagic.Necromancy },
                     Type = EffectType.Debuff,
-                    Description = "has their damage - from any of their actions, abilities, spells, etc. - reduced by 3d4 as a flat amount " +
+                    Description = "has their damage - from any of their actions, abilities, spells, etc. - reduced by [2-4]d4 as a flat amount " +
                                     "(roll once and use that value for the full spell duration).",
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 5
@@ -260,7 +252,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Necromancy },
                     Type = EffectType.Debuff,
-                    Description = "takes 1d6 slashing damage and is lacerated. On their turn if they move they take an addition 1d4 damage per 10ft moved " +
+                    Description = "takes 1[dice] slashing damage and is lacerated. On their turn if they move they take an addition 1[dice] damage per 10ft moved " +
                                     "from blood loss as the wounds open and bleeding is worsened. Creatures that do not bleed are unaffected by this spell.",
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 5
@@ -269,8 +261,8 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Enchantment },
                     Type = EffectType.Debuff,
-                    Description = "has a glowing collar appear around their neck. On their turn if they cast any spell they take 1d6 psychic damage per spell level. " +
-                                    "If they use a magical ability that is not a spell they take 2d12 psychic damage.",
+                    Description = "has a glowing collar appear around their neck. On their turn if they cast any spell they take 1[dice] psychic damage per spell level. " +
+                                    "If they use a magical ability that is not a spell they take 2[dice] psychic damage.",
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 5
                 },
@@ -278,7 +270,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
                     Type = EffectType.Debuff,
-                    Description = "has a burning collar appear around their neck. On their turn if they make any weapon attack they take 1d8 fire damage per attack.",
+                    Description = "has a burning collar appear around their neck. On their turn if they make any weapon attack they take 1[dice] fire damage per attack.",
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 5
                 },
@@ -294,9 +286,9 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Evocation },
                     Type = EffectType.Debuff,
-                    Description = "is teleported vertically 20 ft into the air and immediately begins to free fall at a magically accelerated rate (faster than typical gravity). " +
-                                    "Unless they have a flying speed they plummet, fall prone, and suffer triple the typical fall damage for 6d6 bludgeoning damage. " +
-                                    "This spell fails if there is not open air for the full 20 ft overhead (i.e. if the ceiling is too low for unobstructed teleportation).",
+                    Description = "is teleported vertically [20-40@10] ft into the air and immediately free falls at a magically accelerated rate (faster than typical gravity). " +
+                                    "Unless they have a flying speed they rapidly plummet, fall prone, and suffer the typical fall damage plus an additional [3-5]d6 bludgeoning damage. " +
+                                    "This spell fails if there is not open air for the full distance overhead (i.e. if the ceiling is too low for unobstructed teleportation).",
                     IsAlwaysInstant = true,
                     BaseValueScore = 20
                 },

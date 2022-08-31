@@ -13,7 +13,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
                     Type = EffectType.Utility,
-                    Description = "You instantly know if any spell from the same school of magic as this spell is cast within 100 ft of you. " +
+                    Description = "You instantly know if any spell from the same school of magic as this spell is cast within [50-200@50] ft of you. " +
                                     "You may choose to target a stationary point instead of yourself. If cast at Level 4 or higher, " +
                                     "you may end this spell early to block any one spell you detect that is of a lower level.",
                     IsNeverAoE = true,
@@ -26,7 +26,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
                     Type = EffectType.Utility,
-                    Description = "If any footprints or animal tracks in the area were created within the past 24 hours then their outline glows. " +
+                    Description = "If any footprints or animal tracks in the area were created within the past [12-48@12] hours then their outline glows. " +
                                     "The intensity of the glow increases with how recently they were created.",
                     IsAlwaysAoE = true,
                     DoesNotTargetCreatures = true,
@@ -38,7 +38,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
                     Type = EffectType.Utility,
                     Description = "You conjure a set of tools for your use. They can be made from any material and take any shape, " +
-                                    "but they must fit within a 5ft cube and have a combined value less than 100 gold pieces.",
+                                    "but they must fit within a 5ft cube and have a combined value less than [50-150@50] gold pieces.",
                     IsNeverAoE = true,
                     DoesNotTargetCreatures = true,
                     MinimumDuration = Duration.OneMinute,
@@ -94,7 +94,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
                     Type = EffectType.Utility,
-                    Description = "When you see a creature taking damage you may transfer up to 3d10 of the damage to yourself instead. " +
+                    Description = "When you see a creature taking damage you may transfer up to [2-4][dice] of the damage to yourself instead. " +
                                     "The remainder of the damage is still dealt to the original target.",
                     IsNeverAoE = true,
                     IsAlwaysInstant = true,
@@ -128,7 +128,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
                     Type = EffectType.Utility,
-                    Description = "You permanently conjure 1d6 harmless insects (beetles, ants, flies, larvae, moths, etc.)",
+                    Description = "You permanently conjure 1[dice] harmless insects (beetles, ants, flies, larvae, moths, etc.)",
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsAlwaysInstant = true,
@@ -174,7 +174,7 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Utility,
                     Description = "You conjure a rushing river of fluid that appears and disappears from nothingness at its start and end. " +
                                     "You may select any visible point within range as the start and end points, and the fluid flows downhill in a " +
-                                    "straight line between the two. The torrent can be up to 20 ft wide and 10 ft deep, held back at the " +
+                                    "straight line between the two. The torrent can be up to [10-30@5] ft wide and 10 ft deep, held back at the " +
                                     "sides as if by invisible river banks. Creatures caught in the torrent have their swimming speed (if " +
                                     "they have any) reduced by half and are swept downstream at a rate of 20 ft per round. If cast at Level 6 " +
                                     "or higher the caster may use a bonus action to reverse the direction of flow, even to flow uphill.",
@@ -209,11 +209,13 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysRanged = true,
                     BaseValueScore = 6
                 },
-                new SpellTemplate
+                new SpellTemplate //Respite, stasis
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
                     Type = EffectType.Utility,
-                    Description = "You teleport a visible unconscious creature to your feet, or the nearest unoccupied space.",
+                    Description = "You teleport a visible unconscious creature to your feet (or the nearest unoccupied space) and put them into a brief stasis. " +
+                                    "They are not fully stabilized, but for the next 1d4 rounds they do not need to make death saving throws (they neither pass nor fail). " +
+                                    "After the rounds of stasis have passesd they must resume making death saving throws as normal.",
                     IsNeverAoE = true,
                     IsAlwaysInstant = true,
                     IsAlwaysRanged = true,
@@ -223,7 +225,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
                     Type = EffectType.Utility,
-                    Description = "You teleport a visible willing creature to your side, or the nearest unoccupied space.",
+                    Description = "You teleport a visible willing creature to your side or the nearest unoccupied space.",
                     IsNeverAoE = true,
                     IsAlwaysInstant = true,
                     IsAlwaysRanged = true,
@@ -245,7 +247,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Transmutation },
                     Type = EffectType.Utility,
-                    Description = "You deal 3d8 + 10 Force damage to a stationary non-living object. This spell cannot target creatures.",
+                    Description = "You deal [2-5][dice] + 10 Force damage to a stationary non-living object. This spell cannot target creatures.",
                     DoesNotTargetCreatures = true,
                     IsAlwaysInstant = true,
                     BaseValueScore = 15
@@ -264,8 +266,8 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
                     Type = EffectType.Utility,
-                    Description = "An invisible, impenetrable surface appears in an unoccupied location within range. It takes the shape of a flat surface made up of 2d4 panels, each 5 ft square, " +
-                                    "and each contiguous with at least one other panel. The plane is 1 inch thick and lasts for the duration. Nothing can physically pass through the plane and it is immune to all damage.",
+                    Description = "An invisible, impenetrable surface appears in an unoccupied location within range. It takes the shape of a flat surface made up of [2-4]d4 panels, each 5 ft square, " +
+                                    "and each contiguous with at least one other panel. The surface is 1 inch thick and lasts for the duration. Nothing can physically pass through the surface and it is immune to all damage.",
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     MinimumDuration = Duration.OneRound,
@@ -276,7 +278,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Conjuration },
                     Type = EffectType.Utility,
-                    Description = "You create an faint line on the ground within range, up to 100ft long. An invisible surface extends 10ft vertically from the line. This surface blocks any sounds and smells " +
+                    Description = "You create an faint line on the ground within range, up to [30-100@10]ft long. An invisible surface extends 10ft vertically from the line. This surface blocks any sounds and smells " +
                                     "from passing through it in one direction of your choosing.",
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
@@ -310,13 +312,13 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Illusion },
                     Type = EffectType.Utility,
-                    Description = "You choose a visible point on the ground within range and starting at that point 9ft tall grass appears and rapidly spreads along the ground for 2d8 X 10ft in all directions. " +
+                    Description = "You choose a visible point on the ground within range and starting at that point 9ft tall grass appears and rapidly spreads along the ground for [2-3][dice] X 10ft in all directions. " +
                                    "It rounds corners and spreads up or down cliffs, but stops at pooled liquids.",
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsAlwaysRanged = true,
                     MinimumDuration = Duration.OneMinute,
-                    BaseValueScore = 5
+                    BaseValueScore = 3
                 },
                 new SpellTemplate //Conjure quicksand
                 {
@@ -346,7 +348,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion, SchoolOfMagic.Transmutation },
                     Type = EffectType.Utility,
-                    Description = "You create false footprints or animal tracks of any variety within the area of effect, which last for 48hrs. The false prints cannot completely replace your own tracks, but can be used to make them harder to detect.",
+                    Description = "You create false footprints or animal tracks of any variety within the area of effect, which last for [12-48@12]hrs. The false prints cannot completely replace your own tracks, but can be used to make them harder to detect.",
                     DoesNotTargetCreatures = true,
                     IsAlwaysAoE = true,
                     IsRangeAlwaysSelf = true,
@@ -357,7 +359,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Utility,
-                    Description = "You conjure a giant mushroom, which sprouts from any surface in range - ground, roof, or wall. The mushroom can be up to 15ft tall, 20ft wide in any direction, and vanishes when the spell ends. " +
+                    Description = "You conjure a giant mushroom, which sprouts from any surface in range - ground, roof, or wall. The mushroom can be up to [10-30@5]ft tall, [15-25@5]ft wide in any direction, and vanishes when the spell ends. " +
                                     "Any creatures in the space where it appears are harmlessly lifted or held by it.",
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
@@ -369,7 +371,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Necromancy },
                     Type = EffectType.Utility,
-                    Description = "To cast this spell you must be holding one or more magical items worth at least 900 GP. These items are consumed in order to resurrect a creature within 10ft of you that has been dead for less than 5 days.",
+                    Description = "To cast this spell you must be holding one or more magical items worth at least [800-1500@100] GP. These items are consumed in order to resurrect a creature within [5-15@5]ft of you that has been dead for less than 5 days.",
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsRangeAlwaysSelf = true,
@@ -405,7 +407,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Evocation },
                     Type = EffectType.Utility,
-                    Description = "You cast a varation of the light spell where the light created is visible only to you and up to 1d4 other creatures that you select at the time of casting.",
+                    Description = "You cast a varation of the light spell where the light created is visible only to you and up to [2-5] other creatures that you select at the time of casting.",
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsAlwaysRanged = true,
@@ -438,7 +440,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Necromancy },
                     Type = EffectType.Utility,
-                    Description = "You are instantly aware of the number of beating hearts within 100 ft of you. You also have a rough idea of the location of any beating hearts within 20 ft of you.",
+                    Description = "You are instantly aware of the number of beating hearts within [60-120@20] ft of you. You also have a rough idea of the location of any beating hearts within 20 ft of you.",
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsRangeAlwaysSelf = true,
@@ -449,7 +451,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Conjuration },
                     Type = EffectType.Utility,
-                    Description = "You conjure a piece of parchment with writing on it that lists out the number of sentient creatures within 100 ft of you, sorted by their general race or type. Large numbers of creatures will be rounded. " +
+                    Description = "You conjure a piece of parchment with writing on it that lists out the number of sentient creatures within [60-120@20] ft of you, sorted by their general race or type. Large numbers of creatures will be rounded. " +
                                     "For example: 30 humans, 20 elves, 1 fiend, and 2 monstrosities. Creatures with less than 3 for INT are not included on the list, and creatures that are magically obscured (i.e. by shapeshifting or invisibility) " +
                                     "will not be revealed if the spell/ability hiding it is of a higher level than this spell.",
                     DoesNotTargetCreatures = true,
@@ -474,11 +476,10 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Transmutation },
                     Type = EffectType.Utility,
-                    Description = "In a matter of seconds you can either clean/organize or toss/disorganize any portion of the area within range. " +
+                    Description = "In a matter of seconds you can either clean/organize or toss/disorganize any portion of the target area. " +
                                     "This acts like a larger scale variation of the soil/clean abilitly of prestidigitation.",
                     DoesNotTargetCreatures = true,
-                    IsNeverAoE = true,
-                    IsAlwaysRanged = true,
+                    IsAlwaysAoE = true,
                     IsAlwaysInstant = true,
                     BaseValueScore = 2
                 },

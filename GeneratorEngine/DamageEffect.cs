@@ -38,7 +38,8 @@ namespace GeneratorEngine
             }
             else if(scalingRatio > 1.0) //make it stronger
             {
-                NumberOfDice = Math.Min(12, (int)Math.Ceiling(scalingRatio.Value * NumberOfDice));
+                var maxDice = new Random().Next(9, 13);
+                NumberOfDice = Math.Min(maxDice, (int)Math.Ceiling(scalingRatio.Value * NumberOfDice));
             };
         }
     }
