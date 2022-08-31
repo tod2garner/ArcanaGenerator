@@ -10,6 +10,8 @@ namespace GeneratorEngine.Templates
 
         public string Description;
 
+        public List<string> Names;
+
         public double BaseValueScore;
 
 

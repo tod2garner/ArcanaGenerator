@@ -25,7 +25,7 @@ namespace GeneratorEngine.Generators
             var delivery = DeliveryGenerator.GenerateDelivery(spellTemplate);
             var effect = EffectGenerator.GenerateEffect(spellTemplate, school, delivery.Type);
             var aesthetic = GenerateAesthetic(dataTemplateService, school, effect, delivery);
-            var name = NameGenerator.GenerateName(dataTemplateService, school, effectType, aesthetic);
+            var name = NameGenerator.GenerateName(dataTemplateService, school, effectType, aesthetic, spellTemplate.Names);
             var castTime = GenerateCastTime(effectType, effect.Duration, spellTemplate.IsAlwaysAReaction, spellTemplate.DoesNotTargetCreatures);
 
             var theSpell = new Spell
