@@ -21,7 +21,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
-                    Description = "gains a 2d4 bonus AC for the duration, but if they are hit this spell ends early.",
+                    Description = "gains a 2d4 bonus to AC for the duration, but if they are hit this spell ends early.",
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 10
                 },
@@ -29,7 +29,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
-                    Description = "gains a +[2-4] bonus AC for the duration.",
+                    Description = "gains a +[1-3] bonus to AC for the duration.",
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 20
                 },
@@ -53,7 +53,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
-                    Description = "can resist critical hits - they are treated as normal hits instead.",
+                    Description = "gains resistance to critical hits - they are treated as normal hits instead.",
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 15
                 },
