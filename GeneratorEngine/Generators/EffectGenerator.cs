@@ -58,8 +58,8 @@ namespace GeneratorEngine.Generators
                 AttackOrSaveWhenCast = attackOrSave,
                 SavingThrowType = GenerateSavingThrowType(attackOrSave, EffectType.Debuff),
                 BasePowerRating = template.BaseValueScore,
-                Description = template.Description,
-                Duration = GenerateDuration(EffectType.Debuff, minDuration, maxDuration)
+                Duration = GenerateDuration(EffectType.Debuff, minDuration, maxDuration),
+                Description = RollDynamicValuesInDescription(template.Description)
             };
         }
 
@@ -73,8 +73,7 @@ namespace GeneratorEngine.Generators
                 Type = EffectType.Buff,
                 Duration = GenerateDuration(EffectType.Buff, minDuration, maxDuration),
                 BasePowerRating = template.BaseValueScore,
-                Description = template.Description,
-                //TargetPenaltyCost
+                Description = RollDynamicValuesInDescription(template.Description)
             };
         }
 
@@ -88,7 +87,7 @@ namespace GeneratorEngine.Generators
                 Type = EffectType.Utility,
                 Duration = GenerateDuration(EffectType.Utility, minDuration, maxDuration),
                 BasePowerRating = template.BaseValueScore,
-                Description = template.Description
+                Description = RollDynamicValuesInDescription(template.Description)
             };
         }
 
@@ -113,7 +112,7 @@ namespace GeneratorEngine.Generators
                 Type = EffectType.Penalty,
                 Duration = GenerateDuration(EffectType.Penalty, minDuration, maxDuration),
                 AttackOrSaveWhenCast = AttackOrSavingThrow.CannotMiss,
-                Description = template.Description,
+                Description = RollDynamicValuesInDescription(template.Description),
                 BasePowerRating = template.BaseValueScore
             };
 
@@ -307,11 +306,11 @@ namespace GeneratorEngine.Generators
         {
             var options = new List<(DiceSize value, int rollThreshold)>
             {
-                (DiceSize.d12, 90),// 10
-                (DiceSize.d10, 70),// 20
-                (DiceSize.d8, 30), // 40
-                (DiceSize.d6, 10), // 20
-                (DiceSize.d4, 0)   // 10
+                (DiceSize.d12, 85),// 15
+                (DiceSize.d10, 65),// 20
+                (DiceSize.d8, 45), // 25
+                (DiceSize.d6, 20), // 20
+                (DiceSize.d4, 0)   // 20
             };
 
             int roll = Rnd.Next(100);
@@ -322,6 +321,71 @@ namespace GeneratorEngine.Generators
             }
 
             return DiceSize.d6;
+        }
+
+        /// <summary>
+        /// Searches for text between square brackets and replaces it with rolled values
+        /// </summary>
+        /// <remarks>
+        /// Replaces [dice] with a random dice size.
+        /// Replaces [3-8] with an integer between 3 and 8 (inclusive).
+        /// Replaces [15-30@5] with a value between 15 and 30 using an increment of 5.
+        /// </remarks>
+        private static string RollDynamicValuesInDescription(string text)
+        {
+            if (!text.Contains("[") || !text.Contains("]"))
+                return text;
+
+            var remainingText = text;
+            var result = string.Empty;
+
+            while (remainingText.Length > 0)
+            {
+                var startIndex = remainingText.IndexOf('[');
+                var endIndex = remainingText.IndexOf(']');
+
+                if (startIndex == -1 || endIndex == -1)
+                {
+                    result += remainingText;
+                    break;
+                }
+                else
+                {
+                    var valueToRoll = remainingText.Substring(startIndex + 1, endIndex - startIndex - 1);
+
+                    var roll = (valueToRoll == "dice") ? GetRandomWeightedDiceSize().ToString()
+                                                       : RollSpecificValue(valueToRoll);
+
+                    result += remainingText.Substring(0, startIndex) + roll;
+                    remainingText = remainingText.Substring(endIndex + 1);
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Takes a value in the format of "x-y@z" and rolls a value between x and y at increments of z
+        /// </summary>
+        private static string RollSpecificValue(string input)
+        {
+            var parameters = input.Split(new char[] { '-', '@' }, 3);
+
+            if (parameters.Length < 2)
+                return input;
+
+            var low = int.Parse(parameters[0]);
+            var high = int.Parse(parameters[1]);
+
+            var roll = new Random().Next(low, high + 1);
+
+            if (parameters.Length > 2)
+            {
+                var increment = int.Parse(parameters[2]);
+                return ((double)roll).RoundToNearest(increment).ToString();
+            }
+            else
+                return roll.ToString();
         }
     }
 }
