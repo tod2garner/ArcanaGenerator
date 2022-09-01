@@ -37,7 +37,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate // Temp HP
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Necromancy },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
                     Type = EffectType.Buff,
                     Description = "gains [2-5][dice] Temporary HP.",
                     Names = new List<string>{ "fascimile", "vitality", "sustenance", "vigor", "ardour" , "Half-Life" },
@@ -49,7 +49,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Necromancy },
                     Type = EffectType.Buff,
                     Description = "gains [3-5][dice] HP and Maximum HP for the spell duration.",
-                    Names = new List<string>{ "cure", "balm", "salve", "ointment" },
+                    Names = new List<string>{ "cure", "balm", "salve", "remedy" },
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 4
                 },
@@ -75,7 +75,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
-                    Description = "can use a reaction anytime they suffer damage during the spell duration to change damage they receive from one type to another. For example: if hit with lightning damage, treat it as bludgeoning damage instead.",
+                    Description = "can use a reaction anytime they suffer damage during the spell duration to change damage they receive from one type to another.",
                     Names = new List<string>{ "adaptation", "conversion", "acclimation" },
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 20
@@ -181,6 +181,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Illusion },
                     Type = EffectType.Buff,
                     Description = "gains true-sight.",
+                    Names = new List<string> { "epiphany", "awakening", "discernment", "enlightenment" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 8
                 },
@@ -188,7 +189,8 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
-                    Description = "gains +[2-4] damage to all weapon attacks. The type of the added damage matches that from the weapon.",
+                    Description = "gains +[2-4] damage to all weapon attacks. The type of the added damage matches that of the weapon.",
+                    Names = new List<string> { "empowerment", "might", "potency", "brawn", "sinew" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 8
                 },
@@ -196,15 +198,17 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
-                    Description = "gains +1[dice] damage to all weapon attacks. The type of the added damage matches that from the weapon.",
+                    Description = "gains +1[dice] damage to all weapon attacks. The type of the added damage matches that of the weapon.",
+                    Names = new List<string> { "might", "impetus", "brawn", "travail" },
                     MinimumDuration = Duration.OneRound,
-                    BaseValueScore = double.NaN
+                    BaseValueScore = 8
                 },
                 new SpellTemplate //Added fire damage 
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
                     Type = EffectType.Buff,
                     Description = "gains +[1-3][dice] fire damage to one attack per round.",
+                    Names = new List<string> { "incinerator", "ignition", "kindling" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 12
                 },
@@ -213,6 +217,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
                     Type = EffectType.Buff,
                     Description = "gains +[1-3][dice] cold damage to one attack per round.",
+                    Names = new List<string> { "frostbite", "winter", "numbness" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 9
                 },
@@ -221,6 +226,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
                     Type = EffectType.Buff,
                     Description = "gains +[1-3][dice] thunder damage to one attack per round.",
+                    Names = new List<string> { "resonance", "reverberation", "overtone" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 10
                 },
@@ -229,14 +235,16 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
                     Type = EffectType.Buff,
                     Description = "gains +[1-3][dice] lightning damage to one attack per round.",
+                    Names = new List<string> { "shock", "jolt", "storm" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 10
                 },
                 new SpellTemplate //Added acid damage 
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
                     Type = EffectType.Buff,
                     Description = "gains +[1-3][dice] acid damage to one attack per round.",
+                    Names = new List<string> { "bile", "corrosion", "deterioration", "attrition" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 10
                 },
@@ -245,6 +253,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
                     Type = EffectType.Buff,
                     Description = "gains +[1-2][dice] necrotic damage to all melee attacks.",
+                    Names = new List<string> { "siphon", "infection", "oblivion", "decay" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 8
                 },
@@ -253,6 +262,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Divination },
                     Type = EffectType.Buff,
                     Description = "gains +[1-2][dice] radiant damage to all melee attacks.",
+                    Names = new List<string> { "illumination", "brilliance", "manifestation" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 8
                 },
@@ -261,14 +271,16 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
                     Description = "gains +[1-3][dice] poison damage to weapon attacks.",
+                    Names = new List<string> { "infection", "maisma", "contamination", "ichor", "putrefaction" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 8
                 },
                 new SpellTemplate //Percent bonus force damage
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Transmutation },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
                     Type = EffectType.Buff,
                     Description = "deals and extra 50% of all damage from weapon attacks as added force damage.",
+                    Names = new List<string> { "obliteration", "destruction", "annihilation" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 15
                 },
@@ -278,6 +290,7 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Buff,
                     Description = "can deal semi-critical hits with attack rolls greater than 16 but less than 20 on the dice. " +
                                     "Semi-criticals do not deal double dice damage - instead you deal an extra 50% of the dice damage.",
+                    Names = new List<string> { "exploitation", "oppression", "manipulation" },
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 8
                 },
@@ -286,6 +299,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
                     Description = "gains a hovering speed equal to their walking speed. They cannot fully fly but can hover up to 3 ft above any solid or liquid surface.",
+                    Names = new List<string> { "levitation", "breeze", "gust" },
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 5
                 },
@@ -294,6 +308,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
                     Description = "gains a flying speed equal to their walking speed, but are limited to an elevation no more than 10 ft above ground level.",
+                    Names = new List<string> { "updraft", "flight", "zephyr" },
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 9
                 },
@@ -301,7 +316,8 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Necromancy },
                     Type = EffectType.Buff,
-                    Description = "is temporarily protected from death. Next time they fall unconscious they instantly regain [2-4]d8 + 8 HP and may instantly stand up. This spell then ends early.",
+                    Description = "is temporarily protected from death. The next time they fall unconscious they instantly regain [2-4]d8 + 8 HP and may instantly stand up. This spell then ends early.",
+                    Names = new List<string> { "ward", "redemption", "reclamation" },
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 8,
                 },
@@ -309,7 +325,9 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Necromancy },
                     Type = EffectType.Buff,
-                    Description = "is temporarily protected from death. Next time they fall unconscious they instantly regain 1 HP, stand up, and may teleport to a visible, unoccupied point up to [15-30@5] ft away. This spell then ends early.",
+                    Description = "is temporarily protected from death. The next time they fall unconscious they instantly regain 1 HP, stand up, " +
+                                    "and may teleport to a visible, unoccupied point up to [15-30@5] ft away. This spell then ends early.",
+                    Names = new List<string> { "escape", "getaway", "disappearance" },
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 8,
                 },
@@ -317,7 +335,9 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
-                    Description = "is temporarily protected from death. Next time they fall unconscious they instantly regain 1 HP, stand up, and gain a +[8-12] bonus to AC until the end of their next turn. This spell then ends early.",
+                    Description = "is temporarily protected from death. The next time they fall unconscious they instantly regain 1 HP, stand up, " +
+                                    "and gain a +[8-12] bonus to AC until the end of their next turn. This spell then ends early.",
+                    Names = new List<string> { "aegis", "bulwark", "refuge" },
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 8,
                 },
@@ -325,7 +345,9 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation },
                     Type = EffectType.Buff,
-                    Description = "is temporarily protected from death. Next time they fall unconscious they instantly regain 1 HP, stand up, and a blast of energy deals [3-6]d10 radiant damage to any enemies within 15 ft. This spell then ends early.",
+                    Description = "is temporarily protected from death. The next time they fall unconscious they instantly regain 1 HP, stand up, " +
+                                    "and a blast of energy deals [3-6]d10 radiant damage to any enemies within 15 ft. This spell then ends early.",
+                    Names = new List<string> { "paroxysm", "retribution", "detonation" },
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 8,
                 },
@@ -333,7 +355,9 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Necromancy },
                     Type = EffectType.Buff,
-                    Description = "gains 2[dice] temp HP at the start of their turn. If they stay in the same location (i.e. do not move and are not moved by exterior forces) then this effect repeats at the start of each turn, with the temp HP stacking.",
+                    Description = "gains 2[dice] temp HP at the start of their turn. If they stay in the same location (i.e. do not move and " +
+                                    "are not moved by exterior forces) then this effect repeats at the start of each turn, with the temp HP stacking until the end of the spell duration.",
+                    Names = new List<string> { "ward", "barricade", "bastion", "shell" },
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 8,
                 },
@@ -342,6 +366,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Necromancy },
                     Type = EffectType.Buff,
                     Description = "regains 3[dice] + 3 HP but has their movement speed reduced to 0 for 1d3 rounds.",
+                    Names = new List<string> { "restraint", "snare", "arrest" },
                     IsAlwaysInstant = true,
                     BaseValueScore = 10,
                 },
@@ -350,6 +375,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Divination },
                     Type = EffectType.Buff,
                     Description = "regains 3[dice] + 3 HP but is blinded for 1d3 rounds.",
+                    Names = new List<string> { "repose", "respite", "blindness" },
                     IsAlwaysInstant = true,
                     BaseValueScore = 10,
                 },
@@ -358,6 +384,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation },
                     Type = EffectType.Buff,
                     Description = "regains 8[dice] + 8 HP but is paralyzed for 1d3 rounds.",
+                    Names = new List<string> { "solitude", "statuary", "paralysis" },
                     IsAlwaysInstant = true,
                     BaseValueScore = 25,
                 },

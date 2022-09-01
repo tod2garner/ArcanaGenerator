@@ -122,7 +122,6 @@ namespace SpellGenerator.Client.Data
                 new TemplatePerEffectType("Grace", new List<EffectType>{ EffectType.Buff }),
                 new TemplatePerEffectType("Curiousity", new List<EffectType>{ EffectType.Buff, EffectType.Utility }),
                 new TemplatePerEffectType("Purity"),
-                new TemplatePerEffectType("Vitality", new List<EffectType>{ EffectType.Buff }),
                 new TemplatePerEffectType("Zealotry"),
                 new TemplatePerEffectType("Zeal"),
                 new TemplatePerEffectType("Redemption", new List<EffectType>{ EffectType.Buff }),
