@@ -9,7 +9,7 @@ namespace SpellGenerator.Client.Data
         {
             var templates = new List<SpellTemplate>
             {
-                new SpellTemplate
+                new SpellTemplate //TODO - remove this filler once we have at least one from each school
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
                     Type = EffectType.Buff,
@@ -21,7 +21,8 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
-                    Description = "gains a 2d4 bonus to AC for the duration, but if they are hit this spell ends early.",
+                    Description = "gains a +2d4 bonus to AC for the duration, but if they are hit this spell ends early.",
+                    Names = new List<string>{ "shield", "buckler", "aegis", "screen" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 10
                 },
@@ -30,6 +31,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
                     Description = "gains a +[1-3] bonus to AC for the duration.",
+                    Names = new List<string>{ "shield", "buckler", "aegis", "screen" },
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 20
                 },
@@ -38,22 +40,25 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Necromancy },
                     Type = EffectType.Buff,
                     Description = "gains [2-5][dice] Temporary HP.",
+                    Names = new List<string>{ "fascimile", "vitality", "sustenance", "vigor", "ardour" , "Half-Life" },
                     IsAlwaysInstant = true,
                     BaseValueScore = 10
                 },
                 new SpellTemplate // Max HP
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation, SchoolOfMagic.Necromancy },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Necromancy },
                     Type = EffectType.Buff,
                     Description = "gains [3-5][dice] HP and Maximum HP for the spell duration.",
+                    Names = new List<string>{ "cure", "balm", "salve", "ointment" },
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 4
                 },
                 new SpellTemplate //Resist crit
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Divination },
                     Type = EffectType.Buff,
                     Description = "gains resistance to critical hits - they are treated as normal hits instead.",
+                    Names = new List<string>{ "vigilance", "anticipation", "resilience" },
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 15
                 },
@@ -62,6 +67,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
                     Description = "gains resistance to one type of Physical damage. The caster can choose between Piercing, Slashing, and Bludgeoning.",
+                    Names = new List<string>{ "fortitude", "endurance", "resolve" },
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 20
                 },
@@ -70,14 +76,16 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
                     Description = "can use a reaction anytime they suffer damage during the spell duration to change damage they receive from one type to another. For example: if hit with lightning damage, treat it as bludgeoning damage instead.",
+                    Names = new List<string>{ "adaptation", "conversion", "acclimation" },
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 20
                 },
                 new SpellTemplate //Heal via damage
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation, SchoolOfMagic.Necromancy },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation, SchoolOfMagic.Necromancy },
                     Type = EffectType.Buff,
                     Description = "can choose one damage type to temporarily heal instead of harm them.",
+                    Names = new List<string>{ "absorption", "immersion", "assimilation", "appropriation" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 80
                 },
@@ -86,6 +94,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Conjuration },
                     Type = EffectType.Buff,
                     Description = "gains resistance to one type of Elemental damage. The caster can choose between Fire, Cold, Lightning, and Thunder.",
+                    Names = new List<string>{ "aegis", "ward", "aurora" },
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 15
                 },
@@ -94,6 +103,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
                     Type = EffectType.Buff,
                     Description = "gains resistance to Necrotic damage but becomes vulnerable to Radiant damage.",
+                    Names = new List<string>{ "interment", "void", "oblivion", "corruption" },
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 15
                 },
@@ -104,6 +114,7 @@ namespace SpellGenerator.Client.Data
                     Description = "shares damage taken with all other friendly creatures affected by this spell. The total damage is split evenly " +
                                     "between them - for odd amounts the remainder goes to the original target. Example: for 21 damage split among 4 creatures " +
                                     "the original target takes 6 points and the other creatures each take 5 points.",
+                    Names = new List<string>{ "bond", "link", "chain" },
                     IsAlwaysAoE = true,
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 15
@@ -114,6 +125,7 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Buff,
                     Description = "is coated by a shimmering film. Whenever they are hit by a melee attack the damage is reduced by [1-3][dice] and " +
                                     "a lash of energy strikes back at the attacker, dealing the double amount prevented as Force damage.",
+                    Names = new List<string>{ "reflection", "echo", "rebuke", "retaliation" },
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 15
                 },
@@ -122,6 +134,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
                     Description = "is temporarily covered by metallic quills. Whenever they are hit by a melee attack the attacker suffers [2-3][dice] + 5 Piercing damage.",
+                    Names = new List<string>{ "quills", "bristles", "spines" },
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 10
                 },
@@ -132,6 +145,7 @@ namespace SpellGenerator.Client.Data
                     Description = "is temporarily surrounded by an irregular bubble shaped like their body. Whenever they would be hit by a ranged projectile attack the " +
                                     "projectile is deflected and turned back towards the attacker. The original attack roll is used vs the attackers AC to determine if it hits. " +
                                     "After deflecting 1d6 attacks the spell ends early.",
+                    Names = new List<string>{ "bubble", "reckoning", "retribution" },
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 20
                 },
@@ -140,6 +154,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
                     Description = "gains a +[1-3] bonus to all attack rolls (accuracy, not damage).",
+                    Names = new List<string> { "aim", "hunt", "precision" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 5
                 },
@@ -148,6 +163,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
                     Description = "gains a +[3-5] bonus to their first attack roll on their turn (accuracy only, not damage).",
+                    Names = new List<string> { "persuit", "precision", "focus" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 5
                 },
@@ -156,12 +172,13 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
                     Description = "gains a +2d6 bonus to initiative.",
+                    Names = new List<string> { "vigil", "alarm", "vigilance" },
                     MinimumDuration = Duration.OneHour,
                     BaseValueScore = 2
                 },
                 new SpellTemplate //Truesight
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Transmutation, SchoolOfMagic.Illusion },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Illusion },
                     Type = EffectType.Buff,
                     Description = "gains true-sight.",
                     MinimumDuration = Duration.OneRound,
@@ -233,7 +250,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Added melee radiant damage 
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation, SchoolOfMagic.Divination },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Divination },
                     Type = EffectType.Buff,
                     Description = "gains +[1-2][dice] radiant damage to all melee attacks.",
                     MinimumDuration = Duration.OneRound,
@@ -330,7 +347,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Healed but blinded
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation, SchoolOfMagic.Divination },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Divination },
                     Type = EffectType.Buff,
                     Description = "regains 3[dice] + 3 HP but is blinded for 1d3 rounds.",
                     IsAlwaysInstant = true,
