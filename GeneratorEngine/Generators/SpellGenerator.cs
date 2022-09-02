@@ -9,24 +9,24 @@ namespace GeneratorEngine.Generators
         private static readonly Random Rnd = new Random();
 
         public static Spell CreateSpell(
-                                IDataTemplateService dataTemplateService, 
-                                SchoolOfMagic inputSchoolOfMagic, 
-                                EffectType? inputEffectType, 
-                                PowerLevel inputPowerLevel, 
+                                IDataTemplateService dataTemplateService,
+                                SchoolOfMagic inputSchoolOfMagic,
+                                EffectType? inputEffectType,
+                                PowerLevel inputPowerLevel,
                                 bool includeSideEffect)
         {
             var effectType = inputEffectType ?? GenerateEffectType();
             var spellTemplate = dataTemplateService.GetRandomSpellTemplate(effectType, inputSchoolOfMagic);
 
-            var school = (inputSchoolOfMagic != SchoolOfMagic.Any) ? inputSchoolOfMagic: spellTemplate.Schools.ElementAt(Rnd.Next(spellTemplate.Schools.Count));
-            if(school == SchoolOfMagic.Any)
+            var school = (inputSchoolOfMagic != SchoolOfMagic.Any) ? inputSchoolOfMagic : spellTemplate.Schools.ElementAt(Rnd.Next(spellTemplate.Schools.Count));
+            if (school == SchoolOfMagic.Any)
                 school = GetRandomSchool();
 
             var delivery = DeliveryGenerator.GenerateDelivery(spellTemplate);
             var effect = EffectGenerator.GenerateEffect(spellTemplate, school, delivery.Type);
             var aesthetic = GenerateAesthetic(dataTemplateService, school, effect, delivery);
             var name = NameGenerator.GenerateName(dataTemplateService, school, effectType, aesthetic, spellTemplate.Names);
-            var castTime = GenerateCastTime(effectType, effect.Duration, spellTemplate.IsAlwaysAReaction, spellTemplate.DoesNotTargetCreatures); //TODO - use minimum cast time from templates
+            var castTime = GenerateCastTime(effectType, effect.Duration, spellTemplate.IsAlwaysAReaction, spellTemplate.DoesNotTargetCreatures, spellTemplate.MinimumCastTime);
 
             var theSpell = new Spell
             {
@@ -80,22 +80,30 @@ namespace GeneratorEngine.Generators
             return (SchoolOfMagic)Rnd.Next(minRange, maxRange);
         }
 
-        private static CastTime GenerateCastTime(EffectType effectType, Duration duration, bool isAlwaysReaction, bool doesNotTargetCreatures)
+        private static CastTime GenerateCastTime(EffectType effectType, Duration duration, bool isAlwaysReaction, bool doesNotTargetCreatures, CastTime? minimumCastTime)
         {
             if (isAlwaysReaction)
                 return CastTime.Reaction;
 
             int roll = Rnd.Next(100);
-            if (roll > 95 && effectType != EffectType.Damage && (int) duration > (int) Duration.OneHour)
-                return CastTime.OneHour; // 5%
+            CastTime result;
+            if (roll > 95 && effectType != EffectType.Damage && (int)duration > (int)Duration.OneHour)
+                result = CastTime.OneHour; // 5%
             else if (roll > 90 && !doesNotTargetCreatures)
-                return CastTime.Reaction; // 5%
+                result = CastTime.Reaction; // 5%
             else if (roll > 80)
-                return CastTime.BonusAction;// 10%
-            else if (roll > 70 && effectType != EffectType.Damage && (int) duration > (int) Duration.OneMinute)
-                return CastTime.OneMinute;// 10%
+                result = CastTime.BonusAction;// 10%
+            else if (roll > 70 && effectType != EffectType.Damage && (int)duration > (int)Duration.OneMinute)
+                result = CastTime.OneMinute;// 10%
             else
-                return CastTime.Action;// 70%            
+                result = CastTime.Action;// 70%
+
+            if (minimumCastTime.HasValue && (int)result < (int)minimumCastTime.Value)
+            {
+                return minimumCastTime.Value;
+            }
+
+            return result;
         }
 
         private static Components GenerateComponents(IDataTemplateService dataTemplateService, SchoolOfMagic school)
@@ -103,12 +111,12 @@ namespace GeneratorEngine.Generators
             var needsMaterials = Rnd.Next(100) > 40;
             var requiredMaterials = needsMaterials ? dataTemplateService.GetRandomRequiredMaterialComponent(school) : string.Empty;
 
-            if(needsMaterials && Rnd.Next(100) > 80) //20% chance for multiple materials
+            if (needsMaterials && Rnd.Next(100) > 80) //20% chance for multiple materials
             {
                 var newMaterial = dataTemplateService.GetRandomRequiredMaterialComponent(school);
                 var bothOrEither = (Rnd.Next(100) > 50) ? "and" : "or";
 
-                if(newMaterial != requiredMaterials)
+                if (newMaterial != requiredMaterials)
                     requiredMaterials += $" {bothOrEither} {newMaterial}";
             }
 
@@ -175,7 +183,7 @@ namespace GeneratorEngine.Generators
             else
                 return false;
         }
-    
+
         private static (double minValue, double maxValue) LookupPowerScores(PowerLevel powerLevel)
         {
             switch (powerLevel)
