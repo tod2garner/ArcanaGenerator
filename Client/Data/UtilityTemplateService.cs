@@ -257,7 +257,7 @@ namespace SpellGenerator.Client.Data
                     Description = "After casting this spell a delayed teleportation is triggered at the end of the spell's duration " +
                                     "back to the point where you cast it (or the nearest unoccupied space). However, this spell " +
                                     "cannot cross between planes. When cast at Level 6 or higher 2 other willing creatures can be targeted.",
-                    Names = new List<string> { "recall", "return", "retraction" },
+                    Names = new List<string> { "recollection", "return", "retraction" },
                     IsNeverAoE = true,
                     IsRangeAlwaysSelf = true,
                     MinimumDuration = Duration.TenMinutes,

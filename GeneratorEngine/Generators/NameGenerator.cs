@@ -24,15 +24,15 @@ namespace GeneratorEngine.Generators
             if(name.Contains(CORE)) 
             {
                 string core;
-                if(spellTemplateNames != null && spellTemplateNames.Count > 0 && rnd.NextDouble() > 0.6) //40%
+                if(spellTemplateNames != null && spellTemplateNames.Count > 0 && rnd.NextDouble() > 0.4) //60%
                 {
                     core = spellTemplateNames.ElementAt(rnd.Next(spellTemplateNames.Count));
                 }
-                else if (aesthetic != null && rnd.NextDouble() > 0.5) //30% (half of remaining 60%)
+                else if (aesthetic != null && rnd.NextDouble() > 0.5) //50% of remaining
                 {
                     core = aesthetic.ShapeCore;
                 }
-                else //30%
+                else
                 {
                     core = dataTemplateService.GetRandomNameCore(school, effectType);
                 }
@@ -80,7 +80,6 @@ namespace GeneratorEngine.Generators
                     $"{POSSESIVE} {ADJECTIVE} {MATERIAL}",
                     $"{POSSESIVE} {CORE} of {EMOTION}",
                     $"{POSSESIVE} {CORE} of {MATERIAL}",
-                    $"{POSSESIVE} {MATERIAL} of {EMOTION}",
                     $"{POSSESIVE} {CORE} of {ADJECTIVE} {MATERIAL}"
                 };
             }
