@@ -50,6 +50,7 @@ namespace SpellGenerator.Client.Data
 
                 new AestheticShapeTemplate(DeliveryType.Projectile, "bolt", "a bolt of"),
                 new AestheticShapeTemplate(DeliveryType.Projectile, "missile", "a missile of"),
+                new AestheticShapeTemplate(DeliveryType.Projectile, "spike", "a spike made of"),
                 new AestheticShapeTemplate(DeliveryType.Projectile, "arrow", "an arrow made of"),
                 new AestheticShapeTemplate(DeliveryType.Projectile, "spear", "a spear made of"),
                 new AestheticShapeTemplate(DeliveryType.Projectile, "javelin", "a javelin made of"),
@@ -98,6 +99,7 @@ namespace SpellGenerator.Client.Data
 
                 new AestheticShapeTemplate(DeliveryType.AreaOfEffect, AreaOfEffectShape.Square, "canopy", "a canopy that drops"),
                 new AestheticShapeTemplate(DeliveryType.AreaOfEffect, AreaOfEffectShape.Square, "square", "a glowing square on the ground, paved with"),
+                new AestheticShapeTemplate(DeliveryType.AreaOfEffect, AreaOfEffectShape.Square, "holes", "holes on the ground, filled with"),
 
                 //Universal templates - any delivery type            
                 new AestheticShapeTemplate("ball", "a ball of"),
@@ -119,6 +121,8 @@ namespace SpellGenerator.Client.Data
                 new AestheticShapeTemplate("scroll", "a scroll made of"), //buff and utility only?
                 new AestheticShapeTemplate("globe", "a globe made of"),
                 new AestheticShapeTemplate("bottle", "a bottle of"),
+                new AestheticShapeTemplate("chalice", "a chalice made of"),
+                new AestheticShapeTemplate("lantern", "a lantern made of"),
 
                 new AestheticShapeTemplate("chunks", "chunks of"),
                 new AestheticShapeTemplate("globs", "globs of"),

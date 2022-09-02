@@ -109,23 +109,41 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 12
                 },
-                new SpellTemplate
+                new SpellTemplate //Fear you
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion, SchoolOfMagic.Enchantment },
                     Type = EffectType.Debuff,
                     Description = "is magically compelled to Fear you",
-                    Names = new List<string> { "terror", "intimidation", "torment" },
+                    Names = new List<string> { "terror", "intimidation", "fear" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 12
                 },
-                new SpellTemplate
+                new SpellTemplate //Fear everyone
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "is magically compelled to Fear every creature within sight at the moment the spell is cast. Friend, foe, and stranger alike, they are afraid of everyone.",
+                    Names = new List<string> { "paranoia", "terror", "torment" },
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 25
+                },
+                new SpellTemplate //Charm
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
                     Type = EffectType.Debuff,
                     Description = "is Charmed to consider you a friend (but is not compelled to obey you)",
-                    Names = new List<string> { "embrace", "humor", "companion", "friend" },
+                    Names = new List<string> { "embrace", "humor", "companion", "siren" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 12
+                },
+                new SpellTemplate //Friends abound
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "is Charmed to consider every creature within sight at the moment the spell is cast - friend, foe, and stranger alike - to be a close friend.",
+                    Names = new List<string> { "kindness", "friend", "affability" },
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 20
                 },
                 new SpellTemplate //Exhaustion
                 {

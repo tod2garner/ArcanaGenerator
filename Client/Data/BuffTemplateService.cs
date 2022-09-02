@@ -9,14 +9,6 @@ namespace SpellGenerator.Client.Data
         {
             var templates = new List<SpellTemplate>
             {
-                new SpellTemplate //TODO - remove this filler once we have at least one from each school
-                {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
-                    Type = EffectType.Buff,
-                    Description = "has advantage on saving throws against all spells from the same school of magic as this spell.",
-                    MinimumDuration = Duration.OneHour,
-                    BaseValueScore = 3
-                },
                 new SpellTemplate // AC one hit
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
@@ -134,7 +126,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
                     Description = "is temporarily covered by metallic quills. Whenever they are hit by a melee attack the attacker suffers [2-3][dice] + 5 Piercing damage.",
-                    Names = new List<string>{ "quills", "bristles", "spines" },
+                    Names = new List<string>{ "quills", "bristles", "spines", "thistle" },
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 10
                 },
@@ -154,7 +146,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
                     Description = "gains a +[1-3] bonus to all attack rolls (accuracy, not damage).",
-                    Names = new List<string> { "aim", "hunt", "precision" },
+                    Names = new List<string> { "aim", "hunt", "precision", "guidance" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 5
                 },
@@ -163,7 +155,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
                     Description = "gains a +[3-5] bonus to their first attack roll on their turn (accuracy only, not damage).",
-                    Names = new List<string> { "persuit", "precision", "focus" },
+                    Names = new List<string> { "persuit", "precision", "focus", "guidance" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 5
                 },
@@ -387,6 +379,51 @@ namespace SpellGenerator.Client.Data
                     Names = new List<string> { "solitude", "statuary", "paralysis" },
                     IsAlwaysInstant = true,
                     BaseValueScore = 25,
+                },
+                new SpellTemplate //Appear friendly
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Buff,
+                    Description = "appears friendly to creatures with INT lower than 5 that are of a single type (beast, undead, etc) which you choose at the time of casting.",
+                    Names = new List<string> { "guise", "mask", "welcome" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 5,
+                },
+                new SpellTemplate //Immume to charm
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Buff,
+                    Description = "is immune to Charm effects for the spell duration.",
+                    Names = new List<string> { }, //TODO ---------------------------------- names
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 5,
+                },
+                new SpellTemplate //Immume to Psychic damage
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Buff,
+                    Description = "is immune to Psychic damage, but has their INT reduced by 2d4 for the spell duration.",
+                    Names = new List<string> { }, //TODO ---------------------------------- names
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 10,
+                },
+                new SpellTemplate //Immume to Psychic damage
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Buff,
+                    Description = "is immune to Fear effects, but suffers a -[1-3] penalty to AC for the spell duration.",
+                    Names = new List<string> { }, //TODO ---------------------------------- names
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 5,
+                },
+                new SpellTemplate //Disguise companion
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Buff,
+                    Description = "is disguised with an illusion of your choosing, within the limits of the Disguise Self spell (except that it can apply to creatures other than yourself).",
+                    Names = new List<string> { }, //TODO ---------------------------------- names
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 5,
                 },
             };
 
