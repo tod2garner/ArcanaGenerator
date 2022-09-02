@@ -115,7 +115,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
                     Type = EffectType.Utility,
                     Description = "You teleport a single object in your hands that weighs less than 10 lbs. to any unoccupied location on the ground",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "transposal", "transferecne", "conveyance" },
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsAlwaysInstant = true,
@@ -126,8 +126,8 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
                     Type = EffectType.Utility,
-                    Description = "You permanently conjure 1 cubic foot of ice, gravel, or ash",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Description = "You permanently conjure 1 cubic foot of ice, sand, gravel, or ash",
+                    Names = new List<string> { "alluvium", "deposit", "residue" },
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsAlwaysInstant = true,
@@ -139,7 +139,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
                     Type = EffectType.Utility,
                     Description = "You permanently conjure 1[dice] harmless insects (beetles, ants, flies, larvae, moths, etc.)",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "nuisance", "pests", "vexation" },
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsAlwaysInstant = true,
@@ -151,7 +151,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
                     Type = EffectType.Utility,
                     Description = "You permanently conjure a tiny snake that is hostile to everyone, including you",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "ophidian", "serpent" },
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsAlwaysInstant = true,
@@ -163,7 +163,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
                     Type = EffectType.Utility,
                     Description = "You conjure a jet of ink or paint that splashes on impact",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "dye", "chroma", "stain" },
                     IsAlwaysAoE = true,
                     IsAlwaysRanged = true,
                     DoesNotTargetCreatures = true,
@@ -172,10 +172,10 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Abjuration },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Illusion },
                     Type = EffectType.Utility,
                     Description = "You conjure a thick cloud of swirling vapor that obscures line of sight",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "veil", "mist", "gloom", "nebula" },
                     IsAlwaysAoE = true,
                     IsAlwaysRanged = true,
                     DoesNotTargetCreatures = true,
@@ -192,7 +192,7 @@ namespace SpellGenerator.Client.Data
                                     "sides as if by invisible river banks. Creatures caught in the torrent have their swimming speed (if " +
                                     "they have any) reduced by half and are swept downstream at a rate of 20 ft per round. If cast at Level 6 " +
                                     "or higher the caster may use a bonus action to reverse the direction of flow, even to flow uphill.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "torrent", "river", "overflow" },
                     IsNeverAoE = true,
                     IsAlwaysRanged = true,
                     DoesNotTargetCreatures = true,
@@ -205,7 +205,7 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Utility,
                     Description = "You conjure a spirit to assist with translation with a specific language. " +
                                     "The spirit will only translate and will not speak of itself or converse with you directly.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "elucidation", "utterance", "articulation" },
                     IsRangeAlwaysSelf = true,
                     IsNeverAoE = true,
                     DoesNotTargetCreatures = true,
@@ -218,8 +218,8 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Utility,
                     Description = "Every creature in the area of effect is teleported to swap locations with another creature in the area. " +
                                     "Outside of combat the teleportation is random. During combat each creature moves to the location of the " +
-                                    "next creature in initiate order, in a cycle so the last creature moves to the location of the first.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                                    "next creature in initiative order, in a cycle so the last creature moves to the location of the first.",
+                    Names = new List<string> { "shuffle", "turmoil", "disarray" },
                     DoesNotTargetCreatures = true,
                     IsAlwaysAoE = true,
                     IsAlwaysInstant = true,
@@ -233,7 +233,7 @@ namespace SpellGenerator.Client.Data
                     Description = "You teleport a visible unconscious creature to your feet (or the nearest unoccupied space) and put them into a brief stasis. " +
                                     "They are not fully stabilized, but for the next 1d4 rounds they do not need to make death saving throws (they neither pass nor fail). " +
                                     "After the rounds of stasis have passesd they must resume making death saving throws as normal.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "stasis", "respite", "suspension" },
                     IsNeverAoE = true,
                     IsAlwaysInstant = true,
                     IsAlwaysRanged = true,
@@ -244,7 +244,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
                     Type = EffectType.Utility,
                     Description = "You teleport a visible willing creature to your side or the nearest unoccupied space.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "extraction", "extrication", "invitation" },
                     IsNeverAoE = true,
                     IsAlwaysInstant = true,
                     IsAlwaysRanged = true,
@@ -257,7 +257,7 @@ namespace SpellGenerator.Client.Data
                     Description = "After casting this spell a delayed teleportation is triggered at the end of the spell's duration " +
                                     "back to the point where you cast it (or the nearest unoccupied space). However, this spell " +
                                     "cannot cross between planes. When cast at Level 6 or higher 2 other willing creatures can be targeted.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "recall", "return", "retraction" },
                     IsNeverAoE = true,
                     IsRangeAlwaysSelf = true,
                     MinimumDuration = Duration.TenMinutes,
@@ -268,7 +268,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Transmutation },
                     Type = EffectType.Utility,
                     Description = "You deal [2-5][dice] + 10 Force damage to a stationary non-living object. This spell cannot target creatures.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "fragmentation", "dissolution", "severance", "schism" },
                     DoesNotTargetCreatures = true,
                     IsAlwaysInstant = true,
                     BaseValueScore = 15
@@ -277,8 +277,8 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation },
                     Type = EffectType.Utility,
-                    Description = "A rush of cold air surges across target area. All non-magical flames in the area are instantly doused and all non-living objects are cooled to room temperature.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Description = "A rush of cold air surges across target area. All non-magical flames in the area are instantly doused and all non-living heated objects are cooled to room temperature.",
+                    Names = new List<string> { "squall", "gale", "gust" },
                     DoesNotTargetCreatures = true,
                     IsAlwaysAoE = true,
                     IsAlwaysInstant = true,
@@ -286,11 +286,11 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Lesser wall of force
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation },
                     Type = EffectType.Utility,
                     Description = "An invisible, impenetrable surface appears in an unoccupied location within range. It takes the shape of a flat surface made up of [2-4]d4 panels, each 5 ft square, " +
                                     "and each contiguous with at least one other panel. The surface is 1 inch thick and lasts for the duration. Nothing can physically pass through the surface and it is immune to all damage.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "barrier", "blockade", "barricade" },
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     MinimumDuration = Duration.OneRound,
@@ -303,7 +303,7 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Utility,
                     Description = "You create an faint line on the ground within range, up to [30-100@10]ft long. An invisible surface extends 10ft vertically from the line. This surface blocks any sounds and smells " +
                                     "from passing through it in one direction of your choosing.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "secrecy", "stillness", "seclusion" },
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsAlwaysRanged = true,
@@ -314,9 +314,9 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation },
                     Type = EffectType.Utility,
-                    Description = "All water (and water-based liquids) is repelled and pushed to the edges of the area of effect. Note that this spell does not impact liquids in fully sealed containers, nor " +
-                                    "does it impact liquids within creatures or plants.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Description = "All water and water-based liquids in the target area are repelled and slowly pushed to the edges of the area of effect. " +
+                                    "Note that this spell does not impact liquids in fully sealed containers, nor does it impact liquids within creatures or plants.",
+                    Names = new List<string> { "desert", "dehydration", "desiccation" },
                     DoesNotTargetCreatures = true,
                     IsAlwaysAoE = true,
                     MinimumDuration = Duration.OneMinute,
@@ -326,9 +326,9 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation },
                     Type = EffectType.Utility,
-                    Description = "Any loose materials - including solids, liquids, and gases - that are dangerously hot (heated enough to cause burns) are repelled and pushed to the edges of the area of effect. " +
+                    Description = "Any loose materials (solids, liquids, and gases) that are dangerously hot (heated enough to cause burns) are repelled and slowly pushed to the edges of the area of effect. " +
                                     "Note that this spell does not impact materials in fully sealed containers, solid materials heavier than 5 lbs, nor does it impact materials within creatures or plants.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "buffer", "repellent", "mitigation" },
                     DoesNotTargetCreatures = true,
                     IsAlwaysAoE = true,
                     MinimumDuration = Duration.OneMinute,
@@ -340,7 +340,7 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Utility,
                     Description = "You choose a visible point on the ground within range and starting at that point 9ft tall grass appears and rapidly spreads along the ground for [2-3][dice] X 10ft in all directions. " +
                                    "It rounds corners and spreads up or down cliffs, but stops at pooled liquids.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "verdure", "grass", "growth", "meadow" },
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsAlwaysRanged = true,
@@ -354,7 +354,7 @@ namespace SpellGenerator.Client.Data
                     Description = "The ground within the area of effect becomes quicksand. Any creatures in the area, or that end their turn in the area, must make a CON saving throw. " +
                                     "On a failure they suffer an escalating debuff that increases by one level, and on a success the intensity decreases by one level. " +
                                     "Level 1 = Up to the knees, Movement speed reduced to 5ft. Level 2 = Up to the waist, Restrained. Level 3 = Up to the neck, Paralyzed.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "mire", "quicksand", "quagmire" },
                     DoesNotTargetCreatures = true,
                     IsAlwaysAoE = true,
                     IsAlwaysRanged = true,
@@ -367,7 +367,7 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Utility,
                     Description = "You conjure a rough, rope-style ladder made of vines and branches, hanging from a visible location in range. " +
                                     "The ladder has a maximum length of 4d6 X 5ft and for the spell duration before vanishing.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "ladder", "reach", "vine" },
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsAlwaysRanged = true,
@@ -380,7 +380,7 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Utility,
                     Description = "You create false footprints or animal tracks of any variety within the area of effect, which last for [12-48@12]hrs. " +
                                     "The false prints cannot completely replace your own tracks, but can be used to make them harder to detect.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "track", "imprint", "fraud" },
                     DoesNotTargetCreatures = true,
                     IsAlwaysAoE = true,
                     IsRangeAlwaysSelf = true,
@@ -393,7 +393,7 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Utility,
                     Description = "You conjure a giant mushroom, which sprouts from any surface in range - ground, roof, or wall. The mushroom can be up to [10-30@5]ft tall, [15-25@5]ft wide in any direction, and vanishes when the spell ends. " +
                                     "Any creatures in the space where it appears are harmlessly lifted or held by it.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "fungus", "mushroom", "mycelium" },
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsAlwaysRanged = true,
@@ -406,7 +406,7 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Utility,
                     Description = "To cast this spell you must be holding one or more magical items worth at least [800-1500@100] GP. " +
                                     "These items are consumed in order to resurrect a creature within [5-15@5]ft of you that has been dead for less than 5 days.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "rebirth", "revival", "resurgence", "quickening" },
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsRangeAlwaysSelf = true,
@@ -419,7 +419,7 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Utility,
                     Description = "You see a vision of the past 2d4 hours in your immediate vicinity, accelerated rapidly. You are blind to your surroundings for 5 minutes while you see this glimpse of the past. " +
                                     "In the vision you stand in the same spot where you currently stand and cannot move except to turn in a circle and observe. The experience is purely visual - your other senses (hearing, smell, etc.) remain in the present.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "reminiscence", "remonition", "vision" },
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsRangeAlwaysSelf = true,
@@ -433,7 +433,7 @@ namespace SpellGenerator.Client.Data
                     Description = "You cast a variation of the scrying spell where you are able to look into the past by specifing an exact date and time of day to observe. " +
                                     "This spell can reach no more than 1 year into the past and the vision has a maximum duration of 5 minutes. During that 5 minutes, however, " +
                                     "you may change the date and time you observe (but not the target) up to 1d3 times. For example, you could jump back 10 days prior or skip ahead by an hour.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "vision", "history", "antiquity" },
                     IsNeverAoE = true,
                     IsRangeAlwaysSelf = true,
                     IsAlwaysInstant = true,
@@ -445,7 +445,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Evocation },
                     Type = EffectType.Utility,
                     Description = "You cast a varation of the light spell where the light created is visible only to you and up to [2-5] other creatures that you select at the time of casting.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "secrecy", "illumination", "discernment" },
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsAlwaysRanged = true,
@@ -458,7 +458,7 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Utility,
                     Description = "You cast a varation of the darkness spell where the darkness created is transparent to you and up to 1d3 other creatures " +
                                     "that you select at the time of casting (each can still see the outline of the affected area).",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "cloak", "penumbra", "shadow" },
                     DoesNotTargetCreatures = true,
                     IsAlwaysAoE = true,
                     IsAlwaysRanged = true,
@@ -471,7 +471,7 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Utility,
                     Description = "You are able to smell the emotions of any creature within 15ft of you. As an action you can make an insight check " +
                                     "with a +10 bonus. If they are within 5ft of you then you also make the check with advantage.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "snout", "instinct", "aroma" },
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsRangeAlwaysSelf = true,
@@ -483,7 +483,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Necromancy },
                     Type = EffectType.Utility,
                     Description = "You are instantly aware of the number of beating hearts within [60-120@20] ft of you. You also have a rough idea of the location of any beating hearts within 20 ft of you.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "pulse", "inquest", "sanguinity" },
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsRangeAlwaysSelf = true,
@@ -497,7 +497,7 @@ namespace SpellGenerator.Client.Data
                     Description = "You conjure a piece of parchment with writing on it that lists out the number of sentient creatures within [60-120@20] ft of you, sorted by their general race or type. Large numbers of creatures will be rounded. " +
                                     "For example: 30 humans, 20 elves, 1 fiend, and 2 monstrosities. Creatures with less than 3 for INT are not included on the list, and creatures that are magically obscured (i.e. by shapeshifting or invisibility) " +
                                     "will not be revealed if the spell/ability hiding it is of a higher level than this spell.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "census", "enumeration", "register" },
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsRangeAlwaysSelf = true,
@@ -506,11 +506,11 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Create a flare or beacon
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Illusion, SchoolOfMagic.Evocation },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion, SchoolOfMagic.Evocation },
                     Type = EffectType.Utility,
                     Description = "You create either a beacon at your feet or a flare overhead. A beacon lasts 30 minutes but is stationary on the ground. A flare vanishes after 6 seconds but can be launched " +
                     "up to 60 ft directly vertically into the air. Either creates a brilliant light of any color you choose, but not so intense as to deal any damage or impair vision.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "beacon", "lodestar", "cynosure" },
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsRangeAlwaysSelf = true,
@@ -523,7 +523,7 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Utility,
                     Description = "In a matter of seconds you can either clean/organize or toss/disorganize any portion of the target area. " +
                                     "This acts like a larger scale variation of the soil/clean abilitly of prestidigitation.",
-                    Names = new List<string> { },//TODO -------------------------------------add names -------------------------+++++++++++///******
+                    Names = new List<string> { "catalyst", "spur", "entropy" },
                     DoesNotTargetCreatures = true,
                     IsAlwaysAoE = true,
                     IsAlwaysInstant = true,
