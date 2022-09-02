@@ -15,7 +15,7 @@ namespace GeneratorEngine.Generators
         private const string MATERIAL = "{-Material-}";
         private static List<string> _formats;
 
-        public static string GenerateName(IDataTemplateService dataTemplateService, SchoolOfMagic school, EffectType effectType, Aesthetic aesthetic)
+        public static string GenerateName(IDataTemplateService dataTemplateService, SchoolOfMagic school, EffectType effectType, Aesthetic aesthetic, List<string> spellTemplateNames)
         {
             var rnd = new Random();
 
@@ -23,9 +23,19 @@ namespace GeneratorEngine.Generators
 
             if(name.Contains(CORE)) 
             {
-                var core = (aesthetic != null && rnd.NextDouble() > 0.5) 
-                            ? aesthetic.ShapeCore 
-                            : dataTemplateService.GetRandomNameCore(school, effectType);
+                string core;
+                if(spellTemplateNames != null && spellTemplateNames.Count > 0 && rnd.NextDouble() > 0.4) //60%
+                {
+                    core = spellTemplateNames.ElementAt(rnd.Next(spellTemplateNames.Count));
+                }
+                else if (aesthetic != null && rnd.NextDouble() > 0.5) //50% of remaining
+                {
+                    core = aesthetic.ShapeCore;
+                }
+                else
+                {
+                    core = dataTemplateService.GetRandomNameCore(school, effectType);
+                }
                 name = name.Replace(CORE, core);
             }
 
@@ -70,7 +80,6 @@ namespace GeneratorEngine.Generators
                     $"{POSSESIVE} {ADJECTIVE} {MATERIAL}",
                     $"{POSSESIVE} {CORE} of {EMOTION}",
                     $"{POSSESIVE} {CORE} of {MATERIAL}",
-                    $"{POSSESIVE} {MATERIAL} of {EMOTION}",
                     $"{POSSESIVE} {CORE} of {ADJECTIVE} {MATERIAL}"
                 };
             }
