@@ -13,7 +13,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
                     Type = EffectType.Penalty,
-                    Description = "Smoke billows from your shoulders, falling to the ground behind them like a cloak before drifting away.",
+                    Description = "Smoke billows from your shoulders, falling to the ground behind you like a cloak before fading away.",
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 0.1
                 },
