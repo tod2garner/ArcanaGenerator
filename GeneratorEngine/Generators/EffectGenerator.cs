@@ -286,8 +286,11 @@ namespace GeneratorEngine.Generators
             var result = Duration.Instant;
             foreach (var choice in options)
             {
-                if (roll > choice.rollThreshold)
+                if (roll >= choice.rollThreshold)
+                {
                     result = choice.value;
+                    break;
+                }                    
             }
 
             if((int) result > (int) maxDuration)

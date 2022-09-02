@@ -25,16 +25,16 @@ namespace GeneratorEngine
 
         internal virtual void ScalePower(double? scalingRatio, Duration? minDuration)
         {
-            if(!scalingRatio.HasValue)            
+            if (!scalingRatio.HasValue)
                 return;
-            
-            if(Duration != Duration.Instant)
+
+            if (Duration != Duration.Instant)
             {
                 if (scalingRatio < 1.0 && (int)Duration > (int)(minDuration ?? Duration.OneRound)) //make it weaker
-                {
-                    var nextShorterDuration = Enum.GetValues(typeof(Duration)).Cast<Duration>().Where(e => (int)e < (int)Duration).OrderBy(e => e).First();
+                {                    
+                    var nextShorterDuration = Enum.GetValues(typeof(Duration)).Cast<Duration>().Where(e => (int)e < (int)Duration && e != Duration.Instant).OrderByDescending(e => e).First();
 
-                    if (nextShorterDuration > (minDuration ?? Duration.OneRound))
+                    if ((int)nextShorterDuration >= (int)(minDuration ?? Duration.OneRound))
                         Duration = nextShorterDuration;
                 }
                 else if (scalingRatio > 1.0 && Duration != Duration.OneMonth) //make it stronger
@@ -42,7 +42,7 @@ namespace GeneratorEngine
                     var nextLongerDuration = Enum.GetValues(typeof(Duration)).Cast<Duration>().Where(e => (int)e > (int)Duration).OrderBy(e => e).First();
                     Duration = nextLongerDuration;
                 }
-            }             
+            }
         }
     }
 }
