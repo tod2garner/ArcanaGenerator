@@ -364,6 +364,49 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysRanged = true,                    
                     BaseValueScore = 3,
                 },
+                new SpellTemplate //Taunted
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "is taunted by you. They cannot target anyone other than you with attacks unless they make a successful WIS save. " +
+                                    "They also automatically fail any Insight and Perception checks that are unrelated to your actions.",
+                    Names = new List<string> { "taunt" },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 5
+                },
+                //new SpellTemplate //Leash
+                //{
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Conjuration },
+                //    Type = EffectType.Debuff,
+                //    Description = "anchored by chains (can still move, but like on a leash anchored to a point)",
+                //    Names = new List<string> { "leash", "tether" },//--------------------TODO
+                //    BaseValueScore = 5
+                //},
+                //new SpellTemplate //Arcane duel
+                //{
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation },
+                //    Type = EffectType.Debuff,
+                //    Description = "arcane duel , cannot target anyone other than you with spells or magical abilities",
+                //    Names = new List<string> { "duel" },//--------------------TODO
+                //    BaseValueScore = 5
+                //},
+                //new SpellTemplate //Misfortune
+                //{
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                //    Type = EffectType.Debuff,
+                //    Description = "if they roll a 13 on any dice roll (attack, save, etc) they are stunned until the end of their next turn",
+                //    Names = new List<string> { "misfortune" },//--------------------TODO
+                //    BaseValueScore = 5
+                //},
+                //*************************************************************************
+                //new SpellTemplate //
+                //{
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                //    Type = EffectType.Debuff,
+                //    Description = "",
+                //    Names = new List<string> {  },//--------------------TODO
+                //    BaseValueScore = 5
+                //},
             };
 
             return templates;

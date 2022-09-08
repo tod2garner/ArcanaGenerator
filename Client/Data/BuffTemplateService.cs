@@ -382,19 +382,19 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Appear friendly
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment, SchoolOfMagic.Illusion },
                     Type = EffectType.Buff,
-                    Description = "appears friendly to creatures with INT lower than 5 that are of a single type (beast, undead, etc) which you choose at the time of casting.",
+                    Description = "is considered friendly by creatures with INT lower than 5 that are of a single type (beast, undead, etc) which you choose at the time of casting.",
                     Names = new List<string> { "guise", "mask", "welcome" },
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 5,
                 },
                 new SpellTemplate //Immume to charm
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment, SchoolOfMagic.Abjuration },
                     Type = EffectType.Buff,
                     Description = "is immune to Charm effects for the spell duration.",
-                    Names = new List<string> { }, //TODO ---------------------------------- names
+                    Names = new List<string> { "ward", "aplomb", "bulwark" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 5,
                 },
@@ -414,7 +414,7 @@ namespace SpellGenerator.Client.Data
                     Description = "is immune to Fear effects, but suffers a -[1-3] penalty to AC for the spell duration.",
                     Names = new List<string> { "recklessness", "daring", "bravery" },
                     MinimumDuration = Duration.OneRound,
-                    BaseValueScore = 5,
+                    BaseValueScore = 10,
                 },
                 new SpellTemplate //Disguise companion
                 {
@@ -430,10 +430,48 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
                     Type = EffectType.Buff,
                     Description = "becomes invisible to all creatures, except 1d6 creatures that you select at the time of casting. The invisibility ends early for the target if they make an attack or cast a spell.",
-                    Names = new List<string> {  }, //TODO ---------------------------------- names
+                    Names = new List<string> { "concealer", "invisibility", "veil" },
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 10,
                 },
+                new SpellTemplate //Phasing
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Buff,
+                    Description = "becomes incorporeal while moving but not when stationary. While in motion they can pass through objects and creatures, but must end their movement in an unoccupied space each turn. " +
+                                    "Their movement does not trigger attacks of opportunity. They can still interact normally and be targeted normally while not in motion (i.e. with attacks, spells, etc).",
+                    Names = new List<string> { "phasing", "motion", "transience"  },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Taunting
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Enchantment },
+                    Type = EffectType.Buff,
+                    Description = "gains a +[1-3] bonus to AC and becomes a focal point for adversaries. Enemies that can see them cannot target anyone else with attacks unless they make a successful WIS save.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 15
+                },
+                /*
+                   remove one temporary negative effect. If level is higher than this spell DC is 15 + the difference between spell levels
+                   armor - reduce all incoming damage by a flat amount for the duration
+                   regeneration per turn
+                   regeneration per turn, but ends early if you attack or cast a spell
+                   can add CON to melee attack and damage rolls (in addition to strength), but reduce AC by CON modifier
+                   bonus to Damage/AC but spell ends early if you move at all
+                   if you roll a 7 on any dice for any reason (attack, save, etc) you regain a spell slot, starting with the lowest
+                   bonus to AC but spell ends early if you attack or cast a spell
+                */
+                //*************************************************************************
+                //new SpellTemplate //
+                //{
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                //    Type = EffectType.Buff,
+                //    Description = "",
+                //    Names = new List<string> {  },//--------------------TODO
+                //    BaseValueScore = 5
+                //},
             };
 
             return templates;

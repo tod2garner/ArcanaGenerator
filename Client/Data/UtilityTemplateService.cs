@@ -470,7 +470,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion, SchoolOfMagic.Evocation },
                     Type = EffectType.Utility,
                     Description = "After taking damage you can use your reaction cast a varation of the darkness spell where the darkness created is transparent to you.",
-                    Names = new List<string> { "cloak", "veil", "shadow" },
+                    Names = new List<string> { "cloak", "veil", "shadow", "shroud" },
                     DoesNotTargetCreatures = true,
                     IsAlwaysAoE = true,
                     IsRangeAlwaysSelf = true,
@@ -570,7 +570,54 @@ namespace SpellGenerator.Client.Data
                     DoesNotTargetCreatures = true,
                     MinimumCastTime = CastTime.OneMinute,
                     BaseValueScore = 10,
-                }
+                },
+                new SpellTemplate //Immune to fall damage
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "Any creature affected by this spell is immune to fall damage, but cannot use reactions or bonus actions.",
+                    Names = new List<string> { },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,                    
+                    BaseValueScore = 4
+                },
+                new SpellTemplate //Anti-magic field
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                    Type = EffectType.Utility,
+                    Description = "You create a pocket where all magic is suppressed. Non-permanent magical effects are dispelled if they are of a lower level than this spell. Otherwise they are suppressed. Enchanted items cease to function. " +
+                                    "Summoned creatures are temporarily banished. Spells cannot be cast in the area of effect unless they are of a higher level than this spell. Dieties are unaffected by this spell.",
+                    Names = new List<string> { },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    IsAlwaysAoE = true,
+                    DoesNotTargetCreatures = true,
+                    MinimumCastTime = CastTime.OneMinute,
+                    BaseValueScore = 30,
+                },
+                new SpellTemplate //Anti-magic pulse
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                    Type = EffectType.Utility,
+                    Description = "You relase a pulse that suppresses all magic in the target area. " +
+                                    "Non-permanent magical effects are dispelled if they are of a lower level than this spell. Otherwise they are suppressed for one round. " +
+                                    "Enchanted items cease to function for one round. Summoned creatures are banished for one round.",
+                    Names = new List<string> { },//--------------------TODO
+                    IsAlwaysInstant = true,
+                    IsAlwaysAoE = true,
+                    DoesNotTargetCreatures = true,                    
+                    BaseValueScore = 30,
+                },
+                /*                 
+                 *  
+                 */
+                //*************************************************************************
+                //new SpellTemplate //
+                //{
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                //    Type = EffectType.Utility,
+                //    Description = "",
+                //    Names = new List<string> {  },//--------------------TODO
+                //    BaseValueScore = 5
+                //},
             };
 
             return templates;
