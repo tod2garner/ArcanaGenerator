@@ -403,7 +403,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
                     Type = EffectType.Buff,
                     Description = "is immune to Psychic damage, but has their INT reduced by 2d4 for the spell duration.",
-                    Names = new List<string> { }, //TODO ---------------------------------- names
+                    Names = new List<string> { "ignorance", "stupor", "idiocy" },
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 10,
                 },
@@ -412,7 +412,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
                     Type = EffectType.Buff,
                     Description = "is immune to Fear effects, but suffers a -[1-3] penalty to AC for the spell duration.",
-                    Names = new List<string> { }, //TODO ---------------------------------- names
+                    Names = new List<string> { "recklessness", "daring", "bravery" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 5,
                 },
@@ -420,10 +420,19 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
                     Type = EffectType.Buff,
-                    Description = "is disguised with an illusion of your choosing, within the limits of the Disguise Self spell (except that it can apply to creatures other than yourself).",
-                    Names = new List<string> { }, //TODO ---------------------------------- names
+                    Description = "is disguised with an illusion of your choosing, within the limits of the Disguise Self spell - except that it can apply to any willing humanoid (not only yourself).",
+                    Names = new List<string> { "guise", "charade", "pretense", "veneer" },
                     MinimumDuration = Duration.TenMinutes,
-                    BaseValueScore = 5,
+                    BaseValueScore = 3,
+                },
+                new SpellTemplate //Selective invisibility
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Buff,
+                    Description = "becomes invisible to all creatures, except 1d6 creatures that you select at the time of casting. The invisibility ends early for the target if they make an attack or cast a spell.",
+                    Names = new List<string> {  }, //TODO ---------------------------------- names
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 10,
                 },
             };
 

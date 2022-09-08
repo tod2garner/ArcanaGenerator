@@ -342,6 +342,28 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysInstant = true,
                     BaseValueScore = 20
                 },
+                new SpellTemplate //Disguise foe
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Debuff,
+                    Description = "is disguised with an illusion of your choosing, within the limits of the Disguise Self spell - except that it can apply to humanoid creatures instead of yourself. " +
+                                    "The target is not aware of the illusion, but can realize it is being treated differently by others with a successful insight check vs your spell save DC.",
+                    Names = new List<string> { "veil", "charade", "veneer" },
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 5,
+                },
+                new SpellTemplate //Hearing things
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion, SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "is distracted by noises that no one else can hear. You choose the nature of the sounds, but the volume is no louder than normal speaking volume. The target has disadvantage " +
+                                    "on Perception, Insight, and Investigation checks. If you are hidden when you cast this spell you may choose to increase the cast time by one minute and omit all spell components " +
+                                    "(making the casting undetectable by non-magical means).",
+                    Names = new List<string> {  },//-------------------- names -------------------- TODO
+                    MinimumDuration = Duration.OneMinute,
+                    IsAlwaysRanged = true,                    
+                    BaseValueScore = 3,
+                },
             };
 
             return templates;

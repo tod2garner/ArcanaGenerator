@@ -454,16 +454,29 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Selective darkness
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Evocation },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion, SchoolOfMagic.Evocation },
                     Type = EffectType.Utility,
                     Description = "You cast a varation of the darkness spell where the darkness created is transparent to you and up to 1d3 other creatures " +
                                     "that you select at the time of casting (each can still see the outline of the affected area).",
-                    Names = new List<string> { "cloak", "penumbra", "shadow" },
+                    Names = new List<string> { "cloak", "penumbra", "shadow", "eclipse" },
                     DoesNotTargetCreatures = true,
                     IsAlwaysAoE = true,
                     IsAlwaysRanged = true,
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 5
+                },
+                new SpellTemplate //Reactionary darkness
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion, SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "After taking damage you can use your reaction cast a varation of the darkness spell where the darkness created is transparent to you.",
+                    Names = new List<string> { "cloak", "veil", "shadow" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysAReaction = true,
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 10
                 },
                 new SpellTemplate //Smell emotions
                 {
@@ -529,6 +542,35 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysInstant = true,
                     BaseValueScore = 2
                 },
+                new SpellTemplate //Reaction invisibility
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Utility,
+                    Description = "Whenever you take damage that causes you to fall below half health, you may use your reaction to cast mass invisibility. " +
+                                    "This invisibility applies to all creatures in the area of effect - yourself, friend, foe, and stranger alike - and " +
+                                    "ends early for any creature that makes an attack or casts a spell.",
+                    Names = new List<string> { "escape", "disappearance", "exit" },
+                    MinimumDuration = Duration.OneRound,
+                    IsAlwaysAReaction = true,
+                    IsAlwaysAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    BaseValueScore = 5,
+                },
+                new SpellTemplate //Pocket of invisibility
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Utility,
+                    Description = "You create a pocket of invisiblity that extends outward from yourself and conceals all creatures (friend and foe) within the area of effect. " +
+                                    "Objects in the area remain visible unless they are being carried by an invisible creature. The area of effect moves with you, " +
+                                    "but the spell ends early if you move faster than half speed, make an attack, or cast a spell.",
+                    Names = new List<string> { "veil", "cloak", "shroud" },
+                    MinimumDuration = Duration.OneMinute,
+                    IsAlwaysAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    DoesNotTargetCreatures = true,
+                    MinimumCastTime = CastTime.OneMinute,
+                    BaseValueScore = 10,
+                }
             };
 
             return templates;
