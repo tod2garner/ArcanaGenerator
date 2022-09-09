@@ -407,6 +407,57 @@ namespace SpellGenerator.Client.Data
                 },
                 /*                 
                  *  
+                    Divination - seal ability for 1d4 rounds
+                    Divination - seal ability until next short rest
+                    Conjuration - lateral gravity
+                    Conjuration - partial banishment, no damage but disabling, roll to send arms, legs, or head to another dimension
+                *  Necro
+                        debuff Max HP
+                        wither - escalating penalty to max HP
+                        cannot regain hp
+                        parallel to finger of death but permanent skeleton instead of zombie - single target acid and necrotic damage
+                        any healing directed at the target is stolen and benefits the caster
+                        damage based on how much of your own HP is missing - if the target is killed, 1d6 chance to not use a spell slot for the casting
+                        reaction - as you fall unconscious - tie the target's fate to your own, whenever you fail a death saving throw they take necrotic damage and if you die they are stunned for 1d3 rounds - is always instant (to avoid concentration requirements)
+                        reaction - as you fall unconscious deal 4d12 + 10 necrotic damage to one visible targt in range
+                        cancel benefit of any non-permanent buff and deal necrotic damage per benefit remove
+                        cannot be healed by spells, and any caster that tries to heal this target takes necrotic damage
+                        randomly rotating debuff - blinded, restrained, feeble, mute and deaf, sleep, pacifism, fear
+                        reduce speed and AC
+                        reduce speed and accuracy
+                        enemies targeted take damage equal to any damage you suffer for the duration
+                        doom - black mark appears on the target's hands and neck, they are marked for death. After 3d8 + 5 hours they instantly die. This can be prevented only by removing the curse before then or by killing a humanoid. The target instantly knows this when they are marked.
+                        vulnerable to X damage
+                        unable to use reactions or bonus actions
+                        reduce CON or DEX etc down to a fixed number (like feeble mind)
+                        like bane, penalty dice for all attacks and saving throw
+                        command undead - temporarily take control, only if low INT
+                        donate one undead under your control as an explosion 
+                        shared suffering for enemies (damage one takes auto-applied at half value to linked others) - already exists above?
+                        detonate and desecrate (single cast? delayed explosion)
+                * Evocation
+                        spell whose damage scales based on the amount of depleted spell slots you have (or undeleted)	
+	                        mana mine
+	                        sticky grenade, channels for more damage
+	                        protective dome
+	                        circle of power - flat added damage per mana
+	                        circle of enlightenment - any school, plus effective spell levels for that school
+                        ignite proliferation - when ignited run in a random direction, any creatures within 5 ft are also ignited	
+                        throw a shadow of a melee weapon, chain to up to 3 targets within 10ft of the last	
+	                        damage plus debuff
+                        chaotic damage - roll dice for damage type	
+                        shatter a metallic weapon and hurl the shards, damage plus debuff	
+	                        range of self, non magic weapon
+	                        blade blast, ranged aoe
+                        vulnerabilities for each damage type	
+                        debuff - puny God, ragdoll slam into ground and thrown, no effect if size is huge or bigger	
+                        debuff - lesser power word kill (or divine word), creatures with less than 30 HP instantly reduced to 1hp	
+                        debuff - reduce HP by half, but if the damage exceeds 50 HP then the caster takes equal damage	
+                        debuff - creatures with HP less than 50 instantly reduced to 0hp, but the caster suffers 4d12 necrotic damage that cannot be reduced or avoided	
+                        debuff - internal cry, on death effects	
+                        storm rain	
+                        damage and pull yourself to the target, always ranged	
+	                        consecrated path, flicker strike, chain hook, leap slam, shield charge
                  */
                 //*************************************************************************
                 //new SpellTemplate //

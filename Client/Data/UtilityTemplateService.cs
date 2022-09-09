@@ -610,7 +610,70 @@ namespace SpellGenerator.Client.Data
                     BaseValueScore = 30,
                 },
                 /*                 
-                 *  
+                 *  Divination
+                        runes that glow when long distance twins hear a specific word 
+                        utility - caster takes 1d4 damage if the target intentionally tells a lie,  or double damage to have no components and be subtle
+                        Lesser comprehend languages, very simple ideas only
+                        x-ray one material wood or stone or crystal or metal (including paint and plaster on walls or ceilings)
+                        track via recent body heat path, one specific race or creature type
+                        utility custom compass - point to current location after you leave, or point others to you
+                        utility track object - range of touch, plant object and wait
+                        speak with object - blind and deaf, only temp and pressure and acceleration
+                        divination - oddly prepared - pull from your pocket or pack one item worth less than 20gp. A glimpse of the future promoted you to purchase it for this occasion. Retroactively deduct the price from your funds
+                        divination - structural - visual heat map of how close non-living materials are to their breaking point
+                        conjure tea - enough for 1d4+1 people. Each gets a free attempt at scrying. DM makes a secret roll : 50-50 odds that vision is false, if more than one person targets the same thing they have the same vision (one DM roll instead of multiple)
+                *  Conjuration
+                        duplicate or replicate an outfit utility, tangible not an illusion
+                        temporary portable hole utility, non-exploding (collapses instead)
+                        medium range teleport, 1 mile
+                        temporary graffiti
+                        Lesser animate objects
+                        AoE difficult terrain and fall prone (no save) at the start of turn if touching the ground
+                        better earth bind - effect for non flying creatures too (restrained?)
+                *  Illusion
+                        multiplying illusion - start with 3, more appear whenever one is touched 
+                        nimble - DC and only disappears if hit
+                        ghostly second stage if touched
+                        tangible illusions - 1d4 pysical interactions
+                        fixed illusion (preset shapes & sounds)
+                        subtractive illusion / partial invisibility
+                        object invisibility
+                        Directional scent (false illusion)
+                        hide worth - illusion or transmutation - gold coins to copper temporarily, and gems into common minerals
+                        split illusions - 3d4 copies of the same illusion, less than 6 inches in any dimension
+                        split illusion - 2d6 copies, less than 3ft
+                * Necro
+                        bodyswap - teleport, if you consume a corpse at the target location deal damage and does not use the spell slot	
+                        consume a corpse (turned to dust) to gain temp HP	
+                        consume a corpse (turned to dust) to heal an ally	
+	                        buffs? speed, resistance, damage?
+                        unearth from poe, remains burst from the ground and deal damage in a line?	
+                        statis AoE center on self - outside of AoE 1d8 hours pass, by inside only minutes. Barrier like wall of force prevents anything from passing in the meantime	
+	                        another version with days instead of hours?
+	                        another version that doesn't center of self, smaller time range to trap enemies 
+                        consume two undead minions under your control to grant a permanent bonus to a 3rd minion	
+	                        limited vampiric damage or bonus AC or double walking speed
+	                        new creature counts as two for maintenance (ie from animate or create dead spells)
+                        summon raging spirit - long cast time, store in a vessel (lantern or similar)	
+                        rot, moss, mold, wear out objects	(non-damaging, non-creature objects only)
+                        spray curdled milk, rotten fruit, etc (aesthetic or utility? prevent tracking, distraction charm to drive victims away )	
+                        curse item 	
+                        delayed, undetectable poison (or difficult to detect)	
+                        temporary animation - lasts for only 1d4 rounds - must be recent, intead of new stat block use original with fixed penalty	
+                        animate beast - use original stat block, fixed penalty	
+                        animate monstrosity or abberation - original stat block, no penalty		
+                        animate giant - original stat block with penalty	
+                        animate incomplete remains	
+                        change remains to be purely skeletal	
+                        transform a permanent skeleton or zombie you control into a ghostly variant of the same	
+                        ritual to sacrifice max HP until next long rest interchange for one of the following: immune to poison, no need to breathe, 50 percent chance after death save to gain 3d6 HP, necrotic damage heals you and healing spells damage you. Roll randomly, can be cast multiple times to stack different effects	
+                * Evocation
+                        utility - improve cordon of arrows 
+                        utility - lesser demi plane (maybe on scale of a portable hole with a 1hr duration?
+                        utility - sending with higher word limit or an extra "volley" back and forth
+                        utility - huge AoE alarm, but with a specific trigger spoken phrase (know when someone says your name) and instantly know where in AoE trigger occurred
+                        frost blink and flame dash and plague bearer and smoke mine and withering step and lightning warp
+                        gamble spell slots for self, spend X slot, roll dice to see if you get back more or less, then immune to effects until long rest
                  */
                 //*************************************************************************
                 //new SpellTemplate //

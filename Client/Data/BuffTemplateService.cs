@@ -539,6 +539,42 @@ namespace SpellGenerator.Client.Data
                 },
                 /* 
                  * 
+                 * Illusion? remote spell casting - channel for ally to allow them to project a spell very long range
+                 * Divination:
+                        eyes on the back of your head, can see both directions simultaneously
+                        use wisdom instead of Dex for stealth, slight of hand, etc
+                        share ability (like sneak attack or wild shape) with 1d6 other creatures.
+                            each gets a single use and then forgets
+                            if used for a spell, it must be a lower level than this spell
+                        ranged opportunity attacks - AoE - when they enter or end their turn in the area
+                        multiple reactions per round
+                *  Conjuration
+                        each turn can trade movement for one extra weapon attack or +1 AC
+                        blink isntead of walk
+                        feast of left overs - table with partially eaten food appears, enough for 2d6+1 people to have a meal. Each makes a CON save, On a failure, poisoned for 2 hours. On a success, immune to charm effects and gain 2d12 Temp HP 
+                        other feast ideas - damage resistance paired with vulnerability, gamble AC bonus or a point of Exhaustion 
+                *  Necro
+                        Vampiric - weapon attacks for duration, single spell attack
+                        undead fortitude
+                        reaction, ranged - steal healing effect
+                        movement speed vamp
+                        only affects undead creatures with INT less than 7. Temporarily restore their intellect from when they were alive.
+                        ritual under moonlight, buff to give bonus on ability checks made in dim light (up cast for attacks too)
+                * Evocation
+                        blood rage - lose HP every round but gain bonus to damage, or vamp, or extra attack	
+                        righteous fire - one each: damage AoE, regain random spell slot, spell crit 	
+                        buff infernal blow, melee attacks create sticky bomb effect, fuse resets on hit and damage increases	
+                        buff explosive arrow, ranged attacks create a sticky bomb...	
+                        molten shell - detonates when temp HP ends	
+                        searing bond, 1d3 stationary points and yourself, bonus action to replace one	
+                        immunities for certain damage types, with offsetting penalties (reduced AC, take damage, etc)	
+                        buff - shield throw, chain or shrapnel, and reappear	
+                        buff tempest shield, damage when attacks miss vs your AC	
+                        buff - variant of contingency, lasts only 1 hour but multiple creatures benefit (common triggering condition and spell for all), spell level not more than half this spell	
+                        empowered kicks and punches, add thunder or force damage	
+	                        double damage to wood or stone structures
+                        restore spell slots for an ally, total sum double what this spell uses, but none higher than this spell	
+                        buff -pick a 1st level spell you know. Each time the target successfully hits with a weapon attack (once per turn) the spell is automatically triggered without using a spell slot or components. The spell automatically targets the creature that was hit, but any AoE effects still have an area.	
                 */
                 //*************************************************************************
                 //new SpellTemplate //
