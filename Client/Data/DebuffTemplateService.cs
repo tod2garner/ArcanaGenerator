@@ -359,7 +359,7 @@ namespace SpellGenerator.Client.Data
                     Description = "is distracted by noises that no one else can hear. You choose the nature of the sounds, but the volume is no louder than normal speaking volume. The target has disadvantage " +
                                     "on Perception, Insight, and Investigation checks. If you are hidden when you cast this spell you may choose to increase the cast time by one minute and omit all spell components " +
                                     "(making the casting undetectable by non-magical means).",
-                    Names = new List<string> {  },//-------------------- names -------------------- TODO
+                    Names = new List<string> { "tinnitus"  },//-------------------- names -------------------- TODO
                     MinimumDuration = Duration.OneMinute,
                     IsAlwaysRanged = true,                    
                     BaseValueScore = 3,
@@ -370,34 +370,44 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Debuff,
                     Description = "is taunted by you. They cannot target anyone other than you with attacks unless they make a successful WIS save. " +
                                     "They also automatically fail any Insight and Perception checks that are unrelated to your actions.",
-                    Names = new List<string> { "taunt" },//--------------------TODO
+                    Names = new List<string> { "taunt", "duel", "confrontation" },
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 5
                 },
-                //new SpellTemplate //Leash
-                //{
-                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Conjuration },
-                //    Type = EffectType.Debuff,
-                //    Description = "anchored by chains (can still move, but like on a leash anchored to a point)",
-                //    Names = new List<string> { "leash", "tether" },//--------------------TODO
-                //    BaseValueScore = 5
-                //},
-                //new SpellTemplate //Arcane duel
-                //{
-                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation },
-                //    Type = EffectType.Debuff,
-                //    Description = "arcane duel , cannot target anyone other than you with spells or magical abilities",
-                //    Names = new List<string> { "duel" },//--------------------TODO
-                //    BaseValueScore = 5
-                //},
-                //new SpellTemplate //Misfortune
-                //{
-                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
-                //    Type = EffectType.Debuff,
-                //    Description = "if they roll a 13 on any dice roll (attack, save, etc) they are stunned until the end of their next turn",
-                //    Names = new List<string> { "misfortune" },//--------------------TODO
-                //    BaseValueScore = 5
-                //},
+                new SpellTemplate //Leash
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Debuff,
+                    Description = "is anchored by chains to a point you can see within range. They cannot move more than [10-20@5]ft from the anchor point, " +
+                                    "but they are able to move normally within that limit. The restraints are immune to damage and can only be escaped by teleportation. " +
+                                    "This spell has no effect on creatures that are Huge or larger in size.",
+                    Names = new List<string> { "leash", "tether", "fetter" },
+                    IsAlwaysRanged = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Arcane duel
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation },
+                    Type = EffectType.Debuff,
+                    Description = "cannot use their spells or magical abilities to target anyone other than you.",
+                    Names = new List<string> { "duel", "match", "confrontation" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Misfortune
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Debuff,
+                    Description = "is cursed with sporadic misfortune. Any time they roll a 5 or lower on the dice (excluding modifiers) for any roll using a d20 (attack, save, etc.) " +
+                                    "they are stunned until the end of their next turn while they deal with an unlucky coincidence.",
+                    Names = new List<string> { "misfortune", "coincidence", "tribulation" },
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 2
+                },
+                /*                 
+                 *  
+                 */
                 //*************************************************************************
                 //new SpellTemplate //
                 //{

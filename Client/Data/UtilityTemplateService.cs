@@ -444,7 +444,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Evocation },
                     Type = EffectType.Utility,
-                    Description = "You cast a varation of the light spell where the light created is visible only to you and up to [2-5] other creatures that you select at the time of casting.",
+                    Description = "You cast a variation of the light spell where the light created is visible only to you and up to [2-5] other creatures that you select at the time of casting.",
                     Names = new List<string> { "secrecy", "illumination", "discernment" },
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
@@ -456,7 +456,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion, SchoolOfMagic.Evocation },
                     Type = EffectType.Utility,
-                    Description = "You cast a varation of the darkness spell where the darkness created is transparent to you and up to 1d3 other creatures " +
+                    Description = "You cast a variation of the darkness spell where the darkness created is transparent to you and up to 1d3 other creatures " +
                                     "that you select at the time of casting (each can still see the outline of the affected area).",
                     Names = new List<string> { "cloak", "penumbra", "shadow", "eclipse" },
                     DoesNotTargetCreatures = true,
@@ -576,17 +576,20 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Utility,
                     Description = "Any creature affected by this spell is immune to fall damage, but cannot use reactions or bonus actions.",
-                    Names = new List<string> { },//--------------------TODO
+                    Names = new List<string> { "dive", "descent", "meteor" },
                     MinimumDuration = Duration.OneMinute,                    
                     BaseValueScore = 4
                 },
-                new SpellTemplate //Anti-magic field
+                new SpellTemplate //Anti-magic field with limits
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
                     Type = EffectType.Utility,
-                    Description = "You create a pocket where all magic is suppressed. Non-permanent magical effects are dispelled if they are of a lower level than this spell. Otherwise they are suppressed. Enchanted items cease to function. " +
-                                    "Summoned creatures are temporarily banished. Spells cannot be cast in the area of effect unless they are of a higher level than this spell. Dieties are unaffected by this spell.",
-                    Names = new List<string> { },//--------------------TODO
+                    Description = "You create a variation of the Anti-Magic Field spell such that most (but not all) magic is suppressed in the target area. " +
+                                    "Non-permanent magical effects are suppressed if they are of a lower level than this spell. " +
+                                    "Summoned creatures are temporarily banished if this spell's level is higher than the creature's CR. " +
+                                    "Enchanted items act as if they were mundane unless created by magic of a higher level than this spell. " +
+                                    "Spells cannot be cast in the area of effect unless they are of a higher level than this spell. Dieties are unaffected by this spell.",
+                    Names = new List<string> { "supression", "foil", "opposition" },
                     MinimumDuration = Duration.OneMinute,
                     IsAlwaysAoE = true,
                     DoesNotTargetCreatures = true,
@@ -597,10 +600,10 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
                     Type = EffectType.Utility,
-                    Description = "You relase a pulse that suppresses all magic in the target area. " +
+                    Description = "You relase a pulse that suppresses all magic in the target area. The effects are similar to an anti-magic field, but last for only a few seconds. " +
                                     "Non-permanent magical effects are dispelled if they are of a lower level than this spell. Otherwise they are suppressed for one round. " +
                                     "Enchanted items cease to function for one round. Summoned creatures are banished for one round.",
-                    Names = new List<string> { },//--------------------TODO
+                    Names = new List<string> { "supression", "foil", "pulse" },
                     IsAlwaysInstant = true,
                     IsAlwaysAoE = true,
                     DoesNotTargetCreatures = true,                    

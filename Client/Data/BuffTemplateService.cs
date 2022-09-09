@@ -453,15 +453,92 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 15
                 },
-                /*
-                   remove one temporary negative effect. If level is higher than this spell DC is 15 + the difference between spell levels
-                   armor - reduce all incoming damage by a flat amount for the duration
-                   regeneration per turn
-                   regeneration per turn, but ends early if you attack or cast a spell
-                   can add CON to melee attack and damage rolls (in addition to strength), but reduce AC by CON modifier
-                   bonus to Damage/AC but spell ends early if you move at all
-                   if you roll a 7 on any dice for any reason (attack, save, etc) you regain a spell slot, starting with the lowest
-                   bonus to AC but spell ends early if you attack or cast a spell
+                new SpellTemplate //Nullify
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                    Type = EffectType.Buff,
+                    Description = "has one non-permanent magical ailment removed. If the ailment was created by magic of a level that is higher than this spell then the DC is 15 + the difference between spell levels",
+                    Names = new List<string> { "nullification", "purification", "restoration" },
+                    IsAlwaysInstant = true,                    
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Flat damage reduction
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                    Type = EffectType.Buff,
+                    Description = "has all incoming damage reduced by [2-10] for the spell duration.",
+                    Names = new List<string> { "armor", "hide", "plate" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 6
+                },
+                new SpellTemplate //regeneration per turn
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Buff,
+                    Description = "regenerates 1[dice] HP at the start of their turn each round, but their movement speed is reduced by [5-15@5]ft.",
+                    Names = new List<string> { "regeneration", "resurgence", "renewal" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 7
+                },
+                new SpellTemplate //regeneration per turn while defensive
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Buff,
+                    Description = "regenerates [2-3][dice] HP at the start of their turn each round. " +
+                                    "However, this effect ends early if they make any attacks or cast any spells that deal damage.",
+                    Names = new List<string> { "regeneration", "repair", "renewal" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Recover spell slot
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Buff,
+                    Description = "regains a single spent spell slot, starting with the lowest level spent, any time they roll a 7 on any dice used for an attack or saving throw. " +
+                                    "This spell has no effect on a creature without spell slots.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 2
+                },
+                new SpellTemplate //Add CON to STR melee
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Buff,
+                    Description = "can add their CON modifier to any strength-based melee attack and damage rolls (in addition to their STR modifier), " +
+                                    "but their AC is reduce by their CON modifier for the duration.",
+                    Names = new List<string> { "muscle", "brawn", "thew" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //AC bonus while stationary
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                    Type = EffectType.Buff,
+                    Description = "gains a +[1-2] bonus to AC, but this effect ends early if they move at all.",
+                    Names = new List<string> { "defiance", "trance", "blockade" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Damage bonus while stationary
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Buff,
+                    Description = "gains a +[2-8] bonus to all Damage rolls, but this effect ends early if they move at all.",
+                    Names = new List<string> { "defiance", "trance", "blockade" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //AC bonus while defensive
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                    Type = EffectType.Buff,
+                    Description = "gains a +[4-8] bonus to AC, but this effect ends early if they attack or cast a spell",
+                    Names = new List<string> { "shell", "sanctuary", "refuge" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 5
+                },
+                /* 
+                 * 
                 */
                 //*************************************************************************
                 //new SpellTemplate //
