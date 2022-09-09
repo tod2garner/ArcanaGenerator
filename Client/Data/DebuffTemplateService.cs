@@ -359,7 +359,7 @@ namespace SpellGenerator.Client.Data
                     Description = "is distracted by noises that no one else can hear. You choose the nature of the sounds, but the volume is no louder than normal speaking volume. The target has disadvantage " +
                                     "on Perception, Insight, and Investigation checks. If you are hidden when you cast this spell you may choose to increase the cast time by one minute and omit all spell components " +
                                     "(making the casting undetectable by non-magical means).",
-                    Names = new List<string> { "tinnitus"  },//-------------------- names -------------------- TODO
+                    Names = new List<string> { "tinnitus", "thrum", "diversion"  },
                     MinimumDuration = Duration.OneMinute,
                     IsAlwaysRanged = true,                    
                     BaseValueScore = 3,
@@ -405,10 +405,29 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 2
                 },
+                new SpellTemplate //Seal ability short term
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Debuff,
+                    Description = "has one of their abilities or spells sealed for 1d4 rounds, such that they cannot use it. " +
+                                    "You roll a percentile dice when you cast this spell - there is a 50% chance you can pick which ability is sealed and a 50% chance for the DM to pick on randomly. " +
+                                    "If you do get to choose, you can only pick abilities that you have seen the target use.",
+                    Names = new List<string> { "seal", "oblivion", "amnesia" },
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Seal ability long term
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Debuff,
+                    Description = "has one of their abilities or spells sealed for the spell duration, such that they cannot use it. You pick which ability to seal, " +
+                                    "but the DM also chooses one of your own abilities to be sealed while the spell is active. You can only pick abilities that you have seen the target use.",
+                    Names = new List<string> { "seal", "oblivion", "amnesia" },
+                    MinimumDuration = Duration.UntilNextShortRest,
+                    BaseValueScore = 5
+                },
                 /*                 
                  *  
-                    Divination - seal ability for 1d4 rounds
-                    Divination - seal ability until next short rest
                     Conjuration - lateral gravity
                     Conjuration - partial banishment, no damage but disabling, roll to send arms, legs, or head to another dimension
                 *  Necro

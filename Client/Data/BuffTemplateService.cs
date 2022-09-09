@@ -517,7 +517,7 @@ namespace SpellGenerator.Client.Data
                     Description = "gains a +[1-2] bonus to AC, but this effect ends early if they move at all.",
                     Names = new List<string> { "defiance", "trance", "blockade" },
                     MinimumDuration = Duration.OneMinute,
-                    BaseValueScore = 5
+                    BaseValueScore = 8
                 },
                 new SpellTemplate //Damage bonus while stationary
                 {
@@ -535,19 +535,64 @@ namespace SpellGenerator.Client.Data
                     Description = "gains a +[4-8] bonus to AC, but this effect ends early if they attack or cast a spell",
                     Names = new List<string> { "shell", "sanctuary", "refuge" },
                     MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Partial haste
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Buff,
+                    Description = "is magically accelerated. Each turn they may choose one of the following bonuses: " +
+                                    "(A) Gain one extra weapon attack, " +
+                                    "(B) Gain an extra [25-40@5]ft of movement speed, or " +
+                                    "(C) Any movement does not trigger attacks of opportunity.",
+                    Names = new List<string> { "acceleration", "haste", "speed" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //360 degree vision
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Buff,
+                    Description = "sprouts an extra pair of eyes on the back of their head, and can see in both directions simultaneously. " +
+                                    "They cannot be flanked and gain a +[5-10] bonus to passive perception and perception checks related to vision.",
+                    Names = new List<string> { "eye", "oculus", "vision" },
+                    MinimumDuration = Duration.OneHour,
+                    BaseValueScore = 1
+                },
+                new SpellTemplate //WIS replacing DEX
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Buff,
+                    Description = "may choose to use either their WIS or INT modifier instead of DEX for any dexterity ability checks (stealth, slight of hand, etc.)",
+                    Names = new List<string> { "plan", "cleverness", "wit" },
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 2
+                },
+                new SpellTemplate //Multiple reactions
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Buff,
+                    Description = "may use [2-3] reactions per round and has advantage on any attacks of opportunity that they make.",
+                    Names = new List<string> { "reflex", "impulse", "intuition" },
+                    MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 5
+                },
+                new SpellTemplate //Ranged oppportunity attacks
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Buff,
+                    Description = "may use their reaction to make opportunity attacks with a ranged weapon whenever a creature first enters " +
+                                    "their weapon range or ends their turn within range. They still only have one reaction per round, but they do have advantage on any attacks of opportunity that they make",
+                    Names = new List<string> { "hunt", "stalking", "reach" },
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 2
                 },
                 /* 
                  * 
-                 * Illusion? remote spell casting - channel for ally to allow them to project a spell very long range
                  * Divination:
-                        eyes on the back of your head, can see both directions simultaneously
-                        use wisdom instead of Dex for stealth, slight of hand, etc
                         share ability (like sneak attack or wild shape) with 1d6 other creatures.
                             each gets a single use and then forgets
-                            if used for a spell, it must be a lower level than this spell
-                        ranged opportunity attacks - AoE - when they enter or end their turn in the area
-                        multiple reactions per round
+                            if used for a spell, it must be a lower level than this spell                    
                 *  Conjuration
                         each turn can trade movement for one extra weapon attack or +1 AC
                         blink isntead of walk
@@ -579,7 +624,7 @@ namespace SpellGenerator.Client.Data
                 //*************************************************************************
                 //new SpellTemplate //
                 //{
-                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
                 //    Type = EffectType.Buff,
                 //    Description = "",
                 //    Names = new List<string> {  },//--------------------TODO

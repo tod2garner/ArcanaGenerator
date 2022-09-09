@@ -674,6 +674,11 @@ namespace SpellGenerator.Client.Data
                         utility - huge AoE alarm, but with a specific trigger spoken phrase (know when someone says your name) and instantly know where in AoE trigger occurred
                         frost blink and flame dash and plague bearer and smoke mine and withering step and lightning warp
                         gamble spell slots for self, spend X slot, roll dice to see if you get back more or less, then immune to effects until long rest
+                
+                 * Illusion, Divination? 
+                       remote spell casting - channel for ally to allow them to project a spell very long range
+                            one version with scrying spell to pick see target
+                            one version where you create a beacon on a target that the chosen ally can send thh spell to, like a homing missile
                  */
                 //*************************************************************************
                 //new SpellTemplate //
