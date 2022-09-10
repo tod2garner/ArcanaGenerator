@@ -706,6 +706,8 @@ namespace SpellGenerator.Client.Data
                        remote spell casting - channel for ally to allow them to project a spell very long range
                             one version with scrying spell to pick see target
                             one version where you create a beacon on a target that the chosen ally can send thh spell to, like a homing missile
+                * Other
+                       at least one per school utility - interact with environment, climate, or social
                  */
                 //*************************************************************************
                 //new SpellTemplate //
