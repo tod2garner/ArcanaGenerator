@@ -674,7 +674,34 @@ namespace SpellGenerator.Client.Data
                         utility - huge AoE alarm, but with a specific trigger spoken phrase (know when someone says your name) and instantly know where in AoE trigger occurred
                         frost blink and flame dash and plague bearer and smoke mine and withering step and lightning warp
                         gamble spell slots for self, spend X slot, roll dice to see if you get back more or less, then immune to effects until long rest
-                
+                * Enchanment
+                        utility - targets location not creatures - anyone that approaches is compelled to instead travel to a different point you choose	
+                        utility - mass sleep, friend foe and self in large AOE, elves cannot enter the area	
+                        utility - charm beasts with CR less than 1, always AOE	
+                        utility - mass paralysis, no save, friend and foe and self, fails for all if any are immune to paralysis 	
+                        utility - mass pacifism, no save, friend and foe and self, bypasses immunity to charm effects	
+                        utility - numb, can't feel pain, unaware of damage	
+                        remove memory of the past 2d6 minutes, blackout missing time on successful save, skipped time on a fail?	
+                        will believe the next 4d6 words you speak, but must understand the language	
+	                        you are invincible, that fire isn't hot, you can fly
+                * Transmute
+                        utility - make an object buoyant
+                        weight half or double
+                        color change
+                        Delayed effect transformation
+                        temporary glue (utility)
+                        add or remove 2d6 words on a paper document you hold, matching handwriting, Investigation vs modifier to catch it
+                        add any name you choose to any list of at least 10 names - always ranged
+                        polymorph a willing creature into a small object that weighs 1/10th their normal weight
+                        like polymorph, but fiend instead of beast
+                        resize clothing utility - must be fabric, not armor - tailor alterations rapidly 
+                        transmutation - counterfeit coins, from copper to gold, change lasts for 2d8 days, can change image on the coins too
+                        utility - drunk or sober (no effect on undead, elementals, constructs)
+                        instant swamp
+                        instant desert - mundane plant life crumbles to dust
+                        instant door - range of touch
+                        reduce object size but same weight
+                * 
                  * Illusion, Divination? 
                        remote spell casting - channel for ally to allow them to project a spell very long range
                             one version with scrying spell to pick see target

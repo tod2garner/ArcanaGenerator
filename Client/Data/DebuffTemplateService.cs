@@ -477,6 +477,23 @@ namespace SpellGenerator.Client.Data
                         storm rain	
                         damage and pull yourself to the target, always ranged	
 	                        consecrated path, flicker strike, chain hook, leap slam, shield charge
+                * Enchanment
+                        make all creatures look like strangers (like, actual appearance, faces look different)
+                        babel (random real language)
+                        a curse like babel, but for listening instead of speaking
+                        Delayed effect charm
+                        blurt out 1d4 words the caster chooses, double if you are hidden
+                        word swap (hear one word in it's place, not aware of swap)
+                        debuff - can only use action to dodge or dash
+                        aura of madness for enemies - Cha penalty
+                        forced to only speak lies, cannot speak direct truths
+                        speak in rhymes or be struck blind
+                        unable to speak 2d4 words of your choosing
+                        unable to verbalize one fact of your choosing
+                        any creature in range, including hidden ones, charmed to reveal themselves and walk towards you
+                * Transmute
+                        side effect: caster polymorphed into a different player race
+                        side effect: hair growth, baldness, clothes bleached, skin blue
                  */
                 //*************************************************************************
                 //new SpellTemplate //

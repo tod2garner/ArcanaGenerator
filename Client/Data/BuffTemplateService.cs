@@ -603,6 +603,7 @@ namespace SpellGenerator.Client.Data
                         undead fortitude
                         reaction, ranged - steal healing effect
                         movement speed vamp
+                        severe penalty to AC to all creatures in area, including yourself and allies (range is always self, always AoE)
                         only affects undead creatures with INT less than 7. Temporarily restore their intellect from when they were alive.
                         ritual under moonlight, buff to give bonus on ability checks made in dim light (up cast for attacks too)
                 * Evocation
@@ -619,7 +620,16 @@ namespace SpellGenerator.Client.Data
                         empowered kicks and punches, add thunder or force damage	
 	                        double damage to wood or stone structures
                         restore spell slots for an ally, total sum double what this spell uses, but none higher than this spell	
+                        unarmed strikes deal bonus bludgeon damage and knock back 10ft (if no larger than you)
                         buff -pick a 1st level spell you know. Each time the target successfully hits with a weapon attack (once per turn) the spell is automatically triggered without using a spell slot or components. The spell automatically targets the creature that was hit, but any AoE effects still have an area.	
+                * Enchanment
+                        buff - death ward, but next creature that reduces you too 0 HP is cursed and you stay unconscious (already in the list?)
+                        buff - invulnerable for 1d4 rounds but drop to 0hp after
+                        buff - immune to non-magical damage, but speed is reduced to 0 and spell ends early if you take any action other than the dodge action
+                * Transmutation
+                        increase speed (flat amoutn or double)
+                        buff: can carry unused movement over to your next turn, up to 3x your typical move speed
+                * 
                 */
                 //*************************************************************************
                 //new SpellTemplate //
