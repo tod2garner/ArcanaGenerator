@@ -424,16 +424,73 @@ namespace SpellGenerator.Client.Data
                                     "but the DM also chooses one of your own abilities to be sealed while the spell is active. You can only pick abilities that you have seen the target use.",
                     Names = new List<string> { "seal", "oblivion", "amnesia" },
                     MinimumDuration = Duration.UntilNextShortRest,
+                    IsNeverAoE = true,
                     BaseValueScore = 5
                 },
-                /*                 
-                 *  
-                    Conjuration - lateral gravity
-                    Conjuration - partial banishment, no damage but disabling, roll to send arms, legs, or head to another dimension
+                new SpellTemplate //Lateral gravity
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Evocation },
+                    Type = EffectType.Debuff,
+                    Description = "is suddenly pulled sideways as gravity pivots laterally for only them. You choose which cardinal direction (it must be perpendicular to typical gravity), and for the duration they are pulled at a rate of 30 ft per round. " +
+                                    "If there is a fixed object within their reach - including uneven terrain - they may grasp onto it to avoid falling sideways.",
+                    Names = new List<string> { "pull", "fall", "gravitas", "gravity" },
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Partial banishment
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Necromancy },
+                    Type = EffectType.Debuff,
+                    Description = "is partially banished. They take no damage but are temporarily disabled as you force part of their body to a harmless demi-plane. No wound is created (i.e. no blood loss, etc). " +
+                                    "Instead a glowing plane appears at the point of pseudo-amputation. Roll a percentile dice to determine what portion of their body is banished: " +
+                                    "60-99 = one leg, " +  //40%
+                                    "30-59 = one arm, " +  //30%
+                                    "20-29 = two legs, " + //10%
+                                    "10-19 = two arms, " + //10%
+                                    "0-9 = one head. " +  //10%
+                                    "This spell has no effect on creatures that have no limbs or are incorporeal.",
+                    Names = new List<string> { "banishment", "detachment", "severance", "scattering" },
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 20
+                },   
+                new SpellTemplate //Reduce Max HP
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Debuff,
+                    Description = "suffers [3-8][dice] Necrotic damage and has their Maximum HP reduced by the same amount until their next Long Rest.",
+                    Names = new List<string> { "withering", "wilting", "desiccation" },
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Escalating reduced Max HP
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Debuff,
+                    Description = "has their Maximum HP reduced by [2-3][dice] once per hour for the duration of this spell.",
+                    Names = new List<string> { "withering", "wilting", "desiccation" },
+                    MinimumDuration = Duration.OneDay,
+                    BaseValueScore = 2
+                },
+                new SpellTemplate //No healing
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Debuff,
+                    Description = "cannot regain HP for the spell's duration.",
+                    Names = new List<string> { "infection", "contamination", "disorder" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 3
+                },   
+                //new SpellTemplate //
+                //{
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                //    Type = EffectType.Debuff,
+                //    Description = "",
+                //    Names = new List<string> {  },//--------------------TODO
+                //    BaseValueScore = 5
+                //},   
+                /* 
+                //************************************************************************************************************************************
                 *  Necro
-                        debuff Max HP
-                        wither - escalating penalty to max HP
-                        cannot regain hp
                         parallel to finger of death but permanent skeleton instead of zombie - single target acid and necrotic damage
                         any healing directed at the target is stolen and benefits the caster
                         damage based on how much of your own HP is missing - if the target is killed, 1d6 chance to not use a spell slot for the casting
@@ -507,15 +564,6 @@ namespace SpellGenerator.Client.Data
                         when you see a creature suffer thunder or bludg - double the damage, if at least 20 (plus 20 for each size above medium) then Ragdolls, thrown 20ft, and knocked prone
                 * 
                  */
-                //*************************************************************************
-                //new SpellTemplate //
-                //{
-                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
-                //    Type = EffectType.Debuff,
-                //    Description = "",
-                //    Names = new List<string> {  },//--------------------TODO
-                //    BaseValueScore = 5
-                //},
             };
 
             return templates;
