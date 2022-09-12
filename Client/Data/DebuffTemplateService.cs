@@ -479,7 +479,66 @@ namespace SpellGenerator.Client.Data
                     Names = new List<string> { "infection", "contamination", "disorder" },
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 3
-                },   
+                },
+                new SpellTemplate //No healing spells, and healer takes damage
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Debuff,
+                    Description = "cannot be healed by spells, and any caster that tries to heal this target suffers the amount of healing as Necrotic damage.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Steal healing
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Debuff,
+                    Description = "has any healing stolen from them for the duration. Any time they would regain HP from any source instead you regain that HP and they get nothing. " +
+                                    "This spell ends early after stealing [20-60@5] HP worth of healing.",
+                    MinimumDuration = Duration.OneMinute,
+                    Names = new List<string> { "theft", "siphon", "larceny" },
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Damage and raise as a skeleton
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Debuff,
+                    Description = "takes [5-8][dice] acid damage + [25-40@5] necrotic damage. A humanoid killed by this spell rises at the start of your next turn as a skeleton that is permanently under your command, following your verbal orders to the best of its ability.",
+                    Names = new List<string> { "dissolution", "liquefaction", "demise", "decomposition" },
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 60
+                },
+                new SpellTemplate //Damage based on your missing HP
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Debuff,
+                    Description = "suffers necrotic damage equal to how much of your own HP is missing. If the target is killed, 1d4 chance to not use a spell slot for the casting.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Harvest buffs
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Debuff,
+                    Description = "has all non-permanent beneficial effects instantly removed and suffers [2-4][dice] necrotic damage per beneficial effect removed. " +
+                                    "For the purposes of this spell 'non-permanent' means an effect with a set duration after which it automatically expires.",
+                    Names = new List<string> { "harvest", "scouring", "bleaching", "void" },
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Harvest curses
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Debuff,
+                    Description = "has all non-permanent ailments, curses, and other debuffs instantly removed, but they suffer [4-6][dice] necrotic damage per negative effect removed. " +
+                                    "For the purposes of this spell 'non-permanent' means an effect with a set duration after which it automatically expires.",
+                    Names = new List<string> { "harvest", "scouring", "bleaching", "void" },
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 5
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
@@ -487,17 +546,10 @@ namespace SpellGenerator.Client.Data
                 //    Description = "",
                 //    Names = new List<string> {  },//--------------------TODO
                 //    BaseValueScore = 5
-                //},   
+                //},
                 /* 
                 //************************************************************************************************************************************
-                *  Necro
-                        parallel to finger of death but permanent skeleton instead of zombie - single target acid and necrotic damage
-                        any healing directed at the target is stolen and benefits the caster
-                        damage based on how much of your own HP is missing - if the target is killed, 1d6 chance to not use a spell slot for the casting
-                        reaction - as you fall unconscious - tie the target's fate to your own, whenever you fail a death saving throw they take necrotic damage and if you die they are stunned for 1d3 rounds - is always instant (to avoid concentration requirements)
-                        reaction - as you fall unconscious deal 4d12 + 10 necrotic damage to one visible targt in range
-                        cancel benefit of any non-permanent buff and deal necrotic damage per benefit remove
-                        cannot be healed by spells, and any caster that tries to heal this target takes necrotic damage
+                *  Necro                                                                        
                         randomly rotating debuff - blinded, restrained, feeble, mute and deaf, sleep, pacifism, fear
                         reduce speed and AC
                         reduce speed and accuracy
@@ -508,7 +560,7 @@ namespace SpellGenerator.Client.Data
                         reduce CON or DEX etc down to a fixed number (like feeble mind)
                         like bane, penalty dice for all attacks and saving throw
                         command undead - temporarily take control, only if low INT
-                        donate one undead under your control as an explosion 
+                        detonate one undead under your control as an explosion 
                         shared suffering for enemies (damage one takes auto-applied at half value to linked others) - already exists above?
                         detonate and desecrate (single cast? delayed explosion)
                 * Evocation

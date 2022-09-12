@@ -609,6 +609,18 @@ namespace SpellGenerator.Client.Data
                     DoesNotTargetCreatures = true,                    
                     BaseValueScore = 30,
                 },
+                new SpellTemplate //Steal healing as  reaction
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "When you see a creature begin to regain HP from any source you may use your reaction to steal the healing, such that instead you regain that HP and they get nothing.",
+                    IsAlwaysInstant = true,
+                    IsAlwaysAReaction = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    Names = new List<string> { "theft", "siphon", "larceny" },
+                    BaseValueScore = 5
+                },
                 /*                 
                  *  Divination
                         runes that glow when long distance twins hear a specific word 
@@ -623,6 +635,7 @@ namespace SpellGenerator.Client.Data
                         divination - structural - visual heat map of how close non-living materials are to their breaking point
                         conjure tea - enough for 1d4+1 people. Each gets a free attempt at scrying. DM makes a secret roll : 50-50 odds that vision is false, if more than one person targets the same thing they have the same vision (one DM roll instead of multiple)
                 *  Conjuration
+                        conjure [2-4] riding horses for [dice] hours. upcast for 2 extra horses per additional spell level.
                         duplicate or replicate an outfit utility, tangible not an illusion
                         temporary portable hole utility, non-exploding (collapses instead)
                         medium range teleport, 1 mile
@@ -643,6 +656,8 @@ namespace SpellGenerator.Client.Data
                         split illusions - 3d4 copies of the same illusion, less than 6 inches in any dimension
                         split illusion - 2d6 copies, less than 3ft
                 * Necro
+                        reaction - as you fall unconscious - tie the target's fate to your own, whenever you fail a death saving throw they take necrotic damage and if you die they are stunned for 1d3 rounds - is always instant (to avoid concentration requirements)
+                        reaction - as you fall unconscious deal [5-8][dice] + [10-40@10] necrotic damage to one visible targt in range
                         bodyswap - teleport, if you consume a corpse at the target location deal damage and does not use the spell slot	
                         consume a corpse (turned to dust) to gain temp HP	
                         consume a corpse (turned to dust) to heal an ally	
