@@ -680,6 +680,7 @@ namespace SpellGenerator.Client.Data
                         animate giant - original stat block with penalty	
                         animate incomplete remains	
                         change remains to be purely skeletal	
+                        only affects undead creatures with INT less than 7. Temporarily restore their intellect from when they were alive.
                         transform a permanent skeleton or zombie you control into a ghostly variant of the same	
                         ritual to sacrifice max HP until next long rest interchange for one of the following: immune to poison, no need to breathe, 50 percent chance after death save to gain 3d6 HP, necrotic damage heals you and healing spells damage you. Roll randomly, can be cast multiple times to stack different effects	
                 * Evocation

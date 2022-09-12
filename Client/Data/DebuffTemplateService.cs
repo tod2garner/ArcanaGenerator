@@ -519,6 +519,15 @@ namespace SpellGenerator.Client.Data
                     IsNeverAoE = true,
                     BaseValueScore = 30
                 },
+                new SpellTemplate //Vampiric spell attack
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Debuff,
+                    Description = "suffers [4-8][dice] necrotic damage and you regain HP equal to half the damage dealt.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 30
+                },
                 new SpellTemplate //Harvest buffs
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
@@ -619,6 +628,7 @@ namespace SpellGenerator.Client.Data
                 //************************************************************************************************************************************
                 *  Necro                        
                         vulnerable to X damage                        
+                        steal STR or DEX or CON
                         reduce CON or DEX etc down to a fixed number (like feeble mind)
                         like bane, penalty dice for all attacks and saving throw
                         command undead - temporarily take control, only if low INT
@@ -648,7 +658,7 @@ namespace SpellGenerator.Client.Data
                         storm rain	
                         damage and pull yourself to the target, always ranged	
 	                        consecrated path, flicker strike, chain hook, leap slam, shield charge
-                * Enchanment
+                * Enchanment.
                         make all creatures look like strangers (like, actual appearance, faces look different)
                         babel (random real language)
                         a curse like babel, but for listening instead of speaking

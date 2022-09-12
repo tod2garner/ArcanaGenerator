@@ -582,11 +582,70 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
                     Type = EffectType.Buff,
                     Description = "may use their reaction to make opportunity attacks with a ranged weapon whenever a creature first enters " +
-                                    "their weapon range or ends their turn within range. They still only have one reaction per round, but they do have advantage on any attacks of opportunity that they make",
+                                    "their weapon range or ends a turn within range. They still only have one reaction per round, but they do have advantage on any attacks of opportunity that they make",
                     Names = new List<string> { "hunt", "stalking", "reach" },
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 2
                 },
+                new SpellTemplate //Undead fortitude
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Buff,
+                    Description = "is granted undead fortitude for the spell duration. If they are reduced to zero HP roll 1d10. " +
+                                    "On a 6 or higher they regain 1 HP instead of falling unconscious.",
+                    Names = new List<string> { "fortitude", "undeath", "resurgence" },
+                    MinimumDuration = Duration.OneMinute,
+                    IsNeverAoE = true,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Vampiric weapon attacks
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Buff,
+                    Description = "is empowered to steal health with their weapon attacks. On successful hits they regain half of the damage dealt as HP.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Movement speed vamp
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Buff,
+                    Description = "is empowered to steal movement speed with their melee attacks. " +
+                                    "On successful hits their target's move speed is reduced by 5ft and their speed is increased by the same amount. This effect can stack up to 4 times.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //AC vamp
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Buff,
+                    Description = "is empowered to steal stamina with their melee attacks." +
+                                    "On successful hits their target's AC is reduced by 1 and their AC is increased by the same amount. This effect can stack up to 3 times.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Spell drain
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Evocation },
+                    Type = EffectType.Buff,
+                    Description = "is empowered to drain arcane energy with their melee attacks." +
+                                    "On successful hits their target expends one spell slot uselessly, starting with their lowest available, but not more than once per round.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 10
+                },
+                //new SpellTemplate //
+                //{
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                //    Type = EffectType.Buff,
+                //    Description = "",
+                //    Names = new List<string> {  },//--------------------TODO
+                //    BaseValueScore = 5
+                //},
+                //*************************************************************************
                 /* 
                  * 
                  * Divination:
@@ -598,13 +657,8 @@ namespace SpellGenerator.Client.Data
                         blink isntead of walk
                         feast of left overs - table with partially eaten food appears, enough for 2d6+1 people to have a meal. Each makes a CON save, On a failure, poisoned for 2 hours. On a success, immune to charm effects and gain 2d12 Temp HP 
                         other feast ideas - damage resistance paired with vulnerability, gamble AC bonus or a point of Exhaustion 
-                *  Necro
-                        Vampiric - weapon attacks for duration, single spell attack
-                        undead fortitude
-                        reaction, ranged - steal healing effect
-                        movement speed vamp
+                *  Necro                     
                         severe penalty to AC to all creatures in area, including yourself and allies (range is always self, always AoE)
-                        only affects undead creatures with INT less than 7. Temporarily restore their intellect from when they were alive.
                         ritual under moonlight, buff to give bonus on ability checks made in dim light (up cast for attacks too)
                 * Evocation
                         blood rage - lose HP every round but gain bonus to damage, or vamp, or extra attack	
@@ -631,15 +685,6 @@ namespace SpellGenerator.Client.Data
                         buff: can carry unused movement over to your next turn, up to 3x your typical move speed
                 * 
                 */
-                //*************************************************************************
-                //new SpellTemplate //
-                //{
-                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
-                //    Type = EffectType.Buff,
-                //    Description = "",
-                //    Names = new List<string> {  },//--------------------TODO
-                //    BaseValueScore = 5
-                //},
             };
 
             return templates;
