@@ -29,10 +29,10 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate // Temp HP
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Enchantment },
                     Type = EffectType.Buff,
                     Description = "gains [2-5][dice] Temporary HP.",
-                    Names = new List<string>{ "fascimile", "vitality", "sustenance", "vigor", "ardour" , "Half-Life" },
+                    Names = new List<string>{ "fascimile", "vitality", "sustenance", "vigor", "ardour" },
                     IsAlwaysInstant = true,
                     BaseValueScore = 10
                 },
@@ -240,6 +240,15 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 10
                 },
+                new SpellTemplate //Added psychic damage 
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Buff,
+                    Description = "gains +[2-4][dice] psychic damage to one attack per round.",
+                    Names = new List<string> {  },//-------------TODO
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 10
+                },
                 new SpellTemplate //Added melee necrotic damage 
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
@@ -315,7 +324,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Death ward, teleport
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Necromancy },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
                     Type = EffectType.Buff,
                     Description = "is temporarily protected from death. The next time they fall unconscious they instantly regain 1 HP, stand up, " +
                                     "and may teleport to a visible, unoccupied point up to [15-30@5] ft away. This spell then ends early.",
@@ -407,7 +416,7 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 10,
                 },
-                new SpellTemplate //Immume to Psychic damage
+                new SpellTemplate //Immume to fear
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
                     Type = EffectType.Buff,
@@ -677,12 +686,16 @@ namespace SpellGenerator.Client.Data
                         unarmed strikes deal bonus bludgeon damage and knock back 10ft (if no larger than you)
                         buff -pick a 1st level spell you know. Each time the target successfully hits with a weapon attack (once per turn) the spell is automatically triggered without using a spell slot or components. The spell automatically targets the creature that was hit, but any AoE effects still have an area.	
                 * Enchanment
-                        buff - death ward, but next creature that reduces you too 0 HP is cursed and you stay unconscious (already in the list?)
-                        buff - invulnerable for 1d4 rounds but drop to 0hp after
-                        buff - immune to non-magical damage, but speed is reduced to 0 and spell ends early if you take any action other than the dodge action
+                        immune to fear, gain move speed
+                        immune to charm effects, temp HP
+                        immune to psychic damage, but unable to communicate or understand any language                        
                 * Transmutation
                         increase speed (flat amoutn or double)
                         buff: can carry unused movement over to your next turn, up to 3x your typical move speed
+                * Other
+                        buff - death ward, but next creature that reduces you too 0 HP is cursed and you stay unconscious (already in the list?)
+                        buff - invulnerable for 1d4 rounds but drop to 0hp after
+                        buff - immune to non-magical damage, but speed is reduced to 0 and spell ends early if you take any action other than the dodge action
                 * 
                 */
             };

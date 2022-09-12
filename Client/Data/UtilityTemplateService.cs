@@ -70,7 +70,7 @@ namespace SpellGenerator.Client.Data
                     MinimumCastTime = CastTime.OneMinute,
                     BaseValueScore = 10
                 },
-                new SpellTemplate
+                new SpellTemplate//Cover
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Conjuration },
                     Type = EffectType.Utility,
@@ -82,7 +82,7 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 15
                 },
-                new SpellTemplate
+                new SpellTemplate//Counterspell and turn back to caster
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
                     Type = EffectType.Utility,
@@ -97,7 +97,7 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysAReaction = true,
                     BaseValueScore = 30
                 },
-                new SpellTemplate
+                new SpellTemplate//Take damage for ally
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
                     Type = EffectType.Utility,
@@ -170,7 +170,7 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 0.5
                 },
-                new SpellTemplate
+                new SpellTemplate//Fog cloud
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Illusion },
                     Type = EffectType.Utility,
@@ -182,7 +182,7 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 1
                 },
-                new SpellTemplate
+                new SpellTemplate//River
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
                     Type = EffectType.Utility,
@@ -228,7 +228,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Respite, stasis
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Enchantment },
                     Type = EffectType.Utility,
                     Description = "You teleport a visible unconscious creature to your feet (or the nearest unoccupied space) and put them into a brief stasis. " +
                                     "They are not fully stabilized, but for the next 1d4 rounds they do not need to make death saving throws (they neither pass nor fail). " +
@@ -609,7 +609,7 @@ namespace SpellGenerator.Client.Data
                     DoesNotTargetCreatures = true,                    
                     BaseValueScore = 30,
                 },
-                new SpellTemplate //Steal healing as  reaction
+                new SpellTemplate //Steal healing as a reaction
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
                     Type = EffectType.Utility,
@@ -619,16 +619,48 @@ namespace SpellGenerator.Client.Data
                     IsNeverAoE = true,
                     IsAlwaysRanged = true,
                     Names = new List<string> { "theft", "siphon", "larceny" },
-                    BaseValueScore = 5
+                    BaseValueScore = 10
                 },
-                /*                 
+                new SpellTemplate //Custom compass
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a customized compass. It does not point north. Instead you may choose to have it either point to location where you created it " +
+                                    "or point others to you (no matter where you move). You may also choose a key word that must be spoken for the compass to work, otherwise it simply spins in circles. " +
+                                    "At the end of the duration the compass dissolves into mist.",
+                    Names = new List<string> { "compass", "guide", "path" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    MinimumDuration = Duration.EightHours,                    
+                    BaseValueScore = 1
+                },
+                new SpellTemplate //Charm little beasts
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "You charm all of the beasts that have a CR less than 1 in the target area. You may convey one simple idea to them, and they will obey according to their level of intelligence.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsAlwaysAoE = true,
+                    MinimumDuration = Duration.OneHour,
+                    BaseValueScore = 2
+                },
+                //new SpellTemplate //
+                //{
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                //    Type = EffectType.Utility,
+                //    Description = "",
+                //    Names = new List<string> {  },//--------------------TODO
+                //    BaseValueScore = 5
+                //},
+                //*************************************************************************
+                /*            
                  *  Divination
                         runes that glow when long distance twins hear a specific word 
                         utility - caster takes 1d4 damage if the target intentionally tells a lie,  or double damage to have no components and be subtle
                         Lesser comprehend languages, very simple ideas only
                         x-ray one material wood or stone or crystal or metal (including paint and plaster on walls or ceilings)
                         track via recent body heat path, one specific race or creature type
-                        utility custom compass - point to current location after you leave, or point others to you
                         utility track object - range of touch, plant object and wait
                         speak with object - blind and deaf, only temp and pressure and acceleration
                         divination - oddly prepared - pull from your pocket or pack one item worth less than 20gp. A glimpse of the future promoted you to purchase it for this occasion. Retroactively deduct the price from your funds
@@ -693,7 +725,6 @@ namespace SpellGenerator.Client.Data
                 * Enchanment
                         utility - targets location not creatures - anyone that approaches is compelled to instead travel to a different point you choose	
                         utility - mass sleep, friend foe and self in large AOE, elves cannot enter the area	
-                        utility - charm beasts with CR less than 1, always AOE	
                         utility - mass paralysis, no save, friend and foe and self, fails for all if any are immune to paralysis 	
                         utility - mass pacifism, no save, friend and foe and self, bypasses immunity to charm effects	
                         utility - numb, can't feel pain, unaware of damage	
@@ -725,15 +756,6 @@ namespace SpellGenerator.Client.Data
                 * Other
                        at least one per school utility - interact with environment, climate, or social
                  */
-                //*************************************************************************
-                //new SpellTemplate //
-                //{
-                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
-                //    Type = EffectType.Utility,
-                //    Description = "",
-                //    Names = new List<string> {  },//--------------------TODO
-                //    BaseValueScore = 5
-                //},
             };
 
             return templates;
