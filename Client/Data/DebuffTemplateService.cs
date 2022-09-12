@@ -457,7 +457,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
                     Type = EffectType.Debuff,
-                    Description = "suffers [3-8][dice] Necrotic damage and has their Maximum HP reduced by the same amount until their next Long Rest.",
+                    Description = "suffers [3-8][dice] necrotic damage and has their Maximum HP reduced by the same amount until their next Long Rest.",
                     Names = new List<string> { "withering", "wilting", "desiccation" },
                     IsAlwaysInstant = true,
                     BaseValueScore = 30
@@ -514,7 +514,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
                     Type = EffectType.Debuff,
                     Description = "suffers necrotic damage equal to how much of your own HP is missing. If the target is killed, 1d4 chance to not use a spell slot for the casting.",
-                    Names = new List<string> {  },//--------------------TODO
+                    Names = new List<string> { "vengence", "revenge", "retaliation" },
                     IsAlwaysInstant = true,
                     IsNeverAoE = true,
                     BaseValueScore = 30
@@ -524,20 +524,88 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
                     Type = EffectType.Debuff,
                     Description = "has all non-permanent beneficial effects instantly removed and suffers [2-4][dice] necrotic damage per beneficial effect removed. " +
-                                    "For the purposes of this spell 'non-permanent' means an effect with a set duration after which it automatically expires.",
+                                    "For the purposes of this spell 'non-permanent' refers to any effect with a set duration after which it automatically expires.",
                     Names = new List<string> { "harvest", "scouring", "bleaching", "void" },
                     IsAlwaysInstant = true,
-                    BaseValueScore = 5
+                    BaseValueScore = 15
                 },
                 new SpellTemplate //Harvest curses
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
                     Type = EffectType.Debuff,
                     Description = "has all non-permanent ailments, curses, and other debuffs instantly removed, but they suffer [4-6][dice] necrotic damage per negative effect removed. " +
-                                    "For the purposes of this spell 'non-permanent' means an effect with a set duration after which it automatically expires.",
+                                    "For the purposes of this spell 'non-permanent' refers to any effect with a set duration after which it automatically expires.",
                     Names = new List<string> { "harvest", "scouring", "bleaching", "void" },
                     IsAlwaysInstant = true,
-                    BaseValueScore = 5
+                    BaseValueScore = 8
+                },
+                new SpellTemplate //Chaotic curse
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Debuff,
+                    Description = "is striken with a chaotic curse that changes each round. At the start of each of their turns roll 1d8 to determine the effect for that round: " +
+                                        "1 = blinded, " +
+                                        "2 = mute and deaf, " +
+                                        "3 = slowed (half speed), " +
+                                        "4 = restrained, " +
+                                        "5 = poisoned, " +
+                                        "6 = frightened of you, and " +
+                                        "7 = pacifism (cannot willing deal damage), " +
+                                        "8 = stunned.",
+                    Names = new List<string> { "chaos", "entropy", "curse" },
+                    MinimumDuration = Duration.OneMinute,
+                    IsNeverAoE = true,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Reduce speed and AC
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Debuff,
+                    Description = "has their movement speed reduced by [5-20@5]ft and suffers a -1d3 penalty to AC for the spell duration.",
+                    Names = new List<string> { "lethargy", "torpor", "mire" },
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 25
+                },
+                new SpellTemplate //Reduce speed and accuracy
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Debuff,
+                    Description = "has their movement speed reduced by [5-20@5]ft and suffers a -[2-5] penalty to all attack rolls (accuracy, not damage) for the spell duration",
+                    Names = new List<string> { "lethargy", "torpor", "mire" },
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Reduce speed and no bonus actions or reactions
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Debuff,
+                    Description = "has their movement speed reduced by [5-15@5]ft and is unable to use reactions or bonus actions for the spell duration.",
+                    Names = new List<string> { "lethargy", "torpor", "mire" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Feel your pain
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "is cursed to feel your pain. Each time you suffer damage they also suffer the same damage at half value.",
+                    Names = new List<string> { "empathy", "mark", "bond" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Doom
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Debuff,
+                    Description = "is marked for death. Lines of black sigils appear on the target's hands and neck. After 4d8 + 12 hours they instantly die. " +
+                                    "This can be prevented only by removing the curse or by personally killing a humanoid before the time expires. " +
+                                    "The target instinctively knows this fact the moment that they are marked, as well as how much time they have. " +
+                                    "The black sigils spread as the time grows shorter, covering their entire body when their doom is met, and vanishing if it is avoided." +
+                                    " Undead, fiends, and celestials are not affected by this spell.",
+                    Names = new List<string> { "doom", "omen", "ruin" },
+                    IsNeverAoE = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 100
                 },
                 //new SpellTemplate //
                 //{
@@ -549,14 +617,8 @@ namespace SpellGenerator.Client.Data
                 //},
                 /* 
                 //************************************************************************************************************************************
-                *  Necro                                                                        
-                        randomly rotating debuff - blinded, restrained, feeble, mute and deaf, sleep, pacifism, fear
-                        reduce speed and AC
-                        reduce speed and accuracy
-                        enemies targeted take damage equal to any damage you suffer for the duration
-                        doom - black mark appears on the target's hands and neck, they are marked for death. After 3d8 + 5 hours they instantly die. This can be prevented only by removing the curse before then or by killing a humanoid. The target instantly knows this when they are marked.
-                        vulnerable to X damage
-                        unable to use reactions or bonus actions
+                *  Necro                        
+                        vulnerable to X damage                        
                         reduce CON or DEX etc down to a fixed number (like feeble mind)
                         like bane, penalty dice for all attacks and saving throw
                         command undead - temporarily take control, only if low INT
