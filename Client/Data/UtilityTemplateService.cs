@@ -676,6 +676,9 @@ namespace SpellGenerator.Client.Data
                         oddly prepared - pull from your pocket or pack one item worth less than 20gp. A glimpse of the future promoted you to purchase it for this occasion. Retroactively deduct the price from your funds
                         structural - visual heat map of how close non-living materials are to their breaking point
                         conjure tea - enough for 1d4+1 people. Each gets a free attempt at scrying. DM makes a secret roll : 50-50 odds that vision is false, if more than one person targets the same thing they have the same vision (one DM roll instead of multiple)
+                        mimic ability (like sneak attack or wild shape) as reaction or share one of your own with 1d6 other creatures.
+                            each gets a single use and then forgets
+                            if used for a spell, it must be a lower level than this spell  
                 *  Conjuration
                         conjure [2-4] riding horses for [dice] hours. upcast for 2 extra horses per additional spell level.
                         duplicate or replicate an outfit utility, tangible not an illusion
@@ -685,6 +688,8 @@ namespace SpellGenerator.Client.Data
                         Lesser animate objects
                         AoE difficult terrain and fall prone (no save) at the start of turn if touching the ground
                         better earth bind - effect for non flying creatures too (restrained?)
+                        feast of left overs - table with partially eaten food appears, enough for 2d6+1 people to have a meal. Each makes a CON save, On a failure, poisoned for 2 hours. On a success, immune to charm effects and gain 2d12 Temp HP 
+                            other feast ideas - damage resistance paired with vulnerability, gamble AC bonus or a point of Exhaustion
                 *  Illusion
                         multiplying illusion - start with 3, more appear whenever one is touched 
                         nimble - DC and only disappears if hit

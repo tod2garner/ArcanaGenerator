@@ -317,39 +317,43 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Necromancy },
                     Type = EffectType.Buff,
-                    Description = "is temporarily protected from death. The next time they fall unconscious they instantly regain [2-4]d8 + 8 HP and may instantly stand up. This spell then ends early.",
+                    Description = "is temporarily protected from death by a healing ward. The next time they fall unconscious they instantly regain [2-4]d8 + 8 HP and may instantly stand up. This spell then ends early.",
                     Names = new List<string> { "ward", "redemption", "reclamation" },
                     MinimumDuration = Duration.TenMinutes,
+                    IsNeverAoE = true,
                     BaseValueScore = 8,
                 },
                 new SpellTemplate //Death ward, teleport
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
                     Type = EffectType.Buff,
-                    Description = "is temporarily protected from death. The next time they fall unconscious they instantly regain 1 HP, stand up, " +
+                    Description = "is temporarily protected from death by a fleeting ward. The next time they fall unconscious they instantly regain 1 HP, stand up, " +
                                     "and may teleport to a visible, unoccupied point up to [15-30@5] ft away. This spell then ends early.",
                     Names = new List<string> { "escape", "getaway", "disappearance" },
                     MinimumDuration = Duration.TenMinutes,
+                    IsNeverAoE = true,
                     BaseValueScore = 8,
                 },
                 new SpellTemplate //Death ward, temp AC
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
-                    Description = "is temporarily protected from death. The next time they fall unconscious they instantly regain 1 HP, stand up, " +
+                    Description = "is temporarily protected from death by a defensive ward. The next time they fall unconscious they instantly regain 1 HP, stand up, " +
                                     "and gain a +[8-12] bonus to AC until the end of their next turn. This spell then ends early.",
                     Names = new List<string> { "aegis", "bulwark", "refuge" },
                     MinimumDuration = Duration.TenMinutes,
+                    IsNeverAoE = true,
                     BaseValueScore = 8,
                 },
                 new SpellTemplate //Death ward, damage
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation },
                     Type = EffectType.Buff,
-                    Description = "is temporarily protected from death. The next time they fall unconscious they instantly regain 1 HP, stand up, " +
+                    Description = "is temporarily protected from death by an explosive ward. The next time they fall unconscious they instantly regain 1 HP, stand up, " +
                                     "and a blast of energy deals [3-6]d10 radiant damage to any enemies within 15 ft. This spell then ends early.",
                     Names = new List<string> { "paroxysm", "retribution", "detonation" },
                     MinimumDuration = Duration.TenMinutes,
+                    IsNeverAoE = true,
                     BaseValueScore = 8,
                 },
                 new SpellTemplate //Escalating temp HP while stationary
@@ -709,9 +713,92 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 3
                 },
+                new SpellTemplate //Trade in movement
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Buff,
+                    Description = "may choose each turn to exchange their full movement for either one extra weapon attack or a +1 bonus to AC for that round.",
+                    Names = new List<string> { "stand", "stance", "anchor" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 6
+                },
+                new SpellTemplate //Blink instead of walking
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Buff,
+                    Description = "is able to use their movement to teleport in 10ft increments instead of walking, but only to visible, unoccupied points. " +
+                                    "For example, a creature with a 25ft walking speed could use their movement on their turn to teleport 10ft from their original location, then another 10ft from that point, and finally another 5ft for the last of their movment." +
+                                    "When moving in this way they do not trigger attacks of opportunity.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 8
+                },
+                new SpellTemplate //Immune to non-magic damage but cannot move
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation, SchoolOfMagic.Abjuration },
+                    Type = EffectType.Buff,
+                    Description = "is immune to non-magical damage, but their speed is reduced to 0 and they cannot be moved by any means for the spell duration. " +
+                                    "The effect ends early if they take any action other than the dodge action.",
+                    Names = new List<string> { "sanctuary", "shield", "anchor" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Immune to elemental damage but vulnerable to all other damage
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Abjuration },
+                    Type = EffectType.Buff,
+                    Description = "is immune to one type of elemental damage that you choose (fire, cold, lightning, and thunder) for 1d3 rounds, but vulnerable to all others for one hour.",
+                    Names = new List<string> {  },//--------------------TODO,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 75
+                },
+                new SpellTemplate //Invlunerable, then unconscious
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Abjuration },
+                    Type = EffectType.Buff,
+                    Description = "is immune to all damage for 1d4 rounds, but after their turn on the final round they instantly drop to 0 HP, fall unconscious, and fail 1 death saving throw. " +
+                                    "If they are protected by Death Ward (or any similar magical effect) they are reduced to 1 HP and become vulnerable to all damage for 1 hour at the end of the final turn.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 100
+                },
+                new SpellTemplate //Death ward - curse attacker
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Buff,
+                    Description = "is protected from death by a vengeful ward. The next time they would fall unconscious due to taking damage from a creature, instead they avoid the damage completely and " +
+                                    "the creature that damaged them must succeed on a CON save or be Poisoned, Slowed, Blinded, and Deafened for 1d4 rounds. This spell then ends early.",
+                    Names = new List<string> { "vengence", "retaliation", "backlash" },
+                    MinimumDuration = Duration.TenMinutes,
+                    IsNeverAoE = true,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Dim light bonuses
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Buff,
+                    Description = "gains a +[3-7] bonus to any ability checks made in dim light or darkness. " +
+                                    "If cast at Level 6 or higher the bonus also applies to saving throws, as well as one attack per round. " +
+                                    "This spell can only be cast under moonlight.",
+                    Names = new List<string> { "darkness", "void", "shadow", "dusk" },
+                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumDuration = Duration.OneHour,
+                    BaseValueScore = 4
+                },
+                new SpellTemplate //Blood rage
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Necromancy },
+                    Type = EffectType.Buff,
+                    Description = "loses 2[dice] HP every round at the start of their turn but gains an equal bonus to all single-target damage rolls.",
+                    Names = new List<string> { "fury", "savagery", "rage" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 10
+                },
                 //new SpellTemplate //
                 //{
-                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
                 //    Type = EffectType.Buff,
                 //    Description = "",
                 //    Names = new List<string> {  },//--------------------TODO
@@ -719,21 +806,8 @@ namespace SpellGenerator.Client.Data
                 //},
                 //*************************************************************************
                 /* 
-                 *                           
-                 * Divination:                        
-                        share ability (like sneak attack or wild shape) with 1d6 other creatures.
-                            each gets a single use and then forgets
-                            if used for a spell, it must be a lower level than this spell                    
-                *  Conjuration
-                        each turn can trade movement for one extra weapon attack or +1 AC
-                        blink isntead of walk
-                        feast of left overs - table with partially eaten food appears, enough for 2d6+1 people to have a meal. Each makes a CON save, On a failure, poisoned for 2 hours. On a success, immune to charm effects and gain 2d12 Temp HP 
-                        other feast ideas - damage resistance paired with vulnerability, gamble AC bonus or a point of Exhaustion 
-                *  Necro                     
-                        severe penalty to AC to all creatures in area, including yourself and allies (range is always self, always AoE)
-                        ritual under moonlight, buff to give bonus on ability checks made in dim light (up cast for attacks too)
-                * Evocation
-                        blood rage - lose HP every round but gain bonus to damage, or vamp, or extra attack	
+                 *       
+                * Evocation	
                         righteous fire - one each: damage AoE, regain random spell slot, spell crit 	
                         buff infernal blow, melee attacks create sticky bomb effect, fuse resets on hit and damage increases	
                         buff explosive arrow, ranged attacks create a sticky bomb...	
@@ -755,10 +829,7 @@ namespace SpellGenerator.Client.Data
                 * Transmutation
                         increase speed (flat amoutn or double)
                         buff: can carry unused movement over to your next turn, up to 3x your typical move speed
-                * Other
-                        buff - death ward, but next creature that reduces you too 0 HP is cursed and you stay unconscious (already in the list?)
-                        buff - invulnerable for 1d4 rounds but drop to 0hp after
-                        buff - immune to non-magical damage, but speed is reduced to 0 and spell ends early if you take any action other than the dodge action
+                * Other                    
                 * 
                 */
             };

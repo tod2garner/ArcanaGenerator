@@ -626,7 +626,8 @@ namespace SpellGenerator.Client.Data
                 //},
                 /* 
                 //************************************************************************************************************************************
-                *  Necro                        
+                *  Necro                   
+                        severe penalty to AC to all creatures in area, including yourself and allies (range is always self, always AoE)     
                         vulnerable to X damage                        
                         steal STR or DEX or CON
                         reduce CON or DEX etc down to a fixed number (like feeble mind)
