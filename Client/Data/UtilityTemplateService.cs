@@ -645,6 +645,17 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.OneHour,
                     BaseValueScore = 2
                 },
+                new SpellTemplate //Truth through pain
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "You suffer 1[dice] psychic damage each time a target creature intentionally tells a lie. " +
+                                    "At the time of casting you may choose to double the damge you take in order to omit all spell components (such that the casting cannot be detected by non-magical means).",
+                    Names = new List<string> { "truth", "insight", "intuition" },
+                    MinimumDuration = Duration.OneMinute,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 10
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
@@ -657,14 +668,13 @@ namespace SpellGenerator.Client.Data
                 /*            
                  *  Divination
                         runes that glow when long distance twins hear a specific word 
-                        utility - caster takes 1d4 damage if the target intentionally tells a lie,  or double damage to have no components and be subtle
                         Lesser comprehend languages, very simple ideas only
                         x-ray one material wood or stone or crystal or metal (including paint and plaster on walls or ceilings)
                         track via recent body heat path, one specific race or creature type
                         utility track object - range of touch, plant object and wait
                         speak with object - blind and deaf, only temp and pressure and acceleration
-                        divination - oddly prepared - pull from your pocket or pack one item worth less than 20gp. A glimpse of the future promoted you to purchase it for this occasion. Retroactively deduct the price from your funds
-                        divination - structural - visual heat map of how close non-living materials are to their breaking point
+                        oddly prepared - pull from your pocket or pack one item worth less than 20gp. A glimpse of the future promoted you to purchase it for this occasion. Retroactively deduct the price from your funds
+                        structural - visual heat map of how close non-living materials are to their breaking point
                         conjure tea - enough for 1d4+1 people. Each gets a free attempt at scrying. DM makes a secret roll : 50-50 odds that vision is false, if more than one person targets the same thing they have the same vision (one DM roll instead of multiple)
                 *  Conjuration
                         conjure [2-4] riding horses for [dice] hours. upcast for 2 extra horses per additional spell level.
@@ -716,27 +726,28 @@ namespace SpellGenerator.Client.Data
                         transform a permanent skeleton or zombie you control into a ghostly variant of the same	
                         ritual to sacrifice max HP until next long rest interchange for one of the following: immune to poison, no need to breathe, 50 percent chance after death save to gain 3d6 HP, necrotic damage heals you and healing spells damage you. Roll randomly, can be cast multiple times to stack different effects	
                 * Evocation
-                        utility - improve cordon of arrows 
-                        utility - lesser demi plane (maybe on scale of a portable hole with a 1hr duration?
-                        utility - sending with higher word limit or an extra "volley" back and forth
-                        utility - huge AoE alarm, but with a specific trigger spoken phrase (know when someone says your name) and instantly know where in AoE trigger occurred
+                        improve cordon of arrows 
+                        lesser demi plane (maybe on scale of a portable hole with a 1hr duration?
+                        sending with higher word limit or an extra "volley" back and forth
+                        huge AoE alarm, but with a specific trigger spoken phrase (know when someone says your name) and instantly know where in AoE trigger occurred
                         frost blink and flame dash and plague bearer and smoke mine and withering step and lightning warp
                         gamble spell slots for self, spend X slot, roll dice to see if you get back more or less, then immune to effects until long rest
+                        ground shakes with each step, create difficult terrain with shockwaves along the path the walk
                 * Enchanment
-                        utility - targets location not creatures - anyone that approaches is compelled to instead travel to a different point you choose	
-                        utility - mass sleep, friend foe and self in large AOE, elves cannot enter the area	
-                        utility - mass paralysis, no save, friend and foe and self, fails for all if any are immune to paralysis 	
-                        utility - mass pacifism, no save, friend and foe and self, bypasses immunity to charm effects	
-                        utility - numb, can't feel pain, unaware of damage	
+                        targets location not creatures - anyone that approaches is compelled to instead travel to a different point you choose	
+                        mass sleep, friend foe and self in large AOE, elves cannot enter the area	
+                        mass paralysis, no save, friend and foe and self, fails for all if any are immune to paralysis 	
+                        mass pacifism, no save, friend and foe and self, bypasses immunity to charm effects	
+                        numb, can't feel pain, unaware of damage	
                         remove memory of the past 2d6 minutes, blackout missing time on successful save, skipped time on a fail?	
                         will believe the next 4d6 words you speak, but must understand the language	
 	                        you are invincible, that fire isn't hot, you can fly
                 * Transmute
-                        utility - make an object buoyant
+                        make an object buoyant
                         weight half or double
                         color change
                         Delayed effect transformation
-                        temporary glue (utility)
+                        temporary glue
                         add or remove 2d6 words on a paper document you hold, matching handwriting, Investigation vs modifier to catch it
                         add any name you choose to any list of at least 10 names - always ranged
                         polymorph a willing creature into a small object that weighs 1/10th their normal weight

@@ -122,7 +122,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
                     Type = EffectType.Debuff,
-                    Description = "is magically compelled to Fear every creature within sight at the moment the spell is cast. Friend, foe, and stranger alike, they are afraid of everyone.",
+                    Description = "is magically Frightened of every creature within sight at the moment the spell is cast. Friend, foe, and stranger alike, they are afraid of everyone.",
                     Names = new List<string> { "paranoia", "terror", "torment" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 25
@@ -658,6 +658,9 @@ namespace SpellGenerator.Client.Data
                         storm rain	
                         damage and pull yourself to the target, always ranged	
 	                        consecrated path, flicker strike, chain hook, leap slam, shield charge
+                * Illusion
+                        sickening smell
+                        halucination
                 * Enchanment.
                         make all creatures look like strangers (like, actual appearance, faces look different)
                         babel (random real language)

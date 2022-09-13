@@ -676,6 +676,39 @@ namespace SpellGenerator.Client.Data
                     IsNeverAoE = true,
                     BaseValueScore = 20
                 },
+                new SpellTemplate //Bonus to searching skills
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Buff,
+                    Description = "gains a +[5-10] bonus to Insight, Perception, and Investigation checks" +
+                                    "When the spell ends the target suffers an equal penalty for double the spell duration (even if the spell is ended early).",
+                    Names = new List<string> { "hunt", "search", "eye", "vision" },
+                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Bonus to athletic skills
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Buff,
+                    Description = "gains a +[5-10] bonus to Acrobatics and Athletics checks" +
+                                    "When the spell ends the target suffers an equal penalty for double the spell duration (even if the spell is ended early).",
+                    Names = new List<string> { "sinew", "muscle", "brawn" },
+                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 3
+                },
+                new SpellTemplate //Bonus to social skills
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment, SchoolOfMagic.Illusion },
+                    Type = EffectType.Buff,
+                    Description = "gains a +[5-10] bonus to Persuasion, Intimidation, and Deception checks for the spell duration. " +
+                                    "When the spell ends the target suffers an equal penalty for double the spell duration (even if the spell is ended early).",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 3
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
@@ -687,7 +720,7 @@ namespace SpellGenerator.Client.Data
                 //*************************************************************************
                 /* 
                  *                           
-                 * Divination:
+                 * Divination:                        
                         share ability (like sneak attack or wild shape) with 1d6 other creatures.
                             each gets a single use and then forgets
                             if used for a spell, it must be a lower level than this spell                    
