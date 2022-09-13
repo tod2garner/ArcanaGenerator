@@ -620,7 +620,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
                     Type = EffectType.Buff,
-                    Description = "is empowered to steal movement speed with their melee attacks. " +
+                    Description = "is able to steal movement speed with their melee attacks. " +
                                     "On successful hits their target's move speed is reduced by 5ft and their speed is increased by the same amount. This effect can stack up to 4 times.",
                     Names = new List<string> {  },//--------------------TODO
                     MinimumDuration = Duration.OneMinute,
@@ -630,7 +630,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
                     Type = EffectType.Buff,
-                    Description = "is empowered to steal stamina with their melee attacks." +
+                    Description = "is able to steal stamina with their melee attacks." +
                                     "On successful hits their target's AC is reduced by 1 and their AC is increased by the same amount. This effect can stack up to 3 times.",
                     Names = new List<string> {  },//--------------------TODO
                     MinimumDuration = Duration.OneMinute,
@@ -640,11 +640,41 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Evocation },
                     Type = EffectType.Buff,
-                    Description = "is empowered to drain arcane energy with their melee attacks." +
+                    Description = "is able to drain arcane energy with their melee attacks." +
                                     "On successful hits their target expends one spell slot uselessly, starting with their lowest available, but not more than once per round.",
                     Names = new List<string> {  },//--------------------TODO
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 10
+                },
+                new SpellTemplate //Nearby creatures frightened
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion, SchoolOfMagic.Enchantment },
+                    Type = EffectType.Buff,
+                    Description = "radiates a terrifying aura. Any enemy that begins a turn within [5-15@5]ft of the target must succeed on a WIS saving throw or become frightened of them.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Intimidate bonus action
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion, SchoolOfMagic.Enchantment },
+                    Type = EffectType.Buff,
+                    Description = "is empowered to appear more intimidating. For the spell duration they may Intimidate as a bonus action with a +[5-10] bonus to the ability check.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 8
+                },
+                new SpellTemplate //Stationary duplicates
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Buff,
+                    Description = "is surrounded by 1d3 illusory duplicates of themself. On their turns the target may instantly swap places with a duplicate as a bonus action. " +
+                                    "At the time casting you choose where the illusions appear, but each must be in a visible point within [10-25@5]ft of the target. " +
+                                    "The illusions mimic the target's behavior, but move in-place (they are stationary but animated).",
+                    Names = new List<string> { "fragmentation", "duplication", "deception" },
+                    MinimumDuration = Duration.OneMinute,
+                    IsNeverAoE = true,
+                    BaseValueScore = 20
                 },
                 //new SpellTemplate //
                 //{
@@ -656,7 +686,7 @@ namespace SpellGenerator.Client.Data
                 //},
                 //*************************************************************************
                 /* 
-                 * 
+                 *                           
                  * Divination:
                         share ability (like sneak attack or wild shape) with 1d6 other creatures.
                             each gets a single use and then forgets
