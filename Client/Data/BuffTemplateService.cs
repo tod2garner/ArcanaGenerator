@@ -406,16 +406,17 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment, SchoolOfMagic.Abjuration },
                     Type = EffectType.Buff,
-                    Description = "is immune to Charm effects for the spell duration.",
-                    Names = new List<string> { "ward", "aplomb", "bulwark" },
+                    Description = "gains [2-3][dice] Temporary HP and is immune to Charm effects for the spell duration.",
+                    Names = new List<string> { "ward", "aplomb", "heroism" },
                     MinimumDuration = Duration.OneRound,
-                    BaseValueScore = 5,
+                    BaseValueScore = 8,
                 },
                 new SpellTemplate //Immume to Psychic damage
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
                     Type = EffectType.Buff,
-                    Description = "is immune to Psychic damage, but has their INT reduced by 2d4 for the spell duration.",
+                    Description = "is immune to Psychic damage, but has their INT reduced by 2d4 for the spell duration. " +
+                                    "If their INT is lower than 4 they are unable to communicate verbally or understand any spoken language (but can still understand body language and gestures).",
                     Names = new List<string> { "ignorance", "stupor", "idiocy" },
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 10,
@@ -424,7 +425,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
                     Type = EffectType.Buff,
-                    Description = "is immune to Fear effects, but suffers a -[1-3] penalty to AC for the spell duration.",
+                    Description = "is immune to Fear effects and has their movement speed increased by 10ft, but suffers a -[1-3] penalty to AC for the spell duration.",
                     Names = new List<string> { "recklessness", "daring", "bravery" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 10,
@@ -796,6 +797,41 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 10
                 },
+                new SpellTemplate //Molten shell
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Buff,
+                    Description = "is protected by a glowing ward and gains [2-4][dice] Temporary HP for the spell duration. " +
+                                    "If this Temp. HP is depleted before the spell ends, the ward explodes and unleashes a blast that deals [3-4][dice] fire damage to any enemies within [5-10]ft.",
+                    Names = new List<string> { "ward", "shell", "retribution" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 25
+                },
+                new SpellTemplate //Shield throw
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Buff,
+                    Description = "is able to throw their shield like a homing missile (no attack roll required, it cannot miss). " +
+                                    "This spell has no effect on creatures that are not already holding a shield. " +
+                                    "Each turn as an action they may throw their shield at up to 3 targets within 30ft of them. " +
+                                    "The shield bounces between the targets, dealing 2[dice] bludgeoning damage to each, and then instantly reappears in their hand.",
+                    Names = new List<string> { "shield", "throw", "discus" },
+                    MinimumDuration = Duration.OneMinute,
+                    IsNeverAoE = true,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Tempest shield
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Abjuration },
+                    Type = EffectType.Buff,
+                    Description = "has their shield covered by straps made of lightning for the spell duration and they gain a +[1-2] bonus to AC. " +
+                                    "This spell has no effect on creatures that are not already holding a shield. " +
+                                    "Any time a melee attack misses them (is lower than their AC) a jolt of lightning strikes their attacker, dealing [2-4][dice] lightning damage.",
+                    Names = new List<string> { "tempest", "shield", "jolt" },
+                    MinimumDuration = Duration.OneMinute,
+                    IsNeverAoE = true,
+                    BaseValueScore = 20
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
@@ -808,29 +844,21 @@ namespace SpellGenerator.Client.Data
                 /* 
                  *       
                 * Evocation	
-                        righteous fire - one each: damage AoE, regain random spell slot, spell crit 	
                         buff infernal blow, melee attacks create sticky bomb effect, fuse resets on hit and damage increases	
                         buff explosive arrow, ranged attacks create a sticky bomb...	
-                        molten shell - detonates when temp HP ends	
                         searing bond, 1d3 stationary points and yourself, bonus action to replace one	
-                        immunities for certain damage types, with offsetting penalties (reduced AC, take damage, etc)	
-                        buff - shield throw, chain or shrapnel, and reappear	
-                        buff tempest shield, damage when attacks miss vs your AC	
+                        immunities for certain damage types, with offsetting penalties (reduced AC, take damage, etc)	                        
                         buff - variant of contingency, lasts only 1 hour but multiple creatures benefit (common triggering condition and spell for all), spell level not more than half this spell	
+                        unarmed strikes deal bonus bludgeon damage and knock back 10ft (if no larger than you)
                         empowered kicks and punches, add thunder or force damage	
 	                        double damage to wood or stone structures
-                        restore spell slots for an ally, total sum double what this spell uses, but none higher than this spell	
-                        unarmed strikes deal bonus bludgeon damage and knock back 10ft (if no larger than you)
-                        buff -pick a 1st level spell you know. Each time the target successfully hits with a weapon attack (once per turn) the spell is automatically triggered without using a spell slot or components. The spell automatically targets the creature that was hit, but any AoE effects still have an area.	
-                * Enchanment
-                        immune to fear, gain move speed
-                        immune to charm effects, temp HP
-                        immune to psychic damage, but unable to communicate or understand any language                        
+                        restore spell slots for an ally, total sum double what this spell uses, but none higher than this spell	                        
+                        buff -pick a 1st level spell you know. Each time the target successfully hits with a weapon attack (once per turn) the spell is automatically triggered without using a spell slot or components. The spell automatically targets the creature that was hit, but any AoE effects still have an area.	                                     
                 * Transmutation
                         increase speed (flat amoutn or double)
                         buff: can carry unused movement over to your next turn, up to 3x your typical move speed
                 * Other                    
-                * 
+                *       death ward illusion?
                 */
             };
 

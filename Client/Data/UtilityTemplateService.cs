@@ -656,6 +656,22 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysRanged = true,
                     BaseValueScore = 10
                 },
+                new SpellTemplate //Righteous fire
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "You are covered in flames that cannot be put out by non-magical means. The burning empowers you, but also damages you and any nearby enemies. " +
+                                    "You gain a +[10-20@5]ft bonus to your movement speed and a +[3-5] bonus to your spell casting modifier while you are ignited. " +
+                                    "All enemies within [10-20@5]ft of you suffer [2-4][dice] + [8-16@2] fire damage at the start of their turn every round. " +
+                                    "You suffer half as much fire damage - which bypasses resistances - at the start of your turn every round, " +
+                                    "until the burning would make your HP fall below zero. At that point you are instead reduced to 1 HP, the flames vanish, and this spell ends. " +
+                                    "Any creature that successfully dispels this effect suffers [4-8][dice] Fire damage.",
+                    Names = new List<string> { "conflagration", "immolation", "inferno" },
+                    IsNeverAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 70
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
