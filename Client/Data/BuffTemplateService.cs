@@ -832,6 +832,26 @@ namespace SpellGenerator.Client.Data
                     IsNeverAoE = true,
                     BaseValueScore = 20
                 },
+                new SpellTemplate //Empowered punches
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Buff,
+                    Description = "has their unarmed strikes enhanced. Once per turn they may deal [2-4][dice] bonus bludgeoning damage with an unarmed strike. " +
+                                    "Additionally, if the enemy they hit is Large or smaller in size it is knocked back [10-20@5]ft.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Thunder punches
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Buff,
+                    Description = "has their unarmed strikes enhanced. Once per turn they may deal [3-6][dice] bonus thunder damage with an unarmed strike. " +
+                                    "This strike deals double damage to structures or constructs made of wood or stone.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 15
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
@@ -848,10 +868,7 @@ namespace SpellGenerator.Client.Data
                         buff explosive arrow, ranged attacks create a sticky bomb...	
                         searing bond, 1d3 stationary points and yourself, bonus action to replace one	
                         immunities for certain damage types, with offsetting penalties (reduced AC, take damage, etc)	                        
-                        buff - variant of contingency, lasts only 1 hour but multiple creatures benefit (common triggering condition and spell for all), spell level not more than half this spell	
-                        unarmed strikes deal bonus bludgeon damage and knock back 10ft (if no larger than you)
-                        empowered kicks and punches, add thunder or force damage	
-	                        double damage to wood or stone structures
+                        buff - variant of contingency, lasts only 1 hour but multiple creatures benefit (common triggering condition and spell for all), spell level not more than half this spell	                                                
                         restore spell slots for an ally, total sum double what this spell uses, but none higher than this spell	                        
                         buff -pick a 1st level spell you know. Each time the target successfully hits with a weapon attack (once per turn) the spell is automatically triggered without using a spell slot or components. The spell automatically targets the creature that was hit, but any AoE effects still have an area.	                                     
                 * Transmutation
