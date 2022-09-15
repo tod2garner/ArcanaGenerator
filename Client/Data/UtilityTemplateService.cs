@@ -747,6 +747,8 @@ namespace SpellGenerator.Client.Data
                         transform a permanent skeleton or zombie you control into a ghostly variant of the same	
                         ritual to sacrifice max HP until next long rest interchange for one of the following: immune to poison, no need to breathe, 50 percent chance after death save to gain 3d6 HP, necrotic damage heals you and healing spells damage you. Roll randomly, can be cast multiple times to stack different effects	
                 * Evocation
+                        searing bond, 1d3 stationary points and yourself, bonus action to replace one
+                        variant of contingency, lasts only 1 hour but multiple creatures benefit (common triggering condition and spell for all), spell level not more than half this spell
                         improve cordon of arrows 
                         lesser demi plane (maybe on scale of a portable hole with a 1hr duration?
                         sending with higher word limit or an extra "volley" back and forth

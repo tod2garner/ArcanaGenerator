@@ -403,7 +403,7 @@ namespace SpellGenerator.Client.Data
                                     "they are stunned until the end of their next turn while they deal with an unlucky coincidence.",
                     Names = new List<string> { "misfortune", "coincidence", "tribulation" },
                     MinimumDuration = Duration.TenMinutes,
-                    BaseValueScore = 2
+                    BaseValueScore = 5
                 },
                 new SpellTemplate //Seal ability short term
                 {

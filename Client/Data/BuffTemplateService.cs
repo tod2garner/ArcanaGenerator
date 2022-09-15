@@ -855,20 +855,58 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Transmutation },
                     Type = EffectType.Buff,
-                    Description = "has their unarmed strikes enhanced. Once per turn they may deal [2-4][dice] bonus bludgeoning damage with an unarmed strike. " +
+                    Description = "has their unarmed strikes magically enhanced. Once per turn they may deal [2-4][dice] bonus bludgeoning damage with an unarmed strike. " +
                                     "Additionally, if the enemy they hit is Large or smaller in size it is knocked back [10-20@5]ft.",
                     Names = new List<string> {  },//--------------------TODO
                     MinimumDuration = Duration.OneMinute,
-                    BaseValueScore = 10
+                    BaseValueScore = 15
                 },
                 new SpellTemplate //Thunder punches
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
                     Type = EffectType.Buff,
-                    Description = "has their unarmed strikes enhanced. Once per turn they may deal [3-6][dice] bonus thunder damage with an unarmed strike. " +
+                    Description = "has their unarmed strikes magically enhanced. Once per turn they may deal [3-6][dice] bonus thunder damage with an unarmed strike. " +
                                     "This strike deals double damage to structures or constructs made of wood or stone.",
                     Names = new List<string> {  },//--------------------TODO
                     MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Explosive arrow
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Buff,
+                    Description = "has their ranged weapon attacks magically enhanced. Once per turn they may augment a ranged weapon attack with an adhesive material that sticks to the target. " +
+                                    "The attack does not deal any extra damage on-hit, but after one full round (at the end of the attacker's next turn) the material explodes, " +
+                                    "dealing 2[dice] fire damage to the target and any creatures within 5ft of them. " +
+                                    "If the attacker hits a target coated with this adhesive again before it has time to detonate then the explosion is delayed for one additional round and the damage is doubled. " +
+                                    "This doubling can escalate up to 4 times at most.",
+                    Names = new List<string> { "inferno", "ignition", "detonation" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Infernal blow
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Buff,
+                    Description = "has their melee weapon attacks magically enhanced. Once per turn they may deal [2-4][dice] bonus fire damage with a melee weapon attack. " +
+                                    "If the hit reduces a creature to 0 HP then the target explodes in a burst of flames that deals [2-4][dice] fire damage to all creatures within 15ft other than the original attacker.",
+                    Names = new List<string> { "inferno", "execution", "detonation" },
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Recharge spell slots
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Buff,
+                    Description = "regains a number of expended spell slots whose combined spell level is equal to 1d8 + half this spell's level (rounded up). " +
+                                    "However, none of the spell slots recharged may be of a higher level than this spell. " +
+                                    "Example: if cast at 5th level the target regains up to 1d8 + 3 combined spell levels' worth of spell slots. " +                                    
+                                    "This spell has no effect on a creature without spell slots. " +
+                                    "Once a creature benefits from this spell they are unaffected by it for 3 days.",
+                    Names = new List<string> { "transfer", "synergy", "recharge" },
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
                     BaseValueScore = 15
                 },
                 //new SpellTemplate //
@@ -882,17 +920,12 @@ namespace SpellGenerator.Client.Data
                 //*************************************************************************
                 /* 
                  *       
-                * Evocation	
-                        buff infernal blow, melee attacks create sticky bomb effect, fuse resets on hit and damage increases	
-                        buff explosive arrow, ranged attacks create a sticky bomb...	
-                        searing bond, 1d3 stationary points and yourself, bonus action to replace one	
-                        immunities for certain damage types, with offsetting penalties (reduced AC, take damage, etc)	                        
-                        buff - variant of contingency, lasts only 1 hour but multiple creatures benefit (common triggering condition and spell for all), spell level not more than half this spell	                                                
-                        restore spell slots for an ally, total sum double what this spell uses, but none higher than this spell	                        
-                        buff -pick a 1st level spell you know. Each time the target successfully hits with a weapon attack (once per turn) the spell is automatically triggered without using a spell slot or components. The spell automatically targets the creature that was hit, but any AoE effects still have an area.	                                     
+                * Evocation	                       
+                        pick a 1st level spell you know. Each time the target successfully hits with a weapon attack (once per turn) the spell is automatically triggered without using a spell slot or components. The spell automatically targets the creature that was hit, but any AoE effects still have an area.	                                     
                 * Other                    
-                *       death ward illusion?
-                *       side effect? - literally throw on clothing, lol
+                        immunities for certain damage types, with offsetting penalties (reduced AC, take damage, etc)
+                        death ward illusion?
+                        side effect? - literally throw on clothing, lol
                 */
             };
 
