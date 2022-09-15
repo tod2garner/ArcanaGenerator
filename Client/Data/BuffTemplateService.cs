@@ -551,6 +551,16 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 10
                 },
+                new SpellTemplate //Move speed bonus
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Buff,
+                    Description = "gains a +[15-30@5]ft bonus to their movement speed.",
+                    Names = new List<string> { "acceleration", "haste", "speed" },
+                    MinimumDuration = Duration.OneMinute,
+                    IsAlwaysAoE = true,
+                    BaseValueScore = 10
+                },
                 new SpellTemplate //Partial haste
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
@@ -559,6 +569,15 @@ namespace SpellGenerator.Client.Data
                                     "(A) Gain one extra weapon attack, " +
                                     "(B) Gain an extra [25-40@5]ft of movement speed, or " +
                                     "(C) Any movement does not trigger attacks of opportunity.",
+                    Names = new List<string> { "acceleration", "haste", "speed" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Move speed carry over
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Buff,
+                    Description = "can carry over any unused movement to their next turn. This can stack up to 3x their typical move speed.",
                     Names = new List<string> { "acceleration", "haste", "speed" },
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 10
@@ -871,11 +890,9 @@ namespace SpellGenerator.Client.Data
                         buff - variant of contingency, lasts only 1 hour but multiple creatures benefit (common triggering condition and spell for all), spell level not more than half this spell	                                                
                         restore spell slots for an ally, total sum double what this spell uses, but none higher than this spell	                        
                         buff -pick a 1st level spell you know. Each time the target successfully hits with a weapon attack (once per turn) the spell is automatically triggered without using a spell slot or components. The spell automatically targets the creature that was hit, but any AoE effects still have an area.	                                     
-                * Transmutation
-                        increase speed (flat amoutn or double)
-                        buff: can carry unused movement over to your next turn, up to 3x your typical move speed
                 * Other                    
                 *       death ward illusion?
+                *       side effect? - literally throw on clothing, lol
                 */
             };
 
