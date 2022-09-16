@@ -169,10 +169,58 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
                     Type = EffectType.Penalty,
+                    Description = "You immediately are knocked prone after casting this spell and your Max HP is reduced by 1[dice] until your next rest.",
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 12
+                },
+                new SpellTemplate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Transmutation, SchoolOfMagic.Abjuration },
+                    Type = EffectType.Penalty,
+                    Description = "A small patch of flowers sprouts at your feet.",
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 0.25
+                },
+                new SpellTemplate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Penalty,
+                    Description = "All vegetation within 10ft of you withers instantly.",
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 1.0
+                },
+                new SpellTemplate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
+                    Type = EffectType.Penalty,
                     Description = "You stagger with a severe limp and suffer a -[1-3] penalty to AC.",
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 9
-                }
+                },
+                new SpellTemplate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
+                    Type = EffectType.Penalty,
+                    Description = "After casting this spell you must make a CON saving throw. On a failure your hair falls out (if you have any) " +
+                                    "and you remain bald until the end of your next long rest, at which point your hair is magically restored.",
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 2.0
+                },
+                new SpellTemplate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
+                    Type = EffectType.Penalty,
+                    Description = "One article of clothing that you a wearing (chosen at random by the DM) is instantly bleached.",
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 2.0
+                },
+                /*
+                    ring of [material] at your feet
+                    caster polymorphed into a different player race
+                    hair growth
+                    skin blue
+                    literally able to throw on clothing, lol
+                 */
             };
 
             return templates;
