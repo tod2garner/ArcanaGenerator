@@ -70,7 +70,7 @@ namespace SpellGenerator.Client.Data
                     MinimumCastTime = CastTime.OneMinute,
                     BaseValueScore = 10
                 },
-                new SpellTemplate
+                new SpellTemplate//Cover
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Conjuration },
                     Type = EffectType.Utility,
@@ -82,7 +82,7 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 15
                 },
-                new SpellTemplate
+                new SpellTemplate//Counterspell and turn back to caster
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
                     Type = EffectType.Utility,
@@ -97,7 +97,7 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysAReaction = true,
                     BaseValueScore = 30
                 },
-                new SpellTemplate
+                new SpellTemplate//Take damage for ally
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
                     Type = EffectType.Utility,
@@ -170,7 +170,7 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 0.5
                 },
-                new SpellTemplate
+                new SpellTemplate//Fog cloud
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Illusion },
                     Type = EffectType.Utility,
@@ -182,7 +182,7 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 1
                 },
-                new SpellTemplate
+                new SpellTemplate//River
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
                     Type = EffectType.Utility,
@@ -228,7 +228,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Respite, stasis
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Enchantment },
                     Type = EffectType.Utility,
                     Description = "You teleport a visible unconscious creature to your feet (or the nearest unoccupied space) and put them into a brief stasis. " +
                                     "They are not fully stabilized, but for the next 1d4 rounds they do not need to make death saving throws (they neither pass nor fail). " +
@@ -444,7 +444,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Evocation },
                     Type = EffectType.Utility,
-                    Description = "You cast a varation of the light spell where the light created is visible only to you and up to [2-5] other creatures that you select at the time of casting.",
+                    Description = "You cast a variation of the light spell where the light created is visible only to you and up to [2-5] other creatures that you select at the time of casting.",
                     Names = new List<string> { "secrecy", "illumination", "discernment" },
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
@@ -454,16 +454,29 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Selective darkness
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Evocation },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion, SchoolOfMagic.Evocation },
                     Type = EffectType.Utility,
-                    Description = "You cast a varation of the darkness spell where the darkness created is transparent to you and up to 1d3 other creatures " +
+                    Description = "You cast a variation of the darkness spell where the darkness created is transparent to you and up to 1d3 other creatures " +
                                     "that you select at the time of casting (each can still see the outline of the affected area).",
-                    Names = new List<string> { "cloak", "penumbra", "shadow" },
+                    Names = new List<string> { "cloak", "penumbra", "shadow", "eclipse" },
                     DoesNotTargetCreatures = true,
                     IsAlwaysAoE = true,
                     IsAlwaysRanged = true,
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 5
+                },
+                new SpellTemplate //Reactionary darkness
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion, SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "After taking damage you can use your reaction cast a varation of the darkness spell where the darkness created is transparent to you.",
+                    Names = new List<string> { "cloak", "veil", "shadow", "shroud" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysAReaction = true,
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 10
                 },
                 new SpellTemplate //Smell emotions
                 {
@@ -529,6 +542,256 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysInstant = true,
                     BaseValueScore = 2
                 },
+                new SpellTemplate //Reaction invisibility
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Utility,
+                    Description = "Whenever you take damage that causes you to fall below half health, you may use your reaction to cast mass invisibility. " +
+                                    "This invisibility applies to all creatures in the area of effect - yourself, friend, foe, and stranger alike - and " +
+                                    "ends early for any creature that makes an attack or casts a spell.",
+                    Names = new List<string> { "escape", "disappearance", "exit" },
+                    MinimumDuration = Duration.OneRound,
+                    IsAlwaysAReaction = true,
+                    IsAlwaysAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    BaseValueScore = 5,
+                },
+                new SpellTemplate //Pocket of invisibility
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Utility,
+                    Description = "You create a pocket of invisiblity that extends outward from yourself and conceals all creatures (friend and foe) within the area of effect. " +
+                                    "Objects in the area remain visible unless they are being carried by an invisible creature. The area of effect moves with you, " +
+                                    "but the spell ends early if you move faster than half speed, make an attack, or cast a spell.",
+                    Names = new List<string> { "veil", "cloak", "shroud" },
+                    MinimumDuration = Duration.OneMinute,
+                    IsAlwaysAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    DoesNotTargetCreatures = true,
+                    MinimumCastTime = CastTime.OneMinute,
+                    BaseValueScore = 10,
+                },
+                new SpellTemplate //Immune to fall damage
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "Any creature affected by this spell is immune to fall damage, but cannot use reactions or bonus actions.",
+                    Names = new List<string> { "dive", "descent", "meteor" },
+                    MinimumDuration = Duration.OneMinute,                    
+                    BaseValueScore = 4
+                },
+                new SpellTemplate //Anti-magic field with limits
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                    Type = EffectType.Utility,
+                    Description = "You create a variation of the Anti-Magic Field spell such that most (but not all) magic is suppressed in the target area. " +
+                                    "Non-permanent magical effects are suppressed if they are of a lower level than this spell. " +
+                                    "Summoned creatures are temporarily banished if this spell's level is higher than the creature's CR. " +
+                                    "Enchanted items act as if they were mundane unless created by magic of a higher level than this spell. " +
+                                    "Spells cannot be cast in the area of effect unless they are of a higher level than this spell. Dieties are unaffected by this spell.",
+                    Names = new List<string> { "supression", "foil", "opposition" },
+                    MinimumDuration = Duration.OneMinute,
+                    IsAlwaysAoE = true,
+                    DoesNotTargetCreatures = true,
+                    MinimumCastTime = CastTime.OneMinute,
+                    BaseValueScore = 30,
+                },
+                new SpellTemplate //Anti-magic pulse
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                    Type = EffectType.Utility,
+                    Description = "You relase a pulse that suppresses all magic in the target area. The effects are similar to an anti-magic field, but last for only a few seconds. " +
+                                    "Non-permanent magical effects are dispelled if they are of a lower level than this spell. Otherwise they are suppressed for one round. " +
+                                    "Enchanted items cease to function for one round. Summoned creatures are banished for one round.",
+                    Names = new List<string> { "supression", "foil", "pulse" },
+                    IsAlwaysInstant = true,
+                    IsAlwaysAoE = true,
+                    DoesNotTargetCreatures = true,                    
+                    BaseValueScore = 30,
+                },
+                new SpellTemplate //Steal healing as a reaction
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "When you see a creature begin to regain HP from any source you may use your reaction to steal the healing, such that instead you regain that HP and they get nothing.",
+                    IsAlwaysInstant = true,
+                    IsAlwaysAReaction = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    Names = new List<string> { "theft", "siphon", "larceny" },
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Custom compass
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a customized compass. It does not point north. Instead you may choose to have it either point to location where you created it " +
+                                    "or point others to you (no matter where you move). You may also choose a key word that must be spoken for the compass to work, otherwise it simply spins in circles. " +
+                                    "At the end of the duration the compass dissolves into mist.",
+                    Names = new List<string> { "compass", "guide", "path" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    MinimumDuration = Duration.EightHours,                    
+                    BaseValueScore = 1
+                },
+                new SpellTemplate //Charm little beasts
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "You charm all of the beasts that have a CR less than 1 in the target area. You may convey one simple idea to them, and they will obey according to their level of intelligence.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsAlwaysAoE = true,
+                    MinimumDuration = Duration.OneHour,
+                    BaseValueScore = 2
+                },
+                new SpellTemplate //Truth through pain
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination, SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "You suffer 1[dice] psychic damage each time a target creature intentionally tells a lie. " +
+                                    "At the time of casting you may choose to double the damge you take in order to omit all spell components (such that the casting cannot be detected by non-magical means).",
+                    Names = new List<string> { "truth", "insight", "intuition" },
+                    MinimumDuration = Duration.OneMinute,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Righteous fire
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "You are covered in flames that cannot be put out by non-magical means. The burning empowers you, but also damages you and any nearby enemies. " +
+                                    "You gain a +[10-20@5]ft bonus to your movement speed and a +[3-5] bonus to your spell casting modifier while you are ignited. " +
+                                    "All enemies within [10-20@5]ft of you suffer [2-4][dice] + [8-16@2] fire damage at the start of their turn every round. " +
+                                    "You suffer half as much fire damage - which bypasses resistances - at the start of your turn every round, " +
+                                    "until the burning would make your HP fall below zero. At that point you are instead reduced to 1 HP, the flames vanish, and this spell ends. " +
+                                    "Any creature that successfully dispels this effect suffers [4-8][dice] Fire damage.",
+                    Names = new List<string> { "conflagration", "immolation", "inferno" },
+                    IsNeverAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 70
+                },
+                //new SpellTemplate //
+                //{
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                //    Type = EffectType.Utility,
+                //    Description = "",
+                //    Names = new List<string> {  },//--------------------TODO
+                //    BaseValueScore = 5
+                //},
+                //*************************************************************************
+                /*            
+                 *  Divination
+                        runes that glow when long distance twins hear a specific word 
+                        Lesser comprehend languages, very simple ideas only
+                        x-ray one material wood or stone or crystal or metal (including paint and plaster on walls or ceilings)
+                        track via recent body heat path, one specific race or creature type
+                        utility track object - range of touch, plant object and wait
+                        speak with object - blind and deaf, only temp and pressure and acceleration
+                        oddly prepared - pull from your pocket or pack one item worth less than 20gp. A glimpse of the future promoted you to purchase it for this occasion. Retroactively deduct the price from your funds
+                        structural - visual heat map of how close non-living materials are to their breaking point
+                        conjure tea - enough for 1d4+1 people. Each gets a free attempt at scrying. DM makes a secret roll : 50-50 odds that vision is false, if more than one person targets the same thing they have the same vision (one DM roll instead of multiple)
+                        mimic ability (like sneak attack or wild shape) as reaction or share one of your own with 1d6 other creatures.
+                            each gets a single use and then forgets
+                            if used for a spell, it must be a lower level than this spell  
+                *  Conjuration
+                        conjure [2-4] riding horses for [dice] hours. upcast for 2 extra horses per additional spell level.
+                        duplicate or replicate an outfit utility, tangible not an illusion
+                        temporary portable hole utility, non-exploding (collapses instead)
+                        medium range teleport, 1 mile
+                        temporary graffiti
+                        Lesser animate objects
+                        AoE difficult terrain and fall prone (no save) at the start of turn if touching the ground
+                        better earth bind - effect for non flying creatures too (restrained?)
+                        feast of left overs - table with partially eaten food appears, enough for 2d6+1 people to have a meal. Each makes a CON save, On a failure, poisoned for 2 hours. On a success, immune to charm effects and gain 2d12 Temp HP 
+                            other feast ideas - damage resistance paired with vulnerability, gamble AC bonus or a point of Exhaustion
+                *  Illusion
+                        multiplying illusion - start with 3, more appear whenever one is touched 
+                        nimble - DC and only disappears if hit
+                        ghostly second stage if touched
+                        tangible illusions - 1d4 pysical interactions
+                        fixed illusion (preset shapes & sounds)
+                        subtractive illusion / partial invisibility
+                        object invisibility
+                        Directional scent (false illusion)
+                        hide worth - illusion or transmutation - gold coins to copper temporarily, and gems into common minerals
+                        split illusions - 3d4 copies of the same illusion, less than 6 inches in any dimension
+                        split illusion - 2d6 copies, less than 3ft
+                * Necro
+                        reaction - as you fall unconscious - tie the target's fate to your own, whenever you fail a death saving throw they take necrotic damage and if you die they are stunned for 1d3 rounds - is always instant (to avoid concentration requirements)
+                        reaction - as you fall unconscious deal [5-8][dice] + [10-40@10] necrotic damage to one visible targt in range
+                        bodyswap - teleport, if you consume a corpse at the target location deal damage and does not use the spell slot	
+                        consume a corpse (turned to dust) to gain temp HP	
+                        consume a corpse (turned to dust) to heal an ally	
+	                        buffs? speed, resistance, damage?
+                        unearth from poe, remains burst from the ground and deal damage in a line?	
+                        statis AoE center on self - outside of AoE 1d8 hours pass, by inside only minutes. Barrier like wall of force prevents anything from passing in the meantime	
+	                        another version with days instead of hours?
+	                        another version that doesn't center of self, smaller time range to trap enemies 
+                        consume two undead minions under your control to grant a permanent bonus to a 3rd minion	
+	                        limited vampiric damage or bonus AC or double walking speed
+	                        new creature counts as two for maintenance (ie from animate or create dead spells)
+                        summon raging spirit - long cast time, store in a vessel (lantern or similar)	
+                        rot, moss, mold, wear out objects	(non-damaging, non-creature objects only)
+                        spray curdled milk, rotten fruit, etc (aesthetic or utility? prevent tracking, distraction charm to drive victims away )	
+                        curse item 	
+                        delayed, undetectable poison (or difficult to detect)	
+                        temporary animation - lasts for only 1d4 rounds - must be recent, intead of new stat block use original with fixed penalty	
+                        animate beast - use original stat block, fixed penalty	
+                        animate monstrosity or abberation - original stat block, no penalty		
+                        animate giant - original stat block with penalty	
+                        animate incomplete remains	
+                        change remains to be purely skeletal	
+                        only affects undead creatures with INT less than 7. Temporarily restore their intellect from when they were alive.
+                        transform a permanent skeleton or zombie you control into a ghostly variant of the same	
+                        ritual to sacrifice max HP until next long rest interchange for one of the following: immune to poison, no need to breathe, 50 percent chance after death save to gain 3d6 HP, necrotic damage heals you and healing spells damage you. Roll randomly, can be cast multiple times to stack different effects	
+                * Evocation
+                        searing bond, 1d3 stationary points and yourself, bonus action to replace one
+                        variant of contingency, lasts only 1 hour but multiple creatures benefit (common triggering condition and spell for all), spell level not more than half this spell
+                        improve cordon of arrows 
+                        lesser demi plane (maybe on scale of a portable hole with a 1hr duration?
+                        sending with higher word limit or an extra "volley" back and forth
+                        huge AoE alarm, but with a specific trigger spoken phrase (know when someone says your name) and instantly know where in AoE trigger occurred
+                        frost blink and flame dash and plague bearer and smoke mine and withering step and lightning warp
+                        gamble spell slots for self, spend X slot, roll dice to see if you get back more or less, then immune to effects until long rest
+                        ground shakes with each step, create difficult terrain with shockwaves along the path the walk
+                        pick a 1st level spell you know. Each time the target successfully hits with a weapon attack (once per turn) the spell is automatically triggered without using a spell slot or components. The spell automatically targets the creature that was hit, but any AoE effects still have an area.	                                     
+                        side effect? - literally throw on clothing, lol
+                * Enchanment
+                        targets location not creatures - anyone that approaches is compelled to instead travel to a different point you choose	
+                        mass sleep, friend foe and self in large AOE, elves cannot enter the area	
+                        mass paralysis, no save, friend and foe and self, fails for all if any are immune to paralysis 	
+                        mass pacifism, no save, friend and foe and self, bypasses immunity to charm effects	
+                        numb, can't feel pain, unaware of damage	
+                        remove memory of the past 2d6 minutes, blackout missing time on successful save, skipped time on a fail?	
+                        will believe the next 4d6 words you speak, but must understand the language	
+	                        you are invincible, that fire isn't hot, you can fly
+                * Transmute
+                        make an object buoyant
+                        weight half or double
+                        color change
+                        Delayed effect transformation
+                        temporary glue
+                        add or remove 2d6 words on a paper document you hold, matching handwriting, Investigation vs modifier to catch it
+                        add any name you choose to any list of at least 10 names - always ranged
+                        polymorph a willing creature into a small object that weighs 1/10th their normal weight
+                        like polymorph, but fiend instead of beast
+                        resize clothing utility - must be fabric, not armor - tailor alterations rapidly 
+                        transmutation - counterfeit coins, from copper to gold, change lasts for 2d8 days, can change image on the coins too
+                        utility - drunk or sober (no effect on undead, elementals, constructs)
+                        instant swamp
+                        instant desert - mundane plant life crumbles to dust
+                        instant door - range of touch
+                        reduce object size but same weight
+                * 
+                 * Illusion, Divination? 
+                       remote spell casting - channel for ally to allow them to project a spell very long range
+                            one version with scrying spell to pick see target
+                            one version where you create a beacon on a target that the chosen ally can send thh spell to, like a homing missile
+                * Other
+                       at least one per school utility - interact with environment, climate, or social
+                 */
             };
 
             return templates;
