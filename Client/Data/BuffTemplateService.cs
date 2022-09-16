@@ -345,6 +345,18 @@ namespace SpellGenerator.Client.Data
                     IsNeverAoE = true,
                     BaseValueScore = 8,
                 },
+                new SpellTemplate //Death ward, invisible
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Buff,
+                    Description = "is temporarily protected from death by an invisible ward. The next time they would fall unconscious they instantly regain 1 HP, become invisible, " +
+                                    "and an illusuory duplicate appears in their space that falls prone on the ground (it 'plays dead' and does not move). " +
+                                    "The invisibility and the illusion both last until the end of their next turn. This spell then ends early.",
+                    Names = new List<string> { "escape", "trickery", "elusion" },
+                    MinimumDuration = Duration.TenMinutes,
+                    IsNeverAoE = true,
+                    BaseValueScore = 8,
+                },
                 new SpellTemplate //Death ward, damage
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation },
@@ -953,16 +965,6 @@ namespace SpellGenerator.Client.Data
                 //    Names = new List<string> {  },//--------------------TODO
                 //    BaseValueScore = 5
                 //},
-                //*************************************************************************
-                /* 
-                 *       
-                * Evocation	                       
-                        pick a 1st level spell you know. Each time the target successfully hits with a weapon attack (once per turn) the spell is automatically triggered without using a spell slot or components. The spell automatically targets the creature that was hit, but any AoE effects still have an area.	                                     
-                * Other                    
-                        immunities for certain damage types, with offsetting penalties (reduced AC, take damage, etc)
-                        death ward illusion?
-                        side effect? - literally throw on clothing, lol
-                */
             };
 
             return templates;

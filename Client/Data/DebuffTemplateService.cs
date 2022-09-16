@@ -519,13 +519,24 @@ namespace SpellGenerator.Client.Data
                     IsNeverAoE = true,
                     BaseValueScore = 30
                 },
-                new SpellTemplate //Vampiric spell attack
+                new SpellTemplate //Vampiric spell attack - single target
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
                     Type = EffectType.Debuff,
                     Description = "suffers [4-8][dice] necrotic damage and you regain HP equal to half the damage dealt.",
-                    Names = new List<string> {  },//--------------------TODO
+                    Names = new List<string> { "harvest", "vampirism", "drain", "reaping" },
                     IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Vampiric spell attack - AoE
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Debuff,
+                    Description = "suffers [2-6][dice] necrotic damage and you regain [1-2] HP per creature damaged.",
+                    Names = new List<string> { "harvest", "vampirism", "drain", "reaping" },
+                    IsAlwaysInstant = true,
+                    IsAlwaysAoE = true,
                     BaseValueScore = 30
                 },
                 new SpellTemplate //Harvest buffs
