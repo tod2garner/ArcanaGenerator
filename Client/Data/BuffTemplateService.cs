@@ -818,7 +818,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Molten shell
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
                     Type = EffectType.Buff,
                     Description = "is protected by a glowing ward and gains [2-4][dice] Temporary HP for the spell duration. " +
                                     "If this Temp. HP is depleted before the spell ends, the ward explodes and unleashes a blast that deals [3-4][dice] fire damage to any enemies within [5-10]ft.",
@@ -844,9 +844,23 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Abjuration },
                     Type = EffectType.Buff,
                     Description = "has their shield covered by straps made of lightning for the spell duration and they gain a +[1-2] bonus to AC. " +
-                                    "This spell has no effect on creatures that are not already holding a shield. " +
+                                    "This spell has no effect on a creature that is not already holding a shield. " +
                                     "Any time a melee attack misses them (is lower than their AC) a jolt of lightning strikes their attacker, dealing [2-4][dice] lightning damage.",
                     Names = new List<string> { "tempest", "shield", "jolt" },
+                    MinimumDuration = Duration.OneMinute,
+                    IsNeverAoE = true,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Horror shield
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion, SchoolOfMagic.Enchantment },
+                    Type = EffectType.Buff,
+                    Description = "has their shield transformed to look like an effigy of horror, covered with a swirling pool of faces. " +
+                                    "This spell has no effect on a creature that is not already holding a shield. " +
+                                    "Any time a melee attack targets them the attacker must make a WIS saving throw. " +
+                                    "On a failure the attacker suffers [2-3][dice] psychic damage and has disadvantage on the attack. " +
+                                    "Attackers that are immune to fear or that do not rely on sight automatically succeed.",
+                    Names = new List<string> {  },//--------------------TODO
                     MinimumDuration = Duration.OneMinute,
                     IsNeverAoE = true,
                     BaseValueScore = 20
@@ -871,9 +885,19 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 15
                 },
+                new SpellTemplate //Shadow punches
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Buff,
+                    Description = "is able to 'throw' fleeting shadows of themselves at enemies with their punches and kicks. " +
+                                    "Their unarmed attacks gain a +[5-15]ft bonus to reach and deal [1-2][dice] bonus psychic damage.",
+                    Names = new List<string> { "shadow", "echo", "shade" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 20
+                },
                 new SpellTemplate //Explosive arrow
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
                     Type = EffectType.Buff,
                     Description = "has their ranged weapon attacks magically enhanced. Once per turn they may augment a ranged weapon attack with an adhesive material that sticks to the target. " +
                                     "The attack does not deal any extra damage on-hit, but after one full round (at the end of the attacker's next turn) the material explodes, " +
@@ -896,7 +920,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Recharge spell slots
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Divination },
                     Type = EffectType.Buff,
                     Description = "regains a number of expended spell slots whose combined spell level is equal to 1d8 + half this spell's level (rounded up). " +
                                     "However, none of the spell slots recharged may be of a higher level than this spell. " +
@@ -908,6 +932,18 @@ namespace SpellGenerator.Client.Data
                     IsNeverAoE = true,
                     IsAlwaysRanged = true,
                     BaseValueScore = 15
+                },
+                new SpellTemplate //False scrying information
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Buff,
+                    Description = "is protected from divination magic (scrying, arcane eye, and similar spells) in a unique way. " +
+                                    "Rather than preventing scrying, such a spell appears successful to the caster " +
+                                    "but you may choose false information to 'reveal' in place of the target's true location, appearance, etc.",
+                    Names = new List<string> { "guise", "deception", "mask", "pretense" },
+                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumDuration = Duration.OneDay,
+                    BaseValueScore = 2
                 },
                 //new SpellTemplate //
                 //{
