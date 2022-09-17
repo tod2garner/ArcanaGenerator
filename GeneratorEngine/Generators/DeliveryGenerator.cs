@@ -11,7 +11,8 @@ namespace GeneratorEngine.Generators
 
         internal static Delivery GenerateDelivery(SpellTemplate template)
         {
-            var rangeType = GenerateRangeType(template.IsRangeAlwaysSelf, template.IsAlwaysRanged);
+            var cannotHaveRangeOfSelf = template.IsNeverAoE && (template.Type == EffectType.Damage || template.Type == EffectType.Debuff);
+            var rangeType = GenerateRangeType(cannotHaveRangeOfSelf, template.IsRangeAlwaysSelf, template.IsAlwaysRanged);
             var deliveryType = GenerateDeliveryType(template.Type, rangeType, template.IsAlwaysAoE, template.IsNeverAoE);
             var rangeDistance = GenerateRangeDistance(template.Type, rangeType);
 
@@ -134,7 +135,7 @@ namespace GeneratorEngine.Generators
             throw new ArgumentException("No option for delivery type found");
         }
 
-        private static RangeType GenerateRangeType(bool isRangeAlwaysSelf, bool isAlwaysRanged)
+        private static RangeType GenerateRangeType(bool isRangeNeverSelf, bool isRangeAlwaysSelf, bool isAlwaysRanged)
         {
             if (isRangeAlwaysSelf)
                 return RangeType.Self;
@@ -143,7 +144,7 @@ namespace GeneratorEngine.Generators
                 return RangeType.Distance;
 
             var roll = Rnd.Next(100);
-            if (roll > 80)
+            if (roll > 80 && !isRangeNeverSelf)
                 return RangeType.Self; // 20%
             else if (roll > 60)
                 return RangeType.Melee; // 20%            

@@ -687,9 +687,6 @@ namespace SpellGenerator.Client.Data
                         unable to speak 2d4 words of your choosing
                         unable to verbalize one fact of your choosing
                         any creature in range, including hidden ones, charmed to reveal themselves and walk towards you
-                * Transmute
-                        side effect: caster polymorphed into a different player race
-                        side effect: hair growth, baldness, clothes bleached, skin blue
                 * Reactions
                         when you see a creature take lightning damage chain that damage to three other creatures of your choice
                         when you see a creature take cold damage, cover then in ice and restrain them, can use action to break free with a str check
