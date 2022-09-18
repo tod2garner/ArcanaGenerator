@@ -190,17 +190,40 @@ namespace GeneratorEngine.Generators
 
         private static double GenerateAreaSize(AreaOfEffectShape shape)
         {
-            var roll = Rnd.Next(100);
-            if (roll > 90 && shape == AreaOfEffectShape.Line)
-                return 100.0; // 10%
-            else if (roll > 70 && shape == AreaOfEffectShape.Line)
-                return 60.0; // 20%
-            else if (roll > 50)
-                return 30.0; // 20%
-            else if (roll > 20)
-                return 15.0; // 30%
+            var options = new List<(double value, int rollThreshold)>();
+
+            if (shape == AreaOfEffectShape.Line)
+            {
+                options.Add((120.0, 90));   //10%
+                options.Add((60.0, 80));    //10%
+                options.Add((40.0, 60));    //20%
+                options.Add((20.0, 20));    //40%
+                options.Add((15.0, 0));     //20%
+            }
+            else if(shape == AreaOfEffectShape.Sphere || shape == AreaOfEffectShape.Cylinder)
+            {
+                options.Add((20.0, 75));    //25%
+                options.Add((15.0, 25));    //50%
+                options.Add((10.0, 0));     //25%
+            }
             else
-                return 10.0; // 20%
+            {
+                options.Add((40.0, 90));    //10%
+                options.Add((30.0, 80));    //10%
+                options.Add((25.0, 60));    //20%
+                options.Add((20.0, 40));    //20%
+                options.Add((15.0, 20));    //20%
+                options.Add((10.0, 0));     //20%
+            }
+
+            int roll = Rnd.Next(100);
+            foreach (var choice in options)
+            {
+                if (roll > choice.rollThreshold)
+                    return choice.value;
+            }
+
+            return 10.0;
         }
 
         private static AreaOfEffectShape GenerateAreaShape()

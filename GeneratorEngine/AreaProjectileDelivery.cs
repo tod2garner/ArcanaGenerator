@@ -32,9 +32,9 @@ namespace GeneratorEngine
             {
                 newAreaSize = Math.Max(15, scalingRatio.Value * Area.Size);
             }
-            else if (scalingRatio > 1.0) //make it stronger
+            else if (scalingRatio > 1.0 && Area.Size < 30) //make it stronger
             {
-                newAreaSize = Math.Min(60, scalingRatio.Value * Area.Size);
+                newAreaSize = Math.Min(30, scalingRatio.Value * Area.Size);
             }
 
             scalingRatio *= Area.Size / newAreaSize;
