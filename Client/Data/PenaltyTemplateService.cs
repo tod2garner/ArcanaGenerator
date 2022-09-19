@@ -210,15 +210,126 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
                     Type = EffectType.Penalty,
+                    Description = "The hair on your head instantly grows 2d8 inches longer.",
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 2.0
+                },
+                new SpellTemplate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
+                    Type = EffectType.Penalty,
                     Description = "One article of clothing that you a wearing (chosen at random by the DM) is instantly bleached.",
                     IsAlwaysInstant = true,
                     BaseValueScore = 2.0
                 },
+                new SpellTemplate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
+                    Type = EffectType.Penalty,
+                    Description = "Your skin takes on the appearance of tree bark.",
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 0.25
+                },
+                new SpellTemplate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
+                    Type = EffectType.Penalty,
+                    Description = "Your hair (if you have any) is transformed into clusters of leaves.",
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 0.25
+                },
+                new SpellTemplate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
+                    Type = EffectType.Penalty,
+                    Description = "One of your eyes is temporarily sealed shut. You lack depth perception and have disadvantage on vision-based perception checks.",
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 3
+                },
+                new SpellTemplate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
+                    Type = EffectType.Penalty,
+                    Description = "Your skin turns an unusual color. Roll 1d6 to determine between red, orange, yellow, green, blue, and purple.",
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 3
+                },
+                new SpellTemplate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
+                    Type = EffectType.Penalty,
+                    Description = "You are temporarily transformed into a different player race. " +
+                                    "Roll 1d10 to determine between human, dwarf, elf, dragonborn, halfling, gnome, tiefling, goliath, orc, and goblin.",
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 3
+                },
+                new SpellTemplate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
+                    Type = EffectType.Penalty,
+                    Description = "You are temporarily restrained by invisible bands - your movement speed is reduced to 0 ft.",
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
+                    Type = EffectType.Penalty,
+                    Description = "You suffer a sudden wave of nausea and become poisoned.",
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
+                    Type = EffectType.Penalty,
+                    Description = "A random tiny animal (DM's choice based on local ecology, CR of 0) appears on your shoulder. It is neither friendly nor hostile to you.",
+                    MinimumDuration = Duration.Instant,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
+                    Type = EffectType.Penalty,
+                    Description = "After casting this spell you must make an INT saving throw. On a failure you lose one extra spell slot, " +
+                                    "using the lowest available (need not match the level used for this spell).",
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 10.0
+                },
+                new SpellTemplate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
+                    Type = EffectType.Penalty,
+                    Description = "You are masked by an illusion to appear like a grotesque montrosity.",
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Necromancy },
+                    Type = EffectType.Penalty,
+                    Description = "You are ignited and take 1[dice] fire damage instantly and again at the start of each turn, unless you use a bonus action to put out the flames.",
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
+                    Type = EffectType.Penalty,
+                    Description = "Anytime that you attempt to quiet your mind you are overwhelmed by anxiety. You are unable to benefit from short rests for 2d6 hours.",
+                    MinimumDuration = Duration.Instant,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
+                    Type = EffectType.Penalty,
+                    Description = "You are imbued with intense insomnia and are unable to benefit from a long rest for 2d8 hours.",
+                    MinimumDuration = Duration.Instant,
+                    BaseValueScore = 20
+                },
                 /*
                     ring of [material] at your feet
-                    caster polymorphed into a different player race
-                    hair growth
-                    skin blue
                     literally able to throw on clothing, lol
                  */
             };

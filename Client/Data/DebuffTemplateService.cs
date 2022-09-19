@@ -698,7 +698,16 @@ namespace SpellGenerator.Client.Data
                         when you see a creature suffer poison status - remove status and instantly suffer 3d12 poison damage
                         when you see a creature suffer poison status - replace with paralyzed status
                         when you see a creature suffer thunder or bludg - double the damage, if at least 20 (plus 20 for each size above medium) then Ragdolls, thrown 20ft, and knocked prone
-                * 
+                * Other
+                        gain no benefit from resting other than avoiding exhaustion, never AoE 	
+	                        long duration or a trigger to end it? ex: see doom debuff
+	                        variation with half benefit instead of zero (half spells, half HP, etc)
+                        prone and unable to stand, can crawl, must be humanoid	
+                        pied Piper, forced to follow	
+                        spinning wheel trance from sleeping beauty?	
+                        shrieking spiders 	
+                        blurry vision - disadvantage on attacks and auto-fail perception > 5ft away	
+                        illusion and enchantment - insomnia or nightmares -instant effect, no benefit from long rest for 12x hours	
                  */
             };
 

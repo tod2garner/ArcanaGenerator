@@ -789,7 +789,22 @@ namespace SpellGenerator.Client.Data
                             one version with scrying spell to pick see target
                             one version where you create a beacon on a target that the chosen ally can send thh spell to, like a homing missile
                 * Other
-                       at least one per school utility - interact with environment, climate, or social
+                        at least one per school utility - interact with environment, climate, or social
+                        instantly gain the benefits of a long rest, but your max HP is reduced to 1 for 24 hours, and can't be affected by this spell again for 3 days	
+                        ten minutes for a long rest, but also 1d4 points of Exhaustion	
+                        instant short rest, but Max HP is reduced but 1d8 per character level for 24 hours. if reduced to 0, instead reduce to 1 and take 1d4 points of Exhaustion	
+                        honey I shrunk the kids - all abilities also scaled down (esp spells), physical damage taken x10	
+                        illusion - rainbow that starts above you and reaches towards a goal within 10 miles	
+                        Necro - condense remains into a tiny object for later animation	
+                        illusion of self that you can swap places with as a bonus action each turn	
+                        evocation - yeet a willing creature, multiple saving throws. one for  stunned, prone 	
+	                        target creature within 150 ft
+	                        target location visible within 500 ft
+                        frozen slide	
+                        cave of wonders style hear/rising up out of the ground..	
+                        pumpkins carriage from Cinderella	
+                        smoke elevator ala Mari Poppins	
+                        summon wooden boat, can fit up to 1d6 + 2 medium creatures.	
                  */
             };
 
