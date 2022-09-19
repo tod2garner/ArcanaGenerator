@@ -15,7 +15,7 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Debuff,
                     Description = "has disadvantage on saving throws against all spells from the same school of magic as this spell",
                     MinimumDuration = Duration.OneHour,
-                    BaseValueScore = 2
+                    BaseValueScore = 1
                 },
                 new SpellTemplate
                 {
@@ -33,7 +33,7 @@ namespace SpellGenerator.Client.Data
                     Description = "is Poisoned",
                     Names = new List<string> { "toxin", "venom", "poison" },
                     MinimumDuration = Duration.OneMinute,
-                    BaseValueScore = 2
+                    BaseValueScore = 4
                 },
                 new SpellTemplate
                 {
@@ -51,7 +51,7 @@ namespace SpellGenerator.Client.Data
                     Description = "is Restrained",
                     Names = new List<string> { "prison", "restraint", "control", "hold", "snare" },
                     MinimumDuration = Duration.OneMinute,
-                    BaseValueScore = 5
+                    BaseValueScore = 7
                 },
                 new SpellTemplate
                 {
@@ -113,7 +113,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion, SchoolOfMagic.Enchantment },
                     Type = EffectType.Debuff,
-                    Description = "is magically compelled to Fear you",
+                    Description = "is magically Frightened of you.",
                     Names = new List<string> { "terror", "intimidation", "fear" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 12
@@ -627,6 +627,59 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysInstant = true,
                     BaseValueScore = 150
                 },
+                new SpellTemplate //Steal STR or DEX or CON
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Debuff,
+                    Description = "has their stamina stolen by you. Select either STR, DEX, or CON when you cast this spell. " +
+                                    "The target's ability score is reduced by 2d4 and yours is increased by the same amount.",
+                    Names = new List<string> { "theft", "siphon", "larceny" },
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 25
+                },
+                new SpellTemplate //Feeble body
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Debuff,
+                    Description = "has their STR and CON ability scores reduced to 1.",
+                    Names = new List<string> { "weakness", "frailty", "fragility" },
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Improved bane
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Enchantment, SchoolOfMagic.Divination },
+                    Type = EffectType.Debuff,
+                    Description = "must subtract 1[dice] from all attack rolls, saving throws, and ability checks.",
+                    Names = new List<string> { },//--------------------TODO
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Shared suffering
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "is linked to share their suffering with any creatures you choose in the target area. " +
+                                    "Anytime they take damage every linked creature also suffers the same damage at half value (this is not recursive). " +
+                                    "This spell fails if there are less than two visible creatures in the target area.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsAlwaysAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Penalty to AC for friend, foe, and self
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation, SchoolOfMagic.Necromancy },
+                    Type = EffectType.Debuff,
+                    Description = "has their AC reduced by [4-8]. This applies to ALL creatures in the target area - including yourself and your allies along with any enemies or strangers.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    IsAlwaysAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    DoesNotTargetCreatures = true,//Location effect
+                    BaseValueScore = 10
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
@@ -637,15 +690,10 @@ namespace SpellGenerator.Client.Data
                 //},
                 /* 
                 //************************************************************************************************************************************
-                *  Necro                   
-                        severe penalty to AC to all creatures in area, including yourself and allies (range is always self, always AoE)     
-                        vulnerable to X damage                        
-                        steal STR or DEX or CON
-                        reduce CON or DEX etc down to a fixed number (like feeble mind)
-                        like bane, penalty dice for all attacks and saving throw
+                *  Necro                                           
+                        vulnerable to X damage                         
                         command undead - temporarily take control, only if low INT
                         detonate one undead under your control as an explosion 
-                        shared suffering for enemies (damage one takes auto-applied at half value to linked others) - already exists above?
                         detonate and desecrate (single cast? delayed explosion)
                 * Evocation
                         spell whose damage scales based on the amount of depleted spell slots you have (or undeleted)	
