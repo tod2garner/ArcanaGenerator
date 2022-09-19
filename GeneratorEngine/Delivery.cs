@@ -17,6 +17,10 @@ namespace GeneratorEngine
             if(RangeDistance >= 5)
             {
                 modifierForRange = 0.3 * Math.Log(RangeDistance);//Varies from 0.5 to 1.5 between 5ft and 150ft
+                if (Type == DeliveryType.AreaOfEffect || Type == DeliveryType.AreaProjectile)
+                {
+                    modifierForRange += 0.5;
+                }
             }
 
             return (double)NumberOfTargets * modifierForRange;
