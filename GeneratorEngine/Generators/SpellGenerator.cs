@@ -46,7 +46,8 @@ namespace GeneratorEngine.Generators
             theSpell.AdjustForTargetValueScore(spellTemplate, minValue, maxValue);
             theSpell.RequiresConcentration = DetermineConcentration(theSpell.Effect.Duration);
 
-            var spellPower = theSpell.GetFinalPowerRating();
+            theSpell.UpdatePowerRatingFactors();
+            var spellPower = theSpell.FinalPowerRating;
             if (includeSideEffect && spellPower > minValue && Rnd.Next(100) > 40) // 60%
             {
                 var penaltyTemplate = dataTemplateService.GetRandomSpellTemplate(EffectType.Penalty, SchoolOfMagic.Any);

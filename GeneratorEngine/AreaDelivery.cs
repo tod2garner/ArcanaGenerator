@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GeneratorEngine
 {
@@ -7,9 +8,11 @@ namespace GeneratorEngine
         public Area Area;
         public bool DoesAreaPersistForDuration;
 
-        public override double GetPowerRatingModifier()
+        public override Dictionary<string, double> GetPowerRatingFactors()
         {
-            return base.GetPowerRatingModifier() * Area.GetLikelyNumberOfTargets();
+            var factors = base.GetPowerRatingFactors();
+            factors.Add("AreaSize", Area.GetLikelyNumberOfTargets());
+            return factors;
         }
 
         internal override void UpdateDescription()

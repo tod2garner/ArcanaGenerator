@@ -14,9 +14,11 @@ namespace GeneratorEngine
             Description = Description.Replace("Projectile", $"{ProjectileType} Projectile");
         }
 
-        public override double GetPowerRatingModifier()
+        public override Dictionary<string, double> GetPowerRatingFactors()
         {
-            return base.GetPowerRatingModifier() * ProjectileType.GetPowerRatingFactor();
+            var factors = base.GetPowerRatingFactors();
+            factors.Add(nameof(ProjectileType), ProjectileType.GetPowerRatingFactor());
+            return factors;
         }
     }
 }

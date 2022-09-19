@@ -9,9 +9,12 @@ namespace GeneratorEngine
         public AttackOrSavingThrow AttackOrSaveWhenCast;
         public SavingThrowType? SavingThrowType;
 
-        public override double GetPowerRating()
-        {            
-            return base.GetPowerRating() * AttackOrSaveWhenCast.GetPowerRatingFactor();
+        public override Dictionary<string, double> GetPowerRatingFactors()
+        {
+            var factors = base.GetPowerRatingFactors();
+            factors.Add("CannotMiss", AttackOrSaveWhenCast.GetPowerRatingFactor());
+            factors.Add(nameof(SavingThrowType), SavingThrowType.GetPowerRatingFactor());
+            return factors;
         }
 
         public string AttackOrSaveDescription()

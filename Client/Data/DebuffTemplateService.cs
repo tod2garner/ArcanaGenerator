@@ -24,7 +24,7 @@ namespace SpellGenerator.Client.Data
                     Description = "is knocked back [5-30@5] ft",
                     Names = new List<string> { "pulse", "rebuke", "surge", "ram" },
                     IsAlwaysInstant = true,
-                    BaseValueScore = 2
+                    BaseValueScore = 4
                 },
                 new SpellTemplate
                 {
@@ -625,7 +625,7 @@ namespace SpellGenerator.Client.Data
                     Names = new List<string> { "doom", "omen", "ruin" },
                     IsNeverAoE = true,
                     IsAlwaysInstant = true,
-                    BaseValueScore = 100
+                    BaseValueScore = 150
                 },
                 //new SpellTemplate //
                 //{

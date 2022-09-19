@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GeneratorEngine
 {
@@ -10,9 +11,12 @@ namespace GeneratorEngine
         public ProjectileType ProjectileType;
         public Area Area;
 
-        public override double GetPowerRatingModifier()
+        public override Dictionary<string, double> GetPowerRatingFactors()
         {
-            return base.GetPowerRatingModifier() * Area.GetLikelyNumberOfTargets() * ProjectileType.GetPowerRatingFactor();
+            var factors = base.GetPowerRatingFactors();
+            factors.Add("AreaSize", Area.GetLikelyNumberOfTargets());
+            factors.Add(nameof(ProjectileType), ProjectileType.GetPowerRatingFactor());
+            return factors;
         }
 
         internal override void UpdateDescription()

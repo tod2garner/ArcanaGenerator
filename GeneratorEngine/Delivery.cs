@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GeneratorEngine
 {
@@ -11,7 +12,7 @@ namespace GeneratorEngine
         public bool DoesNotTargetCreatures;
         public string Description;
 
-        public virtual double GetPowerRatingModifier()
+        public virtual Dictionary<string, double> GetPowerRatingFactors()
         {
             var modifierForRange = 1.0;
             if(RangeDistance >= 5)
@@ -23,7 +24,11 @@ namespace GeneratorEngine
                 }
             }
 
-            return (double)NumberOfTargets * modifierForRange;
+            return new Dictionary<string, double>()
+            {
+                { nameof(NumberOfTargets), NumberOfTargets },
+                { nameof(RangeDistance), modifierForRange } 
+            };
         }
 
         internal virtual void UpdateDescription()

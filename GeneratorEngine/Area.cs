@@ -7,7 +7,7 @@ namespace GeneratorEngine
         public AreaOfEffectShape Shape;
         public double Size;
 
-        public double CalculateSquareFeet()
+        private double CalculateSquareFeet()
         {
             switch (Shape)
             {
@@ -29,7 +29,7 @@ namespace GeneratorEngine
         public double GetLikelyNumberOfTargets()
         {
             var numberOfSquares = CalculateSquareFeet() / 25.0;
-            return numberOfSquares / 7.0; //arbitray estimate
+            return Math.Max(1,numberOfSquares / 7);//using 7 as an arbitrary estimate             
         }
     }
 }

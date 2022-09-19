@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GeneratorEngine
 {
@@ -10,10 +11,15 @@ namespace GeneratorEngine
         public AttackOrSavingThrow AttackOrSaveWhenCast;
         public SavingThrowType? SavingThrowType;
 
-        public override double GetPowerRating()
+        public override Dictionary<string, double> GetPowerRatingFactors()
         {
-            BasePowerRating = NumberOfDice * (int) DiceSize * DamageType.GetPowerRatingFactor() * AttackOrSaveWhenCast.GetPowerRatingFactor();
-            return base.GetPowerRating();
+            BasePowerRating = NumberOfDice * (int)DiceSize;
+
+            var factors = base.GetPowerRatingFactors();
+            factors.Add(nameof(DamageType), DamageType.GetPowerRatingFactor());
+            factors.Add("CannotMiss", AttackOrSaveWhenCast.GetPowerRatingFactor());
+            factors.Add(nameof(SavingThrowType), SavingThrowType.GetPowerRatingFactor());
+            return factors;
         }
 
         public string AttackOrSaveDescription()

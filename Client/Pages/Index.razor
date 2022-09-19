@@ -122,7 +122,21 @@
         }
 
         <div class="grid-item col1">Power Rating</div>
-        <div class="grid-item col2">@theSpell.GetFinalPowerRating()</div>
+        <div class="grid-item col2">@theSpell.FinalPowerRating
+            <div class="oi oi-info" aria-hidden="true">
+                <div class="customTooltip">
+                    <div>@theSpell.Effect.BasePowerRating Base Power</div>
+                    @foreach (var f in theSpell.PowerRatingFactors)
+                    {
+                        <div>x @f.Value.ToString("0.00") for @f.Key</div>
+                    }              
+                    @if(theSpell.CasterPenaltyCost != null)
+                    {
+                        <div>-@theSpell.CasterPenaltyCost.GetPowerRating() for Side Effect</div>
+                    }
+                </div>
+            </div>
+        </div>
     </div>
     <br/>
 }

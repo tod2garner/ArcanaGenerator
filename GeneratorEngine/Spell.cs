@@ -26,33 +26,64 @@ namespace GeneratorEngine
 
         public PenaltyEffect CasterPenaltyCost;
 
-        public double GetFinalPowerRating()
+        public Dictionary<string, double> PowerRatingFactors;
+
+        public double FinalPowerRating
         {
-            return Math.Round(Effect.GetPowerRating() * Delivery.GetPowerRatingModifier() * MiscPowerRatingModifier() - (CasterPenaltyCost?.GetPowerRating() ?? 0));
+            get
+            {
+                var result = Effect?.BasePowerRating ?? 0;
+
+                if (PowerRatingFactors is null)
+                    return result;
+
+                foreach (var factor in PowerRatingFactors)
+                {
+                    result *= factor.Value;
+                }
+
+                return Math.Ceiling(result - (CasterPenaltyCost?.GetPowerRating() ?? 0));
+            }
+        }
+
+        public void UpdatePowerRatingFactors()
+        {
+            PowerRatingFactors = new Dictionary<string, double>();
+
+            var factors = new List<KeyValuePair<string, double>>();
+            factors.AddRange(Effect.GetPowerRatingFactors());
+            factors.AddRange(Delivery.GetPowerRatingFactors());
+            factors.AddRange(GetMiscPowerRatingFactors());
+
+            foreach(var f in factors)
+            {
+                if (f.Value != 1)
+                    PowerRatingFactors.Add(f.Key, Math.Round(f.Value, 2));
+            }
         }
 
         public string GetSpellLevelSummary()
         {
             int low;
             int high;
-            var power = GetFinalPowerRating();
+            var power = FinalPowerRating;
 
-            if(power < 30)
+            if(power < 40)
             {
                 low = 0;
                 high = 2;
             }
-            else if (power < 60)
+            else if (power < 80)
             {
                 low = 1;
                 high = 4;
             }
-            else if (power < 100)
+            else if (power < 160)
             {
                 low = 3;
                 high = 6;
             }
-            else if (power < 200)
+            else if (power < 320)
             {
                 low = 6;
                 high = 9;
@@ -66,11 +97,17 @@ namespace GeneratorEngine
             return $"Up to DM - between {low} and {high}+ suggested";
         }
 
-        internal double MiscPowerRatingModifier()
+        internal Dictionary<string, double> GetMiscPowerRatingFactors()
         {
             var ritualFactor = Ritual ? 2.0 : 1.0;
-            var concentrationFactor = (!RequiresConcentration && Effect.Duration != Duration.Instant && Effect.Duration != Duration.OneRound) ? 3.0 : 1.0;            
-            return concentrationFactor * ritualFactor * CastTime.GetPowerRatingFactor() * Components.GetPowerRatingFactor();
+            var concentrationFactor = (!RequiresConcentration && Effect.Duration != Duration.Instant && Effect.Duration != Duration.OneRound) ? 3.0 : 1.0;     
+            return new Dictionary<string, double>
+            {
+                { nameof(Ritual), ritualFactor },
+                { "NoConcentration", concentrationFactor },
+                { nameof(CastTime), CastTime.GetPowerRatingFactor() },
+                { nameof(Components), Components.GetPowerRatingFactor() },
+            };
         }
 
         public void AdjustForTargetValueScore(Templates.SpellTemplate spellTemplate, double minScore, double maxScore)
@@ -85,7 +122,8 @@ namespace GeneratorEngine
 
         private double? CalculateScalingRatio(double minScore, double maxScore)
         {
-            var powerRating = GetFinalPowerRating();
+            UpdatePowerRatingFactors();
+            var powerRating = FinalPowerRating;
             if (powerRating > maxScore)           
                 return maxScore / powerRating;            
             else if (powerRating < minScore)            
