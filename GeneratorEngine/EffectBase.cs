@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace GeneratorEngine
@@ -13,9 +14,12 @@ namespace GeneratorEngine
 
         public Duration Duration;
 
-        public virtual double GetPowerRating()
+        public virtual Dictionary<string, double> GetPowerRatingFactors()
         {
-            return BasePowerRating * Duration.GetPowerRatingFactor();
+            return new Dictionary<string, double>
+            {
+                { nameof(Duration), Duration.GetPowerRatingFactor() }
+            };
         }
 
         internal virtual void UpdateDescription()

@@ -13,5 +13,10 @@ namespace GeneratorEngine
                 Description = $"{Description} This side effect lasts for {Duration}.";
             }
         }
+
+        public double GetPowerRating()
+        {
+            return BasePowerRating * Duration.GetPowerRatingFactor();
+        }
     }
 }

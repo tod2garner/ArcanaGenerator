@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GeneratorEngine
 {
@@ -11,15 +12,23 @@ namespace GeneratorEngine
         public bool DoesNotTargetCreatures;
         public string Description;
 
-        public virtual double GetPowerRatingModifier()
+        public virtual Dictionary<string, double> GetPowerRatingFactors()
         {
             var modifierForRange = 1.0;
             if(RangeDistance >= 5)
             {
                 modifierForRange = 0.3 * Math.Log(RangeDistance);//Varies from 0.5 to 1.5 between 5ft and 150ft
+                if (Type == DeliveryType.AreaOfEffect || Type == DeliveryType.AreaProjectile)
+                {
+                    modifierForRange += 0.5;
+                }
             }
 
-            return (double)NumberOfTargets * modifierForRange;
+            return new Dictionary<string, double>()
+            {
+                { nameof(NumberOfTargets), NumberOfTargets },
+                { nameof(RangeDistance), modifierForRange } 
+            };
         }
 
         internal virtual void UpdateDescription()

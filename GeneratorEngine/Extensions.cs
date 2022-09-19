@@ -75,14 +75,34 @@ namespace GeneratorEngine
         {
             switch (attackOrSave)
             {                
-                case AttackOrSavingThrow.SavingThrow:
-                    return 1.25;
                 case AttackOrSavingThrow.CannotMiss:
                     return 2.5;
                 case AttackOrSavingThrow.AttackRoll:
+                case AttackOrSavingThrow.SavingThrow:
                 default:
                     return 1.0;
             };
+        }
+
+        public static double GetPowerRatingFactor(this SavingThrowType? throwType)
+        {
+            if(throwType.HasValue)
+            {
+                switch (throwType.Value)
+                {
+                    case SavingThrowType.INT:
+                        return 1.25;
+                    case SavingThrowType.STR:
+                    case SavingThrowType.CON:
+                        return 0.9;
+                    case SavingThrowType.WIS:
+                    case SavingThrowType.CHA:
+                    case SavingThrowType.DEX:
+                    default:
+                        return 1.0;
+                };
+            }
+            return 1.0;
         }
 
         public static double GetPowerRatingFactor(this ProjectileType projectileType)

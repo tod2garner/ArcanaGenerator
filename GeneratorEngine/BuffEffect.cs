@@ -9,11 +9,6 @@ namespace GeneratorEngine
         //Duration is never instant
         //Delivery is never projectile or weapon
 
-        public PenaltyEffect TargetPenaltyCost;
-
-        public override double GetPowerRating()
-        {
-            return base.GetPowerRating() - (TargetPenaltyCost?.GetPowerRating() ?? 0);
-        }
+        public PenaltyEffect TargetPenaltyCost;//TODO - not used anywhere
     }
 }
