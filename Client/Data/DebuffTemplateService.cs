@@ -767,7 +767,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
                     Type = EffectType.Debuff,
-                    Description = "has their vision impaired, such that everything becomes blurry that farther away it is from them. " +
+                    Description = "has their vision impaired, such that everything becomes blurry the farther away it is from them. " +
                                     "They suffer a -5 penalty to melee attacks, a -10 penalty to ranged attacks, and automatically fail sight-related perception checks. " +
                                     "Creatures that do not rely on sight are immune to this spell.",
                     Names = new List<string> { "haze", "murk", "blur", "bleariness" },
@@ -779,7 +779,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
                     Type = EffectType.Debuff,
                     Description = "is picked up and slammed repeatedly into the ground, suffering [4-8][dice] bludgeoning damage, and then thrown up to [10-20@5]ft in a direction you choose. " +
-                                    "This spell has no effect on creatures that are Huge or larger",
+                                    "This spell has no effect on creatures that are Huge or larger.",
                     Names = new List<string> {  },//--------------------TODO
                     IsAlwaysInstant = true,
                     IsNeverAoE = true,
@@ -803,22 +803,60 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysInstant = true,
                     BaseValueScore = 50
                 },
+                new SpellTemplate //Reduce HP by half, caster takes damage
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Debuff,
+                    Description = "suffers Force damage equal to half of their remaining HP (the DM may or may not reveal the exact amount). However, if the total damage dealt exceeds 50 HP, then you must make a CON saving throw. " +
+                                    "On a failure the strain causes you to suffer [4-6][dice] + 20 force damage that cannot be resisted. On a success you take half damage.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Perceive all creatures as having the same face
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Debuff,
+                    Description = "begins to hallucinate such that all creatures look like they have the same face to them. You may choose what the face looks like. Creatures wearing clothing also appear to all be wearing identical attire (again your choice), but " +
+                                    "any tools or weapons they are holding are unchanged.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Aura of madness
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Debuff,
+                    Description = "is masked by an illusion to appear awkward, disturbing, and/or insane to those around them. They suffer a -10 penalty to all CHA related ability checks (persuasion, intimidation, performance, etc). " +
+                                    "The creature is unaware of the illusion, but can realize that it is being treated differently by succeeding on an Insight check vs your spell save DC. " +
+                                    "Other creatures can see through the illusion by succeeding on an Investigation check vs your spell save DC.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.TenMinutes,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Word swap
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Debuff,
+                    Description = "has up to 1d4 words 'swapped' by you for the duration. Each time they hear one of the chosen words, from any source, it is replaced in their mind such that they hear a different word of your choosing. " +
+                                    "You choose which new word will replace each forbidden word at the time of casting. The target is unaware of the deception, but can realize the communication is off by succeeding on an Insight check vs your spell save DC.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.TenMinutes,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 5
+                },
                 //new SpellTemplate //
                 //{
-                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
                 //    Type = EffectType.Debuff,
                 //    Description = "",
                 //    Names = new List<string> {  },//--------------------TODO
                 //    BaseValueScore = 5
                 //},
                 //************************************************************************************************************************************     
-                /*           
-                * Evocation              	   
-                        reduce HP by half, but if the damage exceeds 50 HP then the caster takes equal damage	                                             
-                * Illusion
-                        make all creatures look like strangers to only them (like, actual appearance, faces look different)
-                        word swap (hear one word in it's place, not aware of swap)
-                        aura of madness for enemies - Cha penalty
+                /*                                                        
                 * Enchanment
                         babel (random real language)
                         a curse like babel, but for listening instead of speaking
@@ -845,6 +883,7 @@ namespace SpellGenerator.Client.Data
 	                        range of self, non magic weapon
 	                        blade blast, ranged aoe	
                         storm rain	
+                        storm call - mark a target, all damage occurs at the end of the spell duration - add 2 dice per round
                         infernal cry, on death effects	
                 * Reactions
                         when you see a creature take lightning damage chain that damage to three other creatures of your choice
