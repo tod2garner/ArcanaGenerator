@@ -745,7 +745,10 @@ namespace SpellGenerator.Client.Data
                         change remains to be purely skeletal	
                         only affects undead creatures with INT less than 7. Temporarily restore their intellect from when they were alive.
                         transform a permanent skeleton or zombie you control into a ghostly variant of the same	
-                        ritual to sacrifice max HP until next long rest interchange for one of the following: immune to poison, no need to breathe, 50 percent chance after death save to gain 3d6 HP, necrotic damage heals you and healing spells damage you. Roll randomly, can be cast multiple times to stack different effects	
+                        ritual to sacrifice max HP until next long rest interchange for one of the following: immune to poison, no need to breathe, 50 percent chance after death save to gain 3d6 HP, necrotic damage heals you and healing spells damage you. Roll randomly, can be cast multiple times to stack different effects	                        
+                        command undead - temporarily take control, only if low INT
+                        detonate one undead under your control as an explosion 
+                        detonate and desecrate (single cast? delayed explosion)
                 * Evocation
                         searing bond, 1d3 stationary points and yourself, bonus action to replace one
                         variant of contingency, lasts only 1 hour but multiple creatures benefit (common triggering condition and spell for all), spell level not more than half this spell

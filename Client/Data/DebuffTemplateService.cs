@@ -680,9 +680,67 @@ namespace SpellGenerator.Client.Data
                     DoesNotTargetCreatures = true,//Location effect
                     BaseValueScore = 10
                 },
+                new SpellTemplate //Vulnerable to physical
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Debuff,
+                    Description = "becomes vulnerable to one type of physical damage that you choose: Piercing, Slashing, or Bludgeoning.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Vulnerable to elemental
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Evocation },
+                    Type = EffectType.Debuff,
+                    Description = "becomes vulnerable to one type of elemental damage that you choose: Fire, Cold, Lightning, or Thunder.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Vulnerable to dark
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Debuff,
+                    Description = "becomes vulnerable to one of the following types of damage that you choose: Necrotic, Acid, or Poison.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Vulnerable to light
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Evocation },
+                    Type = EffectType.Debuff,
+                    Description = "becomes vulnerable to one of the following types of damage that you choose: Psychic, Radiant, or Force",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Ignite proliferation
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Debuff,
+                    Description = "takes [2-4][dice] fire damage and is ignited. While still burning they panic and instantly (during your turn) run 15ft in a random direction (roll 1d4). " +
+                                    "Any creature within 5ft of them at any point along their path must make a DEX save. On a failure the adjacent creatures is also ignited, and suffers this same effect - potentially causing a chain reaction as they also are burned, panic, and run. " +
+                                    "By the start of their next turn the flames die down and dissipate. Creatures that are immune to magical fear do not panic or run, but still suffer the fire damage.",
+                    Names = new List<string> { "proliferation", "ignition", "blaze" },
+                    IsAlwaysInstant = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Random damage type and dice count
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Debuff,
+                    Description = "suffers chaotic damage of a random type. The size of the damage dice is a [dice], but the quantity changes with each casting. Roll 2d8 to determine the quantity of damage dice to use. " +
+                                    "Then roll 1d8 to determine the damage type: Bludgeoning, Fire, Cold, Lightning, Thunder, Acid, Poison, or Force.",
+                    Names = new List<string> { "chaos", "entropy", "chance", "gamble" },
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 25
+                },
                 //new SpellTemplate //
                 //{
-                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
                 //    Type = EffectType.Debuff,
                 //    Description = "",
                 //    Names = new List<string> {  },//--------------------TODO
@@ -690,34 +748,12 @@ namespace SpellGenerator.Client.Data
                 //},
                 /* 
                 //************************************************************************************************************************************
-                *  Necro                                           
-                        vulnerable to X damage                         
-                        command undead - temporarily take control, only if low INT
-                        detonate one undead under your control as an explosion 
-                        detonate and desecrate (single cast? delayed explosion)
-                * Evocation
-                        spell whose damage scales based on the amount of depleted spell slots you have (or undeleted)	
-	                        mana mine
-	                        sticky grenade, channels for more damage
-	                        protective dome
-	                        circle of power - flat added damage per mana
-	                        circle of enlightenment - any school, plus effective spell levels for that school
-                        ignite proliferation - when ignited run in a random direction, any creatures within 5 ft are also ignited	
-                        throw a shadow of a melee weapon, chain to up to 3 targets within 10ft of the last	
-	                        damage plus debuff
-                        chaotic damage - roll dice for damage type	
-                        shatter a metallic weapon and hurl the shards, damage plus debuff	
-	                        range of self, non magic weapon
-	                        blade blast, ranged aoe
-                        vulnerabilities for each damage type	
-                        debuff - puny God, ragdoll slam into ground and thrown, no effect if size is huge or bigger	
-                        debuff - lesser power word kill (or divine word), creatures with less than 30 HP instantly reduced to 1hp	
-                        debuff - reduce HP by half, but if the damage exceeds 50 HP then the caster takes equal damage	
-                        debuff - creatures with HP less than 50 instantly reduced to 0hp, but the caster suffers 4d12 necrotic damage that cannot be reduced or avoided	
-                        debuff - internal cry, on death effects	
-                        storm rain	
-                        damage and pull yourself to the target, always ranged	
-	                        consecrated path, flicker strike, chain hook, leap slam, shield charge
+                * Evocation              	
+                        puny God, ragdoll slam into ground and thrown, no effect if size is huge or bigger	
+                        lesser power word kill (or divine word), creatures with less than 30 HP instantly reduced to 1hp	
+                        reduce HP by half, but if the damage exceeds 50 HP then the caster takes equal damage	
+                        creatures with HP less than 50 instantly reduced to 0hp, but the caster suffers 4d12 necrotic damage that cannot be reduced or avoided	                        
+                        
                 * Illusion
                         sickening smell
                         halucination
@@ -735,6 +771,22 @@ namespace SpellGenerator.Client.Data
                         unable to speak 2d4 words of your choosing
                         unable to verbalize one fact of your choosing
                         any creature in range, including hidden ones, charmed to reveal themselves and walk towards you
+                * PoE
+                        damage and pull yourself to the target, always ranged	
+	                        consecrated path, flicker strike, chain hook, leap slam, shield charge
+                        spell whose damage scales based on the amount of depleted spell slots you have (or undeleted)	
+	                        mana mine
+	                        sticky grenade, channels for more damage
+	                        protective dome
+	                        circle of power - flat added damage per mana
+	                        circle of enlightenment - any school, plus effective spell levels for that school
+                        throw a shadow of a melee weapon, chain to up to 3 targets within 10ft of the last	
+	                        damage plus debuff
+                        shatter a metallic weapon and hurl the shards, damage plus debuff	
+	                        range of self, non magic weapon
+	                        blade blast, ranged aoe	
+                        storm rain	
+                        infernal cry, on death effects	
                 * Reactions
                         when you see a creature take lightning damage chain that damage to three other creatures of your choice
                         when you see a creature take cold damage, cover then in ice and restrain them, can use action to break free with a str check
