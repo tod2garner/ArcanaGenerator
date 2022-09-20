@@ -38,7 +38,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Enchantment },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Abjuration },
                     Type = EffectType.Debuff,
                     Description = "is Restrained",
                     Names = new List<string> { "prison", "restraint", "control", "hold", "snare" },
@@ -431,7 +431,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Partial banishment
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Necromancy },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Abjuration },
                     Type = EffectType.Debuff,
                     Description = "is partially banished. They take no damage but are temporarily disabled as you force part of their body to a harmless demi-plane. No wound is created (i.e. no blood loss, etc). " +
                                     "Instead a glowing plane appears at the point of pseudo-amputation. Roll a percentile dice to determine what portion of their body is banished: " +
@@ -819,7 +819,7 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Debuff,
                     Description = "begins to hallucinate such that all creatures look like they have the same face to them. You may choose what the face looks like. Creatures wearing clothing also appear to all be wearing identical attire (again your choice), but " +
                                     "any tools or weapons they are holding are unchanged.",
-                    Names = new List<string> {  },//--------------------TODO
+                    Names = new List<string> { "anonymity", "obscurity", "visage"  },
                     MinimumDuration = Duration.OneMinute,
                     IsAlwaysRanged = true,
                     BaseValueScore = 15
@@ -831,7 +831,7 @@ namespace SpellGenerator.Client.Data
                     Description = "is masked by an illusion to appear awkward, disturbing, and/or insane to those around them. They suffer a -10 penalty to all CHA related ability checks (persuasion, intimidation, performance, etc). " +
                                     "The creature is unaware of the illusion, but can realize that it is being treated differently by succeeding on an Insight check vs your spell save DC. " +
                                     "Other creatures can see through the illusion by succeeding on an Investigation check vs your spell save DC.",
-                    Names = new List<string> {  },//--------------------TODO
+                    Names = new List<string> { "mortification", "discomposure", "awkwardness" },
                     MinimumDuration = Duration.TenMinutes,
                     IsAlwaysRanged = true,
                     BaseValueScore = 5
@@ -840,16 +840,65 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
                     Type = EffectType.Debuff,
-                    Description = "has up to 1d4 words 'swapped' by you for the duration. Each time they hear one of the chosen words, from any source, it is replaced in their mind such that they hear a different word of your choosing. " +
+                    Description = "has up to 1d4 specific words they hear switched by you for the duration. Each time they hear one of the chosen words, from any source, it is replaced in their mind such that they hear a different word of your choosing. " +
                                     "You choose which new word will replace each forbidden word at the time of casting. The target is unaware of the deception, but can realize the communication is off by succeeding on an Insight check vs your spell save DC.",
-                    Names = new List<string> {  },//--------------------TODO
+                    Names = new List<string> { "exchange", "switch", "trade", "swap" },
                     MinimumDuration = Duration.TenMinutes,
                     IsAlwaysRanged = true,
                     BaseValueScore = 5
                 },
+                new SpellTemplate //Babel
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "forgets all languages that they normally know, and instantly know a single random language instead. They roll 1d10 to determine the language: Dwarvish, Elvish, Giant, Gnomish, Goblin, Halfling, Orc, Draconic, Sylvan, or Undercommon. " +
+                                    "This spell has no effect on creatures that do not know a spoken language.",
+                    Names = new List<string> { "babeling", "tumult", "tongue" },
+                    MinimumDuration = Duration.OneHour,
+                    IsAlwaysAoE = true,
+                    BaseValueScore = 3
+                },
+                new SpellTemplate //Blurt
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "blurts out 2d4 words of your choosing. If you are hidden from the target then the number of words is doubled.",
+                    Names = new List<string> { "confession", "exclamation", "interjection" },
+                    IsAlwaysInstant = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Taboo
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "is unable to utter 2d4 specific words of your choosing. If you are hidden from the target then roll one extra dice to determine the number of words.",
+                    Names = new List<string> { "taboo", "muzzle", "suppression" },
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 2
+                },
+                new SpellTemplate //Must speak lies
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "is unable to directly verbalize any fact that they believe is true - they must speak vaguely, tell lies, or remain silent.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 2
+                },
+                new SpellTemplate //Freeze or flee
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "panics and either freezes or flees. On their turn they can only use their action to Dodge or Dash. " +
+                                    "This spell has no effect on creatures that are immune to magical fear.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 15
+                },
                 //new SpellTemplate //
                 //{
-                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
                 //    Type = EffectType.Debuff,
                 //    Description = "",
                 //    Names = new List<string> {  },//--------------------TODO
@@ -858,15 +907,7 @@ namespace SpellGenerator.Client.Data
                 //************************************************************************************************************************************     
                 /*                                                        
                 * Enchanment
-                        babel (random real language)
-                        a curse like babel, but for listening instead of speaking
-                        Delayed effect charm
-                        blurt out 1d4 words the caster chooses, double if you are hidden                        
-                        debuff - can only use action to dodge or dash                        
-                        forced to only speak lies, cannot speak direct truths
-                        speak in rhymes or be struck blind
-                        unable to speak 2d4 words of your choosing
-                        unable to verbalize one fact of your choosing
+                        Delayed effect charm                                   
                         any creature in range, including hidden ones, charmed to reveal themselves and walk towards you
                 * PoE
                         damage and pull yourself to the target, always ranged	
