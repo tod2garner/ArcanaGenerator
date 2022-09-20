@@ -402,7 +402,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
                     Type = EffectType.Debuff,
                     Description = "has one of their abilities or spells sealed for 1d4 rounds, such that they cannot use it. " +
-                                    "You roll a percentile dice when you cast this spell - there is a 50% chance you can pick which ability is sealed and a 50% chance for the DM to pick on randomly. " +
+                                    "You roll a percentile dice when you cast this spell - there is a 50% chance you can pick which ability is sealed and a 50% chance for the DM to pick one randomly. " +
                                     "If you do get to choose, you can only pick abilities that you have seen the target use.",
                     Names = new List<string> { "seal", "oblivion", "amnesia" },
                     IsAlwaysInstant = true,
@@ -774,6 +774,35 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 15
                 },
+                new SpellTemplate //Ragdoll slam
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Debuff,
+                    Description = "is picked up and slammed repeatedly into the ground, suffering [4-8][dice] bludgeoning damage, and then thrown up to [10-20@5]ft in a direction you choose. " +
+                                    "This spell has no effect on creatures that are Huge or larger",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Lesser power word kill, leave at 1 HP
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Necromancy },
+                    Type = EffectType.Debuff,
+                    Description = "that has less than [40-60@10] HP is instantly reduced to 1 HP and slowed until the end of their next turn. If their health is not below the threshold then they are slowed but suffer no damage.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Lesser power word kill, caster takes damage
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Necromancy },
+                    Type = EffectType.Debuff,
+                    Description = "that has less than [40-60@10] HP is instantly reduced to 0 HP, but you lose [1-2][dice] HP for each creature killed.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 50
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
@@ -784,20 +813,18 @@ namespace SpellGenerator.Client.Data
                 //},
                 //************************************************************************************************************************************     
                 /*           
-                * Evocation              	
-                        puny God, ragdoll slam into ground and thrown, no effect if size is huge or bigger	
-                        lesser power word kill (or divine word), creatures with less than 30 HP instantly reduced to 1hp	
-                        reduce HP by half, but if the damage exceeds 50 HP then the caster takes equal damage	
-                        creatures with HP less than 50 instantly reduced to 0hp, but the caster suffers 4d12 necrotic damage that cannot be reduced or avoided	                                                
-                * Enchanment.
-                        make all creatures look like strangers (like, actual appearance, faces look different)
+                * Evocation              	   
+                        reduce HP by half, but if the damage exceeds 50 HP then the caster takes equal damage	                                             
+                * Illusion
+                        make all creatures look like strangers to only them (like, actual appearance, faces look different)
+                        word swap (hear one word in it's place, not aware of swap)
+                        aura of madness for enemies - Cha penalty
+                * Enchanment
                         babel (random real language)
                         a curse like babel, but for listening instead of speaking
                         Delayed effect charm
-                        blurt out 1d4 words the caster chooses, double if you are hidden
-                        word swap (hear one word in it's place, not aware of swap)
-                        debuff - can only use action to dodge or dash
-                        aura of madness for enemies - Cha penalty
+                        blurt out 1d4 words the caster chooses, double if you are hidden                        
+                        debuff - can only use action to dodge or dash                        
                         forced to only speak lies, cannot speak direct truths
                         speak in rhymes or be struck blind
                         unable to speak 2d4 words of your choosing
