@@ -128,6 +128,18 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 12
                 },
+                new SpellTemplate //Delayed suggestion
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "is Charmed to consider you a friend for 2d4 minutes. At the end of that time you may give them a single mental suggestion telepathically which they are compelled to obey, subject to the limitations described in the 2nd level 'Suggestion' spell. " +
+                                    "You need not remain near them for the full time span, nor is it necessary for them to remain in your line of sight for you to give the mental command. " +
+                                    "The target is not automatically aware that you are the source of the suggestion, but may realize it with either an Insight or Intelligence check vs your spell save DC, with advantage at the DM's discretion. " +
+                                    "This spell has no effect on creatures that are immune to being charmed.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 40
+                },
                 new SpellTemplate //Friends abound
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
@@ -896,6 +908,37 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 15
                 },
+                new SpellTemplate //Pied piper
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "is compelled to follow you at a distance. They cannot willing move farther than 30ft from you, nor closer than 5ft from you, " +
+                                    "and must use their movement to stay in that range. While outside that range they must use their action to dash and attempt to follow you. " +
+                                    "Creatures that are immune to being charmed cannot be effected by this spell.",
+                    Names = new List<string> { "beckoning", "piper", "lure" },
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 8
+                },
+                new SpellTemplate //Siren call
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "is compelled use their movement get as close to you as possible and cannot willingly move farther from you. " +
+                                    "While more than 10ft from you they must use also their action to dash and attempt to reach you. " +
+                                    "Creatures that are immune to being charmed cannot be effected by this spell.",
+                    Names = new List<string> { "beckoning", "siren", "lure" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 4
+                },
+                new SpellTemplate //Prone and unable to stand
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Debuff,
+                    Description = "is knocked prone and is unable to stand upright for the spell duration - they may still crawl however. The spell can only effect humanoid creatures.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 10
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
@@ -905,10 +948,8 @@ namespace SpellGenerator.Client.Data
                 //    BaseValueScore = 5
                 //},
                 //************************************************************************************************************************************     
-                /*                                                        
-                * Enchanment
-                        Delayed effect charm                                   
-                        any creature in range, including hidden ones, charmed to reveal themselves and walk towards you
+                /*      	
+                        shrieking spiders 	                                               	
                 * PoE
                         damage and pull yourself to the target, always ranged	
 	                        consecrated path, flicker strike, chain hook, leap slam, shield charge
@@ -936,15 +977,8 @@ namespace SpellGenerator.Client.Data
                         see creature hit with a projectile that deals piercing damage - pierce target and curve arrow towards another within 90degrees
                         when you see a creature suffer poison status - remove status and instantly suffer 3d12 poison damage
                         when you see a creature suffer poison status - replace with paralyzed status
-                        when you see a creature suffer thunder or bludg - double the damage, if at least 20 (plus 20 for each size above medium) then Ragdolls, thrown 20ft, and knocked prone
-                * Other
-                        gain no benefit from resting other than avoiding exhaustion, never AoE 	
-	                        long duration or a trigger to end it? ex: see doom debuff
-	                        variation with half benefit instead of zero (half spells, half HP, etc)
-                        prone and unable to stand, can crawl, must be humanoid	
-                        pied Piper, forced to follow	
-                        spinning wheel trance from sleeping beauty?	
-                        shrieking spiders 	                                               	
+                        when you see a creature suffer thunder or bludg - double the damage, if at least 20 (plus 20 for each size above medium) then Ragdolls, thrown 20ft, and knocked prone                
+                        
                  */
             };
 

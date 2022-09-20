@@ -761,6 +761,7 @@ namespace SpellGenerator.Client.Data
                         ground shakes with each step, create difficult terrain with shockwaves along the path the walk
                         pick a 1st level spell you know. Each time the target successfully hits with a weapon attack (once per turn) the spell is automatically triggered without using a spell slot or components. The spell automatically targets the creature that was hit, but any AoE effects still have an area.	                                                             
                 * Enchanment
+                        any creature in range, including hidden ones, charmed to reveal themselves and walk towards you
                         targets location not creatures - anyone that approaches is compelled to instead travel to a different point you choose	
                         mass sleep, friend foe and self in large AOE, elves cannot enter the area	
                         mass paralysis, no save, friend and foe and self, fails for all if any are immune to paralysis 	
