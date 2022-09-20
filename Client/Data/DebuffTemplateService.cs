@@ -9,14 +9,6 @@ namespace SpellGenerator.Client.Data
         {
             var templates = new List<SpellTemplate>
             {
-                new SpellTemplate //TODO - remove this filler once there is at least one template per school
-                {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
-                    Type = EffectType.Debuff,
-                    Description = "has disadvantage on saving throws against all spells from the same school of magic as this spell",
-                    MinimumDuration = Duration.OneHour,
-                    BaseValueScore = 1
-                },
                 new SpellTemplate
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation },
@@ -649,7 +641,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Improved bane
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Enchantment, SchoolOfMagic.Divination },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment, SchoolOfMagic.Divination },
                     Type = EffectType.Debuff,
                     Description = "must subtract 1[dice] from all attack rolls, saving throws, and ability checks.",
                     Names = new List<string> { },//--------------------TODO
@@ -691,7 +683,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Vulnerable to elemental
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Evocation },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation, SchoolOfMagic.Evocation },
                     Type = EffectType.Debuff,
                     Description = "becomes vulnerable to one type of elemental damage that you choose: Fire, Cold, Lightning, or Thunder.",
                     Names = new List<string> {  },//--------------------TODO
@@ -709,7 +701,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Vulnerable to light
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Evocation },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Enchantment },
                     Type = EffectType.Debuff,
                     Description = "becomes vulnerable to one of the following types of damage that you choose: Psychic, Radiant, or Force",
                     Names = new List<string> {  },//--------------------TODO
@@ -738,6 +730,50 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysInstant = true,
                     BaseValueScore = 25
                 },
+                new SpellTemplate //Hallucination
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Debuff,
+                    Description = "begins to hallucinate. Up to 2d4 entities appear that no one else can see, but that are vivid to all of the target's senses (sight, sound, smell, touch, etc). " +
+                                    "You choose the appearance of the entities, up to [10-20@5]ft in any dimension, at the time of casting. You may change their behavior each round as a bonus action on your turn. " +
+                                    "If they appear to act in a violent way the target suffers [2-4][dice] psychic damage, but experiences it as the appropriate imagined damage type. " +
+                                    "Instead of simply attacking you may choose to have them perform more complex actions, such as carrying on a conversation, but doing so requires your full action rather than a bonus action.",
+                    Names = new List<string> { "hallucination", "visitation", "visitors" },
+                    MinimumDuration = Duration.OneMinute,
+                    IsNeverAoE = true,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Illusory smell
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Debuff,
+                    Description = "is overwhelmed by an illusory scent. You may choose any smell, and can make it seem either directional or ubiquitous. " +
+                                    "At worst, the smell can be odious enough to cause the poisoned condition on a failed CON save.",
+                    Names = new List<string> { "scent", "stench", "odor", "miasma" },
+                    MinimumDuration = Duration.OneMinute,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Insomnia
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion, SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "experiences insomnia or nightmares (your choice) such that they can gain no benefit from a long rest for [3-4]d12 + [6-18@2] hours.",
+                    Names = new List<string> { "restlessness", "insomnia", "sleeplessness" },
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Blurred vision
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Debuff,
+                    Description = "has their vision impaired, such that everything becomes blurry that farther away it is from them. " +
+                                    "They suffer a -5 penalty to melee attacks, a -10 penalty to ranged attacks, and automatically fail sight-related perception checks. " +
+                                    "Creatures that do not rely on sight are immune to this spell.",
+                    Names = new List<string> { "haze", "murk", "blur", "bleariness" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 15
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
@@ -746,17 +782,13 @@ namespace SpellGenerator.Client.Data
                 //    Names = new List<string> {  },//--------------------TODO
                 //    BaseValueScore = 5
                 //},
-                /* 
-                //************************************************************************************************************************************
+                //************************************************************************************************************************************     
+                /*           
                 * Evocation              	
                         puny God, ragdoll slam into ground and thrown, no effect if size is huge or bigger	
                         lesser power word kill (or divine word), creatures with less than 30 HP instantly reduced to 1hp	
                         reduce HP by half, but if the damage exceeds 50 HP then the caster takes equal damage	
-                        creatures with HP less than 50 instantly reduced to 0hp, but the caster suffers 4d12 necrotic damage that cannot be reduced or avoided	                        
-                        
-                * Illusion
-                        sickening smell
-                        halucination
+                        creatures with HP less than 50 instantly reduced to 0hp, but the caster suffers 4d12 necrotic damage that cannot be reduced or avoided	                                                
                 * Enchanment.
                         make all creatures look like strangers (like, actual appearance, faces look different)
                         babel (random real language)
@@ -805,9 +837,7 @@ namespace SpellGenerator.Client.Data
                         prone and unable to stand, can crawl, must be humanoid	
                         pied Piper, forced to follow	
                         spinning wheel trance from sleeping beauty?	
-                        shrieking spiders 	
-                        blurry vision - disadvantage on attacks and auto-fail perception > 5ft away	
-                        illusion and enchantment - insomnia or nightmares -instant effect, no benefit from long rest for 12x hours	
+                        shrieking spiders 	                                               	
                  */
             };
 
