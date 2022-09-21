@@ -950,22 +950,38 @@ namespace SpellGenerator.Client.Data
                     Names = new List<string> { "capacitor", "static", "bolt", "storm", "thunder" },
                     IsNeverAoE = true,
                     MinimumDuration = Duration.OneMinute,
-                    BaseValueScore = 5
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Infernal cry
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Debuff,
+                    Description = "is covered with a layer of ash for the spell duration. If they are reduced to 0 HP it explodes, dealing [2-4][dice] + [5-10] fire damage to all creatures within 10ft. " +
+                                    "This can trigger a chain reaction if the explosion reduces another creature covered in ash to 0 HP.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration= Duration.OneMinute,
+                    IsAlwaysAoE = true,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Profane bloom
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Debuff,
+                    Description = "is cursed in a unique manner. If they are killed during the spell duration then their body detonates, dealing [3-5][dice] + [8-15] necrotic damage to all creatures within 10ft. " +
+                                    "This can trigger a chain reaction if the explosion kills a similarly cursed creature.",
+                    Names = new List<string> { "desecration", "omen", "doom", "depravation" },
+                    MinimumDuration= Duration.OneMinute,
+                    IsAlwaysAoE = true,
+                    BaseValueScore = 15
                 },
                 //new SpellTemplate //
                 //{
-                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
                 //    Type = EffectType.Debuff,
                 //    Description = "",
                 //    Names = new List<string> {  },//--------------------TODO
                 //    BaseValueScore = 5
                 //},
-                //************************************************************************************************************************************     
-                /*      	
-                * 
-                        infernal cry, on death effects	
-                * 
-                 */
             };
 
             return templates;
