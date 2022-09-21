@@ -672,6 +672,20 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysInstant = true,
                     BaseValueScore = 70
                 },
+                new SpellTemplate //Shrieking spiders
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a swarm of ethereal spiders (or similar creatures) at your feet. You telepathically show them any image of your choice (real or imagined) and they will hunt for it. " +
+                                    "The image can be of a creature, an object, a natural or architectural feature, etc. but the spiders will ignore intricate details. " +
+                                    "They are intangible (cannot attack nor be attacked) as they skitter across surfaces, searching any area within range. " +
+                                    "If they find anything that looks similar to the target image dozens of them will surround it and begin shrieking loudly (audible within 100ft).",
+                    Names = new List<string> { "colony", "swarm", "throng" },
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.TenMinutes,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 4
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
@@ -681,7 +695,7 @@ namespace SpellGenerator.Client.Data
                 //    BaseValueScore = 5
                 //},
                 //*************************************************************************
-                /*            
+                /*      	
                  *  Divination
                         runes that glow when long distance twins hear a specific word 
                         Lesser comprehend languages, very simple ideas only
@@ -718,7 +732,7 @@ namespace SpellGenerator.Client.Data
                         hide worth - illusion or transmutation - gold coins to copper temporarily, and gems into common minerals
                         split illusions - 3d4 copies of the same illusion, less than 6 inches in any dimension
                         split illusion - 2d6 copies, less than 3ft
-                * Necro
+                * Necro                        
                         reaction - as you fall unconscious - tie the target's fate to your own, whenever you fail a death saving throw they take necrotic damage and if you die they are stunned for 1d3 rounds - is always instant (to avoid concentration requirements)
                         reaction - as you fall unconscious deal [5-8][dice] + [10-40@10] necrotic damage to one visible targt in range
                         bodyswap - teleport, if you consume a corpse at the target location deal damage and does not use the spell slot	

@@ -309,7 +309,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Triggered Damage - psychic with spells
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Enchantment },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
                     Type = EffectType.Debuff,
                     Description = "has a glowing collar appear around their neck. On their turn if they cast any spell they take 1[dice] psychic damage per spell level. " +
                                     "If they use a magical ability that is not a spell they take 2[dice] psychic damage.",
@@ -358,7 +358,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Hearing things
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion, SchoolOfMagic.Enchantment },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
                     Type = EffectType.Debuff,
                     Description = "is distracted by noises that no one else can hear. You choose the nature of the sounds, but the volume is no louder than normal speaking volume. The target has disadvantage " +
                                     "on Perception, Insight, and Investigation checks. If you are hidden when you cast this spell you may choose to increase the cast time by one minute and omit all spell components " +
@@ -939,6 +939,19 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 10
                 },
+                new SpellTemplate //Storm call
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Debuff,
+                    Description = "is marked with an obvious, glowing sigil. It causes no damage while this spell is active and simply remains bound to the target, moving with them. " +
+                                    "At the end of the spell duration, however, they suffer [10-20@2] thunder damage plus 2[dice] lightning damage as a massive bolt of lightning strikes the sigil from above them. " +
+                                    "On each of your turns that passes without the spell ending you may use a bonus action to increase the eventual lightning damage by 2 dice. " +
+                                    "You may instead choose to end this spell early (triggering the damage) as a bonus action. This spell can target a stationary location rather than a creature.",
+                    Names = new List<string> { "capacitor", "static", "bolt", "storm", "thunder" },
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 5
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
@@ -949,7 +962,6 @@ namespace SpellGenerator.Client.Data
                 //},
                 //************************************************************************************************************************************     
                 /*      	
-                        shrieking spiders 	                                               	
                 * PoE
                         damage and pull yourself to the target, always ranged	
 	                        consecrated path, flicker strike, chain hook, leap slam, shield charge
@@ -965,7 +977,6 @@ namespace SpellGenerator.Client.Data
 	                        range of self, non magic weapon
 	                        blade blast, ranged aoe	
                         storm rain	
-                        storm call - mark a target, all damage occurs at the end of the spell duration - add 2 dice per round
                         infernal cry, on death effects	
                 * Reactions
                         when you see a creature take lightning damage chain that damage to three other creatures of your choice
