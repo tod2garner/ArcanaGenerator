@@ -681,7 +681,8 @@ namespace SpellGenerator.Client.Data
                                     "They are intangible (cannot attack nor be attacked) as they skitter across surfaces, searching any area within range. " +
                                     "If they find anything that looks similar to the target image dozens of them will surround it and begin shrieking loudly (audible within 100ft).",
                     Names = new List<string> { "colony", "swarm", "throng" },
-                    IsNeverAoE = true,
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,                    
                     MinimumDuration = Duration.TenMinutes,
                     IsAlwaysRanged = true,
                     BaseValueScore = 4
@@ -822,9 +823,7 @@ namespace SpellGenerator.Client.Data
 	                        mana mine
 	                        sticky grenade, channels for more damage
                         damage and pull yourself to the target, always ranged	
-	                        consecrated path, flicker strike, chain hook, leap slam, shield charge                        
-	                    protective dome
-	                    circle of power - flat added damage per mana
+	                        consecrated path, flicker strike, chain hook, leap slam, shield charge    
 	                    circle of enlightenment - any school, plus effective spell levels for that school
                         throw a shadow of a melee weapon, chain to up to 3 targets within 10ft of the last	
 	                        damage plus debuff

@@ -974,6 +974,40 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysAoE = true,
                     BaseValueScore = 15
                 },
+                new SpellTemplate //Variant of mind spike - interrogation
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Debuff,
+                    Description = "suffers a debilitating migraine as you burrow into their thoughts. Doing so requires your full attention - this spell ends early if you move at all or use your action for anything other than continuing this spell. " +
+                                    "The target is stunned for 1d3 rounds and each round you may use your action to pry for one specific fact. On each attempt you make a contested INT check vs the target. " +
+                                    "On a success you get a glimpse of what they know about the desired fact - no more than a quick image or a single sentence. If they do not know the fact that you seek, instead you get a random glimpse into their mind. " +
+                                    "On a failure you learn nothing.",
+                    Names = new List<string> { "interrogation", "migraine", "interview" },
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Restrained - including magical movement and teleportation
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                    Type = EffectType.Debuff,
+                    Description = "is fully restrained. Additionally, they cannot be physically relocated by anyone other than you. " +
+                                    "Magical movement such as teleportation fails completely. Finally, they cannot shift between planes for the spell duration.",
+                    Names = new List<string> { "anchor", "bond", "root" },
+                    MinimumDuration= Duration.OneMinute,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Chained - take damage if they try to teleport
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                    Type = EffectType.Debuff,
+                    Description = "has their legs bound together with chains such that their movement speed is reduced to 5ft. The chains are immune to damage. " +
+                                    "If the target attempts to teleport or otherwise escape using magic (ie. misty step, planeshift, etherealness) it fails and they suffer 2[dice] force damage. " +
+                                    "This spell can only effect humanoids.",
+                    Names = new List<string> { "chains", "bands", "cords" },
+                    MinimumDuration= Duration.OneMinute,
+                    BaseValueScore = 15
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
