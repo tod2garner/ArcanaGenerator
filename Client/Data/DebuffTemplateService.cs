@@ -962,34 +962,9 @@ namespace SpellGenerator.Client.Data
                 //},
                 //************************************************************************************************************************************     
                 /*      	
-                * PoE
-                        damage and pull yourself to the target, always ranged	
-	                        consecrated path, flicker strike, chain hook, leap slam, shield charge
-                        spell whose damage scales based on the amount of depleted spell slots you have (or undeleted)	
-	                        mana mine
-	                        sticky grenade, channels for more damage
-	                        protective dome
-	                        circle of power - flat added damage per mana
-	                        circle of enlightenment - any school, plus effective spell levels for that school
-                        throw a shadow of a melee weapon, chain to up to 3 targets within 10ft of the last	
-	                        damage plus debuff
-                        shatter a metallic weapon and hurl the shards, damage plus debuff	
-	                        range of self, non magic weapon
-	                        blade blast, ranged aoe	
-                        storm rain	
+                * 
                         infernal cry, on death effects	
-                * Reactions
-                        when you see a creature take lightning damage chain that damage to three other creatures of your choice
-                        when you see a creature take cold damage, cover then in ice and restrain them, can use action to break free with a str check
-                        when you see a creature take fire damage, ignite them so they receive that damage again at the end of their next turn
-                        when you see a creature take fire damage, trigger a mini explosion to repeat the damage and spread that damage to all other creatures within 10ft 
-                        when you see a creature suffer lightning - repeat damage and attempt to stun
-                        when you see a creature suffer cold - mini AoE explosion to repeat the damage and reduce speed by half
-                        see creature hit with a projectile that deals piercing damage - pierce target and curve arrow towards another within 90degrees
-                        when you see a creature suffer poison status - remove status and instantly suffer 3d12 poison damage
-                        when you see a creature suffer poison status - replace with paralyzed status
-                        when you see a creature suffer thunder or bludg - double the damage, if at least 20 (plus 20 for each size above medium) then Ragdolls, thrown 20ft, and knocked prone                
-                        
+                * 
                  */
             };
 

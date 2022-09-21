@@ -15,7 +15,14 @@
 
             @foreach (var etype in GetSpellTypeOptions())
             {
-                <option value="@etype">@etype</option>
+                @if(etype.value == null)
+                {
+                    <option value="">@etype.display</option>
+                }
+                else
+                {
+                    <option value="@etype.value">@etype.display</option>
+                }
             }
         </InputSelect>
     </div>
@@ -154,16 +161,14 @@
 
     private void GenerateSpell()
     {
-        bool typeExists = Enum.TryParse(inputs.EffectType, out EffectType spellType);
-        EffectType? inputType = null;
-        if (typeExists) inputType = spellType;
-
-        theSpell = GeneratorEngine.Generators.SpellGenerator.CreateSpell(DataTemplateService, inputs.SchoolOfMagic, inputType, inputs.PowerLevel, inputs.IncludeSideEffects);
+        theSpell = GeneratorEngine.Generators.SpellGenerator.CreateSpell(DataTemplateService, inputs.SchoolOfMagic, inputs.EffectType, inputs.PowerLevel, inputs.IncludeSideEffects);
     }
 
-    private IEnumerable<string> GetSpellTypeOptions()
+    private IEnumerable<(EffectType? value, string display)> GetSpellTypeOptions()
     {
+        var options = new List<(EffectType? value, string display)> { (null, "Any") };
         var values = Enum.GetValues(typeof(GeneratorEngine.EffectType)).Cast<EffectType>();
-        return values.Select(v => v == EffectType.Penalty ? "Any" : v.ToString());
+        options.AddRange(values.Where(v => v != EffectType.Penalty).Select(v => ((EffectType?)v, v == EffectType.Utility ? "Utility & Other" : v.ToString())));
+        return options;
     }
 }
