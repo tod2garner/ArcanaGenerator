@@ -698,6 +698,61 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysInstant = true,
                     BaseValueScore = 50
                 },
+                new SpellTemplate //Storm rain
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a volley of energized arrows that arc high into the air before crashing to the ground. " +
+                                    "The arrows magically avoid hitting creatures and instead stick into the ground (or other surfaces) where they remain for the duration. " +
+                                    "When they impact, and as a bonus action on subsequent turns, arcs of lightning connect each of the arrows to every other arrow, " +
+                                    "dealing [2-4][dice] lightning damage to any creatures in the target area.",
+                    Names = new List<string> { "volley", "arrows", "storm" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Flicker strike
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You teleport up to 15ft to any visible, unoccupied point. If an enemy is within melee range of where you appear then you can immediately make a single melee weapon attack with +[3-8] force damage. " +
+                                    "If the attack does not miss you can choose to sacrifice 1d6 HP to instantly teleport and attack again (it need not be the same target). " +
+                                    "So long as you never miss you can move and attack up to 4 times, but the HP cost doubles each time.",
+                    Names = new List<string> { "flickering", "frenzy", "nictation" },
+                    IsAlwaysInstant = true,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 40
+                },
+                new SpellTemplate //Leap slam
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "You leap up to 20ft to any visible, unoccupied point and trigger a short-range shockwave on impact. " +
+                                    "Any creature within 5ft suffers [3-4][dice] thunder damage. " +
+                                    "At the time of casting you may choose to empower a single ally within 5ft of you to make the leap instead of doing it yourself, " +
+                                    "but they must use their reaction to do so.",
+                    Names = new List<string> { "leap", "crater", "jump" },
+                    IsAlwaysInstant = true,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 40
+                },
+                new SpellTemplate //Shield charge
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Abjuration },
+                    Type = EffectType.Utility,
+                    Description = "You imbue your shield with unstoppable power and charge up to 30ft in a straight line. " +
+                                    "Any creatures in your path are pushed out of your way, suffer 2[dice] bludgeoning damage, and are knocked prone if they are Large or smaller in size. " +
+                                    "Creatures that are Huge or larger in size interrupt your charge, stopping you short of the full movement.",
+                    Names = new List<string> { "charge", "advance", "rush" },
+                    IsAlwaysInstant = true,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 30
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
@@ -707,7 +762,7 @@ namespace SpellGenerator.Client.Data
                 //    BaseValueScore = 5
                 //},
                 //*************************************************************************
-                /*      	
+                /*       
                  *  Divination
                         runes that glow when long distance twins hear a specific word 
                         Lesser comprehend languages, very simple ideas only
@@ -834,14 +889,13 @@ namespace SpellGenerator.Client.Data
 	                        mana mine
 	                        sticky grenade, channels for more damage
                         damage and pull yourself to the target, always ranged	
-	                        consecrated path, flicker strike, chain hook, leap slam, shield charge    
+	                        consecrated path, chain hook 
 	                    circle of enlightenment - any school, plus effective spell levels for that school
                         throw a shadow of a melee weapon, chain to up to 3 targets within 10ft of the last	
 	                        damage plus debuff
                         shatter a metallic weapon and hurl the shards, damage plus debuff	
 	                        range of self, non magic weapon
 	                        blade blast, ranged aoe	
-                        storm rain      
                 * Other
                         at least one per school utility - interact with environment, climate, or social
                         instantly gain the benefits of a long rest, but your max HP is reduced to 1 for 24 hours, and can't be affected by this spell again for 3 days	
