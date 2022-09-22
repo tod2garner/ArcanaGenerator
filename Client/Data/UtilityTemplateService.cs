@@ -782,6 +782,33 @@ namespace SpellGenerator.Client.Data
                     IsNeverAoE = true,
                     BaseValueScore = 60
                 },
+                new SpellTemplate //Bubble shield
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a translucent dome with a radius of [15-30@5]ft, centered on yourself. You and your allies inside of it take reduced damage from any attacks or spells that originate outside of the dome. " +
+                                    "Roll [2-3]d4 once at the start of the spell to determine the amount of damage reduction. " +
+                                    "Hostile creatures inside of the dome are slowed (their movement speed is halved). Creatures can pass through the surface of the dome freely without consequence.",
+                    Names = new List<string> { "shield", "barrier", "dome" },
+                    MinimumDuration = Duration.OneMinute,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 40
+                },
+                new SpellTemplate //Frost shield
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a translucent dome covered in frost with a radius of [15-30@5]ft, centered on yourself. The dome has [4-8][dice] HP. " +
+                                    "The surface of the dome only allows one-way movement, away from you. Creatures and objects (including ranged attacks and spells) can exit the dome, " +
+                                    "but nothing can physically enter the dome in the other direction. " +
+                                    "If the dome is reduce to 0 HP it releases an icy backlash and the creature that destroyed it suffers [3-6][dice] cold damage; this spell then ends early.",
+                    Names = new List<string> { "shield", "barrier", "dome" },
+                    MinimumDuration = Duration.OneMinute,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 30
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
