@@ -811,6 +811,21 @@ namespace SpellGenerator.Client.Data
                     IsNeverAoE = true,
                     BaseValueScore = 30
                 },
+                new SpellTemplate //Circle of power - added damage
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a circle on the ground with a radius of [10-20@5]ft, centered on yourself. It is filled with intricate runes that glow dimly. " +
+                                    "You and any allies inside of it deal [3-6] bonus force damage with all weapon and spell attacks against enemies outside of the circle. " +
+                                    "If you use your last remaining spell slot to cast this spell then the bonus damage is doubled." +
+                                    "Enemies inside the circle have disadvantage on all melee attacks. ",
+                    Names = new List<string> { "shield", "barrier", "dome" },
+                    DoesNotTargetCreatures = true,
+                    MinimumDuration = Duration.OneMinute,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 30
+                },
                 new SpellTemplate //React to lightning damage - chain
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
@@ -902,7 +917,7 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysInstant = true,
                     IsNeverAoE = true,
                     IsAlwaysRanged = true,
-                    BaseValueScore = 5
+                    BaseValueScore = 20
                 },
                 new SpellTemplate //React to poisoned status - paralyze
                 {
@@ -916,7 +931,7 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysInstant = true,
                     IsNeverAoE = true,
                     IsAlwaysRanged = true,
-                    BaseValueScore = 5
+                    BaseValueScore = 50
                 },
                 new SpellTemplate //React to thunder or bludg damage - ragdoll
                 {
@@ -930,11 +945,25 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysInstant = true,
                     IsNeverAoE = true,
                     IsAlwaysRanged = true,
-                    BaseValueScore = 25
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Charmed to reveal themselves
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "Any creatures behind cover in the target area - or any that are hiding by other means - are charmed to reveal themselves. " +
+                                    "They must instantly use their reaction to move away from cover and calmly walk 15ft towards you. They then make a WIS saving throw. " +
+                                    "On a failure they remain docile and stationary for 1d4 rounds, but taking damage dispels the effect. " +
+                                    "Creatures that are immune to charm effects are unaffected by this spell.",
+                    Names = new List<string> { "beckoning", "revelation", "welcome" },
+                    IsAlwaysAoE = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 40
                 },
                 //new SpellTemplate //
                 //{
-                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
                 //    Type = EffectType.Utility,
                 //    Description = "",
                 //    Names = new List<string> {  },//--------------------TODO
@@ -942,6 +971,15 @@ namespace SpellGenerator.Client.Data
                 //},
                 //*************************************************************************
                 /*                       
+                * Enchantment                        
+                        targets location not creatures - anyone that approaches is compelled to instead travel to a different point you choose	
+                        mass sleep, friend foe and self in large AOE, elves cannot enter the area	
+                        mass paralysis, no save, friend and foe and self, fails for all if any are immune to paralysis 	
+                        mass pacifism, no save, friend and foe and self, bypasses immunity to charm effects	
+                        numb, can't feel pain, unaware of damage	
+                        remove memory of the past 2d6 minutes, blackout missing time on successful save, skipped time on a fail?	
+                        will believe the next 4d6 words you speak, but must understand the language	
+	                        you are invincible, that fire isn't hot, you can fly
                 *  Divination
                         runes that glow when long distance twins hear a specific word 
                         Lesser comprehend languages, very simple ideas only
@@ -1020,16 +1058,6 @@ namespace SpellGenerator.Client.Data
                         gamble spell slots for self, spend X slot, roll dice to see if you get back more or less, then immune to effects until long rest
                         ground shakes with each step, create difficult terrain with shockwaves along the path the walk
                         pick a 1st level spell you know. Each time the target successfully hits with a weapon attack (once per turn) the spell is automatically triggered without using a spell slot or components. The spell automatically targets the creature that was hit, but any AoE effects still have an area.	                                                             
-                * Enchanment
-                        any creature in range, including hidden ones, charmed to reveal themselves and walk towards you
-                        targets location not creatures - anyone that approaches is compelled to instead travel to a different point you choose	
-                        mass sleep, friend foe and self in large AOE, elves cannot enter the area	
-                        mass paralysis, no save, friend and foe and self, fails for all if any are immune to paralysis 	
-                        mass pacifism, no save, friend and foe and self, bypasses immunity to charm effects	
-                        numb, can't feel pain, unaware of damage	
-                        remove memory of the past 2d6 minutes, blackout missing time on successful save, skipped time on a fail?	
-                        will believe the next 4d6 words you speak, but must understand the language	
-	                        you are invincible, that fire isn't hot, you can fly
                 * Transmute
                         make an object buoyant
                         weight half or double
