@@ -790,6 +790,7 @@ namespace SpellGenerator.Client.Data
                                     "Roll [2-3]d4 once at the start of the spell to determine the amount of damage reduction. " +
                                     "Hostile creatures inside of the dome are slowed (their movement speed is halved). Creatures can pass through the surface of the dome freely without consequence.",
                     Names = new List<string> { "shield", "barrier", "dome" },
+                    DoesNotTargetCreatures = true,
                     MinimumDuration = Duration.OneMinute,
                     IsRangeAlwaysSelf = true,
                     IsNeverAoE = true,
@@ -799,15 +800,137 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
                     Type = EffectType.Utility,
-                    Description = "You conjure a translucent dome covered in frost with a radius of [15-30@5]ft, centered on yourself. The dome has [4-8][dice] HP. " +
+                    Description = "You conjure a translucent dome covered in frost with a radius of [15-30@5]ft, centered on yourself. The dome has [4-7][dice] HP. " +
                                     "The surface of the dome only allows one-way movement, away from you. Creatures and objects (including ranged attacks and spells) can exit the dome, " +
                                     "but nothing can physically enter the dome in the other direction. " +
                                     "If the dome is reduce to 0 HP it releases an icy backlash and the creature that destroyed it suffers [3-6][dice] cold damage; this spell then ends early.",
                     Names = new List<string> { "shield", "barrier", "dome" },
+                    DoesNotTargetCreatures = true,
                     MinimumDuration = Duration.OneMinute,
                     IsRangeAlwaysSelf = true,
                     IsNeverAoE = true,
                     BaseValueScore = 30
+                },
+                new SpellTemplate //React to lightning damage - chain
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "When you see a creature taking lightning damage you can use your reaction and enhance the lightning to chain new arcs from them to three other creatures of your choice within 20ft of them. " +
+                                    "Each must make a DEX saving throw. On a failure they suffer the same amount of lightning damage as the original creature. On a success they take half damage.",
+                    Names = new List<string> { "reach", "arc", "chaining" },
+                    IsAlwaysAReaction = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //React to lightning damage - stun
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "When you see a creature taking lightning damage you can use your reaction to enhance the lightning and try to stun them. They must make a CON saving throw - if " +
+                                    "the amount of the damage you are reacting to was more than half of their remaining HP then they make the save at disadvantage. " +
+                                    "On a failure they suffer another 2[dice] + [5-10] lightning damage and are stunned for one round. On a success they suffer half damage and are slowed rather than stunned.",
+                    Names = new List<string> { "shock", "jolt", "stun" },
+                    IsAlwaysAReaction = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //React to cold damage - restrain
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "When you see a creature take cold damage you can use your reaction to enhance the cold and cover them in ice, restraining them. " +
+                                    "On their turn they can use an action to break free with a STR check vs your spell DC.",
+                    Names = new List<string> { "restraint", "frostbite", "ice" },
+                    IsAlwaysAReaction = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //React to cold damage - AoE + slow
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "When you see a creature take cold damage you can use your reaction to enhance the cold and trigger an explosion of ice " +
+                                    "that deals half as much cold damage and slows any creatures within 15ft of the original creature.",
+                    Names = new List<string> { "frigidity", "ice", "frost" },
+                    IsAlwaysAReaction = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 25
+                },
+                new SpellTemplate //React to fire damage - AoE
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "When you see a creature take fire damage you can use your reaction to enhance the fire and trigger a burst of flames " +
+                                    "that deals the same amount of fire damage to any creatures within 10ft of the original creature.",
+                    Names = new List<string> { "detonation", "ignition", "explosion" },
+                    IsAlwaysAReaction = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 25
+                },
+                new SpellTemplate //React to piercing damage - redirect projectile
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "When you see a creature hit with a projectile that deals piercing damage you can use your reaction to empower the projectile to pierce through the target " +
+                                    "and curve (no more than 90 degrees) towards another creature within 20ft of them. The original creature suffers an additional 2[dice] piercing damage. " +
+                                    "The second target suffers the same damage plus half of the original damage that you reacted to.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsAlwaysAReaction = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 35
+                },
+                new SpellTemplate //React to poisoned status - convert to instant damage
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation, SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "When you see a creature that is poisoned make a successful attack, but before the damage dice have been rolled, you can use your reaction " +
+                                    "to accelerate the poisoning. They instantly suffer [4-6][dice] poison damage and must re-roll the attack, but after this they are no longer poisoned.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsAlwaysAReaction = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //React to poisoned status - paralyze
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "When you see a creature become poisoned you can use your reaction to alter and enhance the poison. They must make a CON saving throw. " +
+                                    "On a failure instead of becoming poisoned they are paralyzed for 1d3 rounds. " +
+                                    "On a success they are not paralyzed, but they are slowed for 1d3 rounds in addition to being poisoned.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsAlwaysAReaction = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //React to thunder or bludg damage - ragdoll
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "When you see a creature take either thunder or bludgeoning damage you can use your reaction to increase the damage by 50%. " +
+                                    "If the total after being enhanced is at least 20 damage (plus 20 for each creature size above medium) then they must make a STR saving throw. " +
+                                    "On a failure the creature is thrown back 10ft per 10 points of damage taken and falls prone.",
+                    Names = new List<string> { "ragdoll", "propulsion", "sling", "catapult" },
+                    IsAlwaysAReaction = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 25
                 },
                 //new SpellTemplate //
                 //{
@@ -818,8 +941,8 @@ namespace SpellGenerator.Client.Data
                 //    BaseValueScore = 5
                 //},
                 //*************************************************************************
-                /*       
-                 *  Divination
+                /*                       
+                *  Divination
                         runes that glow when long distance twins hear a specific word 
                         Lesser comprehend languages, very simple ideas only
                         x-ray one material wood or stone or crystal or metal (including paint and plaster on walls or ceilings)
@@ -929,17 +1052,6 @@ namespace SpellGenerator.Client.Data
                        remote spell casting - channel for ally to allow them to project a spell very long range
                             one version with scrying spell to pick see target
                             one version where you create a beacon on a target that the chosen ally can send thh spell to, like a homing missile
-                * Reactions
-                        when you see a creature take lightning damage chain that damage to three other creatures of your choice
-                        when you see a creature take cold damage, cover then in ice and restrain them, can use action to break free with a str check
-                        when you see a creature take fire damage, ignite them so they receive that damage again at the end of their next turn
-                        when you see a creature take fire damage, trigger a mini explosion to repeat the damage and spread that damage to all other creatures within 10ft 
-                        when you see a creature suffer lightning - repeat damage and attempt to stun
-                        when you see a creature suffer cold - mini AoE explosion to repeat the damage and reduce speed by half
-                        see creature hit with a projectile that deals piercing damage - pierce target and curve arrow towards another within 90degrees
-                        when you see a creature suffer poison status - remove status and instantly suffer 3d12 poison damage
-                        when you see a creature suffer poison status - replace with paralyzed status
-                        when you see a creature suffer thunder or bludg - double the damage, if at least 20 (plus 20 for each size above medium) then Ragdolls, thrown 20ft, and knocked prone                
                 * PoE
                         spell whose damage scales based on the amount of depleted spell slots you have (or undeleted)	
 	                        mana mine
