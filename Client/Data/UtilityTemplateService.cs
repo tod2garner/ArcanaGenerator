@@ -687,6 +687,17 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysRanged = true,
                     BaseValueScore = 4
                 },
+                new SpellTemplate //Fabricate memory
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion, SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "You fabricate a wholey new, false memory to implant into a creature's mind. It does not replace any existing memory, but is mixed in with all the others. " +
+                                    "The memory lacks continuity - they can't recall what happened right before or after it, or even where it lands in chronological order compared to the rest of their memories. " +
+                                    "The same guidelines for believability provided in the spell Modify Memory apply here.",
+                    Names = new List<string> { "implication", "insinuation", "misinformation" },
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 50
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },

@@ -934,7 +934,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Conjuration },
                     Type = EffectType.Debuff,
-                    Description = "is knocked prone and is unable to stand upright for the spell duration - they may still crawl however. The spell can only effect humanoid creatures.",
+                    Description = "is knocked prone and is unable to stand upright for the spell duration - they may still crawl however. The spell can only affect humanoid creatures.",
                     Names = new List<string> {  },//--------------------TODO
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 10
@@ -991,7 +991,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
                     Type = EffectType.Debuff,
-                    Description = "is fully restrained. Additionally, they cannot be physically relocated by anyone other than you. " +
+                    Description = "is restrained. Additionally, they cannot be physically relocated by anyone other than you. " +
                                     "Magical movement such as teleportation fails completely. Finally, they cannot shift between planes for the spell duration.",
                     Names = new List<string> { "anchor", "bond", "root" },
                     MinimumDuration= Duration.OneMinute,
@@ -1003,10 +1003,31 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Debuff,
                     Description = "has their legs bound together with chains such that their movement speed is reduced to 5ft. The chains are immune to damage. " +
                                     "If the target attempts to teleport or otherwise escape using magic (ie. misty step, planeshift, etherealness) it fails and they suffer 2[dice] force damage. " +
-                                    "This spell can only effect humanoids.",
+                                    "This spell can only affect humanoids.",
                     Names = new List<string> { "chains", "bands", "cords" },
                     MinimumDuration= Duration.OneMinute,
                     BaseValueScore = 15
+                },
+                new SpellTemplate //Puppet
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "loses control of their limbs. You take control of them following the rules for the spell Dominate Person, except that you can only manipulate their arms and legs. " +
+                                    "They remain aware of their senses and can speak normally, but can do little else for the spell duration. This spell can only affect humanoids.",
+                    Names = new List<string> { "puppet", "marionette", "puppetry" },
+                    MinimumDuration= Duration.OneMinute,
+                    IsNeverAoE = true,
+                    BaseValueScore = 25
+                },
+                new SpellTemplate //Forced recollection
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Debuff,
+                    Description = "is forced to experience a vision from their past. The vision lasts for 1d4 rounds. You cannot control what memory they see, but the mind is naturally drawn to emotional events. " +
+                                    "While experiencing the vision they are deaf and blind to their current surroundings. This spell cannot affect mindless creatures or creatures with INT less than 4.",
+                    Names = new List<string> { "memory", "recollection", "remembrance" },
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 20
                 },
                 //new SpellTemplate //
                 //{
