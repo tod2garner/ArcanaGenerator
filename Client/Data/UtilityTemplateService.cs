@@ -746,12 +746,41 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Utility,
                     Description = "You imbue your shield with unstoppable power and charge up to 30ft in a straight line. " +
                                     "Any creatures in your path are pushed out of your way, suffer 2[dice] bludgeoning damage, and are knocked prone if they are Large or smaller in size. " +
-                                    "Creatures that are Huge or larger in size interrupt your charge, stopping you short of the full movement.",
+                                    "Creatures that are Huge or larger in size interrupt your charge, stopping you short of the full movement. " +
+                                    "This spell cannot be cast unless you are holding a shield.",
                     Names = new List<string> { "charge", "advance", "rush" },
                     IsAlwaysInstant = true,
                     IsRangeAlwaysSelf = true,
                     IsNeverAoE = true,
                     BaseValueScore = 30
+                },
+                new SpellTemplate //Shield bash
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Abjuration },
+                    Type = EffectType.Utility,
+                    Description = "You make a magically augmented spell attack with your shield that deals [3-5][dice] + [5-10] bludgeoning damage to a creature within 5ft of you. " +
+                                    "It also triggers a shockwave that deals half damage to any creatures in a 15ft cone behind the main target, even if the main attack misses. " +
+                                    "At the time of casting you may choose to empower an ally within 5ft of you to make the attack with their shield instead of doing it yourself, " +
+                                    "but they must use their reaction to do so (they use your spell modifier for the attack roll). " +
+                                    "This spell has no effect on creatures that are not already holding a shield.",
+                    Names = new List<string> { "bash", "ram", "battering" },
+                    IsAlwaysInstant = true,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Consecrated path
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "You leap up to 20ft to any visible, unoccupied point. A circle of glowing runes with a radius of [10-20@5]ft appears on the ground, centered on the point where you land. " +
+                                    "The runes pulse for a moment, release a blinding flash, and then vainsh. Enemies within the circle must make a CON saving throw. " +
+                                    "On a failure they suffer [2-3][dice] radiant damage and are blinded for one round. On a success they take half damage and are not blinded.",
+                    Names = new List<string> { "consecration", "leap", "brilliance" },
+                    IsAlwaysInstant = true,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 60
                 },
                 //new SpellTemplate //
                 //{
@@ -888,8 +917,7 @@ namespace SpellGenerator.Client.Data
                         spell whose damage scales based on the amount of depleted spell slots you have (or undeleted)	
 	                        mana mine
 	                        sticky grenade, channels for more damage
-                        damage and pull yourself to the target, always ranged	
-	                        consecrated path, chain hook 
+                        chain hook - damage and pull yourself to the target, always ranged	
 	                    circle of enlightenment - any school, plus effective spell levels for that school
                         throw a shadow of a melee weapon, chain to up to 3 targets within 10ft of the last	
 	                        damage plus debuff
