@@ -1000,6 +1000,53 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysInstant = true,
                     BaseValueScore = 2000
                 },
+                new SpellTemplate //Numb to pain
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "Any creature affected by this spell is numb to any sensation of pain. They are unaware of any damage dealt to them unless one of their other senses (ex: sight or sound or pressure) makes it apparent. " +
+                                    "if you are hidden from the target when you cast this spell they do not automatically realize they are under its effect (the numbness is not obvious to them).",
+                    Names = new List<string> { "desensitizing", "deadening", "numbness" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Blind trust
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "Any creature affected by this spell will believe the next 2d6 words that you say to them, interpreting your message as an absolute fact. If it conflicts with their deeply held beliefs " +
+                                    "(ex: 'you can fly', or 'your brother betrayed you', or 'that fire won't burn you') then they can make a WIS saving throw. On a success they resist the spell and form their own conclusions. " +
+                                    "Creatures that are immune to being charmed are unaffected by this spell.",
+                    Names = new List<string> { "trust", "deception", "persuasion" },
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Remove memory
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "Any creature affected by this spell forgets the past [2-5][dice] minutes. They make a WIS saving throw. " +
+                                    "On a success the gap in their memory is a blackout of obviously missing time. " +
+                                    "On a failure they have no sense of the missing time, and feel as if they skipped instantly to the present from the last moment they recall.",
+                    Names = new List<string> { "void", "oblivion", "amnesia" },
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Redirect away from area
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "Anytime a creature other than yourself enters the target area or ends their turn in the area they must make a WIS saving throw. " +
+                                    "On a failure they are compelled (as if by the Suggestion spell - no self harm) to leave and instead travel to a specific visible point that you set at the time of casting. " +
+                                    "When you cast this spell you may choose up to 2[dice] creatures to exclude from its effect.",
+                    Names = new List<string> { "distraction", "redirection", "diversion" },
+                    MinimumDuration = Duration.EightHours,
+                    MinimumCastTime = CastTime.OneMinute,
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    BaseValueScore = 20
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
@@ -1010,12 +1057,6 @@ namespace SpellGenerator.Client.Data
                 //},
                 //*************************************************************************
                 /*                       
-                * Enchantment                        
-                        targets location not creatures - anyone that approaches is compelled to instead travel to a different point you choose	
-                        numb, can't feel pain, unaware of damage	
-                        remove memory of the past 2d6 minutes, blackout missing time on successful save, skipped time on a fail?	
-                        will believe the next 4d6 words you speak, but must understand the language	
-	                        you are invincible, that fire isn't hot, you can fly
                 *  Divination
                         runes that glow when long distance twins hear a specific word 
                         Lesser comprehend languages, very simple ideas only
