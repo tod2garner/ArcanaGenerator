@@ -1071,6 +1071,60 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.TenMinutes,                    
                     BaseValueScore = 10
                 },
+                new SpellTemplate //Track via glowing trails
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Utility,
+                    Description = "You choose on specific race (elf, gnome, etc) or creature type (beast, fiend, etc) to track. " +
+                                    "For the spell duration you are able to visually see within [15-30@5]ft of you glowing lines in the air tracing paths where any such creatures have passed by within the past [2-12@2] hours. " +
+                                    "The trails glow brighter the more recently they passed - for example, very bright if they passed less than a minute ago, and very faint if their passing was right at the limits of how far into the past this spell can reach.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Speak with object
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Utility,
+                    Description = "You touch one non-living, non-sentient object and speak to it. You are able to ask it [3-6] questions. The object is only able to provide yes or no answers, " +
+                                    "and it has limited information. It is considered blind and deaf to its surroundings and has a warped sense of the passage of time. It can, however, give " +
+                                    "answers about changes in temperature, pressure, and acceleration as well as details about its composition. If you ask a question that it does not " +
+                                    "know the answer to then it will randomly reply with a yes or a no. Interestingly, this quirk of the spell has been utilized on more than one " +
+                                    "occasion to provide a rock as an impartial tie-breaker in what otherwise would have been a stalemate negotation.",
+                    Names = new List<string> { "inquiry", "query", "question" },
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Homing tracker
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Utility,
+                    Description = "You touch one object and for the spell duration you know where it is relative to you. " +
+                                    "You are aware of both the direction and the approximate distance (ie. a few hundred feet or several miles) to the object's location. " +
+                                    "The object need not stay stationary, but it must be 1 foot or larger in at least one dimension. This spell only works while you are on the same plane of existence as the object.",
+                    Names = new List<string> { "datum", "anchor", "focal point" },
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneHour,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Structural stress
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Utility,
+                    Description = "You are able to visually see a 'heat map' of how close non-living materials are to their breaking point. " +
+                                    "Areas that are very near fracturing or buckling glow brightly like magma, while regions with moderate stress range from a yellow to a green hue. " +
+                                    "Portions that are barely stressed have a faint blue glow.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.TenMinutes,                    
+                    BaseValueScore = 3
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
@@ -1081,13 +1135,7 @@ namespace SpellGenerator.Client.Data
                 //},
                 //*************************************************************************
                 /*                       
-                *  Divination
-                        runes that glow when long distance twins hear a specific word 
-                        track via recent body heat path, one specific race or creature type
-                        utility track object - range of touch, plant object and wait
-                        speak with object - blind and deaf, only temp and pressure and acceleration
-                        oddly prepared - pull from your pocket or pack one item worth less than 20gp. A glimpse of the future promoted you to purchase it for this occasion. Retroactively deduct the price from your funds
-                        structural - visual heat map of how close non-living materials are to their breaking point
+                *  Divination               
                         conjure tea - enough for 1d4+1 people. Each gets a free attempt at scrying. DM makes a secret roll : 50-50 odds that vision is false, if more than one person targets the same thing they have the same vision (one DM roll instead of multiple)
                         mimic ability (like sneak attack or wild shape) as reaction or share one of your own with 1d6 other creatures.
                             each gets a single use and then forgets
