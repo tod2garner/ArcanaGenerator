@@ -696,6 +696,7 @@ namespace SpellGenerator.Client.Data
                                     "The same guidelines for believability provided in the spell Modify Memory apply here.",
                     Names = new List<string> { "implication", "insinuation", "misinformation" },
                     IsAlwaysInstant = true,
+                    IsAlwaysRanged = true,
                     BaseValueScore = 50
                 },
                 new SpellTemplate //Storm rain
@@ -899,7 +900,7 @@ namespace SpellGenerator.Client.Data
                     Description = "When you see a creature hit with a projectile that deals piercing damage you can use your reaction to empower the projectile to pierce through the target " +
                                     "and curve (no more than 90 degrees) towards another creature within 20ft of them. The original creature suffers an additional 2[dice] piercing damage. " +
                                     "The second target suffers the same damage plus half of the original damage that you reacted to.",
-                    Names = new List<string> {  },//--------------------TODO
+                    Names = new List<string> { "splinter", "shard", "sliver" },
                     IsAlwaysAReaction = true,
                     IsAlwaysInstant = true,
                     IsNeverAoE = true,
@@ -912,7 +913,7 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Utility,
                     Description = "When you see a creature that is poisoned make a successful attack, but before the damage dice have been rolled, you can use your reaction " +
                                     "to accelerate the poisoning. They instantly suffer [4-6][dice] poison damage and must re-roll the attack, but after this they are no longer poisoned.",
-                    Names = new List<string> {  },//--------------------TODO
+                    Names = new List<string> { "oppression", "exploitation", "wringing" },
                     IsAlwaysAReaction = true,
                     IsAlwaysInstant = true,
                     IsNeverAoE = true,
@@ -926,7 +927,7 @@ namespace SpellGenerator.Client.Data
                     Description = "When you see a creature become poisoned you can use your reaction to alter and enhance the poison. They must make a CON saving throw. " +
                                     "On a failure instead of becoming poisoned they are paralyzed for 1d3 rounds. " +
                                     "On a success they are not paralyzed, but they are slowed for 1d3 rounds in addition to being poisoned.",
-                    Names = new List<string> {  },//--------------------TODO
+                    Names = new List<string> { "necrosis", "toxin", "poison" },
                     IsAlwaysAReaction = true,
                     IsAlwaysInstant = true,
                     IsNeverAoE = true,
@@ -952,7 +953,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
                     Type = EffectType.Utility,
                     Description = "Any creatures behind cover in the target area - or any that are hiding by other means - are charmed to reveal themselves. " +
-                                    "They must instantly use their reaction to move away from cover and calmly walk 15ft towards you. They then make a WIS saving throw. " +
+                                    "They must instantly use their reaction to move away from cover and calmly walk 10ft towards you. They then make a WIS saving throw. " +
                                     "On a failure they remain docile and stationary for 1d4 rounds, but taking damage dispels the effect. " +
                                     "Creatures that are immune to charm effects are unaffected by this spell.",
                     Names = new List<string> { "beckoning", "revelation", "welcome" },
@@ -960,6 +961,44 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysRanged = true,
                     IsAlwaysInstant = true,
                     BaseValueScore = 40
+                },
+                new SpellTemplate //Mass paralysis
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "You release a radial blast of arcane energy that paralyzes every creature within [50-100@25]ft of you, including yourself and any allies. " +
+                                    "If any creature within that range is immune to being paralyzed (ex: due to freedom of movement or similar) then this spell fails completely and no one is affected.",
+                    Names = new List<string> { "shock", "paralysis", "tremor" },
+                    MinimumDuration = Duration.OneMinute,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,                    
+                    BaseValueScore = 70
+                },
+                new SpellTemplate //Mass pacifism
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "You release a ripple of magic that washes over every creature within [50-150@25]ft of you and compels them to pacifism, including yourself and any allies. " +
+                                    "Each creature is unable to deliberately damage any other creature. This spell bypasses immunity to charm effects.",
+                    Names = new List<string> { "soothing", "tranquility", "harmony", "accord" },
+                    MinimumDuration = Duration.OneMinute,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Mass sleep
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "You unleash a pulse of magic that rapidly accelerates outward from you in a ring. Every creature within 1[dice] miles of you falls asleep for 2[dice] hours, including yourself and any allies. " +
+                                    "Creatures that are immune to magical sleep (ex: those of elvish descent) are instead charmed to sit quietly and daydream - they are considered restrained and incapacitated. " +
+                                    "This spell bypasses immunity to charm effects. Creatures cannot be roused by any non-magical means short of suffering damage equal to at least half of their maximum HP.",
+                    Names = new List<string> { "opus", "masterstroke", "dormancy" },
+                    MinimumCastTime = CastTime.OneHour,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 2000
                 },
                 //new SpellTemplate //
                 //{
@@ -973,9 +1012,6 @@ namespace SpellGenerator.Client.Data
                 /*                       
                 * Enchantment                        
                         targets location not creatures - anyone that approaches is compelled to instead travel to a different point you choose	
-                        mass sleep, friend foe and self in large AOE, elves cannot enter the area	
-                        mass paralysis, no save, friend and foe and self, fails for all if any are immune to paralysis 	
-                        mass pacifism, no save, friend and foe and self, bypasses immunity to charm effects	
                         numb, can't feel pain, unaware of damage	
                         remove memory of the past 2d6 minutes, blackout missing time on successful save, skipped time on a fail?	
                         will believe the next 4d6 words you speak, but must understand the language	

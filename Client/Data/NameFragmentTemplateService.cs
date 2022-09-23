@@ -187,6 +187,7 @@ namespace SpellGenerator.Client.Data
                 new TemplatePerEffectType("paradox"),
                 new TemplatePerEffectType("dilemma"),
                 new TemplatePerEffectType("theory"),
+                new TemplatePerEffectType("opus"),
                 new TemplatePerEffectType("premise"),
                 new TemplatePerEffectType("thesis"),
                 new TemplatePerEffectType("anomaly"),
