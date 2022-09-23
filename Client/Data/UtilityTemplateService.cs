@@ -1047,9 +1047,33 @@ namespace SpellGenerator.Client.Data
                     IsRangeAlwaysSelf = true,
                     BaseValueScore = 20
                 },
+                new SpellTemplate //Lesser comprehend languages
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Utility,
+                    Description = "Any creatures in the target area are able to understand simple ideas from any spoken language that they hear. The language barrier is reduced, but not eliminated completely. " +
+                                    "This spell has no effect on creatures that do not already speak at least one language.",
+                    Names = new List<string> { "comprehension", "intuition", "insight" },
+                    IsAlwaysAoE = true,
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //X-ray vision
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Utility,
+                    Description = "You select one of the following materials to be able to see through: wood, stone, metal, dirt, vegetation, crystal, or water. " +
+                                    "Objects within [20-50@10]ft of you that are primarily made of that material become transparent to your eyes - including thin layers of paint, plaster, etc. that may be on them. " +
+                                    "You can see their outlines lightly, but they are otherwise invisible. You may upcast this spell to choose one additional material per two extra spell levels.",
+                    Names = new List<string> { "eyesight", "vision", "sight" },
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.TenMinutes,                    
+                    BaseValueScore = 10
+                },
                 //new SpellTemplate //
                 //{
-                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
                 //    Type = EffectType.Utility,
                 //    Description = "",
                 //    Names = new List<string> {  },//--------------------TODO
@@ -1059,8 +1083,6 @@ namespace SpellGenerator.Client.Data
                 /*                       
                 *  Divination
                         runes that glow when long distance twins hear a specific word 
-                        Lesser comprehend languages, very simple ideas only
-                        x-ray one material wood or stone or crystal or metal (including paint and plaster on walls or ceilings)
                         track via recent body heat path, one specific race or creature type
                         utility track object - range of touch, plant object and wait
                         speak with object - blind and deaf, only temp and pressure and acceleration
