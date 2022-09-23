@@ -4,14 +4,14 @@ namespace SpellGenerator.Client
 {
     public class InputsForSpell
     {
-        public string EffectType;
+        public EffectType? EffectType;
         public SchoolOfMagic SchoolOfMagic;
         public PowerLevel PowerLevel;
         public bool IncludeSideEffects;
 
         public InputsForSpell()
         {
-            EffectType = "Any";
+            EffectType = null;
             SchoolOfMagic = SchoolOfMagic.Any;
             PowerLevel = PowerLevel.Random;
             IncludeSideEffects = true;

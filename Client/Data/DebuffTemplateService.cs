@@ -9,14 +9,6 @@ namespace SpellGenerator.Client.Data
         {
             var templates = new List<SpellTemplate>
             {
-                new SpellTemplate //TODO - remove this filler once there is at least one template per school
-                {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
-                    Type = EffectType.Debuff,
-                    Description = "has disadvantage on saving throws against all spells from the same school of magic as this spell",
-                    MinimumDuration = Duration.OneHour,
-                    BaseValueScore = 2
-                },
                 new SpellTemplate
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation },
@@ -33,7 +25,7 @@ namespace SpellGenerator.Client.Data
                     Description = "is Poisoned",
                     Names = new List<string> { "toxin", "venom", "poison" },
                     MinimumDuration = Duration.OneMinute,
-                    BaseValueScore = 2
+                    BaseValueScore = 4
                 },
                 new SpellTemplate
                 {
@@ -46,12 +38,12 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Enchantment },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Abjuration },
                     Type = EffectType.Debuff,
                     Description = "is Restrained",
                     Names = new List<string> { "prison", "restraint", "control", "hold", "snare" },
                     MinimumDuration = Duration.OneMinute,
-                    BaseValueScore = 5
+                    BaseValueScore = 7
                 },
                 new SpellTemplate
                 {
@@ -113,7 +105,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion, SchoolOfMagic.Enchantment },
                     Type = EffectType.Debuff,
-                    Description = "is magically compelled to Fear you",
+                    Description = "is magically Frightened of you.",
                     Names = new List<string> { "terror", "intimidation", "fear" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 12
@@ -135,6 +127,18 @@ namespace SpellGenerator.Client.Data
                     Names = new List<string> { "embrace", "humor", "companion", "siren" },
                     MinimumDuration = Duration.OneRound,
                     BaseValueScore = 12
+                },
+                new SpellTemplate //Delayed suggestion
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "is Charmed to consider you a friend for 2d4 minutes. At the end of that time you may give them a single mental suggestion telepathically which they are compelled to obey, subject to the limitations described in the 2nd level 'Suggestion' spell. " +
+                                    "You need not remain near them for the full time span, nor is it necessary for them to remain in your line of sight for you to give the mental command. " +
+                                    "The target is not automatically aware that you are the source of the suggestion, but may realize it with either an Insight or Intelligence check vs your spell save DC, with advantage at the DM's discretion. " +
+                                    "This spell has no effect on creatures that are immune to being charmed.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 40
                 },
                 new SpellTemplate //Friends abound
                 {
@@ -305,7 +309,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Triggered Damage - psychic with spells
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Enchantment },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
                     Type = EffectType.Debuff,
                     Description = "has a glowing collar appear around their neck. On their turn if they cast any spell they take 1[dice] psychic damage per spell level. " +
                                     "If they use a magical ability that is not a spell they take 2[dice] psychic damage.",
@@ -354,7 +358,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Hearing things
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion, SchoolOfMagic.Enchantment },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
                     Type = EffectType.Debuff,
                     Description = "is distracted by noises that no one else can hear. You choose the nature of the sounds, but the volume is no louder than normal speaking volume. The target has disadvantage " +
                                     "on Perception, Insight, and Investigation checks. If you are hidden when you cast this spell you may choose to increase the cast time by one minute and omit all spell components " +
@@ -410,7 +414,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
                     Type = EffectType.Debuff,
                     Description = "has one of their abilities or spells sealed for 1d4 rounds, such that they cannot use it. " +
-                                    "You roll a percentile dice when you cast this spell - there is a 50% chance you can pick which ability is sealed and a 50% chance for the DM to pick on randomly. " +
+                                    "You roll a percentile dice when you cast this spell - there is a 50% chance you can pick which ability is sealed and a 50% chance for the DM to pick one randomly. " +
                                     "If you do get to choose, you can only pick abilities that you have seen the target use.",
                     Names = new List<string> { "seal", "oblivion", "amnesia" },
                     IsAlwaysInstant = true,
@@ -439,7 +443,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Partial banishment
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Necromancy },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Abjuration },
                     Type = EffectType.Debuff,
                     Description = "is partially banished. They take no damage but are temporarily disabled as you force part of their body to a harmless demi-plane. No wound is created (i.e. no blood loss, etc). " +
                                     "Instead a glowing plane appears at the point of pseudo-amputation. Roll a percentile dice to determine what portion of their body is banished: " +
@@ -627,79 +631,412 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysInstant = true,
                     BaseValueScore = 150
                 },
+                new SpellTemplate //Steal STR or DEX or CON
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Debuff,
+                    Description = "has their stamina stolen by you. Select either STR, DEX, or CON when you cast this spell. " +
+                                    "The target's ability score is reduced by 2d4 and yours is increased by the same amount.",
+                    Names = new List<string> { "theft", "siphon", "larceny" },
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 25
+                },
+                new SpellTemplate //Feeble body
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Debuff,
+                    Description = "has their STR and CON ability scores reduced to 1.",
+                    Names = new List<string> { "weakness", "frailty", "fragility" },
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Improved bane
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment, SchoolOfMagic.Divination },
+                    Type = EffectType.Debuff,
+                    Description = "must subtract 1[dice] from all attack rolls, saving throws, and ability checks.",
+                    Names = new List<string> { },//--------------------TODO
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Shared suffering
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "is linked to share their suffering with any creatures you choose in the target area. " +
+                                    "Anytime they take damage every linked creature also suffers the same damage at half value (this is not recursive). " +
+                                    "This spell fails if there are less than two visible creatures in the target area.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsAlwaysAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Penalty to AC for friend, foe, and self
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation, SchoolOfMagic.Necromancy },
+                    Type = EffectType.Debuff,
+                    Description = "has their AC reduced by [4-8]. This applies to ALL creatures in the target area - including yourself and your allies along with any enemies or strangers.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    IsAlwaysAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    DoesNotTargetCreatures = true,//Location effect
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Vulnerable to physical
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Debuff,
+                    Description = "becomes vulnerable to one type of physical damage that you choose: Piercing, Slashing, or Bludgeoning.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Vulnerable to elemental
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation, SchoolOfMagic.Evocation },
+                    Type = EffectType.Debuff,
+                    Description = "becomes vulnerable to one type of elemental damage that you choose: Fire, Cold, Lightning, or Thunder.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Vulnerable to dark
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Debuff,
+                    Description = "becomes vulnerable to one of the following types of damage that you choose: Necrotic, Acid, or Poison.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Vulnerable to light
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "becomes vulnerable to one of the following types of damage that you choose: Psychic, Radiant, or Force",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Ignite proliferation
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Debuff,
+                    Description = "takes [2-4][dice] fire damage and is ignited. While still burning they panic and instantly (during your turn) run 15ft in a random direction (roll 1d4). " +
+                                    "Any creature within 5ft of them at any point along their path must make a DEX save. On a failure the adjacent creatures is also ignited, and suffers this same effect - potentially causing a chain reaction as they also are burned, panic, and run. " +
+                                    "By the start of their next turn the flames die down and dissipate. Creatures that are immune to magical fear do not panic or run, but still suffer the fire damage.",
+                    Names = new List<string> { "proliferation", "ignition", "blaze" },
+                    IsAlwaysInstant = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Random damage type and dice count
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Debuff,
+                    Description = "suffers chaotic damage of a random type. The size of the damage dice is a [dice], but the quantity changes with each casting. Roll 2d8 to determine the quantity of damage dice to use. " +
+                                    "Then roll 1d8 to determine the damage type: Bludgeoning, Fire, Cold, Lightning, Thunder, Acid, Poison, or Force.",
+                    Names = new List<string> { "chaos", "entropy", "chance", "gamble" },
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 25
+                },
+                new SpellTemplate //Hallucination
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Debuff,
+                    Description = "begins to hallucinate. Up to 2d4 entities appear that no one else can see, but that are vivid to all of the target's senses (sight, sound, smell, touch, etc). " +
+                                    "You choose the appearance of the entities, up to [10-20@5]ft in any dimension, at the time of casting. You may change their behavior each round as a bonus action on your turn. " +
+                                    "If they appear to act in a violent way the target suffers [2-4][dice] psychic damage, but experiences it as the appropriate imagined damage type. " +
+                                    "Instead of simply attacking you may choose to have them perform more complex actions, such as carrying on a conversation, but doing so requires your full action rather than a bonus action.",
+                    Names = new List<string> { "hallucination", "visitation", "visitors" },
+                    MinimumDuration = Duration.OneMinute,
+                    IsNeverAoE = true,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Illusory smell
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Debuff,
+                    Description = "is overwhelmed by an illusory scent. You may choose any smell, and can make it seem either directional or ubiquitous. " +
+                                    "At worst, the smell can be odious enough to cause the poisoned condition on a failed CON save.",
+                    Names = new List<string> { "scent", "stench", "odor", "miasma" },
+                    MinimumDuration = Duration.OneMinute,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Insomnia
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion, SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "experiences insomnia or nightmares (your choice) such that they can gain no benefit from a long rest for [3-4]d12 + [6-18@2] hours.",
+                    Names = new List<string> { "restlessness", "insomnia", "sleeplessness" },
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Blurred vision
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Debuff,
+                    Description = "has their vision impaired, such that everything becomes blurry the farther away it is from them. " +
+                                    "They suffer a -5 penalty to melee attacks, a -10 penalty to ranged attacks, and automatically fail sight-related perception checks. " +
+                                    "Creatures that do not rely on sight are immune to this spell.",
+                    Names = new List<string> { "haze", "murk", "blur", "bleariness" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Ragdoll slam
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Debuff,
+                    Description = "is picked up and slammed repeatedly into the ground, suffering [4-8][dice] bludgeoning damage, and then thrown up to [10-20@5]ft in a direction you choose. " +
+                                    "This spell has no effect on creatures that are Huge or larger.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Lesser power word kill, leave at 1 HP
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Necromancy },
+                    Type = EffectType.Debuff,
+                    Description = "that has less than [40-60@10] HP is instantly reduced to 1 HP and slowed until the end of their next turn. If their health is not below the threshold then they are slowed but suffer no damage.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Lesser power word kill, caster takes damage
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Necromancy },
+                    Type = EffectType.Debuff,
+                    Description = "that has less than [40-60@10] HP is instantly reduced to 0 HP, but you lose [1-2][dice] HP for each creature killed.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Reduce HP by half, caster takes damage
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Debuff,
+                    Description = "suffers Force damage equal to half of their remaining HP (the DM may or may not reveal the exact amount). However, if the total damage dealt exceeds 50 HP, then you must make a CON saving throw. " +
+                                    "On a failure the strain causes you to suffer [4-6][dice] + 20 force damage that cannot be resisted. On a success you take half damage.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Perceive all creatures as having the same face
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Debuff,
+                    Description = "begins to hallucinate such that all creatures look like they have the same face to them. You may choose what the face looks like. Creatures wearing clothing also appear to all be wearing identical attire (again your choice), but " +
+                                    "any tools or weapons they are holding are unchanged.",
+                    Names = new List<string> { "anonymity", "obscurity", "visage"  },
+                    MinimumDuration = Duration.OneMinute,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Aura of madness
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Debuff,
+                    Description = "is masked by an illusion to appear awkward, disturbing, and/or insane to those around them. They suffer a -10 penalty to all CHA related ability checks (persuasion, intimidation, performance, etc). " +
+                                    "The creature is unaware of the illusion, but can realize that it is being treated differently by succeeding on an Insight check vs your spell save DC. " +
+                                    "Other creatures can see through the illusion by succeeding on an Investigation check vs your spell save DC.",
+                    Names = new List<string> { "mortification", "discomposure", "awkwardness" },
+                    MinimumDuration = Duration.TenMinutes,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Word swap
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Debuff,
+                    Description = "has up to 1d4 specific words they hear switched by you for the duration. Each time they hear one of the chosen words, from any source, it is replaced in their mind such that they hear a different word of your choosing. " +
+                                    "You choose which new word will replace each forbidden word at the time of casting. The target is unaware of the deception, but can realize the communication is off by succeeding on an Insight check vs your spell save DC.",
+                    Names = new List<string> { "exchange", "switch", "trade", "swap" },
+                    MinimumDuration = Duration.TenMinutes,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Babel
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "forgets all languages that they normally know, and instantly know a single random language instead. They roll 1d10 to determine the language: Dwarvish, Elvish, Giant, Gnomish, Goblin, Halfling, Orc, Draconic, Sylvan, or Undercommon. " +
+                                    "This spell has no effect on creatures that do not know a spoken language.",
+                    Names = new List<string> { "babeling", "tumult", "tongue" },
+                    MinimumDuration = Duration.OneHour,
+                    IsAlwaysAoE = true,
+                    BaseValueScore = 3
+                },
+                new SpellTemplate //Blurt
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "blurts out 2d4 words of your choosing. If you are hidden from the target then the number of words is doubled.",
+                    Names = new List<string> { "confession", "exclamation", "interjection" },
+                    IsAlwaysInstant = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Taboo
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "is unable to utter 2d4 specific words of your choosing. If you are hidden from the target then roll one extra dice to determine the number of words.",
+                    Names = new List<string> { "taboo", "muzzle", "suppression" },
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 2
+                },
+                new SpellTemplate //Must speak lies
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "is unable to directly verbalize any fact that they believe is true - they must speak vaguely, tell lies, or remain silent.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 2
+                },
+                new SpellTemplate //Freeze or flee
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "panics and either freezes or flees. On their turn they can only use their action to Dodge or Dash. " +
+                                    "This spell has no effect on creatures that are immune to magical fear.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneRound,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Pied piper
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "is compelled to follow you at a distance. They cannot willing move farther than 30ft from you, nor closer than 5ft from you, " +
+                                    "and must use their movement to stay in that range. While outside that range they must use their action to dash and attempt to follow you. " +
+                                    "Creatures that are immune to being charmed cannot be effected by this spell.",
+                    Names = new List<string> { "beckoning", "piper", "lure" },
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 8
+                },
+                new SpellTemplate //Siren call
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "is compelled use their movement get as close to you as possible and cannot willingly move farther from you. " +
+                                    "While more than 10ft from you they must use also their action to dash and attempt to reach you. " +
+                                    "Creatures that are immune to being charmed cannot be effected by this spell.",
+                    Names = new List<string> { "beckoning", "siren", "lure" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 4
+                },
+                new SpellTemplate //Prone and unable to stand
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Debuff,
+                    Description = "is knocked prone and is unable to stand upright for the spell duration - they may still crawl however. The spell can only affect humanoid creatures.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Storm call
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Debuff,
+                    Description = "is marked with an obvious, glowing sigil. It causes no damage while this spell is active and simply remains bound to the target, moving with them. " +
+                                    "At the end of the spell duration, however, they suffer [10-20@2] thunder damage plus 2[dice] lightning damage as a massive bolt of lightning strikes the sigil from above them. " +
+                                    "On each of your turns that passes without the spell ending you may use a bonus action to increase the eventual lightning damage by 2 dice. " +
+                                    "You may instead choose to end this spell early (triggering the damage) as a bonus action. This spell can target a stationary location rather than a creature.",
+                    Names = new List<string> { "capacitor", "static", "bolt", "storm", "thunder" },
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Infernal cry
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Debuff,
+                    Description = "is covered with a layer of ash for the spell duration. If they are reduced to 0 HP it explodes, dealing [2-4][dice] + [5-10] fire damage to all creatures within 10ft. " +
+                                    "This can trigger a chain reaction if the explosion reduces another creature covered in ash to 0 HP.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration= Duration.OneMinute,
+                    IsAlwaysAoE = true,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Profane bloom
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Debuff,
+                    Description = "is cursed in a unique manner. If they are killed during the spell duration then their body detonates, dealing [3-5][dice] + [8-15] necrotic damage to all creatures within 10ft. " +
+                                    "This can trigger a chain reaction if the explosion kills a similarly cursed creature.",
+                    Names = new List<string> { "desecration", "omen", "doom", "depravation" },
+                    MinimumDuration= Duration.OneMinute,
+                    IsAlwaysAoE = true,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Variant of mind spike - interrogation
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Debuff,
+                    Description = "suffers a debilitating migraine as you burrow into their thoughts. Doing so requires your full attention - this spell ends early if you move at all or use your action for anything other than continuing this spell. " +
+                                    "The target is stunned for 1d3 rounds and each round you may use your action to pry for one specific fact. On each attempt you make a contested INT check vs the target. " +
+                                    "On a success you get a glimpse of what they know about the desired fact - no more than a quick image or a single sentence. If they do not know the fact that you seek, instead you get a random glimpse into their mind. " +
+                                    "On a failure you learn nothing.",
+                    Names = new List<string> { "interrogation", "migraine", "interview" },
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Restrained - including magical movement and teleportation
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                    Type = EffectType.Debuff,
+                    Description = "is restrained. Additionally, they cannot be physically relocated by anyone other than you. " +
+                                    "Magical movement such as teleportation fails completely. Finally, they cannot shift between planes for the spell duration.",
+                    Names = new List<string> { "anchor", "bond", "root" },
+                    MinimumDuration= Duration.OneMinute,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Chained - take damage if they try to teleport
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                    Type = EffectType.Debuff,
+                    Description = "has their legs bound together with chains such that their movement speed is reduced to 5ft. The chains are immune to damage. " +
+                                    "If the target attempts to teleport or otherwise escape using magic (ie. misty step, planeshift, etherealness) it fails and they suffer 2[dice] force damage. " +
+                                    "This spell can only affect humanoids.",
+                    Names = new List<string> { "chains", "bands", "cords" },
+                    MinimumDuration= Duration.OneMinute,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Puppet
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Debuff,
+                    Description = "loses control of their limbs. You take control of them following the rules for the spell Dominate Person, except that you can only manipulate their arms and legs. " +
+                                    "They remain aware of their senses and can speak normally, but can do little else for the spell duration. This spell can only affect humanoids.",
+                    Names = new List<string> { "puppet", "marionette", "puppetry" },
+                    MinimumDuration= Duration.OneMinute,
+                    IsNeverAoE = true,
+                    BaseValueScore = 25
+                },
+                new SpellTemplate //Forced recollection
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Debuff,
+                    Description = "is forced to experience a vision from their past. The vision lasts for 1d4 rounds. You cannot control what memory they see, but the mind is naturally drawn to emotional events. " +
+                                    "While experiencing the vision they are deaf and blind to their current surroundings. This spell cannot affect mindless creatures or creatures with INT less than 4.",
+                    Names = new List<string> { "memory", "recollection", "remembrance" },
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 20
+                },
                 //new SpellTemplate //
                 //{
-                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
                 //    Type = EffectType.Debuff,
                 //    Description = "",
                 //    Names = new List<string> {  },//--------------------TODO
                 //    BaseValueScore = 5
                 //},
-                /* 
-                //************************************************************************************************************************************
-                *  Necro                   
-                        severe penalty to AC to all creatures in area, including yourself and allies (range is always self, always AoE)     
-                        vulnerable to X damage                        
-                        steal STR or DEX or CON
-                        reduce CON or DEX etc down to a fixed number (like feeble mind)
-                        like bane, penalty dice for all attacks and saving throw
-                        command undead - temporarily take control, only if low INT
-                        detonate one undead under your control as an explosion 
-                        shared suffering for enemies (damage one takes auto-applied at half value to linked others) - already exists above?
-                        detonate and desecrate (single cast? delayed explosion)
-                * Evocation
-                        spell whose damage scales based on the amount of depleted spell slots you have (or undeleted)	
-	                        mana mine
-	                        sticky grenade, channels for more damage
-	                        protective dome
-	                        circle of power - flat added damage per mana
-	                        circle of enlightenment - any school, plus effective spell levels for that school
-                        ignite proliferation - when ignited run in a random direction, any creatures within 5 ft are also ignited	
-                        throw a shadow of a melee weapon, chain to up to 3 targets within 10ft of the last	
-	                        damage plus debuff
-                        chaotic damage - roll dice for damage type	
-                        shatter a metallic weapon and hurl the shards, damage plus debuff	
-	                        range of self, non magic weapon
-	                        blade blast, ranged aoe
-                        vulnerabilities for each damage type	
-                        debuff - puny God, ragdoll slam into ground and thrown, no effect if size is huge or bigger	
-                        debuff - lesser power word kill (or divine word), creatures with less than 30 HP instantly reduced to 1hp	
-                        debuff - reduce HP by half, but if the damage exceeds 50 HP then the caster takes equal damage	
-                        debuff - creatures with HP less than 50 instantly reduced to 0hp, but the caster suffers 4d12 necrotic damage that cannot be reduced or avoided	
-                        debuff - internal cry, on death effects	
-                        storm rain	
-                        damage and pull yourself to the target, always ranged	
-	                        consecrated path, flicker strike, chain hook, leap slam, shield charge
-                * Illusion
-                        sickening smell
-                        halucination
-                * Enchanment.
-                        make all creatures look like strangers (like, actual appearance, faces look different)
-                        babel (random real language)
-                        a curse like babel, but for listening instead of speaking
-                        Delayed effect charm
-                        blurt out 1d4 words the caster chooses, double if you are hidden
-                        word swap (hear one word in it's place, not aware of swap)
-                        debuff - can only use action to dodge or dash
-                        aura of madness for enemies - Cha penalty
-                        forced to only speak lies, cannot speak direct truths
-                        speak in rhymes or be struck blind
-                        unable to speak 2d4 words of your choosing
-                        unable to verbalize one fact of your choosing
-                        any creature in range, including hidden ones, charmed to reveal themselves and walk towards you
-                * Reactions
-                        when you see a creature take lightning damage chain that damage to three other creatures of your choice
-                        when you see a creature take cold damage, cover then in ice and restrain them, can use action to break free with a str check
-                        when you see a creature take fire damage, ignite them so they receive that damage again at the end of their next turn
-                        when you see a creature take fire damage, trigger a mini explosion to repeat the damage and spread that damage to all other creatures within 10ft 
-                        when you see a creature suffer lightning - repeat damage and attempt to stun
-                        when you see a creature suffer cold - mini AoE explosion to repeat the damage and reduce speed by half
-                        see creature hit with a projectile that deals piercing damage - pierce target and curve arrow towards another within 90degrees
-                        when you see a creature suffer poison status - remove status and instantly suffer 3d12 poison damage
-                        when you see a creature suffer poison status - replace with paralyzed status
-                        when you see a creature suffer thunder or bludg - double the damage, if at least 20 (plus 20 for each size above medium) then Ragdolls, thrown 20ft, and knocked prone
-                * 
-                 */
             };
 
             return templates;

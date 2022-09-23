@@ -672,6 +672,459 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysInstant = true,
                     BaseValueScore = 70
                 },
+                new SpellTemplate //Shrieking spiders
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a swarm of ethereal spiders (or similar creatures) at your feet. You telepathically show them any image of your choice (real or imagined) and they will hunt for it. " +
+                                    "The image can be of a creature, an object, a natural or architectural feature, etc. but the spiders will ignore intricate details. " +
+                                    "They are intangible (cannot attack nor be attacked) as they skitter across surfaces, searching any area within range. " +
+                                    "If they find anything that looks similar to the target image dozens of them will surround it and begin shrieking loudly (audible within 100ft).",
+                    Names = new List<string> { "colony", "swarm", "throng" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,                    
+                    MinimumDuration = Duration.TenMinutes,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 4
+                },
+                new SpellTemplate //Fabricate memory
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion, SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "You fabricate a wholey new, false memory to implant into a creature's mind. It does not replace any existing memory, but is mixed in with all the others. " +
+                                    "The memory lacks continuity - they can't recall what happened right before or after it, or even where it lands in chronological order compared to the rest of their memories. " +
+                                    "The same guidelines for believability provided in the spell Modify Memory apply here.",
+                    Names = new List<string> { "implication", "insinuation", "misinformation" },
+                    IsAlwaysInstant = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Storm rain
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a volley of energized arrows that arc high into the air before crashing to the ground. " +
+                                    "The arrows magically avoid hitting creatures and instead stick into the ground (or other surfaces) where they remain for the duration. " +
+                                    "When they impact, and as a bonus action on subsequent turns, arcs of lightning connect each of the arrows to every other arrow, " +
+                                    "dealing [2-4][dice] lightning damage to any creatures in the target area.",
+                    Names = new List<string> { "volley", "arrows", "storm" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Flicker strike
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You teleport up to 15ft to any visible, unoccupied point. If an enemy is within melee range of where you appear then you can immediately make a single melee weapon attack with +[3-8] force damage. " +
+                                    "If the attack does not miss you can choose to sacrifice 1d6 HP to instantly teleport and attack again (it need not be the same target). " +
+                                    "So long as you never miss you can move and attack up to 4 times, but the HP cost doubles each time.",
+                    Names = new List<string> { "flickering", "frenzy", "nictation" },
+                    IsAlwaysInstant = true,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 40
+                },
+                new SpellTemplate //Leap slam
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "You leap up to 20ft to any visible, unoccupied point and trigger a short-range shockwave on impact. " +
+                                    "Any creature within 5ft suffers [3-4][dice] thunder damage. " +
+                                    "At the time of casting you may choose to empower a single ally within 5ft of you to make the leap instead of doing it yourself, " +
+                                    "but they must use their reaction to do so.",
+                    Names = new List<string> { "leap", "crater", "jump" },
+                    IsAlwaysInstant = true,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 40
+                },
+                new SpellTemplate //Shield charge
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Abjuration },
+                    Type = EffectType.Utility,
+                    Description = "You imbue your shield with unstoppable power and charge up to 30ft in a straight line. " +
+                                    "Any creatures in your path are pushed out of your way, suffer 2[dice] bludgeoning damage, and are knocked prone if they are Large or smaller in size. " +
+                                    "Creatures that are Huge or larger in size interrupt your charge, stopping you short of the full movement. " +
+                                    "This spell cannot be cast unless you are holding a shield.",
+                    Names = new List<string> { "charge", "advance", "rush" },
+                    IsAlwaysInstant = true,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Shield bash
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Abjuration },
+                    Type = EffectType.Utility,
+                    Description = "You make a magically augmented spell attack with your shield that deals [3-5][dice] + [5-10] bludgeoning damage to a creature within 5ft of you. " +
+                                    "It also triggers a shockwave that deals half damage to any creatures in a 15ft cone behind the main target, even if the main attack misses. " +
+                                    "At the time of casting you may choose to empower an ally within 5ft of you to make the attack with their shield instead of doing it yourself, " +
+                                    "but they must use their reaction to do so (they use your spell modifier for the attack roll). " +
+                                    "This spell has no effect on creatures that are not already holding a shield.",
+                    Names = new List<string> { "bash", "ram", "battering" },
+                    IsAlwaysInstant = true,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Consecrated path
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "You leap up to 20ft to any visible, unoccupied point. A circle of glowing runes with a radius of [10-20@5]ft appears on the ground, centered on the point where you land. " +
+                                    "The runes pulse for a moment, release a blinding flash, and then vainsh. Enemies within the circle must make a CON saving throw. " +
+                                    "On a failure they suffer [2-3][dice] radiant damage and are blinded for one round. On a success they take half damage and are not blinded.",
+                    Names = new List<string> { "consecration", "leap", "brilliance" },
+                    IsAlwaysInstant = true,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 60
+                },
+                new SpellTemplate //Bubble shield
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a translucent dome with a radius of [15-30@5]ft, centered on yourself. You and your allies inside of it take reduced damage from any attacks or spells that originate outside of the dome. " +
+                                    "Roll [2-3]d4 once at the start of the spell to determine the amount of damage reduction. " +
+                                    "Hostile creatures inside of the dome are slowed (their movement speed is halved). Creatures can pass through the surface of the dome freely without consequence.",
+                    Names = new List<string> { "shield", "barrier", "dome" },
+                    DoesNotTargetCreatures = true,
+                    MinimumDuration = Duration.OneMinute,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 40
+                },
+                new SpellTemplate //Frost shield
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a translucent dome covered in frost with a radius of [15-30@5]ft, centered on yourself. The dome has [4-7][dice] HP. " +
+                                    "The surface of the dome only allows one-way movement, away from you. Creatures and objects (including ranged attacks and spells) can exit the dome, " +
+                                    "but nothing can physically enter the dome in the other direction. " +
+                                    "If the dome is reduce to 0 HP it releases an icy backlash and the creature that destroyed it suffers [3-6][dice] cold damage; this spell then ends early.",
+                    Names = new List<string> { "shield", "barrier", "dome" },
+                    DoesNotTargetCreatures = true,
+                    MinimumDuration = Duration.OneMinute,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Circle of power - added damage
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a circle on the ground with a radius of [10-20@5]ft, centered on yourself. It is filled with intricate runes that glow dimly. " +
+                                    "You and any allies inside of it deal [3-6] bonus force damage with all weapon and spell attacks against enemies outside of the circle. " +
+                                    "If you use your last remaining spell slot to cast this spell then the bonus damage is doubled." +
+                                    "Enemies inside the circle have disadvantage on all melee attacks. ",
+                    Names = new List<string> { "shield", "barrier", "dome" },
+                    DoesNotTargetCreatures = true,
+                    MinimumDuration = Duration.OneMinute,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //React to lightning damage - chain
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "When you see a creature taking lightning damage you can use your reaction and enhance the lightning to chain new arcs from them to three other creatures of your choice within 20ft of them. " +
+                                    "Each must make a DEX saving throw. On a failure they suffer the same amount of lightning damage as the original creature. On a success they take half damage.",
+                    Names = new List<string> { "reach", "arc", "chaining" },
+                    IsAlwaysAReaction = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //React to lightning damage - stun
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "When you see a creature taking lightning damage you can use your reaction to enhance the lightning and try to stun them. They must make a CON saving throw - if " +
+                                    "the amount of the damage you are reacting to was more than half of their remaining HP then they make the save at disadvantage. " +
+                                    "On a failure they suffer another 2[dice] + [5-10] lightning damage and are stunned for one round. On a success they suffer half damage and are slowed rather than stunned.",
+                    Names = new List<string> { "shock", "jolt", "stun" },
+                    IsAlwaysAReaction = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //React to cold damage - restrain
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "When you see a creature take cold damage you can use your reaction to enhance the cold and cover them in ice, restraining them. " +
+                                    "On their turn they can use an action to break free with a STR check vs your spell DC.",
+                    Names = new List<string> { "restraint", "frostbite", "ice" },
+                    IsAlwaysAReaction = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //React to cold damage - AoE + slow
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "When you see a creature take cold damage you can use your reaction to enhance the cold and trigger an explosion of ice " +
+                                    "that deals half as much cold damage and slows any creatures within 15ft of the original creature.",
+                    Names = new List<string> { "frigidity", "ice", "frost" },
+                    IsAlwaysAReaction = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 25
+                },
+                new SpellTemplate //React to fire damage - AoE
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "When you see a creature take fire damage you can use your reaction to enhance the fire and trigger a burst of flames " +
+                                    "that deals the same amount of fire damage to any creatures within 10ft of the original creature.",
+                    Names = new List<string> { "detonation", "ignition", "explosion" },
+                    IsAlwaysAReaction = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 25
+                },
+                new SpellTemplate //React to piercing damage - redirect projectile
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "When you see a creature hit with a projectile that deals piercing damage you can use your reaction to empower the projectile to pierce through the target " +
+                                    "and curve (no more than 90 degrees) towards another creature within 20ft of them. The original creature suffers an additional 2[dice] piercing damage. " +
+                                    "The second target suffers the same damage plus half of the original damage that you reacted to.",
+                    Names = new List<string> { "splinter", "shard", "sliver" },
+                    IsAlwaysAReaction = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 35
+                },
+                new SpellTemplate //React to poisoned status - convert to instant damage
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation, SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "When you see a creature that is poisoned make a successful attack, but before the damage dice have been rolled, you can use your reaction " +
+                                    "to accelerate the poisoning. They instantly suffer [4-6][dice] poison damage and must re-roll the attack, but after this they are no longer poisoned.",
+                    Names = new List<string> { "oppression", "exploitation", "wringing" },
+                    IsAlwaysAReaction = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //React to poisoned status - paralyze
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "When you see a creature become poisoned you can use your reaction to alter and enhance the poison. They must make a CON saving throw. " +
+                                    "On a failure instead of becoming poisoned they are paralyzed for 1d3 rounds. " +
+                                    "On a success they are not paralyzed, but they are slowed for 1d3 rounds in addition to being poisoned.",
+                    Names = new List<string> { "necrosis", "toxin", "poison" },
+                    IsAlwaysAReaction = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //React to thunder or bludg damage - ragdoll
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "When you see a creature take either thunder or bludgeoning damage you can use your reaction to increase the damage by 50%. " +
+                                    "If the total after being enhanced is at least 20 damage (plus 20 for each creature size above medium) then they must make a STR saving throw. " +
+                                    "On a failure the creature is thrown back 10ft per 10 points of damage taken and falls prone.",
+                    Names = new List<string> { "ragdoll", "propulsion", "sling", "catapult" },
+                    IsAlwaysAReaction = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Charmed to reveal themselves
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "Any creatures behind cover in the target area - or any that are hiding by other means - are charmed to reveal themselves. " +
+                                    "They must instantly use their reaction to move away from cover and calmly walk 10ft towards you. They then make a WIS saving throw. " +
+                                    "On a failure they remain docile and stationary for 1d4 rounds, but taking damage dispels the effect. " +
+                                    "Creatures that are immune to charm effects are unaffected by this spell.",
+                    Names = new List<string> { "beckoning", "revelation", "welcome" },
+                    IsAlwaysAoE = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 40
+                },
+                new SpellTemplate //Mass paralysis
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "You release a radial blast of arcane energy that paralyzes every creature within [50-100@25]ft of you, including yourself and any allies. " +
+                                    "If any creature within that range is immune to being paralyzed (ex: due to freedom of movement or similar) then this spell fails completely and no one is affected.",
+                    Names = new List<string> { "shock", "paralysis", "tremor" },
+                    MinimumDuration = Duration.OneMinute,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,                    
+                    BaseValueScore = 70
+                },
+                new SpellTemplate //Mass pacifism
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "You release a ripple of magic that washes over every creature within [50-150@25]ft of you and compels them to pacifism, including yourself and any allies. " +
+                                    "Each creature is unable to deliberately damage any other creature. This spell bypasses immunity to charm effects.",
+                    Names = new List<string> { "soothing", "tranquility", "harmony", "accord" },
+                    MinimumDuration = Duration.OneMinute,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Mass sleep
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "You unleash a pulse of magic that rapidly accelerates outward from you in a ring. Every creature within 1[dice] miles of you falls asleep for 2[dice] hours, including yourself and any allies. " +
+                                    "Creatures that are immune to magical sleep (ex: those of elvish descent) are instead charmed to sit quietly and daydream - they are considered restrained and incapacitated. " +
+                                    "This spell bypasses immunity to charm effects. Creatures cannot be roused by any non-magical means short of suffering damage equal to at least half of their maximum HP.",
+                    Names = new List<string> { "opus", "masterstroke", "dormancy" },
+                    MinimumCastTime = CastTime.OneHour,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 2000
+                },
+                new SpellTemplate //Numb to pain
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "Any creature affected by this spell is numb to any sensation of pain. They are unaware of any damage dealt to them unless one of their other senses (ex: sight or sound or pressure) makes it apparent. " +
+                                    "if you are hidden from the target when you cast this spell they do not automatically realize they are under its effect (the numbness is not obvious to them).",
+                    Names = new List<string> { "desensitizing", "deadening", "numbness" },
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Blind trust
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "Any creature affected by this spell will believe the next 2d6 words that you say to them, interpreting your message as an absolute fact. If it conflicts with their deeply held beliefs " +
+                                    "(ex: 'you can fly', or 'your brother betrayed you', or 'that fire won't burn you') then they can make a WIS saving throw. On a success they resist the spell and form their own conclusions. " +
+                                    "Creatures that are immune to being charmed are unaffected by this spell.",
+                    Names = new List<string> { "trust", "deception", "persuasion" },
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Remove memory
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "Any creature affected by this spell forgets the past [2-5][dice] minutes. They make a WIS saving throw. " +
+                                    "On a success the gap in their memory is a blackout of obviously missing time. " +
+                                    "On a failure they have no sense of the missing time, and feel as if they skipped instantly to the present from the last moment they recall.",
+                    Names = new List<string> { "void", "oblivion", "amnesia" },
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Redirect away from area
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "Anytime a creature other than yourself enters the target area or ends their turn in the area they must make a WIS saving throw. " +
+                                    "On a failure they are compelled (as if by the Suggestion spell - no self harm) to leave and instead travel to a specific visible point that you set at the time of casting. " +
+                                    "When you cast this spell you may choose up to 2[dice] creatures to exclude from its effect.",
+                    Names = new List<string> { "distraction", "redirection", "diversion" },
+                    MinimumDuration = Duration.EightHours,
+                    MinimumCastTime = CastTime.OneMinute,
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Lesser comprehend languages
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Utility,
+                    Description = "Any creatures in the target area are able to understand simple ideas from any spoken language that they hear. The language barrier is reduced, but not eliminated completely. " +
+                                    "This spell has no effect on creatures that do not already speak at least one language.",
+                    Names = new List<string> { "comprehension", "intuition", "insight" },
+                    IsAlwaysAoE = true,
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //X-ray vision
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Utility,
+                    Description = "You select one of the following materials to be able to see through: wood, stone, metal, dirt, vegetation, crystal, or water. " +
+                                    "Objects within [20-50@10]ft of you that are primarily made of that material become transparent to your eyes - including thin layers of paint, plaster, etc. that may be on them. " +
+                                    "You can see their outlines lightly, but they are otherwise invisible. You may upcast this spell to choose one additional material per two extra spell levels.",
+                    Names = new List<string> { "eyesight", "vision", "sight" },
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.TenMinutes,                    
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Track via glowing trails
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Utility,
+                    Description = "You choose on specific race (elf, gnome, etc) or creature type (beast, fiend, etc) to track. " +
+                                    "For the spell duration you are able to visually see within [15-30@5]ft of you glowing lines in the air tracing paths where any such creatures have passed by within the past [2-12@2] hours. " +
+                                    "The trails glow brighter the more recently they passed - for example, very bright if they passed less than a minute ago, and very faint if their passing was right at the limits of how far into the past this spell can reach.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Speak with object
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Utility,
+                    Description = "You touch one non-living, non-sentient object and speak to it. You are able to ask it [3-6] questions. The object is only able to provide yes or no answers, " +
+                                    "and it has limited information. It is considered blind and deaf to its surroundings and has a warped sense of the passage of time. It can, however, give " +
+                                    "answers about changes in temperature, pressure, and acceleration as well as details about its composition. If you ask a question that it does not " +
+                                    "know the answer to then it will randomly reply with a yes or a no. Interestingly, this quirk of the spell has been utilized on more than one " +
+                                    "occasion to provide a rock as an impartial tie-breaker in what otherwise would have been a stalemate negotation.",
+                    Names = new List<string> { "inquiry", "query", "question" },
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Homing tracker
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Utility,
+                    Description = "You touch one object and for the spell duration you know where it is relative to you. " +
+                                    "You are aware of both the direction and the approximate distance (ie. a few hundred feet or several miles) to the object's location. " +
+                                    "The object need not stay stationary, but it must be 1 foot or larger in at least one dimension. This spell only works while you are on the same plane of existence as the object.",
+                    Names = new List<string> { "datum", "anchor", "focal point" },
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneHour,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Structural stress
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Utility,
+                    Description = "You are able to visually see a 'heat map' of how close non-living materials are to their breaking point. " +
+                                    "Areas that are very near fracturing or buckling glow brightly like magma, while regions with moderate stress range from a yellow to a green hue. " +
+                                    "Portions that are barely stressed have a faint blue glow.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.TenMinutes,                    
+                    BaseValueScore = 3
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
@@ -681,16 +1134,8 @@ namespace SpellGenerator.Client.Data
                 //    BaseValueScore = 5
                 //},
                 //*************************************************************************
-                /*            
-                 *  Divination
-                        runes that glow when long distance twins hear a specific word 
-                        Lesser comprehend languages, very simple ideas only
-                        x-ray one material wood or stone or crystal or metal (including paint and plaster on walls or ceilings)
-                        track via recent body heat path, one specific race or creature type
-                        utility track object - range of touch, plant object and wait
-                        speak with object - blind and deaf, only temp and pressure and acceleration
-                        oddly prepared - pull from your pocket or pack one item worth less than 20gp. A glimpse of the future promoted you to purchase it for this occasion. Retroactively deduct the price from your funds
-                        structural - visual heat map of how close non-living materials are to their breaking point
+                /*                       
+                *  Divination               
                         conjure tea - enough for 1d4+1 people. Each gets a free attempt at scrying. DM makes a secret roll : 50-50 odds that vision is false, if more than one person targets the same thing they have the same vision (one DM roll instead of multiple)
                         mimic ability (like sneak attack or wild shape) as reaction or share one of your own with 1d6 other creatures.
                             each gets a single use and then forgets
@@ -718,7 +1163,7 @@ namespace SpellGenerator.Client.Data
                         hide worth - illusion or transmutation - gold coins to copper temporarily, and gems into common minerals
                         split illusions - 3d4 copies of the same illusion, less than 6 inches in any dimension
                         split illusion - 2d6 copies, less than 3ft
-                * Necro
+                * Necro                        
                         reaction - as you fall unconscious - tie the target's fate to your own, whenever you fail a death saving throw they take necrotic damage and if you die they are stunned for 1d3 rounds - is always instant (to avoid concentration requirements)
                         reaction - as you fall unconscious deal [5-8][dice] + [10-40@10] necrotic damage to one visible targt in range
                         bodyswap - teleport, if you consume a corpse at the target location deal damage and does not use the spell slot	
@@ -745,7 +1190,10 @@ namespace SpellGenerator.Client.Data
                         change remains to be purely skeletal	
                         only affects undead creatures with INT less than 7. Temporarily restore their intellect from when they were alive.
                         transform a permanent skeleton or zombie you control into a ghostly variant of the same	
-                        ritual to sacrifice max HP until next long rest interchange for one of the following: immune to poison, no need to breathe, 50 percent chance after death save to gain 3d6 HP, necrotic damage heals you and healing spells damage you. Roll randomly, can be cast multiple times to stack different effects	
+                        ritual to sacrifice max HP until next long rest interchange for one of the following: immune to poison, no need to breathe, 50 percent chance after death save to gain 3d6 HP, necrotic damage heals you and healing spells damage you. Roll randomly, can be cast multiple times to stack different effects	                        
+                        command undead - temporarily take control, only if low INT
+                        detonate one undead under your control as an explosion 
+                        detonate and desecrate (single cast? delayed explosion)
                 * Evocation
                         searing bond, 1d3 stationary points and yourself, bonus action to replace one
                         variant of contingency, lasts only 1 hour but multiple creatures benefit (common triggering condition and spell for all), spell level not more than half this spell
@@ -757,15 +1205,6 @@ namespace SpellGenerator.Client.Data
                         gamble spell slots for self, spend X slot, roll dice to see if you get back more or less, then immune to effects until long rest
                         ground shakes with each step, create difficult terrain with shockwaves along the path the walk
                         pick a 1st level spell you know. Each time the target successfully hits with a weapon attack (once per turn) the spell is automatically triggered without using a spell slot or components. The spell automatically targets the creature that was hit, but any AoE effects still have an area.	                                                             
-                * Enchanment
-                        targets location not creatures - anyone that approaches is compelled to instead travel to a different point you choose	
-                        mass sleep, friend foe and self in large AOE, elves cannot enter the area	
-                        mass paralysis, no save, friend and foe and self, fails for all if any are immune to paralysis 	
-                        mass pacifism, no save, friend and foe and self, bypasses immunity to charm effects	
-                        numb, can't feel pain, unaware of damage	
-                        remove memory of the past 2d6 minutes, blackout missing time on successful save, skipped time on a fail?	
-                        will believe the next 4d6 words you speak, but must understand the language	
-	                        you are invincible, that fire isn't hot, you can fly
                 * Transmute
                         make an object buoyant
                         weight half or double
@@ -788,8 +1227,34 @@ namespace SpellGenerator.Client.Data
                        remote spell casting - channel for ally to allow them to project a spell very long range
                             one version with scrying spell to pick see target
                             one version where you create a beacon on a target that the chosen ally can send thh spell to, like a homing missile
+                * PoE
+                        spell whose damage scales based on the amount of depleted spell slots you have (or undeleted)	
+	                        mana mine
+	                        sticky grenade, channels for more damage
+                        chain hook - damage and pull yourself to the target, always ranged	
+	                    circle of enlightenment - any school, plus effective spell levels for that school
+                        throw a shadow of a melee weapon, chain to up to 3 targets within 10ft of the last	
+	                        damage plus debuff
+                        shatter a metallic weapon and hurl the shards, damage plus debuff	
+	                        range of self, non magic weapon
+	                        blade blast, ranged aoe	
                 * Other
-                       at least one per school utility - interact with environment, climate, or social
+                        at least one per school utility - interact with environment, climate, or social
+                        instantly gain the benefits of a long rest, but your max HP is reduced to 1 for 24 hours, and can't be affected by this spell again for 3 days	
+                        ten minutes for a long rest, but also 1d4 points of Exhaustion	
+                        instant short rest, but Max HP is reduced but 1d8 per character level for 24 hours. if reduced to 0, instead reduce to 1 and take 1d4 points of Exhaustion	
+                        honey I shrunk the kids - all abilities also scaled down (esp spells), physical damage taken x10	
+                        illusion - rainbow that starts above you and reaches towards a goal within 10 miles	
+                        Necro - condense remains into a tiny object for later animation	
+                        illusion of self that you can swap places with as a bonus action each turn	
+                        evocation - yeet a willing creature, multiple saving throws. one for  stunned, prone 	
+	                        target creature within 150 ft
+	                        target location visible within 500 ft
+                        frozen slide	
+                        cave of wonders style hear/rising up out of the ground..	
+                        pumpkins carriage from Cinderella	
+                        smoke elevator ala Mari Poppins	
+                        summon wooden boat, can fit up to 1d6 + 2 medium creatures.	
                  */
             };
 
