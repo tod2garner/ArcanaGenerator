@@ -34,8 +34,9 @@ namespace GeneratorEngine
         internal virtual void UpdateDescription()
         {
             //TODO - improve
-            var typeOfTargets = (Type == DeliveryType.AreaOfEffect || Type == DeliveryType.AreaProjectile || DoesNotTargetCreatures) ? "location(s)" : "creature(s)";
-            var targetingText = NumberOfTargets > 0 ? $"Can target {NumberOfTargets} {typeOfTargets}. " : "";
+            var targetType = (Type == DeliveryType.AreaOfEffect || Type == DeliveryType.AreaProjectile || DoesNotTargetCreatures) ? "location(s)" : "creature(s)";
+            targetType = NumberOfTargets != 1 ? targetType.Replace("(s)", "s") : targetType.Replace("(s)", "");
+            var targetingText = NumberOfTargets > 0 ? $"Can target {NumberOfTargets} {targetType}. " : "";
             var deliveryTypeText = (Type == DeliveryType.None) ? "Instant effect" : $"{Type} delivery";
             var rangeText = (RangeType == RangeType.Self) ? "self" : $"{RangeDistance} ft.";
 

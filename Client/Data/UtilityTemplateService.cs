@@ -1329,14 +1329,6 @@ namespace SpellGenerator.Client.Data
                 //*************************************************************************
                 /*      
                 *  Conjuration
-                        conjure [2-4] riding horses for [dice] hours. upcast for 2 extra horses per additional spell level.
-                        duplicate or replicate an outfit utility, tangible not an illusion
-                        temporary portable hole utility, non-exploding (collapses instead)
-                        medium range teleport, 1 mile
-                        temporary graffiti
-                        Lesser animate objects
-                        AoE difficult terrain and fall prone (no save) at the start of turn if touching the ground
-                        better earth bind - effect for non flying creatures too (restrained?)
                         feast of left overs - table with partially eaten food appears, enough for 2d6+1 people to have a meal. Each makes a CON save, On a failure, poisoned for 2 hours. On a success, immune to charm effects and gain 2d12 Temp HP 
                             other feast ideas - damage resistance paired with vulnerability, gamble AC bonus or a point of Exhaustion
                 *  Illusion
