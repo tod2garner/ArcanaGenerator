@@ -1119,27 +1119,112 @@ namespace SpellGenerator.Client.Data
                     Description = "You are able to visually see a 'heat map' of how close non-living materials are to their breaking point. " +
                                     "Areas that are very near fracturing or buckling glow brightly like magma, while regions with moderate stress range from a yellow to a green hue. " +
                                     "Portions that are barely stressed have a faint blue glow.",
+                    Names = new List<string> { "design", "strain", "stresses" },
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 3
+                },
+                new SpellTemplate //Group vision
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Utility,
+                    Description = "You conjure enough tea for 1d4 + 1 people. Each person who drinks may speak one question aloud. Once all have spoken, the participants experience a shared vision. " +
+                                    "The DM makes a secret percentile roll to determine how much of the vision is accurate and how much is false or misleading (a 50 on the dice would result in roughly half being true and half being misleading). " +
+                                    "The vision attempts to answer each of the questions asked, and might reach into the past or future to do so. At the DM's discretion a vision might be extremely vague, intensely vivid, jumbled and nonsensical, or a combination of these. " +
+                                    "After experiencing such a vision, the participants are unaffected by this spell for a week.",
+                    Names = new List<string> { "oracle", "prophecy", "foretelling" },                    
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.TenMinutes,
+                    MinimumCastTime = CastTime.OneMinute,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Mimic ability
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Utility,
+                    Description = "When you see a creature in range (either friend or foe) use an uncommon ability - such as a class feature, racial trait, or inherent talent - you may use your reaction to try mimicing that specific ability. " +
+                                    "Depending on the complexity and power of the ability, the DM will select a DC for you to make an ability check against using your spellcasting modifier. Basic class features (like sneak attack, wildshape, etc) would have a relatively low DC but certain monster abilities may be nigh impossible to mimic successfully. " +
+                                    "If you are successful you do not immediately copy them, but rather you hold in your mind the borrowed knowledge of how to do so. For the spell duration you have access to the ability on your turns, but this spell ends early after using it 1d4 times.",
+                    Names = new List<string> { "mimicry", "imitation", "echo", "replica" },
+                    IsAlwaysAReaction = true,
+                    MinimumDuration = Duration.OneMinute,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Body swap
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "You instantly teleport to an unoccupied, visible point within [15-30@5]ft and unleash a radial blast of dark energy, dealing [2-4][dice] necrotic damage to any creatures within 5ft. " +
+                                    "If there are any corpses within 5ft of where you arrive then one of them crumbles to ashes, the damage is doubled, and you may roll a d6. On a 5 or 6 this casting does not consume a spell slot.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsRangeAlwaysSelf= true,
+                    IsNeverAoE = true,
+                    IsAlwaysInstant = true,                    
+                    BaseValueScore = 40
+                },
+                new SpellTemplate //Poe Offering - Temp HP
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "You touch a corpse within reach. It crumbles into dust and you instantly gain [2-3][dice] temporary HP. You may choose to gift the temp HP to an ally instead of keeping it, but you must be able to touch them before the end of your turn to transfer it. " +
+                                    "Undead creatures that you created may be considered corpses for the purposes of this spell, but not undead of other origins.",
                     Names = new List<string> {  },//--------------------TODO
                     IsRangeAlwaysSelf = true,
                     IsNeverAoE = true,
-                    MinimumDuration = Duration.TenMinutes,                    
-                    BaseValueScore = 3
+                    IsAlwaysInstant = true,                    
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Poe Offering - Resistance
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "You touch a corpse within reach. It crumbles into dust and you gain resistance to any damage from creatures of the same type. You may choose to gift the resistance to an ally instead of keeping it, but you must be able to touch them before the end of your turn to transfer it. " +
+                                    "Undead creatures that you created may be considered corpses for the purposes of this spell, but not undead of other origins.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Poe Offering - Speed or Damage
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "You touch a corpse within reach. It crumbles into dust and you may choose to gain either a +[15-30@5]ft bonus to your movement speed OR +[3-6] bonus necrotic damage to all attacks. " +
+                                    "You may choose to gift the bonus to an ally instead of keeping it, but you must be able to touch them before the end of your turn to transfer it. " +
+                                    "Undead creatures that you created may be considered corpses for the purposes of this spell, but not undead of other origins.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Poe Offering - AC for undead ally
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "You touch a corpse within reach. It crumbles into dust as you extract its final vestiges of vitality. You may use it to grant an undead ally +2d4 AC, but you must be able to touch them before the end of your turn to do so. " +
+                                    "Undead creatures that you created may be considered corpses for the purposes of this spell, but not undead of other origins.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 15
                 },
                 //new SpellTemplate //
                 //{
-                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
                 //    Type = EffectType.Utility,
                 //    Description = "",
                 //    Names = new List<string> {  },//--------------------TODO
                 //    BaseValueScore = 5
                 //},
                 //*************************************************************************
-                /*                       
-                *  Divination               
-                        conjure tea - enough for 1d4+1 people. Each gets a free attempt at scrying. DM makes a secret roll : 50-50 odds that vision is false, if more than one person targets the same thing they have the same vision (one DM roll instead of multiple)
-                        mimic ability (like sneak attack or wild shape) as reaction or share one of your own with 1d6 other creatures.
-                            each gets a single use and then forgets
-                            if used for a spell, it must be a lower level than this spell  
+                /*      
                 *  Conjuration
                         conjure [2-4] riding horses for [dice] hours. upcast for 2 extra horses per additional spell level.
                         duplicate or replicate an outfit utility, tangible not an illusion
@@ -1166,10 +1251,6 @@ namespace SpellGenerator.Client.Data
                 * Necro                        
                         reaction - as you fall unconscious - tie the target's fate to your own, whenever you fail a death saving throw they take necrotic damage and if you die they are stunned for 1d3 rounds - is always instant (to avoid concentration requirements)
                         reaction - as you fall unconscious deal [5-8][dice] + [10-40@10] necrotic damage to one visible targt in range
-                        bodyswap - teleport, if you consume a corpse at the target location deal damage and does not use the spell slot	
-                        consume a corpse (turned to dust) to gain temp HP	
-                        consume a corpse (turned to dust) to heal an ally	
-	                        buffs? speed, resistance, damage?
                         unearth from poe, remains burst from the ground and deal damage in a line?	
                         statis AoE center on self - outside of AoE 1d8 hours pass, by inside only minutes. Barrier like wall of force prevents anything from passing in the meantime	
 	                        another version with days instead of hours?
