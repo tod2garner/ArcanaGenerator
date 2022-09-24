@@ -1215,9 +1215,112 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 15
                 },
+                new SpellTemplate //Duplicate outfit
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You recall a single creature that you have seen in the past [4-24@4] hours, and conjure a duplicate of their outfit at your feet. The replica includes each article of clothing and jewelry that was visible to you. " +
+                                    "Each item is mundane even if the original has magical properties. The outfit is tangible and if inspected is truly made of the same materials and has the same quality of craftsmanship as the original. " +
+                                    "The replica lasts for 2[dice] hours before dissolving into mist.",
+                    Names = new List<string> { "replica", "outfit", "duplication" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsAlwaysInstant = true,
+                    IsRangeAlwaysSelf = true,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Miniature demi-plane
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You create a small cupboard-sized door on a flat surface at least 2ft x 2ft in dimension. The surface need not remain stationary, but it must remain flat or the spell ends early. " +
+                                    "While open it connects to a demi-plane that is an empty [3-6]ft cube, with sides made of stone. " +
+                                    "When the spell ends the door vanishes and the demi-plane collapses. Anything left inside is teleported to a random location in the astral sea, or a similar plane at the DM's discretion.",
+                    Names = new List<string> { "cupboard", "smuggling", "cabinet" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneHour,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Conjure steeds
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You conjure 1[dice] riding horses for 1[dice] hours. At the end of the duration they slowly vanish over the span of one minute, allowing any riders time to quickly dismount.",
+                    Names = new List<string> { "steed", "mount","horses" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneHour,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 6
+                },
+                new SpellTemplate //Medium range teleport
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You touch up to [3-5] creatures within 5ft of you (one of them may be yourself). If any are unwilling, you must make a melee spell attack to touch them. " +
+                                    "Each is instantly teleported to a location of your choosing within 1 mile of where you stand. " +
+                                    "Depending on your familiarity with the location, the teleportation may or may not be accurate - follow the rules provided in the 7th level spell 'Teleport'.",
+                    Names = new List<string> { "transport", "transportation", "transference" },
+                    IsNeverAoE = true,
+                    IsAlwaysInstant = true,
+                    IsRangeAlwaysSelf = true,                    
+                    BaseValueScore = 80
+                },
+                new SpellTemplate //Graffiti
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You conjure up to 2[dice] + 2 words on any visible surface in range. The letters can be up to [2-4]ft tall and in any style, color, and thickness. The words vanish at the end of the spell duration.",
+                    Names = new List<string> { "graffiti", "verse", "sign" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneHour,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 2
+                },
+                new SpellTemplate //Waves on land
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You cause the ground to heave, buckle, and warp in the target area. The surface is not damaged or broken, but it moves like rough waves at sea. " +
+                                    "The area is considered difficult terrain, and any creature that starts their turn standing on the ground in the area is knocked prone.",
+                    Names = new List<string> { "waves", "roiling", "turbulence" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysAoE = true,
+                    IsAlwaysRanged = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Improved earth bind
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "Any creature affected by this spell has their flying speed reduced to 0 and instantly begins to free fall if they are airborne. Creatures that do not have a flying speed have their walking speed halved instead.",
+                    Names = new List<string> { "gravity", "weight", "anchor" },
+                    IsAlwaysRanged = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Lesser animate object
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You animate up to [8-15] tiny objects within range. They cannot attack, move slowly and gently, and you can mentally command them as a free action on your turn. " +
+                                    "The objects can perform fairly complex maneuvers, such as cleaning each other, packing themselves, or decluttering a table. " +
+                                    "Each animated object has 1 HP, an AC of 1, ability scores of 1, and 5ft walking and hovering speed.",
+                    Names = new List<string> { "animation", "compatriots", "animus" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsNeverAoE = true,
+                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 7
+                },
                 //new SpellTemplate //
                 //{
-                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
                 //    Type = EffectType.Utility,
                 //    Description = "",
                 //    Names = new List<string> {  },//--------------------TODO
