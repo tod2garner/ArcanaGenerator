@@ -1318,6 +1318,45 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 7
                 },
+                new SpellTemplate //Leftover feast - temp HP and no fear
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a table spread with what is clearly a half-eaten meal. There is enough food left for [3-6] humanoids to eat. Each must make a CON saving throw with a DC of 10. On a failure they are poisoned for 1d4 hours. " +
+                                    "On a success they gain [3-4][dice] temporary HP and are immune to being poisoned or frightened for 24 hours. In either case, the food is sufficient to sustain them so that they will not get hungry again for 24 hours.",
+                    Names = new List<string> { "leftovers", "afterthought", "meal", "banquet" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsNeverAoE = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 60
+                },
+                new SpellTemplate //Leftover feast - poison resistance
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a table spread with what is clearly a half-eaten meal with food that is... less than fresh. There is enough food left for [3-6] humanoids to eat. Each must make a CON saving throw with a DC of 10. On a failure they are poisoned for 1d4 hours. " +
+                                    "On a success they gain resistance to poison damage and a +10 bonus to CON saving throws for 24 hours. In either case, the food is sufficient to sustain them so that they will not get hungry again for 24 hours.",
+                    Names = new List<string> { "leftovers", "afterthought", "meal", "banquet" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsNeverAoE = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Spectral feast - bonus to AC or exhaustion
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a table spread with an oddly spectral meal of ghostly dishes. There is enough food left for [4-12] humanoids to eat. Each must make a CON saving throw with a DC of [12-15]. On a failure they suffer 1 point of exhaustion. " +
+                                    "On a success they gain a +[2-5] bonus to AC and are immune to being charmed for 24 hours. In either case, the food is sufficient to sustain them so that they will not get hungry again for 24 hours.",
+                    Names = new List<string> { "feast", "meal", "banquet" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsNeverAoE = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 100
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
@@ -1328,9 +1367,6 @@ namespace SpellGenerator.Client.Data
                 //},
                 //*************************************************************************
                 /*      
-                *  Conjuration
-                        feast of left overs - table with partially eaten food appears, enough for 2d6+1 people to have a meal. Each makes a CON save, On a failure, poisoned for 2 hours. On a success, immune to charm effects and gain 2d12 Temp HP 
-                            other feast ideas - damage resistance paired with vulnerability, gamble AC bonus or a point of Exhaustion
                 *  Illusion
                         multiplying illusion - start with 3, more appear whenever one is touched 
                         nimble - DC and only disappears if hit
