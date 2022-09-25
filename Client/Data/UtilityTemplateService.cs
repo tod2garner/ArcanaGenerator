@@ -577,7 +577,7 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Utility,
                     Description = "Any creature affected by this spell is immune to fall damage, but cannot use reactions or bonus actions.",
                     Names = new List<string> { "dive", "descent", "meteor" },
-                    MinimumDuration = Duration.OneMinute,                    
+                    MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 4
                 },
                 new SpellTemplate //Anti-magic field with limits
@@ -606,7 +606,7 @@ namespace SpellGenerator.Client.Data
                     Names = new List<string> { "supression", "foil", "pulse" },
                     IsAlwaysInstant = true,
                     IsAlwaysAoE = true,
-                    DoesNotTargetCreatures = true,                    
+                    DoesNotTargetCreatures = true,
                     BaseValueScore = 30,
                 },
                 new SpellTemplate //Steal healing as a reaction
@@ -632,7 +632,7 @@ namespace SpellGenerator.Client.Data
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsRangeAlwaysSelf = true,
-                    MinimumDuration = Duration.EightHours,                    
+                    MinimumDuration = Duration.EightHours,
                     BaseValueScore = 1
                 },
                 new SpellTemplate //Charm little beasts
@@ -682,7 +682,7 @@ namespace SpellGenerator.Client.Data
                                     "If they find anything that looks similar to the target image dozens of them will surround it and begin shrieking loudly (audible within 100ft).",
                     Names = new List<string> { "colony", "swarm", "throng" },
                     DoesNotTargetCreatures = true,
-                    IsNeverAoE = true,                    
+                    IsNeverAoE = true,
                     MinimumDuration = Duration.TenMinutes,
                     IsAlwaysRanged = true,
                     BaseValueScore = 4
@@ -971,7 +971,7 @@ namespace SpellGenerator.Client.Data
                     Names = new List<string> { "shock", "paralysis", "tremor" },
                     MinimumDuration = Duration.OneMinute,
                     IsRangeAlwaysSelf = true,
-                    IsNeverAoE = true,                    
+                    IsNeverAoE = true,
                     BaseValueScore = 70
                 },
                 new SpellTemplate //Mass pacifism
@@ -1068,7 +1068,7 @@ namespace SpellGenerator.Client.Data
                     Names = new List<string> { "eyesight", "vision", "sight" },
                     IsRangeAlwaysSelf = true,
                     IsNeverAoE = true,
-                    MinimumDuration = Duration.TenMinutes,                    
+                    MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 10
                 },
                 new SpellTemplate //Track via glowing trails
@@ -1133,7 +1133,7 @@ namespace SpellGenerator.Client.Data
                                     "The DM makes a secret percentile roll to determine how much of the vision is accurate and how much is false or misleading (a 50 on the dice would result in roughly half being true and half being misleading). " +
                                     "The vision attempts to answer each of the questions asked, and might reach into the past or future to do so. At the DM's discretion a vision might be extremely vague, intensely vivid, jumbled and nonsensical, or a combination of these. " +
                                     "After experiencing such a vision, the participants are unaffected by this spell for a week.",
-                    Names = new List<string> { "oracle", "prophecy", "foretelling" },                    
+                    Names = new List<string> { "oracle", "prophecy", "foretelling" },
                     IsRangeAlwaysSelf = true,
                     IsNeverAoE = true,
                     MinimumDuration = Duration.TenMinutes,
@@ -1163,7 +1163,7 @@ namespace SpellGenerator.Client.Data
                     Names = new List<string> {  },//--------------------TODO
                     IsRangeAlwaysSelf= true,
                     IsNeverAoE = true,
-                    IsAlwaysInstant = true,                    
+                    IsAlwaysInstant = true,
                     BaseValueScore = 40
                 },
                 new SpellTemplate //Poe Offering - Temp HP
@@ -1175,7 +1175,7 @@ namespace SpellGenerator.Client.Data
                     Names = new List<string> {  },//--------------------TODO
                     IsRangeAlwaysSelf = true,
                     IsNeverAoE = true,
-                    IsAlwaysInstant = true,                    
+                    IsAlwaysInstant = true,
                     BaseValueScore = 15
                 },
                 new SpellTemplate //Poe Offering - Resistance
@@ -1265,7 +1265,7 @@ namespace SpellGenerator.Client.Data
                     Names = new List<string> { "transport", "transportation", "transference" },
                     IsNeverAoE = true,
                     IsAlwaysInstant = true,
-                    IsRangeAlwaysSelf = true,                    
+                    IsRangeAlwaysSelf = true,
                     BaseValueScore = 80
                 },
                 new SpellTemplate //Graffiti
@@ -1305,7 +1305,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Lesser animate object
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
                     Type = EffectType.Utility,
                     Description = "You animate up to [8-15] tiny objects within range. They cannot attack, move slowly and gently, and you can mentally command them as a free action on your turn. " +
                                     "The objects can perform fairly complex maneuvers, such as cleaning each other, packing themselves, or decluttering a table. " +
@@ -1346,7 +1346,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Spectral feast - bonus to AC or exhaustion
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Necromancy },
                     Type = EffectType.Utility,
                     Description = "You conjure a table spread with an oddly spectral meal of ghostly dishes. There is enough food left for [4-12] humanoids to eat. Each must make a CON saving throw with a DC of [12-15]. On a failure they suffer 1 point of exhaustion. " +
                                     "On a success they gain a +[2-5] bonus to AC and are immune to being charmed for 24 hours. In either case, the food is sufficient to sustain them so that they will not get hungry again for 24 hours.",
@@ -1357,9 +1357,49 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysInstant = true,
                     BaseValueScore = 100
                 },
+                new SpellTemplate //Multiplying illusions
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Utility,
+                    Description = "You conjure [2-3] identical soundless illusions - each similar to that created by the spell Silent Image. " +
+                                    "However, any time one of them is touched by a creature, you may use your reaction to make it vanish and create two more copies at unoccupied points within 10ft of it. " +
+                                    "No more than [6-10] copies can exist at once, after which the oldest copy disappears to allow for a new copy.",
+                    Names = new List<string> { "image", "multiplication", "duplication", "duplicity" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 25
+                },
+                new SpellTemplate //Nimble Illusion
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a complete illusion of a creature as described by the spell Major Image, but it is exceptionally nimble. " +
+                                    "It attempts to dodge attacks reflexively (without you needing to command it) and is considered to have an AC of [16-19]. Attacks that miss do not reveal it to be an illusion.",
+                    Names = new List<string> { "specter", "apparition", "image" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Tangible illusion
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a soundless illusion as described by the spell Silent Image, but you imbue it with limited tangibility. " +
+                                    "It can respond to physical contact 1d4 times as if it were solid. After that it behaves like typical illusions and any physical contact passes through it.",
+                    Names = new List<string> { "image", "illusion", "deception" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 25
+                },
                 //new SpellTemplate //
                 //{
-                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
                 //    Type = EffectType.Utility,
                 //    Description = "",
                 //    Names = new List<string> {  },//--------------------TODO
@@ -1367,11 +1407,8 @@ namespace SpellGenerator.Client.Data
                 //},
                 //*************************************************************************
                 /*      
-                *  Illusion
-                        multiplying illusion - start with 3, more appear whenever one is touched 
-                        nimble - DC and only disappears if hit
-                        ghostly second stage if touched
-                        tangible illusions - 1d4 pysical interactions
+                *  Illusion                      
+                        ghostly second stage if touched                        
                         fixed illusion (preset shapes & sounds)
                         subtractive illusion / partial invisibility
                         object invisibility
