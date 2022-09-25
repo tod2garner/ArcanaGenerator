@@ -1397,6 +1397,84 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 25
                 },
+                new SpellTemplate //Multi-stage Illusion
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a complete illusion as described by the spell Major Image, but you may also choose a second stage that is automatically triggered " +
+                                    "(no action required by you) the first time anything touches it. For example, an illusion that looks like a human might instantly change to appear spectral as the second stage. " +
+                                    "Any creature that triggers this change with their touch suffers [2-4][dice] psychic damage, but you may choose at the time casting to make the transition non-damaging if you prefer.",
+                    Names = new List<string> { "specter", "apparition", "image" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Split illusions
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a complete illusion as described by the spell Major Image, but may choose to split it into smaller identical duplicates upon creation instead of having a single larger illusion. " +
+                                    "You may choose to make either 3d4 tiny copies or 2d4 small copies. Each of the copies must remain within the target area. If you use your action to move or animate the illusion you can select up to 2 copies to control each turn.",
+                    Names = new List<string> { "specters", "apparitions", "images" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Hide worth
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Utility,
+                    Description = "You hold any small non-magical container in your hands and create an illusion to hide the value of its contents. Gold coins may look like copper, rare gems like iron ore, etc. " +
+                                    "The illusion is layered onto the individual items, such that even if they are picked up individually the false appearance remains. The container cannot be larger than [1-3]ft in any dimension.",
+                    Names = new List<string> {  },//--------------------TODO
+                    DoesNotTargetCreatures = true,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneHour,
+                    BaseValueScore = 3
+                },
+                new SpellTemplate //Object only invisibility
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Utility,
+                    Description = "You touch up to 2d4 items, each being no larger than [3-10]ft in any dimension, and make them invisible. This spell fails for any object that is being worn or carried by an unwilling creature.",
+                    Names = new List<string> { "smuggling", "concealment", "concealer" },
+                    DoesNotTargetCreatures = true,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Fixed illusion - goblin
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Utility,
+                    Description = "You conjure an illusion of a single goblin, complete with appropriate sounds and smells. It is 3ft tall, wears rags, and holds a spear. " +
+                                    "You cannot alter the appearance of the goblin, but you may control its behavior as an action on your turn.",
+                    Names = new List<string> {  },//--------------------TODO
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysAoE = true,
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Fixed illusion - old man
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Utility,
+                    Description = "You conjure an illusion of an elderly human man, complete with appropriate sounds and smells. He is 6ft tall but hunched, frail and thin, has grey hair and dark skin, wears commoner's clothing, and holds a walking stick. " +
+                                    "You cannot alter the appearance of the human, but you may control his behavior as an action on your turn.",
+                    Names = new List<string> {  },//--------------------TODO
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysAoE = true,
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 5
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
@@ -1407,15 +1485,6 @@ namespace SpellGenerator.Client.Data
                 //},
                 //*************************************************************************
                 /*      
-                *  Illusion                      
-                        ghostly second stage if touched                        
-                        fixed illusion (preset shapes & sounds)
-                        subtractive illusion / partial invisibility
-                        object invisibility
-                        Directional scent (false illusion)
-                        hide worth - illusion or transmutation - gold coins to copper temporarily, and gems into common minerals
-                        split illusions - 3d4 copies of the same illusion, less than 6 inches in any dimension
-                        split illusion - 2d6 copies, less than 3ft
                 * Necro                        
                         reaction - as you fall unconscious - tie the target's fate to your own, whenever you fail a death saving throw they take necrotic damage and if you die they are stunned for 1d3 rounds - is always instant (to avoid concentration requirements)
                         reaction - as you fall unconscious deal [5-8][dice] + [10-40@10] necrotic damage to one visible targt in range
@@ -1476,6 +1545,8 @@ namespace SpellGenerator.Client.Data
                        remote spell casting - channel for ally to allow them to project a spell very long range
                             one version with scrying spell to pick see target
                             one version where you create a beacon on a target that the chosen ally can send thh spell to, like a homing missile
+                       subtractive illusion / partial invisibility
+                       Directional scent (false illusion)
                 * PoE
                         spell whose damage scales based on the amount of depleted spell slots you have (or undeleted)	
 	                        mana mine
