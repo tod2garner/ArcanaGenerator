@@ -1589,6 +1589,62 @@ namespace SpellGenerator.Client.Data
                     IsRangeAlwaysSelf = true,
                     BaseValueScore = 1000
                 },
+                new SpellTemplate //Stone to flesh
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation, SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "You touch a stone surface and transmute a portion of it into a lifeless humanoid body. A 5ft cube of the stone is transformed, with the new body curled up in the center surrounded by water. " +
+                                    "If done carelessly, depending on the geometry of the remaining stone, the missing cube may trigger a cave-in. " +
+                                    "You may choose the appearance of the body (race, age, stature, etc) including mimicking someone that you are familiar with. " +
+                                    "The body cannot be resurrected as no soul was ever bound to it.",
+                    Names = new List<string> {  },//--------------------TODO
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysInstant = true,
+                    MinimumCastTime = CastTime.OneMinute,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Steal heart (ala temple of doom)
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "You reach out and make a melee spell attack against a humanoid you can touch within 5ft. On a hit your hand passes through any armour or clothing, into their chest, and grasps their heart. " +
+                                    "If the target has less than 50 HP you literally steal their heart, but may choose to keep them alive despite its absence. " +
+                                    "While you hold their heart they cannot willingly make weapon attacks against you. Destroying their heart will kill them instantly. " +
+                                    "If the target has 50 HP or more they instead suffer [3-5][dice] + [10-18@2] necrotic damage and your hand is pushed back out.",
+                    Names = new List<string> { "doom", "theft", "heart", "grasp" },
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 100
+                },
+                new SpellTemplate //Rot, moss, mold, decay
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "Any objects in the target area that are not being worn or held by a creature being to decay at an accelerated rate. " +
+                                    "Moss and mold cover any surfaces where moisture allows for it while dust coats any dry surfaces. Food, vegetation, and similar oganic material rots. Non-organic objects wear out in a matter of moments. " +
+                                    "Clothing becomes threadbare, ropes become frayed, etc. Any remains of deceased creatures in the area are reduced to skeletons.",
+                    Names = new List<string> { "decay", "decomposition", "rot" },
+                    IsAlwaysInstant = true,
+                    IsAlwaysAoE = true,
+                    DoesNotTargetCreatures = true,                    
+                    BaseValueScore = 3
+                },
+                new SpellTemplate //Spray rot
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You reach out your hand and create a spray of rot and filth seemingly out of nowhere. The stream of chunks and fluid smells like curdled death and coats any portion of the target area you choose. " +
+                                    "Tracks can be completely covered by the mess, and any perception checks made within 10ft of the affected area suffer a -[6-10] penalty.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysAoE = true,
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 5
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
@@ -1599,27 +1655,23 @@ namespace SpellGenerator.Client.Data
                 //},
                 //*************************************************************************
                 /*      
-                * Necromancy                                 
-                        statis AoE center on self - outside of AoE 1d8 hours pass, by inside only minutes. Barrier like wall of force prevents anything from passing in the meantime	
-	                        another version with days instead of hours?
-	                        another version that doesn't center of self, smaller time range to trap enemies                         
-                        summon raging spirit - long cast time, store in a vessel (lantern or similar)	
-                        rot, moss, mold, wear out objects	(non-damaging, non-creature objects only)
-                        spray curdled milk, rotten fruit, etc (aesthetic or utility? prevent tracking, distraction charm to drive victims away )	
-                        curse item 	
+                * Necromancy                            
                         delayed, undetectable poison (or difficult to detect)	
                         temporary animation - lasts for only 1d4 rounds - must be recent, intead of new stat block use original with fixed penalty	
                         animate beast - use original stat block, fixed penalty	
                         animate monstrosity or abberation - original stat block, no penalty		
                         animate giant - original stat block with penalty	
                         animate incomplete remains	
-                        change remains to be purely skeletal	
                         only affects undead creatures with INT less than 7. Temporarily restore their intellect from when they were alive.
                         transform a permanent skeleton or zombie you control into a ghostly variant of the same	
                         ritual to sacrifice max HP until next long rest interchange for one of the following: immune to poison, no need to breathe, 50 percent chance after death save to gain 3d6 HP, necrotic damage heals you and healing spells damage you. Roll randomly, can be cast multiple times to stack different effects	                        
                         command undead - temporarily take control, only if low INT
                         detonate one undead under your control as an explosion 
                         detonate and desecrate (single cast? delayed explosion)
+                        curse item 	
+                        statis AoE center on self - outside of AoE 1d8 hours pass, by inside only minutes. Barrier like wall of force prevents anything from passing in the meantime	
+	                        another version with days instead of hours?
+	                        another version that doesn't center of self, smaller time range to trap enemies  
                 * Evocation
                         searing bond, 1d3 stationary points and yourself, bonus action to replace one
                         variant of contingency, lasts only 1 hour but multiple creatures benefit (common triggering condition and spell for all), spell level not more than half this spell
