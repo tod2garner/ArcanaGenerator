@@ -1528,6 +1528,67 @@ namespace SpellGenerator.Client.Data
                     MinimumCastTime = CastTime.OneMinute,
                     BaseValueScore = 50
                 },
+                new SpellTemplate //Permanent duplicate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You touch one non-magical item and instantly create a permanent duplicate of it at your feet. This spell fails if the item is worth more than [100-250@50] gold, " +
+                                    "or if the object is larger than [3-6]ft in any dimension.",
+                    Names = new List<string> { "duplicate", "duplication", "replica" },
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    MinimumCastTime = CastTime.OneMinute,
+                    BaseValueScore = 60
+                },
+                new SpellTemplate //Infest food
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "You select any or all food in the target area, and conjure insects in the center of the selected food. The insects are not visible at first, but rapidly begin to burrow outward and eventually reveal themselves. " +
+                                    "Any creature that ingests one or more of the insects must make a CON saving throw. On a success they are poisoned for 1[dice] hours. " +
+                                    "On a failure they are similarly poisoned and also suffer [1-2][dice] necrotic damage. If this damage reduces a humanoid to 0 HP " +
+                                    "you may use your reaction to take control of them for the spell duration as they are puppeted by a swarm of insects - use the stat block for a zombie. " +
+                                    "You can control no more than [2-4] creatures simultaneously in this way.",
+                    Names = new List<string> { "meal", "feast", "swarm" },
+                    IsAlwaysRanged = true,
+                    IsAlwaysAoE = true,
+                    MinimumDuration = Duration.OneHour,
+                    DoesNotTargetCreatures = true,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Mind swap
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "You transfer the consciousness of two humanoids into each other's body. They retain their abilities, memories, and personality - all of their stats remain the same except that " +
+                                    "their HP, STR, DEX, and CON are swapped. Any equipment and items being held remain with the original body, and are not automatically exchanged. " +
+                                    "Unwilling creatures can make a WIS or INT saving throw to resist (their choice), and if either creature makes the save then this spell fails.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsAlwaysRanged = true,
+                    IsNeverAoE = true, 
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Summon raging spirit
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You hold a lantern or similarly sized hollow container in your hands and summon a tiny raging spirit to be sealed within it for [8-16@2] hours. " +
+                                    "If it is not unleashed before that time then the item disintegrates into ash. The container is considered a magical item, and you cannot create another while this one exists. " +
+                                    "A creature holding the vessel may use their action to unleash the raging spirit and command it to attack a visible creature. The spirit takes its turn in the initiative order immediately after the one who released it. " +
+                                    "It has a flying speed of [80-150@10]ft and no other stats, as it is not considered a creature (similar to the spell Spirit Guardians). " +
+                                    "The spirit is intangible and cannot be targeted by most attacks or spells (although banishment and similar abilities will work). " +
+                                    "On each turn it moves to be inside of its target's space and once there deals [4-13] necrotic damage per turn. The spirit is not visible while occupying a victim's space. " +
+                                    "If at any point a creature is reduced to 0 HP within [30-60@10]ft of the raging spirit then that creature is killed and the spirit vanishes permanently. " +
+                                    "At the start of each of its turns, other than its first, the spirit has a 50% chance to switch targets to the next nearest creature (regardless of if they are friend or foe).",
+                    Names = new List<string> { "vessel", "spirit", "haunt" },
+                    IsAlwaysInstant = true,
+                    DoesNotTargetCreatures = true,
+                    MinimumCastTime = CastTime.OneHour,
+                    IsRangeAlwaysSelf = true,
+                    BaseValueScore = 1000
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
