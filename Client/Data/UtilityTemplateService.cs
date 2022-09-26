@@ -1154,7 +1154,7 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysRanged = true,
                     BaseValueScore = 20
                 },
-                new SpellTemplate //Body swap
+                new SpellTemplate //Body swap from PoE
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
                     Type = EffectType.Utility,
@@ -1430,7 +1430,7 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Utility,
                     Description = "You hold any small non-magical container in your hands and create an illusion to hide the value of its contents. Gold coins may look like copper, rare gems like iron ore, etc. " +
                                     "The illusion is layered onto the individual items, such that even if they are picked up individually the false appearance remains. The container cannot be larger than [1-3]ft in any dimension.",
-                    Names = new List<string> {  },//--------------------TODO
+                    Names = new List<string> { "smuggling", "devaluation", "concealer" },
                     DoesNotTargetCreatures = true,
                     IsRangeAlwaysSelf = true,
                     IsNeverAoE = true,
@@ -1455,7 +1455,7 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Utility,
                     Description = "You conjure an illusion of a single goblin, complete with appropriate sounds and smells. It is 3ft tall, wears rags, and holds a spear. " +
                                     "You cannot alter the appearance of the goblin, but you may control its behavior as an action on your turn.",
-                    Names = new List<string> {  },//--------------------TODO
+                    Names = new List<string> { "goblin", "decoy", "diversion" },
                     DoesNotTargetCreatures = true,
                     IsAlwaysRanged = true,
                     IsAlwaysAoE = true,
@@ -1468,16 +1468,69 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Utility,
                     Description = "You conjure an illusion of an elderly human man, complete with appropriate sounds and smells. He is 6ft tall but hunched, frail and thin, has grey hair and dark skin, wears commoner's clothing, and holds a walking stick. " +
                                     "You cannot alter the appearance of the human, but you may control his behavior as an action on your turn.",
-                    Names = new List<string> {  },//--------------------TODO
+                    Names = new List<string> { "elder", "decoy", "sire", "diversion" },
                     DoesNotTargetCreatures = true,
                     IsAlwaysRanged = true,
                     IsAlwaysAoE = true,
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 5
                 },
+                new SpellTemplate //Retaliate as you fall unconscious - instant damage
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "When you are reduced to 0 HP you may use your reaction just before you fall unconscious to deal [5-8][dice] + [10-40@10] " +
+                                    "necrotic damage to a visible creature in range. You will, however, have disadvantage on your first death saving throw.",
+                    Names = new List<string> { "vengance", "retaliation", "demise" },
+                    IsAlwaysAReaction = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 40
+                },
+                new SpellTemplate //Retaliate as you fall unconscious - damage per failed death save
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "When you are reduced to 0 HP you may use your reaction just before you fall unconscious to tie a visible creature's fate to yours. " +
+                                    "Whenever you fail a death saving throw they suffer [2-3][dice] + [5-10] necrotic damage and if you die they are stunned for 1d3 rounds.",
+                    Names = new List<string> { "demise", "fate", "revenge" },
+                    IsAlwaysAReaction = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 40
+                },
+                new SpellTemplate //Unearth from poe
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "Any creature affected by the spell staggers as a humanoid skelton bursts from the ground nearby, rockets forward like a projectile, and crashes violently into them. " +
+                                    "They must make a DEX saving throw. On a failure they suffer [2-3][dice] piercing damage and [3-4][dice] necrotic damage. Half damage on a success. " +
+                                    "The skeletal remains do not vanish, and can be used in other spells (like animate dead) on subsequent turns.",
+                    Names = new List<string> { "unearthing", "unburial", "return" },
+                    IsAlwaysInstant= true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Consume undead minions to empower another
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "You touch two undead minions that are under your control - each crumbles to dust and is destroyed instantly, leaving extracted energy in your hand. " +
+                                    "You may then touch a 3rd undead creature under your control and empower it. Choose one of the following bonuses: " +
+                                    "+[1-3] AC for [2-3] days, OR +[10-20@5]ft of movement speed indefinitely, OR gain climbing speed equal to its walking speed for [4-7] days, OR gain a [20-40@5]ft flying speed for 1 hour. " +
+                                    "A creature cannot be empowered by this spell more than once. Doing so will replace the old effect with the new (the bonuses cannot stack).",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    MinimumCastTime = CastTime.OneMinute,
+                    BaseValueScore = 50
+                },
                 //new SpellTemplate //
                 //{
-                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
                 //    Type = EffectType.Utility,
                 //    Description = "",
                 //    Names = new List<string> {  },//--------------------TODO
@@ -1485,16 +1538,10 @@ namespace SpellGenerator.Client.Data
                 //},
                 //*************************************************************************
                 /*      
-                * Necro                        
-                        reaction - as you fall unconscious - tie the target's fate to your own, whenever you fail a death saving throw they take necrotic damage and if you die they are stunned for 1d3 rounds - is always instant (to avoid concentration requirements)
-                        reaction - as you fall unconscious deal [5-8][dice] + [10-40@10] necrotic damage to one visible targt in range
-                        unearth from poe, remains burst from the ground and deal damage in a line?	
+                * Necromancy                                 
                         statis AoE center on self - outside of AoE 1d8 hours pass, by inside only minutes. Barrier like wall of force prevents anything from passing in the meantime	
 	                        another version with days instead of hours?
-	                        another version that doesn't center of self, smaller time range to trap enemies 
-                        consume two undead minions under your control to grant a permanent bonus to a 3rd minion	
-	                        limited vampiric damage or bonus AC or double walking speed
-	                        new creature counts as two for maintenance (ie from animate or create dead spells)
+	                        another version that doesn't center of self, smaller time range to trap enemies                         
                         summon raging spirit - long cast time, store in a vessel (lantern or similar)	
                         rot, moss, mold, wear out objects	(non-damaging, non-creature objects only)
                         spray curdled milk, rotten fruit, etc (aesthetic or utility? prevent tracking, distraction charm to drive victims away )	
@@ -1565,8 +1612,7 @@ namespace SpellGenerator.Client.Data
                         instant short rest, but Max HP is reduced but 1d8 per character level for 24 hours. if reduced to 0, instead reduce to 1 and take 1d4 points of Exhaustion	
                         honey I shrunk the kids - all abilities also scaled down (esp spells), physical damage taken x10	
                         illusion - rainbow that starts above you and reaches towards a goal within 10 miles	
-                        Necro - condense remains into a tiny object for later animation	
-                        illusion of self that you can swap places with as a bonus action each turn	
+                        Necro - condense remains into a tiny object for later animation		
                         evocation - yeet a willing creature, multiple saving throws. one for  stunned, prone 	
 	                        target creature within 150 ft
 	                        target location visible within 500 ft
