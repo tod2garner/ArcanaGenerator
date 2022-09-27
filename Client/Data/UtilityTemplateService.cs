@@ -1710,7 +1710,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Temporary glue
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation, SchoolOfMagic.Abjuration },
                     Type = EffectType.Utility,
                     Description = "You reach out to tap a surface within reach and conjure a tiny orb of resin-like material the size of your fingertip. The material stays soft for 6 seconds and then instantly hardens. " +
                                     "Once hardened the material will cling to anything stuck to it with the strength of a steel chain.",
@@ -1720,6 +1720,45 @@ namespace SpellGenerator.Client.Data
                     IsNeverAoE = true,
                     MinimumDuration = Duration.OneHour,
                     BaseValueScore = 3
+                },
+                new SpellTemplate //Modify written words
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You touch a surface with writing on it and may either add or remove up to 2[dice] words. The change is masked, rearranging the adjacent words and matching the handwriting such that the change is not obvious. " +
+                                    "A creature can detect the modification with a successful Investigation check vs your spell DC.",
+                    Names = new List<string> { "edit", "forgery", "revision" },
+                    DoesNotTargetCreatures = true,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Fiendish polymorph
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You cast a variation of the 4th level spell Polymorph where the new form must be a Fiend rather than a Beast, but the challenge rating limitation is halved.",
+                    Names = new List<string> { "devil", "demon", "descent" },
+                    MinimumDuration = Duration.TenMinutes,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,                    
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Resize clothing
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You touch up to [3-5] non-magical articles of clothing and instantly resize them. This spell cannot target objects being worn by a creature. " +
+                                    "You may either change the clothing with specific dimensional edits in mind, or you can modify them to automatically fit a nearby visible creature or yourself." +
+                                    "In the process of altering the clothing you may also choose to remove any blood, stains, rips, or tears that are smaller than 1ft. " +
+                                    "At the time of casting you may choose to suffer 1[dice] piercing damage in order to triple the amount of items you may edit.",
+                    Names = new List<string> { "tailor", "stitching", "alteration" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 2
                 },
                 //new SpellTemplate //
                 //{
@@ -1732,11 +1771,7 @@ namespace SpellGenerator.Client.Data
                 //*************************************************************************
                 /*      
                 * Transmute
-                        add or remove 2d6 words on a paper document you hold, matching handwriting, Investigation vs modifier to catch it
-                        add any name you choose to any list of at least 10 names - always ranged
-                        polymorph a willing creature into a small object that weighs 1/10th their normal weight
-                        like polymorph, but fiend instead of beast
-                        resize clothing utility - must be fabric, not armor - tailor alterations rapidly 
+                        polymorph a willing creature into a small object that weighs 1/10th their normal weight 
                         transmutation - counterfeit coins, from copper to gold, change lasts for 2d8 days, can change image on the coins too
                         utility - drunk or sober (no effect on undead, elementals, constructs)
                         instant swamp
