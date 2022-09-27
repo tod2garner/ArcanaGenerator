@@ -315,7 +315,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation },
                     Type = EffectType.Utility,
                     Description = "All water and water-based liquids in the target area are repelled and slowly pushed to the edges of the area of effect. " +
-                                    "Note that this spell does not impact liquids in fully sealed containers, nor does it impact liquids within creatures or plants.",
+                                    "This spell does not impact liquids in fully sealed containers, nor does it impact liquids within creatures or plants.",
                     Names = new List<string> { "desert", "dehydration", "desiccation" },
                     DoesNotTargetCreatures = true,
                     IsAlwaysAoE = true,
@@ -327,7 +327,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation },
                     Type = EffectType.Utility,
                     Description = "Any loose materials (solids, liquids, and gases) that are dangerously hot (heated enough to cause burns) are repelled and slowly pushed to the edges of the area of effect. " +
-                                    "Note that this spell does not impact materials in fully sealed containers, solid materials heavier than 5 lbs, nor does it impact materials within creatures or plants.",
+                                    "This spell does not impact materials in fully sealed containers, solid materials heavier than 5 lbs, nor does it impact materials within creatures or plants.",
                     Names = new List<string> { "buffer", "repellent", "mitigation" },
                     DoesNotTargetCreatures = true,
                     IsAlwaysAoE = true,
@@ -1005,8 +1005,8 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
                     Type = EffectType.Utility,
                     Description = "Any creature affected by this spell is numb to any sensation of pain. They are unaware of any damage dealt to them unless one of their other senses (ex: sight or sound or pressure) makes it apparent. " +
-                                    "if you are hidden from the target when you cast this spell they do not automatically realize they are under its effect (the numbness is not obvious to them).",
-                    Names = new List<string> { "desensitizing", "deadening", "numbness" },
+                                    "If you are hidden from the target when you cast this spell they do not automatically realize they are under its effect (the numbness is not obvious to them).",
+                    Names = new List<string> { "desensitization", "deadening", "numbness" },
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 15
                 },
@@ -1458,7 +1458,7 @@ namespace SpellGenerator.Client.Data
                     Names = new List<string> { "goblin", "decoy", "diversion" },
                     DoesNotTargetCreatures = true,
                     IsAlwaysRanged = true,
-                    IsAlwaysAoE = true,
+                    IsNeverAoE = true,
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 5
                 },
@@ -1471,7 +1471,7 @@ namespace SpellGenerator.Client.Data
                     Names = new List<string> { "elder", "decoy", "sire", "diversion" },
                     DoesNotTargetCreatures = true,
                     IsAlwaysRanged = true,
-                    IsAlwaysAoE = true,
+                    IsNeverAoE = true,
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 5
                 },
