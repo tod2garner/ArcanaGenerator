@@ -72,7 +72,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate//Cover
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Conjuration },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
                     Type = EffectType.Utility,
                     Description = "A half-sphere appears that is just large enough to provide you with cover. The translucent surface blocks all projeciles, " +
                                     "but is intangible to creatures and other objects like melee weapons.",
@@ -299,7 +299,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Sound barrier
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Conjuration },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
                     Type = EffectType.Utility,
                     Description = "You create an faint line on the ground within range, up to [30-100@10]ft long. An invisible surface extends 10ft vertically from the line. This surface blocks any sounds and smells " +
                                     "from passing through it in one direction of your choosing.",
@@ -1247,8 +1247,21 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
                     Type = EffectType.Utility,
-                    Description = "You conjure 1[dice] riding horses for 1[dice] hours. At the end of the duration they slowly vanish over the span of one minute, allowing any riders time to quickly dismount.",
-                    Names = new List<string> { "steed", "mount","horses" },
+                    Description = "You conjure 1[dice] riding horses. At the end of the duration they slowly vanish over the span of one minute, allowing any riders time to quickly dismount.",
+                    Names = new List<string> { "steed", "mount", "horses" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneHour,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Create carriage
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You transform one small object into a carriage, cart, or similar horse-drawn vehicle, and two other small objects into horses to pull it. Each of the objects must be non-magical. " +
+                                    "The vehicle has room for [4-6] medium sized creatures to ride in it. At the end of the duration each object slowly reverts to its original form over the span of one minute, allowing any riders time to quickly exit.",
+                    Names = new List<string> { "carriage", "cart", "transport" },
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     MinimumDuration = Duration.OneHour,
@@ -1775,6 +1788,21 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysInstant = true,                    
                     BaseValueScore = 70
                 },
+                new SpellTemplate //Smoke elevator
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You select a point in range on the ground. A 10ft diameter column of smoke centered on that point begins to rise into the air. " +
+                                    "The height of the column of smoke starts at essentially 0 but increases by 10ft each round, up to a maximum of [50-100@10]ft. " +
+                                    "Any creature in the smoke is harmlessly lifted up at a rate of 10ft per round. Wind has no effect on the smoke - it rises straight vertically at a steady rate no matter the weather. " +
+                                    "The smoke does obscure vision, but it can be breathed without issue.",
+                    Names = new List<string> { "uplift", "smoke", "column" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 5
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
@@ -1785,27 +1813,43 @@ namespace SpellGenerator.Client.Data
                 //},
                 //*************************************************************************
                 /*      
+                 * Next up
+                        instant swamp
+                        instant desert - mundane plant life crumbles to dust
+                        Necro - condense remains into a tiny object for later animation		
+                        evocation - yeet a willing creature, multiple saving throws. one for  stunned, prone 	
+	                        target creature within 150 ft
+	                        target location visible within 500 ft
+                        frozen slide	
+                        cave of wonders style head/rising up out of the ground..	
+                        steal voice, bonus to deception checks while using it (ala Ursala)
+                        summon wooden boat, can fit up to 1d6 + 2 medium creatures.	
+                        temporary animation - necro - lasts for only 1d4 rounds - must be recent, intead of new stat block use original with fixed penalty	
+                        animate beast - necro - use original stat block, fixed penalty	
+                        animate monstrosity or abberation - necro - original stat block, no penalty		
+                        animate giant - necro - original stat block with penalty	
+                        animate incomplete remains	 - necro
+                        command undead - temporarily take control, only if low INT
+                        detonate one undead under your control as an explosion 
+                        only affects undead creatures with INT less than 7. Temporarily restore their intellect from when they were alive.
+                        detonate and desecrate (single cast? delayed explosion)
+                        ground shakes with each step, create difficult terrain with shockwaves along the path the walk
+                        frost blink 
+                        flame dash 
+                        plague bearer 
+                        smoke mine 
+                        withering step 
+                        lightning warp                        
                 * Transmute
                         polymorph a willing creature into a small object that weighs 1/10th their normal weight 
                         transmutation - counterfeit coins, from copper to gold, change lasts for 2d8 days, can change image on the coins too
-                        utility - drunk or sober (no effect on undead, elementals, constructs)
-                        instant swamp
-                        instant desert - mundane plant life crumbles to dust
+                        utility - drunk or sober (no effect on undead, elementals, constructs)                        
                         instant door - range of touch
                         reduce object size but same weight
                 * Necromancy                            
                         delayed, undetectable poison (or difficult to detect)	
-                        temporary animation - lasts for only 1d4 rounds - must be recent, intead of new stat block use original with fixed penalty	
-                        animate beast - use original stat block, fixed penalty	
-                        animate monstrosity or abberation - original stat block, no penalty		
-                        animate giant - original stat block with penalty	
-                        animate incomplete remains	
-                        only affects undead creatures with INT less than 7. Temporarily restore their intellect from when they were alive.
                         transform a permanent skeleton or zombie you control into a ghostly variant of the same	
                         ritual to sacrifice max HP until next long rest interchange for one of the following: immune to poison, no need to breathe, 50 percent chance after death save to gain 3d6 HP, necrotic damage heals you and healing spells damage you. Roll randomly, can be cast multiple times to stack different effects	                        
-                        command undead - temporarily take control, only if low INT
-                        detonate one undead under your control as an explosion 
-                        detonate and desecrate (single cast? delayed explosion)
                         curse item 	
                         statis AoE center on self - outside of AoE 1d8 hours pass, by inside only minutes. Barrier like wall of force prevents anything from passing in the meantime	
 	                        another version with days instead of hours?
@@ -1814,14 +1858,7 @@ namespace SpellGenerator.Client.Data
                         searing bond, 1d3 stationary points and yourself, bonus action to replace one
                         variant of contingency, lasts only 1 hour but multiple creatures benefit (common triggering condition and spell for all), spell level not more than half this spell
                         improve cordon of arrows 
-                        lesser demi plane (maybe on scale of a portable hole with a 1hr duration?
-                        sending with higher word limit or an extra "volley" back and forth
-                        huge AoE alarm, but with a specific trigger spoken phrase (know when someone says your name) and instantly know where in AoE trigger occurred
-                        frost blink and flame dash and plague bearer and smoke mine and withering step and lightning warp
-                        gamble spell slots for self, spend X slot, roll dice to see if you get back more or less, then immune to effects until long rest
-                        ground shakes with each step, create difficult terrain with shockwaves along the path the walk
                         pick a 1st level spell you know. Each time the target successfully hits with a weapon attack (once per turn) the spell is automatically triggered without using a spell slot or components. The spell automatically targets the creature that was hit, but any AoE effects still have an area.	                                                             
-                
                 * 
                  * Illusion, Divination? 
                        remote spell casting - channel for ally to allow them to project a spell very long range
@@ -1829,6 +1866,9 @@ namespace SpellGenerator.Client.Data
                             one version where you create a beacon on a target that the chosen ally can send thh spell to, like a homing missile
                        subtractive illusion / partial invisibility
                        Directional scent (false illusion)
+                       sending with higher word limit or an extra "volley" back and forth
+                       huge AoE alarm, but with a specific trigger spoken phrase (know when someone says your name) and instantly know where in AoE trigger occurred
+                       illusion - rainbow that starts above you and reaches towards a goal within 10 miles	
                 * PoE
                         spell whose damage scales based on the amount of depleted spell slots you have (or undeleted)	
 	                        mana mine
@@ -1846,16 +1886,6 @@ namespace SpellGenerator.Client.Data
                         ten minutes for a long rest, but also 1d4 points of Exhaustion	
                         instant short rest, but Max HP is reduced but 1d8 per character level for 24 hours. if reduced to 0, instead reduce to 1 and take 1d4 points of Exhaustion	
                         honey I shrunk the kids - all abilities also scaled down (esp spells), physical damage taken x10	
-                        illusion - rainbow that starts above you and reaches towards a goal within 10 miles	
-                        Necro - condense remains into a tiny object for later animation		
-                        evocation - yeet a willing creature, multiple saving throws. one for  stunned, prone 	
-	                        target creature within 150 ft
-	                        target location visible within 500 ft
-                        frozen slide	
-                        cave of wonders style hear/rising up out of the ground..	
-                        pumpkins carriage from Cinderella	
-                        smoke elevator ala Mari Poppins	
-                        summon wooden boat, can fit up to 1d6 + 2 medium creatures.	
                  */
             };
 
