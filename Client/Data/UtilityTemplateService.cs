@@ -366,7 +366,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Utility,
                     Description = "You conjure a rough, rope-style ladder made of vines and branches, hanging from a visible location in range. " +
-                                    "The ladder has a maximum length of 4d6 X 5ft and for the spell duration before vanishing.",
+                                    "The ladder has a maximum length of 4d6 X 5ft and vanishes at the end of the spell duration.",
                     Names = new List<string> { "ladder", "reach", "vine" },
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
