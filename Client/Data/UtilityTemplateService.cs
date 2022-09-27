@@ -1803,6 +1803,18 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 5
                 },
+                new SpellTemplate //Instant swamp
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You transform the ground in the target area into a swamp. It is considered exceptionally difficult terrain - each 1 foot of movement costs 3 feet of speed.",
+                    Names = new List<string> { "swamp", "mire", "morass" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysAoE = true,
+                    IsAlwaysRanged = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 5
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
@@ -1814,7 +1826,6 @@ namespace SpellGenerator.Client.Data
                 //*************************************************************************
                 /*      
                  * Next up
-                        instant swamp
                         instant desert - mundane plant life crumbles to dust
                         Necro - condense remains into a tiny object for later animation		
                         evocation - yeet a willing creature, multiple saving throws. one for  stunned, prone 	
