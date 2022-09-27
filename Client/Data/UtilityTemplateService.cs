@@ -1738,7 +1738,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
                     Type = EffectType.Utility,
-                    Description = "You cast a variation of the 4th level spell Polymorph where the new form must be a Fiend rather than a Beast, but the challenge rating limitation is halved.",
+                    Description = "You cast a variation of the 4th level spell Polymorph where the new form must be a Fiend rather than a Beast, and the challenge rating limitation is halved.",
                     Names = new List<string> { "devil", "demon", "descent" },
                     MinimumDuration = Duration.TenMinutes,
                     IsNeverAoE = true,
@@ -1759,6 +1759,21 @@ namespace SpellGenerator.Client.Data
                     IsRangeAlwaysSelf = true,
                     IsAlwaysInstant = true,
                     BaseValueScore = 2
+                },
+                new SpellTemplate //Hurricane breath, objects only
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "You take a deep breath and then exhale, releasing a blast of hurricane-force wind in a [25-50@5]ft cone. The wind lasts for 6 seconds, wreaking havoc on objects in the area. " +
+                                    "Loose objects are blown away. Temporary structures crumble to pieces before blowing away. Wood framed structures collapse. Steel framed structures bend and warp. Only solid stone structures remain intact. " +
+                                    "Creatures are completely unaffected by the wind itself, as are any objects they are wearing or carrying, but will feel the effects of the debris around them. At the DM's discretion, depending on the nature of the debris, " +
+                                    "creatures in the area may be required to make a DEX saving throw to avoid suffering [2-6][dice] either piercing or bludgeoning damage. In the event of a structural collapse they may be required to make a STR saving throw to avoid being restrained.",
+                    Names = new List<string> { "breath", "exhale", "hurricane", "turbulence", "wind" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysInstant = true,                    
+                    BaseValueScore = 70
                 },
                 //new SpellTemplate //
                 //{
