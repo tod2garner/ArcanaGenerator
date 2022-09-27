@@ -1566,7 +1566,7 @@ namespace SpellGenerator.Client.Data
                                     "Unwilling creatures can make a WIS or INT saving throw to resist (their choice), and if either creature makes the save then this spell fails.",
                     Names = new List<string> {  },//--------------------TODO
                     IsAlwaysRanged = true,
-                    IsNeverAoE = true, 
+                    IsNeverAoE = true,
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 30
                 },
@@ -1629,7 +1629,7 @@ namespace SpellGenerator.Client.Data
                     Names = new List<string> { "decay", "decomposition", "rot" },
                     IsAlwaysInstant = true,
                     IsAlwaysAoE = true,
-                    DoesNotTargetCreatures = true,                    
+                    DoesNotTargetCreatures = true,
                     BaseValueScore = 3
                 },
                 new SpellTemplate //Spray rot
@@ -1645,9 +1645,85 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysInstant = true,
                     BaseValueScore = 5
                 },
+                new SpellTemplate //Buoyant
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You make up to 1[dice] objects in the target area buoyant, no matter what their typical density is. This spell cannot target creatures nor objects that are larger than [5-10]ft in any dimension.",
+                    Names = new List<string> { "buoy", "lift", "floatation" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysAoE = true,
+                    MinimumDuration = Duration.OneHour,
+                    BaseValueScore = 2
+                },
+                new SpellTemplate //Weight change
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You choose up to 1[dice] visible objects in the target area and either double or halve their weight. Their size and appearance remains unchanged. " +
+                                    "Each object can be up to [3-8]ft in any dimension at most. This spell cannot target objects being worn or carried by creatures.",
+                    Names = new List<string> { "burden", "weight", "load" },
+                    DoesNotTargetCreatures = true,
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysAoE = true,
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 3
+                },
+                new SpellTemplate //Color change
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You choose up to [3-5] visible objects in range and change their color. Each object can be up to 2[dice] feet in any dimension at most - objects larger than this are unaffected.",
+                    Names = new List<string> {  },//--------------------TODO
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsNeverAoE = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 8
+                },
+                new SpellTemplate //Delayed transform - object
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You touch an object and trigger a delayed transformation. The object can be no larger than [2-5]ft in any dimension (both before and after being changed). You can change it into any other non-living, non-magical object, " +
+                                    "but the transformation doesn't happen until 5[dice] minutes after you finish casting the spell. The DM makes this roll in secret. This spell cannot target an object being worn or carried by a creature at the time of casting.",
+                    Names = new List<string> {  },//--------------------TODO
+                    DoesNotTargetCreatures = true,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumDuration = Duration.OneHour,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Delayed polymorph
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You cast a variation of the 4th level spell Polymorph where the transformation is delayed. The creature makes their saving throw immediately, but if they fail " +
+                                    "the transformation doesn't happen until 3[dice] minutes after you finish casting the spell. The DM makes this roll in secret.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.TenMinutes,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Temporary glue
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You reach out to tap a surface within reach and conjure a tiny orb of resin-like material the size of your fingertip. The material stays soft for 6 seconds and then instantly hardens. " +
+                                    "Once hardened the material will cling to anything stuck to it with the strength of a steel chain.",
+                    Names = new List<string> { "adhesive", "glue", "resin", "grasp", "link" },
+                    DoesNotTargetCreatures = true,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneHour,
+                    BaseValueScore = 3
+                },
                 //new SpellTemplate //
                 //{
-                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
                 //    Type = EffectType.Utility,
                 //    Description = "",
                 //    Names = new List<string> {  },//--------------------TODO
@@ -1655,6 +1731,18 @@ namespace SpellGenerator.Client.Data
                 //},
                 //*************************************************************************
                 /*      
+                * Transmute
+                        add or remove 2d6 words on a paper document you hold, matching handwriting, Investigation vs modifier to catch it
+                        add any name you choose to any list of at least 10 names - always ranged
+                        polymorph a willing creature into a small object that weighs 1/10th their normal weight
+                        like polymorph, but fiend instead of beast
+                        resize clothing utility - must be fabric, not armor - tailor alterations rapidly 
+                        transmutation - counterfeit coins, from copper to gold, change lasts for 2d8 days, can change image on the coins too
+                        utility - drunk or sober (no effect on undead, elementals, constructs)
+                        instant swamp
+                        instant desert - mundane plant life crumbles to dust
+                        instant door - range of touch
+                        reduce object size but same weight
                 * Necromancy                            
                         delayed, undetectable poison (or difficult to detect)	
                         temporary animation - lasts for only 1d4 rounds - must be recent, intead of new stat block use original with fixed penalty	
@@ -1683,23 +1771,7 @@ namespace SpellGenerator.Client.Data
                         gamble spell slots for self, spend X slot, roll dice to see if you get back more or less, then immune to effects until long rest
                         ground shakes with each step, create difficult terrain with shockwaves along the path the walk
                         pick a 1st level spell you know. Each time the target successfully hits with a weapon attack (once per turn) the spell is automatically triggered without using a spell slot or components. The spell automatically targets the creature that was hit, but any AoE effects still have an area.	                                                             
-                * Transmute
-                        make an object buoyant
-                        weight half or double
-                        color change
-                        Delayed effect transformation
-                        temporary glue
-                        add or remove 2d6 words on a paper document you hold, matching handwriting, Investigation vs modifier to catch it
-                        add any name you choose to any list of at least 10 names - always ranged
-                        polymorph a willing creature into a small object that weighs 1/10th their normal weight
-                        like polymorph, but fiend instead of beast
-                        resize clothing utility - must be fabric, not armor - tailor alterations rapidly 
-                        transmutation - counterfeit coins, from copper to gold, change lasts for 2d8 days, can change image on the coins too
-                        utility - drunk or sober (no effect on undead, elementals, constructs)
-                        instant swamp
-                        instant desert - mundane plant life crumbles to dust
-                        instant door - range of touch
-                        reduce object size but same weight
+                
                 * 
                  * Illusion, Divination? 
                        remote spell casting - channel for ally to allow them to project a spell very long range
