@@ -46,6 +46,7 @@ namespace SpellGenerator.Client.Data
                 new TemplatePerSchool("silver", new List<SchoolOfMagic> { SchoolOfMagic.Transmutation, SchoolOfMagic.Enchantment, SchoolOfMagic.Illusion }),
                 new TemplatePerSchool("emerald", new List<SchoolOfMagic> { SchoolOfMagic.Transmutation, SchoolOfMagic.Evocation, SchoolOfMagic.Abjuration }),
                 new TemplatePerSchool("ivory", new List<SchoolOfMagic> { SchoolOfMagic.Transmutation, SchoolOfMagic.Evocation, SchoolOfMagic.Abjuration }),
+                new TemplatePerSchool("opal", new List<SchoolOfMagic>{ SchoolOfMagic.Illusion, SchoolOfMagic.Enchantment, SchoolOfMagic.Divination }),
 
                 new TemplatePerSchool("metal"),
                 new TemplatePerSchool("iron", new List<SchoolOfMagic> { SchoolOfMagic.Transmutation, SchoolOfMagic.Evocation, SchoolOfMagic.Abjuration }),
@@ -65,6 +66,7 @@ namespace SpellGenerator.Client.Data
                 new TemplatePerSchool("gravel", new List<SchoolOfMagic>{ SchoolOfMagic.Transmutation, SchoolOfMagic.Conjuration }),
                 new TemplatePerSchool("pebbles", new List<SchoolOfMagic>{ SchoolOfMagic.Transmutation, SchoolOfMagic.Conjuration }),
                 new TemplatePerSchool("obsidian", new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy, SchoolOfMagic.Illusion, SchoolOfMagic.Evocation }),
+                new TemplatePerSchool("onyx", new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy, SchoolOfMagic.Illusion, SchoolOfMagic.Evocation }),
                 new TemplatePerSchool("quartz", new List<SchoolOfMagic>{ SchoolOfMagic.Evocation, SchoolOfMagic.Abjuration, SchoolOfMagic.Conjuration }),
                 new TemplatePerSchool("pumice", new List<SchoolOfMagic>{ SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration }),
                 new TemplatePerSchool("glass", new List<SchoolOfMagic>{ SchoolOfMagic.Illusion, SchoolOfMagic.Enchantment, SchoolOfMagic.Divination }),
