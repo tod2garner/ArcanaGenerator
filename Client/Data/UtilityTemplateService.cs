@@ -818,7 +818,7 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Utility,
                     Description = "You conjure a circle on the ground with a radius of [10-20@5]ft, centered on yourself. It is filled with intricate runes that glow dimly. " +
                                     "You and any allies inside of it deal [3-6] bonus force damage with all weapon and spell attacks against enemies outside of the circle. " +
-                                    "If you use your last remaining spell slot to cast this spell then the bonus damage is doubled." +
+                                    "If you use your last remaining spell slot to cast this spell then the bonus damage is doubled. " +
                                     "Enemies inside the circle have disadvantage on all melee attacks. ",
                     Names = new List<string> { "shield", "barrier", "dome" },
                     DoesNotTargetCreatures = true,
@@ -1597,6 +1597,7 @@ namespace SpellGenerator.Client.Data
                                     "At the start of each of its turns, other than its first, the spirit has a 50% chance to switch targets to the next nearest creature (regardless of if they are friend or foe).",
                     Names = new List<string> { "vessel", "spirit", "haunt" },
                     IsAlwaysInstant = true,
+                    IsNeverAoE = true,
                     DoesNotTargetCreatures = true,
                     MinimumCastTime = CastTime.OneHour,
                     IsRangeAlwaysSelf = true,
@@ -1892,21 +1893,26 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysInstant = true,
                     BaseValueScore = 40
                 },
-                //new SpellTemplate //Plague bearer - rework, too complex
-                //{
-                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
-                //    Type = EffectType.Utility,
-                //    Description = "You infect yourself with an unnatural disease that has three stages: incubation, contagion, and affliction. The first stage lasts [2-3] rounds, during which the disease's intensity escalates, but there are no apparent symptoms. " +
-                //                    "During incubation you roll 1[dice] at the end of each of your turns - if you deal poison damage to any creature on your turn you may roll one extra dice. You add the value rolled to a cumulative potency score, starting at zero. " +
-                //                    "The contagion stage lasts [2-3] rounds, and begins at the start of your first turn after incubation is completed. During this stage you are poisoned, but any creature that comes within [5-10@5]ft of you at any point in time suffers poison damage equal to the total potency score. " +
-                //                    "A creature can suffer this damage at most once during your turn and once during their turn - therefore, twice per round. Dealing this damage does not require any action on your part. " +
-                //                    "The affliction stage hits instantly, immediately after the contagion stage. You suffer poison damage equal to double the total potency score and are paralyzed for one round.",
-                //    Names = new List<string> { "plague", "disease", "torment" },
-                //    IsNeverAoE = true,
-                //    IsRangeAlwaysSelf = true,
-                //    IsAlwaysInstant = true,
-                //    BaseValueScore = 50
-                //},
+                new SpellTemplate //Plague bearer *** still too complex
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "You infect yourself with an unnatural disease that has three stages: incubation, contagion, and affliction. Each stage lasts for one day. " +
+                                    "Once it has been cast this effect cannot be dispelled; the disease must run its course. " +
+                                    "The disease begins with zero potency points - representing the intensity of the disease - that carry over from day to day. " +                                    
+                                    "During the incubation stage each time you suffer or deal poison damage or necrotic damage the disease gains 1 potency point. " +
+                                    "For this first stage there are no symptoms, no matter how many points accumulate. " +
+                                    "During the contagion stage you can use a bonus action to release a miasma that sickens any creatures within [5-15@5]ft of you. " +
+                                    "For each potency point they suffer 1[dice] poison damage. Every time you use this bonus action your AC is reduced by [1-2] until your next long rest. " +
+                                    "During the affliction stage you are poisoned and for each potency point your maximum HP is reduced by [3-5] and your AC is reduced by [1-2]. " +
+                                    "If the disease has at least [5-8] potency points then you may double any poison or necrotic damage that you deal during this final stage.",
+                    Names = new List<string> { "plague", "disease", "torment" },
+                    IsNeverAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysInstant = true,
+                    MinimumCastTime = CastTime.OneMinute,
+                    BaseValueScore = 200
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
