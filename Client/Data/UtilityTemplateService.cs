@@ -1521,7 +1521,7 @@ namespace SpellGenerator.Client.Data
                     Description = "Any creature affected by the spell staggers as a humanoid skelton bursts from the ground nearby, rockets forward like a projectile, and crashes violently into them. " +
                                     "They must make a DEX saving throw. On a failure they suffer [2-3][dice] piercing damage and [3-4][dice] necrotic damage. Half damage on a success. " +
                                     "The skeletal remains do not vanish, and can be used in other spells (like animate dead) on subsequent turns.",
-                    Names = new List<string> { "unearthing", "unburial", "return" },
+                    Names = new List<string> { "unearthing", "unburial", "return", "exhumation" },
                     IsAlwaysInstant= true,
                     IsAlwaysRanged = true,
                     BaseValueScore = 30
@@ -1583,7 +1583,7 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 30
                 },
-                new SpellTemplate //Summon raging spirit
+                new SpellTemplate //Summon raging spirit  ***TODO: still too complex
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Conjuration },
                     Type = EffectType.Utility,
@@ -1893,7 +1893,7 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysInstant = true,
                     BaseValueScore = 40
                 },
-                new SpellTemplate //Plague bearer *** still too complex
+                new SpellTemplate //Plague bearer ***TODO: still too complex
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
                     Type = EffectType.Utility,
@@ -1913,6 +1913,22 @@ namespace SpellGenerator.Client.Data
                     MinimumCastTime = CastTime.OneMinute,
                     BaseValueScore = 200
                 },
+                new SpellTemplate //Save remains for later
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "This spell condenses organic remains into a tiny object. You choose a corpse within range and it gradually shrinks over the course of the casting. " +
+                                    "You transform it into a stone trinket of your choosing that is small enough to fit in your palm. Any creature holding the trinket can use their action to throw it to the ground and reverse the transformation. " +
+                                    "The remains cease to decompose while transformed and no time passes for them (which effectively extends the time limit on most resurrection magic). " +
+                                    "If you re-cast this on a trinket that you already created with this spell for [7-10] consecutive days then it lasts until dispelled.",
+                    Names = new List<string> { "tomb", "interrment", "trinket" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsNeverAoE = true,
+                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumDuration = Duration.OneDay,
+                    BaseValueScore = 2
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
@@ -1924,7 +1940,6 @@ namespace SpellGenerator.Client.Data
                 //*************************************************************************
                 /*      
                  * Next up
-                        Necro - condense remains into a tiny object for later animation		
                         evocation - yeet a willing creature, multiple saving throws. one for  stunned, prone 	
 	                        target creature within 150 ft
 	                        target location visible within 500 ft
