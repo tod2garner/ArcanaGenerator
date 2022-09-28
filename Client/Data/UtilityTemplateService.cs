@@ -1801,7 +1801,7 @@ namespace SpellGenerator.Client.Data
                     IsNeverAoE = true,
                     IsAlwaysRanged = true,
                     MinimumDuration = Duration.OneMinute,
-                    BaseValueScore = 5
+                    BaseValueScore = 10
                 },
                 new SpellTemplate //Instant swamp
                 {
@@ -1813,8 +1813,100 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysAoE = true,
                     IsAlwaysRanged = true,
                     MinimumDuration = Duration.OneMinute,
-                    BaseValueScore = 5
+                    BaseValueScore = 8
                 },
+                new SpellTemplate //Instant desert - drains water
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You transform the ground in the target area into a patch of desert with sand that absorbs water rapidly. The sand is deep enough to slow movement - the area is considered difficult terrain. " +
+                                    "Non-magical plants in the area wither instantly. Any portion of the target area that is submerged in water acts as a drain, sucking in the water and ejecting it into the astral sea, but any objects in the water are filtered out and remain on the surface of the sand.",
+                    Names = new List<string> { "desert", "sand", "drain", "dehydration" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 9
+                },
+                new SpellTemplate //Lightning warp
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You call twin bolts of lightning down from the sky. One of them strikes the ground at a visible point you choose in range, while the other strikes you, teleporting you to the chosen point. The lightning does not harm you, but if a creature is standing at your destination then they must make a DEX saving throw. " +
+                                    "On a failure they suffer [2-4][dice] lightning damage and are teleported to where you used to be (effectively trading places). On a success they dodge out of the way and move to an unoccupied space within 5ft and take no damage. If they cannot move to an unoccupied space then they automatically fail their saving throw.",
+                    Names = new List<string> { "warp", "lightning", "bolt" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysInstant = true,                    
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Frost blink
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You instantly teleport to a visible, unoccupied point in range. You may choose to trigger an icy explosion either at your point of origin or your destination. In either case, the blast deals [2-4][dice] cold damage to any creatures within 10ft. Each must make a CON save and takes half damage on a success. " +
+                                    "Afterwards roll a d20 - if the number on the dice is less than the number of creatures that failed their save then this casting does not consume a spell slot.",
+                    Names = new List<string> { "escape", "step", "ice", "frost" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Flame dash
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You instantly teleport to a visible, unoccupied point in range and leave a trail of burning coals along the ground. The coals are red-hot and cover the ground in a straight line, 5ft wide, between your origin and destination. " +
+                                    "They remain for 1d4 rounds before vanishing. The coals are harmless to you, but any other creature that starts their turn on them or that walks across them suffers [2-4][dice] fire damage.",
+                    Names = new List<string> { "dash", "coals", "escape" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Withering step
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You instantly teleport to a visible, unoccupied point in range. A toxic pulse is released both at your origin and destination. Creatures other than yourself within [5-10@5]ft of either location must make a CON saving throw. " +
+                                    "On a failure they are poisoned and become vulnerable to poison damage for 1d4 rounds (roll once for all victims).",
+                    Names = new List<string> { "step", "escape", "toxin" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Misty step + play dead
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Utility,
+                    Description = "You teleport to an unoccupied point in range. Any observers, however, do not simply witness you vanishing. Rather, you project an illusion of your death that results in your body being reduced to a skeleton before crumbling into nothingness. " +
+                                    "The illusion is complete with sounds, temperature changes, etc, but lasts for only a few seconds. Creatures with a passive perception higher than your spell save DC realize it is an illusion. At the time of casting you may choose to become stunned for one round after teleporting in exchange for being invisible for two rounds.",
+                    Names = new List<string> { "demise", "escape", "expiry" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 40
+                },
+                //new SpellTemplate //Plague bearer - rework, too complex
+                //{
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                //    Type = EffectType.Utility,
+                //    Description = "You infect yourself with an unnatural disease that has three stages: incubation, contagion, and affliction. The first stage lasts [2-3] rounds, during which the disease's intensity escalates, but there are no apparent symptoms. " +
+                //                    "During incubation you roll 1[dice] at the end of each of your turns - if you deal poison damage to any creature on your turn you may roll one extra dice. You add the value rolled to a cumulative potency score, starting at zero. " +
+                //                    "The contagion stage lasts [2-3] rounds, and begins at the start of your first turn after incubation is completed. During this stage you are poisoned, but any creature that comes within [5-10@5]ft of you at any point in time suffers poison damage equal to the total potency score. " +
+                //                    "A creature can suffer this damage at most once during your turn and once during their turn - therefore, twice per round. Dealing this damage does not require any action on your part. " +
+                //                    "The affliction stage hits instantly, immediately after the contagion stage. You suffer poison damage equal to double the total potency score and are paralyzed for one round.",
+                //    Names = new List<string> { "plague", "disease", "torment" },
+                //    IsNeverAoE = true,
+                //    IsRangeAlwaysSelf = true,
+                //    IsAlwaysInstant = true,
+                //    BaseValueScore = 50
+                //},
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
@@ -1826,7 +1918,6 @@ namespace SpellGenerator.Client.Data
                 //*************************************************************************
                 /*      
                  * Next up
-                        instant desert - mundane plant life crumbles to dust
                         Necro - condense remains into a tiny object for later animation		
                         evocation - yeet a willing creature, multiple saving throws. one for  stunned, prone 	
 	                        target creature within 150 ft
@@ -1845,12 +1936,7 @@ namespace SpellGenerator.Client.Data
                         only affects undead creatures with INT less than 7. Temporarily restore their intellect from when they were alive.
                         detonate and desecrate (single cast? delayed explosion)
                         ground shakes with each step, create difficult terrain with shockwaves along the path the walk
-                        frost blink 
-                        flame dash 
-                        plague bearer 
-                        smoke mine 
-                        withering step 
-                        lightning warp                        
+                        smoke mine                 
                 * Transmute
                         polymorph a willing creature into a small object that weighs 1/10th their normal weight 
                         transmutation - counterfeit coins, from copper to gold, change lasts for 2d8 days, can change image on the coins too
