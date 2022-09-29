@@ -1962,7 +1962,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
                     Type = EffectType.Utility,
                     Description = "Any creature targeted by this spell must make a WIS saving throw (a willing creature may choose to fail). On a failure you steal their voice. For the spell duration they become mute, and you may choose to use either their voice or your own voice at will. " +
-                                    "You gain a +[] bonus to Deception and Persuasion checks that you make while using their voice.",
+                                    "You gain a +[4-8] bonus to Deception and Persuasion checks that you make while using their voice.",
                     Names = new List<string> { "voice", "mouthpiece", "throat" },
                     IsNeverAoE = true,
                     IsAlwaysRanged = true,
