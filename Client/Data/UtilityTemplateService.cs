@@ -1880,6 +1880,19 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysInstant = true,
                     BaseValueScore = 50
                 },
+                new SpellTemplate //Smoke mine
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You select a visible, unoccupied point in range and conjure a tiny orb on the ground at that point. During the duration of the spell you may use your reaction anytime you are targeted by an attack or spell (but before it hits) to teleport to the orb. " +
+                                    "When you teleport the orb bursts, releasing a smoke cloud that blinds any creatures within 10ft of you until the end of your next turn.",
+                    Names = new List<string> { "step", "escape", "smoke screen" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 50
+                },
                 new SpellTemplate //Misty step + play dead
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
@@ -1944,6 +1957,18 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysInstant = true,                    
                     BaseValueScore = 40
                 },
+                new SpellTemplate //Steal voice
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "Any creature targeted by this spell must make a WIS saving throw (a willing creature may choose to fail). On a failure you steal their voice. For the spell duration they become mute, and you may choose to use either their voice or your own voice at will. " +
+                                    "You gain a +[] bonus to Deception and Persuasion checks that you make while using their voice.",
+                    Names = new List<string> { "voice", "mouthpiece", "throat" },
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    MinimumDuration = Duration.OneHour,
+                    BaseValueScore = 5
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
@@ -1957,7 +1982,6 @@ namespace SpellGenerator.Client.Data
                  * Next up
                         frozen slide	
                         cave of wonders style head/rising up out of the ground..	
-                        steal voice, bonus to deception checks while using it (ala Ursala)
                         summon wooden boat, can fit up to 1d6 + 2 medium creatures.	
                         temporary animation - necro - lasts for only 1d4 rounds - must be recent, intead of new stat block use original with fixed penalty	
                         animate beast - necro - use original stat block, fixed penalty	
@@ -1969,7 +1993,6 @@ namespace SpellGenerator.Client.Data
                         only affects undead creatures with INT less than 7. Temporarily restore their intellect from when they were alive.
                         detonate and desecrate (single cast? delayed explosion)
                         ground shakes with each step, create difficult terrain with shockwaves along the path the walk
-                        smoke mine                 
                 * Transmute
                         polymorph a willing creature into a small object that weighs 1/10th their normal weight 
                         transmutation - counterfeit coins, from copper to gold, change lasts for 2d8 days, can change image on the coins too
