@@ -1913,7 +1913,7 @@ namespace SpellGenerator.Client.Data
                     MinimumCastTime = CastTime.OneMinute,
                     BaseValueScore = 200
                 },
-                new SpellTemplate //Save remains for later
+                new SpellTemplate //Preserve remains for later
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
                     Type = EffectType.Utility,
@@ -1929,6 +1929,21 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.OneDay,
                     BaseValueScore = 2
                 },
+                new SpellTemplate //Yeet an ally
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "This spell empowers you to grab a creature and throw them, using your magical prowess rather than mere muscle. Make a grapple attack against a creature within 5ft of you, but use your spellcasting modifier instead of strength. The typical rules for grappling (size limits, etc) still apply. " +
+                                    "A willing creature may choose to allow the grapple with no check needed. If you successfully grapple the target, you may instantly lift them overhead and hurl them towards a visible point. " +
+                                    "If the creature is medium in size then you may throw them up to [30-50@5]ft. A small creature may be thrown up to [60-80@5]ft. " +
+                                    "However, if you attempt to throw them farther than half the maximum range then you must roll a d20 to determine the accuracy of your throw. Above 15 is exactly on target, below 5 is 15ft off target, and anything between is 5ft off target. " +
+                                    "Upon landing the target must make a DEX saving throw to avoid falling prone; a willing creature makes the save at advantage.",
+                    Names = new List<string> { "throw", "toss", "grasp" },
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    IsAlwaysInstant = true,                    
+                    BaseValueScore = 40
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
@@ -1940,9 +1955,6 @@ namespace SpellGenerator.Client.Data
                 //*************************************************************************
                 /*      
                  * Next up
-                        evocation - yeet a willing creature, multiple saving throws. one for  stunned, prone 	
-	                        target creature within 150 ft
-	                        target location visible within 500 ft
                         frozen slide	
                         cave of wonders style head/rising up out of the ground..	
                         steal voice, bonus to deception checks while using it (ala Ursala)
