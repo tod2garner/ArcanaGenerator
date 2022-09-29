@@ -72,7 +72,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate//Cover
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Conjuration },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
                     Type = EffectType.Utility,
                     Description = "A half-sphere appears that is just large enough to provide you with cover. The translucent surface blocks all projeciles, " +
                                     "but is intangible to creatures and other objects like melee weapons.",
@@ -299,7 +299,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Sound barrier
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Conjuration },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration },
                     Type = EffectType.Utility,
                     Description = "You create an faint line on the ground within range, up to [30-100@10]ft long. An invisible surface extends 10ft vertically from the line. This surface blocks any sounds and smells " +
                                     "from passing through it in one direction of your choosing.",
@@ -315,7 +315,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation },
                     Type = EffectType.Utility,
                     Description = "All water and water-based liquids in the target area are repelled and slowly pushed to the edges of the area of effect. " +
-                                    "Note that this spell does not impact liquids in fully sealed containers, nor does it impact liquids within creatures or plants.",
+                                    "This spell does not impact liquids in fully sealed containers, nor does it impact liquids within creatures or plants.",
                     Names = new List<string> { "desert", "dehydration", "desiccation" },
                     DoesNotTargetCreatures = true,
                     IsAlwaysAoE = true,
@@ -327,7 +327,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Evocation },
                     Type = EffectType.Utility,
                     Description = "Any loose materials (solids, liquids, and gases) that are dangerously hot (heated enough to cause burns) are repelled and slowly pushed to the edges of the area of effect. " +
-                                    "Note that this spell does not impact materials in fully sealed containers, solid materials heavier than 5 lbs, nor does it impact materials within creatures or plants.",
+                                    "This spell does not impact materials in fully sealed containers, solid materials heavier than 5 lbs, nor does it impact materials within creatures or plants.",
                     Names = new List<string> { "buffer", "repellent", "mitigation" },
                     DoesNotTargetCreatures = true,
                     IsAlwaysAoE = true,
@@ -366,7 +366,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Transmutation },
                     Type = EffectType.Utility,
                     Description = "You conjure a rough, rope-style ladder made of vines and branches, hanging from a visible location in range. " +
-                                    "The ladder has a maximum length of 4d6 X 5ft and for the spell duration before vanishing.",
+                                    "The ladder has a maximum length of 4d6 X 5ft and vanishes at the end of the spell duration.",
                     Names = new List<string> { "ladder", "reach", "vine" },
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
@@ -577,7 +577,7 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Utility,
                     Description = "Any creature affected by this spell is immune to fall damage, but cannot use reactions or bonus actions.",
                     Names = new List<string> { "dive", "descent", "meteor" },
-                    MinimumDuration = Duration.OneMinute,                    
+                    MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 4
                 },
                 new SpellTemplate //Anti-magic field with limits
@@ -606,7 +606,7 @@ namespace SpellGenerator.Client.Data
                     Names = new List<string> { "supression", "foil", "pulse" },
                     IsAlwaysInstant = true,
                     IsAlwaysAoE = true,
-                    DoesNotTargetCreatures = true,                    
+                    DoesNotTargetCreatures = true,
                     BaseValueScore = 30,
                 },
                 new SpellTemplate //Steal healing as a reaction
@@ -632,7 +632,7 @@ namespace SpellGenerator.Client.Data
                     DoesNotTargetCreatures = true,
                     IsNeverAoE = true,
                     IsRangeAlwaysSelf = true,
-                    MinimumDuration = Duration.EightHours,                    
+                    MinimumDuration = Duration.EightHours,
                     BaseValueScore = 1
                 },
                 new SpellTemplate //Charm little beasts
@@ -682,7 +682,7 @@ namespace SpellGenerator.Client.Data
                                     "If they find anything that looks similar to the target image dozens of them will surround it and begin shrieking loudly (audible within 100ft).",
                     Names = new List<string> { "colony", "swarm", "throng" },
                     DoesNotTargetCreatures = true,
-                    IsNeverAoE = true,                    
+                    IsNeverAoE = true,
                     MinimumDuration = Duration.TenMinutes,
                     IsAlwaysRanged = true,
                     BaseValueScore = 4
@@ -818,7 +818,7 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Utility,
                     Description = "You conjure a circle on the ground with a radius of [10-20@5]ft, centered on yourself. It is filled with intricate runes that glow dimly. " +
                                     "You and any allies inside of it deal [3-6] bonus force damage with all weapon and spell attacks against enemies outside of the circle. " +
-                                    "If you use your last remaining spell slot to cast this spell then the bonus damage is doubled." +
+                                    "If you use your last remaining spell slot to cast this spell then the bonus damage is doubled. " +
                                     "Enemies inside the circle have disadvantage on all melee attacks. ",
                     Names = new List<string> { "shield", "barrier", "dome" },
                     DoesNotTargetCreatures = true,
@@ -971,7 +971,7 @@ namespace SpellGenerator.Client.Data
                     Names = new List<string> { "shock", "paralysis", "tremor" },
                     MinimumDuration = Duration.OneMinute,
                     IsRangeAlwaysSelf = true,
-                    IsNeverAoE = true,                    
+                    IsNeverAoE = true,
                     BaseValueScore = 70
                 },
                 new SpellTemplate //Mass pacifism
@@ -1005,8 +1005,8 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
                     Type = EffectType.Utility,
                     Description = "Any creature affected by this spell is numb to any sensation of pain. They are unaware of any damage dealt to them unless one of their other senses (ex: sight or sound or pressure) makes it apparent. " +
-                                    "if you are hidden from the target when you cast this spell they do not automatically realize they are under its effect (the numbness is not obvious to them).",
-                    Names = new List<string> { "desensitizing", "deadening", "numbness" },
+                                    "If you are hidden from the target when you cast this spell they do not automatically realize they are under its effect (the numbness is not obvious to them).",
+                    Names = new List<string> { "desensitization", "deadening", "numbness" },
                     MinimumDuration = Duration.OneMinute,
                     BaseValueScore = 15
                 },
@@ -1068,7 +1068,7 @@ namespace SpellGenerator.Client.Data
                     Names = new List<string> { "eyesight", "vision", "sight" },
                     IsRangeAlwaysSelf = true,
                     IsNeverAoE = true,
-                    MinimumDuration = Duration.TenMinutes,                    
+                    MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 10
                 },
                 new SpellTemplate //Track via glowing trails
@@ -1119,114 +1119,909 @@ namespace SpellGenerator.Client.Data
                     Description = "You are able to visually see a 'heat map' of how close non-living materials are to their breaking point. " +
                                     "Areas that are very near fracturing or buckling glow brightly like magma, while regions with moderate stress range from a yellow to a green hue. " +
                                     "Portions that are barely stressed have a faint blue glow.",
+                    Names = new List<string> { "design", "strain", "stresses" },
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 3
+                },
+                new SpellTemplate //Group vision
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Utility,
+                    Description = "You conjure enough tea for 1d4 + 1 people. Each person who drinks may speak one question aloud. Once all have spoken, the participants experience a shared vision. " +
+                                    "The DM makes a secret percentile roll to determine how much of the vision is accurate and how much is false or misleading (a 50 on the dice would result in roughly half being true and half being misleading). " +
+                                    "The vision attempts to answer each of the questions asked, and might reach into the past or future to do so. At the DM's discretion a vision might be extremely vague, intensely vivid, jumbled and nonsensical, or a combination of these. " +
+                                    "After experiencing such a vision, the participants are unaffected by this spell for a week.",
+                    Names = new List<string> { "oracle", "prophecy", "foretelling" },
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.TenMinutes,
+                    MinimumCastTime = CastTime.OneMinute,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Mimic ability
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Utility,
+                    Description = "When you see a creature in range (either friend or foe) use an uncommon ability - such as a class feature, racial trait, or inherent talent - you may use your reaction to try mimicing that specific ability. " +
+                                    "Depending on the complexity and power of the ability, the DM will select a DC for you to make an ability check against using your spellcasting modifier. Basic class features (like sneak attack, wildshape, etc) would have a relatively low DC but certain monster abilities may be nigh impossible to mimic successfully. " +
+                                    "If you are successful you do not immediately copy them, but rather you hold in your mind the borrowed knowledge of how to do so. For the spell duration you have access to the ability on your turns, but this spell ends early after using it 1d4 times.",
+                    Names = new List<string> { "mimicry", "imitation", "echo", "replica" },
+                    IsAlwaysAReaction = true,
+                    MinimumDuration = Duration.OneMinute,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Body swap from PoE
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "You instantly teleport to an unoccupied, visible point within [15-30@5]ft and unleash a radial blast of dark energy, dealing [2-4][dice] necrotic damage to any creatures within 5ft. " +
+                                    "If there are any corpses within 5ft of where you arrive then one of them crumbles to ashes, the damage is doubled, and you may roll a d6. On a 5 or 6 this casting does not consume a spell slot.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsRangeAlwaysSelf= true,
+                    IsNeverAoE = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 40
+                },
+                new SpellTemplate //Poe Offering - Temp HP
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "You touch a corpse within reach. It crumbles into dust and you instantly gain [2-3][dice] temporary HP. You may choose to gift the temp HP to an ally instead of keeping it, but you must be able to touch them before the end of your turn to transfer it. " +
+                                    "Undead creatures that you created may be considered corpses for the purposes of this spell, but not undead of other origins.",
                     Names = new List<string> {  },//--------------------TODO
                     IsRangeAlwaysSelf = true,
                     IsNeverAoE = true,
-                    MinimumDuration = Duration.TenMinutes,                    
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Poe Offering - Resistance
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "You touch a corpse within reach. It crumbles into dust and you gain resistance to any damage from creatures of the same type. You may choose to gift the resistance to an ally instead of keeping it, but you must be able to touch them before the end of your turn to transfer it. " +
+                                    "Undead creatures that you created may be considered corpses for the purposes of this spell, but not undead of other origins.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Poe Offering - Speed or Damage
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "You touch a corpse within reach. It crumbles into dust and you may choose to gain either a +[15-30@5]ft bonus to your movement speed OR +[3-6] bonus necrotic damage to all attacks. " +
+                                    "You may choose to gift the bonus to an ally instead of keeping it, but you must be able to touch them before the end of your turn to transfer it. " +
+                                    "Undead creatures that you created may be considered corpses for the purposes of this spell, but not undead of other origins.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Poe Offering - AC for undead ally
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "You touch a corpse within reach. It crumbles into dust as you extract its final vestiges of vitality. You may use it to grant an undead ally +2d4 AC, but you must be able to touch them before the end of your turn to do so. " +
+                                    "Undead creatures that you created may be considered corpses for the purposes of this spell, but not undead of other origins.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Duplicate outfit
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You recall a single creature that you have seen in the past [4-24@4] hours, and conjure a duplicate of their outfit at your feet. The replica includes each article of clothing and jewelry that was visible to you. " +
+                                    "Each item is mundane even if the original has magical properties. The outfit is tangible and if inspected is truly made of the same materials and has the same quality of craftsmanship as the original. " +
+                                    "The replica lasts for 2[dice] hours before dissolving into mist.",
+                    Names = new List<string> { "replica", "outfit", "duplication" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsAlwaysInstant = true,
+                    IsRangeAlwaysSelf = true,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Miniature demi-plane
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You create a small cupboard-sized door on a flat surface at least 2ft x 2ft in dimension. The surface need not remain stationary, but it must remain flat or the spell ends early. " +
+                                    "While open it connects to a demi-plane that is an empty [3-6]ft cube, with sides made of stone. " +
+                                    "When the spell ends the door vanishes and the demi-plane collapses. Anything left inside is teleported to a random location in the astral sea, or a similar plane at the DM's discretion.",
+                    Names = new List<string> { "cupboard", "smuggling", "cabinet" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneHour,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Conjure steeds
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You conjure 1[dice] riding horses. At the end of the duration they slowly vanish over the span of one minute, allowing any riders time to quickly dismount.",
+                    Names = new List<string> { "steed", "mount", "horses" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneHour,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Create carriage
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You transform one small object into a carriage, cart, or similar horse-drawn vehicle, and two other small objects into horses to pull it. Each of the objects must be non-magical. " +
+                                    "The vehicle has room for [4-6] medium sized creatures to ride in it. At the end of the duration each object slowly reverts to its original form over the span of one minute, allowing any riders time to quickly exit.",
+                    Names = new List<string> { "carriage", "cart", "transport" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneHour,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 6
+                },
+                new SpellTemplate //Medium range teleport
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You touch up to [3-5] creatures within 5ft of you (one of them may be yourself). If any are unwilling, you must make a melee spell attack to touch them. " +
+                                    "Each is instantly teleported to a location of your choosing within 1 mile of where you stand. " +
+                                    "Depending on your familiarity with the location, the teleportation may or may not be accurate - follow the rules provided in the 7th level spell 'Teleport'.",
+                    Names = new List<string> { "transport", "transportation", "transference" },
+                    IsNeverAoE = true,
+                    IsAlwaysInstant = true,
+                    IsRangeAlwaysSelf = true,
+                    BaseValueScore = 80
+                },
+                new SpellTemplate //Graffiti
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You conjure up to 2[dice] + 2 words on any visible surface in range. The letters can be up to [2-4]ft tall and in any style, color, and thickness. The words vanish at the end of the spell duration.",
+                    Names = new List<string> { "graffiti", "verse", "sign" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneHour,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 2
+                },
+                new SpellTemplate //Waves on land
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You cause the ground to heave, buckle, and warp in the target area. The surface is not damaged or broken, but it moves like rough waves at sea. " +
+                                    "The area is considered difficult terrain, and any creature that starts their turn standing on the ground in the area is knocked prone.",
+                    Names = new List<string> { "waves", "roiling", "turbulence" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysAoE = true,
+                    IsAlwaysRanged = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Improved earth bind
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Abjuration, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "Any creature affected by this spell has their flying speed reduced to 0 and instantly begins to free fall if they are airborne. Creatures that do not have a flying speed have their walking speed halved instead.",
+                    Names = new List<string> { "gravity", "weight", "anchor" },
+                    IsAlwaysRanged = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Lesser animate object
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You animate up to [8-15] tiny objects within range. They cannot attack, move slowly and gently, and you can mentally command them as a free action on your turn. " +
+                                    "The objects can perform fairly complex maneuvers, such as cleaning each other, packing themselves, or decluttering a table. " +
+                                    "Each animated object has 1 HP, an AC of 1, ability scores of 1, and 5ft walking and hovering speed.",
+                    Names = new List<string> { "animation", "compatriots", "animus" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsNeverAoE = true,
+                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 7
+                },
+                new SpellTemplate //Leftover feast - temp HP and no fear
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a table spread with what is clearly a half-eaten meal. There is enough food left for [3-6] humanoids to eat. Each must make a CON saving throw with a DC of 10. On a failure they are poisoned for 1d4 hours. " +
+                                    "On a success they gain [3-4][dice] temporary HP and are immune to being poisoned or frightened for 24 hours. In either case, the food is sufficient to sustain them so that they will not get hungry again for 24 hours.",
+                    Names = new List<string> { "leftovers", "afterthought", "meal", "banquet" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsNeverAoE = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 60
+                },
+                new SpellTemplate //Leftover feast - poison resistance
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a table spread with what is clearly a half-eaten meal with food that is... less than fresh. There is enough food left for [3-6] humanoids to eat. Each must make a CON saving throw with a DC of 10. On a failure they are poisoned for 1d4 hours. " +
+                                    "On a success they gain resistance to poison damage and a +10 bonus to CON saving throws for 24 hours. In either case, the food is sufficient to sustain them so that they will not get hungry again for 24 hours.",
+                    Names = new List<string> { "leftovers", "afterthought", "meal", "banquet" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsNeverAoE = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Spectral feast - bonus to AC or exhaustion
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a table spread with an oddly spectral meal of ghostly dishes. There is enough food left for [4-12] humanoids to eat. Each must make a CON saving throw with a DC of [12-15]. On a failure they suffer 1 point of exhaustion. " +
+                                    "On a success they gain a +[2-5] bonus to AC and are immune to being charmed for 24 hours. In either case, the food is sufficient to sustain them so that they will not get hungry again for 24 hours.",
+                    Names = new List<string> { "feast", "meal", "banquet" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsNeverAoE = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 100
+                },
+                new SpellTemplate //Multiplying illusions
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Utility,
+                    Description = "You conjure [2-3] identical soundless illusions - each similar to that created by the spell Silent Image. " +
+                                    "However, any time one of them is touched by a creature, you may use your reaction to make it vanish and create two more copies at unoccupied points within 10ft of it. " +
+                                    "No more than [6-10] copies can exist at once, after which the oldest copy disappears to allow for a new copy.",
+                    Names = new List<string> { "image", "multiplication", "duplication", "duplicity" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 25
+                },
+                new SpellTemplate //Nimble Illusion
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a complete illusion of a creature as described by the spell Major Image, but it is exceptionally nimble. " +
+                                    "It attempts to dodge attacks reflexively (without you needing to command it) and is considered to have an AC of [16-19]. Attacks that miss do not reveal it to be an illusion.",
+                    Names = new List<string> { "specter", "apparition", "image" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Tangible illusion
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a soundless illusion as described by the spell Silent Image, but you imbue it with limited tangibility. " +
+                                    "It can respond to physical contact 1d4 times as if it were solid. After that it behaves like typical illusions and any physical contact passes through it.",
+                    Names = new List<string> { "image", "illusion", "deception" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 25
+                },
+                new SpellTemplate //Multi-stage Illusion
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a complete illusion as described by the spell Major Image, but you may also choose a second stage that is automatically triggered " +
+                                    "(no action required by you) the first time anything touches it. For example, an illusion that looks like a human might instantly change to appear spectral as the second stage. " +
+                                    "Any creature that triggers this change with their touch suffers [2-4][dice] psychic damage, but you may choose at the time casting to make the transition non-damaging if you prefer.",
+                    Names = new List<string> { "specter", "apparition", "image" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Split illusions
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a complete illusion as described by the spell Major Image, but may choose to split it into smaller identical duplicates upon creation instead of having a single larger illusion. " +
+                                    "You may choose to make either 3d4 tiny copies or 2d4 small copies. Each of the copies must remain within the target area. If you use your action to move or animate the illusion you can select up to 2 copies to control each turn.",
+                    Names = new List<string> { "specters", "apparitions", "images" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Hide worth
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Utility,
+                    Description = "You hold any small non-magical container in your hands and create an illusion to hide the value of its contents. Gold coins may look like copper, rare gems like iron ore, etc. " +
+                                    "The illusion is layered onto the individual items, such that even if they are picked up individually the false appearance remains. The container cannot be larger than [1-3]ft in any dimension.",
+                    Names = new List<string> { "smuggling", "devaluation", "concealer" },
+                    DoesNotTargetCreatures = true,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneHour,
                     BaseValueScore = 3
+                },
+                new SpellTemplate //Object only invisibility
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Utility,
+                    Description = "You touch up to 2d4 items, each being no larger than [3-10]ft in any dimension, and make them invisible. This spell fails for any object that is being worn or carried by an unwilling creature.",
+                    Names = new List<string> { "smuggling", "concealment", "concealer" },
+                    DoesNotTargetCreatures = true,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Fixed illusion - goblin
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Utility,
+                    Description = "You conjure an illusion of a single goblin, complete with appropriate sounds and smells. It is 3ft tall, wears rags, and holds a spear. " +
+                                    "You cannot alter the appearance of the goblin, but you may control its behavior as an action on your turn.",
+                    Names = new List<string> { "goblin", "decoy", "diversion" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Fixed illusion - old man
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Utility,
+                    Description = "You conjure an illusion of an elderly human man, complete with appropriate sounds and smells. He is 6ft tall but hunched, frail and thin, has grey hair and dark skin, wears commoner's clothing, and holds a walking stick. " +
+                                    "You cannot alter the appearance of the human, but you may control his behavior as an action on your turn.",
+                    Names = new List<string> { "elder", "decoy", "sire", "diversion" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Retaliate as you fall unconscious - instant damage
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "When you are reduced to 0 HP you may use your reaction just before you fall unconscious to deal [5-8][dice] + [10-40@10] " +
+                                    "necrotic damage to a visible creature in range. You will, however, have disadvantage on your first death saving throw.",
+                    Names = new List<string> { "vengance", "retaliation", "demise" },
+                    IsAlwaysAReaction = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 40
+                },
+                new SpellTemplate //Retaliate as you fall unconscious - damage per failed death save
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "When you are reduced to 0 HP you may use your reaction just before you fall unconscious to tie a visible creature's fate to yours. " +
+                                    "Whenever you fail a death saving throw they suffer [2-3][dice] + [5-10] necrotic damage and if you die they are stunned for 1d3 rounds.",
+                    Names = new List<string> { "demise", "fate", "revenge" },
+                    IsAlwaysAReaction = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 40
+                },
+                new SpellTemplate //Unearth from poe
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "Any creature affected by the spell staggers as a humanoid skelton bursts from the ground nearby, rockets forward like a projectile, and crashes violently into them. " +
+                                    "They must make a DEX saving throw. On a failure they suffer [2-3][dice] piercing damage and [3-4][dice] necrotic damage. Half damage on a success. " +
+                                    "The skeletal remains do not vanish, and can be used in other spells (like animate dead) on subsequent turns.",
+                    Names = new List<string> { "unearthing", "unburial", "return", "exhumation" },
+                    IsAlwaysInstant= true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Consume undead minions to empower another
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "You touch two undead minions that are under your control - each crumbles to dust and is destroyed instantly, leaving extracted energy in your hand. " +
+                                    "You may then touch a 3rd undead creature under your control and empower it. Choose one of the following bonuses: " +
+                                    "+[1-3] AC for [2-3] days, OR +[10-20@5]ft of movement speed indefinitely, OR gain climbing speed equal to its walking speed for [4-7] days, OR gain a [20-40@5]ft flying speed for 1 hour. " +
+                                    "A creature cannot be empowered by this spell more than once. Doing so will replace the old effect with the new (the bonuses cannot stack).",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    MinimumCastTime = CastTime.OneMinute,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Permanent duplicate
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You touch one non-magical item and instantly create a permanent duplicate of it at your feet. This spell fails if the item is worth more than [100-250@50] gold, " +
+                                    "or if the object is larger than [3-6]ft in any dimension.",
+                    Names = new List<string> { "duplicate", "duplication", "replica" },
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    MinimumCastTime = CastTime.OneMinute,
+                    BaseValueScore = 60
+                },
+                new SpellTemplate //Infest food
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "You select any or all food in the target area, and conjure insects in the center of the selected food. The insects are not visible at first, but rapidly begin to burrow outward and eventually reveal themselves. " +
+                                    "Any creature that ingests one or more of the insects must make a CON saving throw. On a success they are poisoned for 1[dice] hours. " +
+                                    "On a failure they are similarly poisoned and also suffer [1-2][dice] necrotic damage. If this damage reduces a humanoid to 0 HP " +
+                                    "you may use your reaction to take control of them for the spell duration as they are puppeted by a swarm of insects - use the stat block for a zombie. " +
+                                    "You can control no more than [2-4] creatures simultaneously in this way.",
+                    Names = new List<string> { "meal", "feast", "swarm" },
+                    IsAlwaysRanged = true,
+                    IsAlwaysAoE = true,
+                    MinimumDuration = Duration.OneHour,
+                    DoesNotTargetCreatures = true,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Mind swap
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "You transfer the consciousness of two humanoids into each other's body. They retain their abilities, memories, and personality - all of their stats remain the same except that " +
+                                    "their HP, STR, DEX, and CON are swapped. Any equipment and items being held remain with the original body, and are not automatically exchanged. " +
+                                    "Unwilling creatures can make a WIS or INT saving throw to resist (their choice), and if either creature makes the save then this spell fails.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsAlwaysRanged = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Summon raging spirit  ***TODO: still too complex
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You hold a lantern or similarly sized hollow container in your hands and summon a tiny raging spirit to be sealed within it for [8-16@2] hours. " +
+                                    "If it is not unleashed before that time then the item disintegrates into ash. The container is considered a magical item, and you cannot create another while this one exists. " +
+                                    "A creature holding the vessel may use their action to unleash the raging spirit and command it to attack a visible creature. The spirit takes its turn in the initiative order immediately after the one who released it. " +
+                                    "It has a flying speed of [80-150@10]ft and no other stats, as it is not considered a creature (similar to the spell Spirit Guardians). " +
+                                    "The spirit is intangible and cannot be targeted by most attacks or spells (although banishment and similar abilities will work). " +
+                                    "On each turn it moves to be inside of its target's space and once there deals [4-13] necrotic damage per turn. The spirit is not visible while occupying a victim's space. " +
+                                    "If at any point a creature is reduced to 0 HP within [30-60@10]ft of the raging spirit then that creature is killed and the spirit vanishes permanently. " +
+                                    "At the start of each of its turns, other than its first, the spirit has a 50% chance to switch targets to the next nearest creature (regardless of if they are friend or foe).",
+                    Names = new List<string> { "vessel", "spirit", "haunt" },
+                    IsAlwaysInstant = true,
+                    IsNeverAoE = true,
+                    DoesNotTargetCreatures = true,
+                    MinimumCastTime = CastTime.OneHour,
+                    IsRangeAlwaysSelf = true,
+                    BaseValueScore = 1000
+                },
+                new SpellTemplate //Stone to flesh
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation, SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "You touch a stone surface and transmute a portion of it into a lifeless humanoid body. A 5ft cube of the stone is transformed, with the new body curled up in the center surrounded by water. " +
+                                    "If done carelessly, depending on the geometry of the remaining stone, the missing cube may trigger a cave-in. " +
+                                    "You may choose the appearance of the body (race, age, stature, etc) including mimicking someone that you are familiar with. " +
+                                    "The body cannot be resurrected as no soul was ever bound to it.",
+                    Names = new List<string> {  },//--------------------TODO
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysInstant = true,
+                    MinimumCastTime = CastTime.OneMinute,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Steal heart (ala temple of doom)
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "You reach out and make a melee spell attack against a humanoid you can touch within 5ft. On a hit your hand passes through any armour or clothing, into their chest, and grasps their heart. " +
+                                    "If the target has less than 50 HP you literally steal their heart, but may choose to keep them alive despite its absence. " +
+                                    "While you hold their heart they cannot willingly make weapon attacks against you. Destroying their heart will kill them instantly. " +
+                                    "If the target has 50 HP or more they instead suffer [3-5][dice] + [10-18@2] necrotic damage and your hand is pushed back out.",
+                    Names = new List<string> { "doom", "theft", "heart", "grasp" },
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 100
+                },
+                new SpellTemplate //Rot, moss, mold, decay
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "Any objects in the target area that are not being worn or held by a creature being to decay at an accelerated rate. " +
+                                    "Moss and mold cover any surfaces where moisture allows for it while dust coats any dry surfaces. Food, vegetation, and similar oganic material rots. Non-organic objects wear out in a matter of moments. " +
+                                    "Clothing becomes threadbare, ropes become frayed, etc. Any remains of deceased creatures in the area are reduced to skeletons.",
+                    Names = new List<string> { "decay", "decomposition", "rot" },
+                    IsAlwaysInstant = true,
+                    IsAlwaysAoE = true,
+                    DoesNotTargetCreatures = true,
+                    BaseValueScore = 3
+                },
+                new SpellTemplate //Spray rot
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You reach out your hand and create a spray of rot and filth seemingly out of nowhere. The stream of chunks and fluid smells like curdled death and coats any portion of the target area you choose. " +
+                                    "Tracks can be completely covered by the mess, and any perception checks made within 10ft of the affected area suffer a -[6-10] penalty.",
+                    Names = new List<string> {  },//--------------------TODO
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysAoE = true,
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Buoyant
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You make up to 1[dice] objects in the target area buoyant, no matter what their typical density is. This spell cannot target creatures nor objects that are larger than [5-10]ft in any dimension.",
+                    Names = new List<string> { "buoy", "lift", "floatation" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysAoE = true,
+                    MinimumDuration = Duration.OneHour,
+                    BaseValueScore = 2
+                },
+                new SpellTemplate //Weight change
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You choose up to 1[dice] visible objects in the target area and either double or halve their weight. Their size and appearance remains unchanged. " +
+                                    "Each object can be up to [3-8]ft in any dimension at most. This spell cannot target objects being worn or carried by creatures.",
+                    Names = new List<string> { "burden", "weight", "load" },
+                    DoesNotTargetCreatures = true,
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysAoE = true,
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 3
+                },
+                new SpellTemplate //Color change
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You choose up to [3-5] visible objects in range and change their color. Each object can be up to 2[dice] feet in any dimension at most - objects larger than this are unaffected.",
+                    Names = new List<string> {  },//--------------------TODO
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsNeverAoE = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 8
+                },
+                new SpellTemplate //Delayed transform - object
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You touch an object and trigger a delayed transformation. The object can be no larger than [2-5]ft in any dimension (both before and after being changed). You can change it into any other non-living, non-magical object, " +
+                                    "but the transformation doesn't happen until 5[dice] minutes after you finish casting the spell. The DM makes this roll in secret. This spell cannot target an object being worn or carried by a creature at the time of casting.",
+                    Names = new List<string> {  },//--------------------TODO
+                    DoesNotTargetCreatures = true,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumDuration = Duration.OneHour,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Delayed polymorph
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You cast a variation of the 4th level spell Polymorph where the transformation is delayed. The creature makes their saving throw immediately, but if they fail " +
+                                    "the transformation doesn't happen until 3[dice] minutes after you finish casting the spell. The DM makes this roll in secret.",
+                    Names = new List<string> {  },//--------------------TODO
+                    MinimumDuration = Duration.TenMinutes,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Temporary glue
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation, SchoolOfMagic.Abjuration },
+                    Type = EffectType.Utility,
+                    Description = "You reach out to tap a surface within reach and conjure a tiny orb of resin-like material the size of your fingertip. The material stays soft for 6 seconds and then instantly hardens. " +
+                                    "Once hardened the material will cling to anything stuck to it with the strength of a steel chain.",
+                    Names = new List<string> { "adhesive", "glue", "resin", "grasp", "link" },
+                    DoesNotTargetCreatures = true,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneHour,
+                    BaseValueScore = 3
+                },
+                new SpellTemplate //Modify written words
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You touch a surface with writing on it and may either add or remove up to 2[dice] words. The change is masked, rearranging the adjacent words and matching the handwriting such that the change is not obvious. " +
+                                    "A creature can detect the modification with a successful Investigation check vs your spell DC.",
+                    Names = new List<string> { "edit", "forgery", "revision" },
+                    DoesNotTargetCreatures = true,
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Fiendish polymorph
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You cast a variation of the 4th level spell Polymorph where the new form must be a Fiend rather than a Beast, and the challenge rating limitation is halved.",
+                    Names = new List<string> { "devil", "demon", "descent" },
+                    MinimumDuration = Duration.TenMinutes,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,                    
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Resize clothing
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You touch up to [3-5] non-magical articles of clothing and instantly resize them. This spell cannot target objects being worn by a creature. " +
+                                    "You may either change the clothing with specific dimensional edits in mind, or you can modify them to automatically fit a nearby visible creature or yourself." +
+                                    "In the process of altering the clothing you may also choose to remove any blood, stains, rips, or tears that are smaller than 1ft. " +
+                                    "At the time of casting you may choose to suffer 1[dice] piercing damage in order to triple the amount of items you may edit.",
+                    Names = new List<string> { "tailor", "stitching", "alteration" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 2
+                },
+                new SpellTemplate //Hurricane breath, objects only
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "You take a deep breath and then exhale, releasing a blast of hurricane-force wind in a [25-50@5]ft cone. The wind lasts for 6 seconds, wreaking havoc on objects in the area. " +
+                                    "Loose objects are blown away. Temporary structures crumble to pieces before blowing away. Wood framed structures collapse. Steel framed structures bend and warp. Only solid stone structures remain intact. " +
+                                    "Creatures are completely unaffected by the wind itself, as are any objects they are wearing or carrying, but will feel the effects of the debris around them. At the DM's discretion, depending on the nature of the debris, " +
+                                    "creatures in the area may be required to make a DEX saving throw to avoid suffering [2-6][dice] either piercing or bludgeoning damage. In the event of a structural collapse they may be required to make a STR saving throw to avoid being restrained.",
+                    Names = new List<string> { "breath", "exhale", "hurricane", "turbulence", "wind" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysInstant = true,                    
+                    BaseValueScore = 70
+                },
+                new SpellTemplate //Smoke elevator
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You select a point in range on the ground. A 10ft diameter column of smoke centered on that point begins to rise into the air. " +
+                                    "The height of the column of smoke starts at essentially 0 but increases by 10ft each round, up to a maximum of [50-100@10]ft. " +
+                                    "Any creature in the smoke is harmlessly lifted up at a rate of 10ft per round. Wind has no effect on the smoke - it rises straight vertically at a steady rate no matter the weather. " +
+                                    "The smoke does obscure vision, but it can be breathed without issue.",
+                    Names = new List<string> { "uplift", "smoke", "column" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 10
+                },
+                new SpellTemplate //Instant swamp
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You transform the ground in the target area into a swamp. It is considered exceptionally difficult terrain - each 1 foot of movement costs 3 feet of speed.",
+                    Names = new List<string> { "swamp", "mire", "morass" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysAoE = true,
+                    IsAlwaysRanged = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 8
+                },
+                new SpellTemplate //Instant desert - drains water
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "You transform the ground in the target area into a patch of desert with sand that absorbs water rapidly. The sand is deep enough to slow movement - the area is considered difficult terrain. " +
+                                    "Non-magical plants in the area wither instantly. Any portion of the target area that is submerged in water acts as a drain, sucking in the water and ejecting it into the astral sea, but any objects in the water are filtered out and remain on the surface of the sand.",
+                    Names = new List<string> { "desert", "sand", "drain", "dehydration" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysAoE = true,
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 9
+                },
+                new SpellTemplate //Lightning warp
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You call twin bolts of lightning down from the sky. One of them strikes the ground at a visible point you choose in range, while the other strikes you, teleporting you to the chosen point. The lightning does not harm you, but if a creature is standing at your destination then they must make a DEX saving throw. " +
+                                    "On a failure they suffer [2-4][dice] lightning damage and are teleported to where you used to be (effectively trading places). On a success they dodge out of the way and move to an unoccupied space within 5ft and take no damage. If they cannot move to an unoccupied space then they automatically fail their saving throw.",
+                    Names = new List<string> { "warp", "lightning", "bolt" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysInstant = true,                    
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Frost blink
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You instantly teleport to a visible, unoccupied point in range. You may choose to trigger an icy explosion either at your point of origin or your destination. In either case, the blast deals [2-4][dice] cold damage to any creatures within 10ft. Each must make a CON save and takes half damage on a success. " +
+                                    "Afterwards roll a d20 - if the number on the dice is less than the number of creatures that failed their save then this casting does not consume a spell slot.",
+                    Names = new List<string> { "escape", "step", "ice", "frost" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Flame dash
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You instantly teleport to a visible, unoccupied point in range and leave a trail of burning coals along the ground. The coals are red-hot and cover the ground in a straight line, 5ft wide, between your origin and destination. " +
+                                    "They remain for 1d4 rounds before vanishing. The coals are harmless to you, but any other creature that starts their turn on them or that walks across them suffers [2-4][dice] fire damage.",
+                    Names = new List<string> { "dash", "coals", "escape" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Withering step
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You instantly teleport to a visible, unoccupied point in range. A toxic pulse is released both at your origin and destination. Creatures other than yourself within [5-10@5]ft of either location must make a CON saving throw. " +
+                                    "On a failure they are poisoned and become vulnerable to poison damage for 1d4 rounds (roll once for all victims).",
+                    Names = new List<string> { "step", "escape", "toxin" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Smoke mine
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You select a visible, unoccupied point in range and conjure a tiny orb on the ground at that point. During the duration of the spell you may use your reaction anytime you are targeted by an attack or spell (but before it hits) to teleport to the orb. " +
+                                    "When you teleport the orb bursts, releasing a smoke cloud that blinds any creatures within 10ft of you until the end of your next turn.",
+                    Names = new List<string> { "step", "escape", "smoke screen" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 50
+                },
+                new SpellTemplate //Misty step + play dead
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Illusion },
+                    Type = EffectType.Utility,
+                    Description = "You teleport to an unoccupied point in range. Any observers, however, do not simply witness you vanishing. Rather, you project an illusion of your death that results in your body being reduced to a skeleton before crumbling into nothingness. " +
+                                    "The illusion is complete with sounds, temperature changes, etc, but lasts for only a few seconds. Creatures with a passive perception higher than your spell save DC realize it is an illusion. At the time of casting you may choose to become stunned for one round after teleporting in exchange for being invisible for two rounds.",
+                    Names = new List<string> { "demise", "escape", "expiry" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 40
+                },
+                new SpellTemplate //Plague bearer ***TODO: still too complex
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "You infect yourself with an unnatural disease that has three stages: incubation, contagion, and affliction. Each stage lasts for one day. " +
+                                    "Once it has been cast this effect cannot be dispelled; the disease must run its course. " +
+                                    "The disease begins with zero potency points - representing the intensity of the disease - that carry over from day to day. " +                                    
+                                    "During the incubation stage each time you suffer or deal poison damage or necrotic damage the disease gains 1 potency point. " +
+                                    "For this first stage there are no symptoms, no matter how many points accumulate. " +
+                                    "During the contagion stage you can use a bonus action to release a miasma that sickens any creatures within [5-15@5]ft of you. " +
+                                    "For each potency point they suffer 1[dice] poison damage. Every time you use this bonus action your AC is reduced by [1-2] until your next long rest. " +
+                                    "During the affliction stage you are poisoned and for each potency point your maximum HP is reduced by [3-5] and your AC is reduced by [1-2]. " +
+                                    "If the disease has at least [5-8] potency points then you may double any poison or necrotic damage that you deal during this final stage.",
+                    Names = new List<string> { "plague", "disease", "torment" },
+                    IsNeverAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    IsAlwaysInstant = true,
+                    MinimumCastTime = CastTime.OneMinute,
+                    BaseValueScore = 200
+                },
+                new SpellTemplate //Preserve remains for later
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
+                    Type = EffectType.Utility,
+                    Description = "This spell condenses organic remains into a tiny object. You choose a corpse within range and it gradually shrinks over the course of the casting. " +
+                                    "You transform it into a stone trinket of your choosing that is small enough to fit in your palm. Any creature holding the trinket can use their action to throw it to the ground and reverse the transformation. " +
+                                    "The remains cease to decompose while transformed and no time passes for them (which effectively extends the time limit on most resurrection magic). " +
+                                    "If you re-cast this on a trinket that you already created with this spell for [7-10] consecutive days then it lasts until dispelled.",
+                    Names = new List<string> { "tomb", "interrment", "trinket" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysRanged = true,
+                    IsNeverAoE = true,
+                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumDuration = Duration.OneDay,
+                    BaseValueScore = 2
+                },
+                new SpellTemplate //Yeet an ally
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "This spell empowers you to grab a creature and throw them, using your magical prowess rather than mere muscle. Make a grapple attack against a creature within 5ft of you, but use your spellcasting modifier instead of strength. The typical rules for grappling (size limits, etc) still apply. " +
+                                    "A willing creature may choose to allow the grapple with no check needed. If you successfully grapple the target, you may instantly lift them overhead and hurl them towards a visible point. " +
+                                    "If the creature is medium in size then you may throw them up to [30-50@5]ft. A small creature may be thrown up to [60-80@5]ft. " +
+                                    "However, if you attempt to throw them farther than half the maximum range then you must roll a d20 to determine the accuracy of your throw. Above 15 is exactly on target, below 5 is 15ft off target, and anything between is 5ft off target. " +
+                                    "Upon landing the target must make a DEX saving throw to avoid falling prone; a willing creature makes the save at advantage.",
+                    Names = new List<string> { "throw", "toss", "grasp" },
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    IsAlwaysInstant = true,                    
+                    BaseValueScore = 40
+                },
+                new SpellTemplate //Steal voice
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Enchantment },
+                    Type = EffectType.Utility,
+                    Description = "Any creature targeted by this spell must make a WIS saving throw (a willing creature may choose to fail). On a failure you steal their voice. For the spell duration they become mute, and you may choose to use either their voice or your own voice at will. " +
+                                    "You gain a +[4-8] bonus to Deception and Persuasion checks that you make while using their voice.",
+                    Names = new List<string> { "voice", "mouthpiece", "throat" },
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    MinimumDuration = Duration.OneHour,
+                    BaseValueScore = 5
                 },
                 //new SpellTemplate //
                 //{
-                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
                 //    Type = EffectType.Utility,
                 //    Description = "",
                 //    Names = new List<string> {  },//--------------------TODO
                 //    BaseValueScore = 5
                 //},
                 //*************************************************************************
-                /*                       
-                *  Divination               
-                        conjure tea - enough for 1d4+1 people. Each gets a free attempt at scrying. DM makes a secret roll : 50-50 odds that vision is false, if more than one person targets the same thing they have the same vision (one DM roll instead of multiple)
-                        mimic ability (like sneak attack or wild shape) as reaction or share one of your own with 1d6 other creatures.
-                            each gets a single use and then forgets
-                            if used for a spell, it must be a lower level than this spell  
-                *  Conjuration
-                        conjure [2-4] riding horses for [dice] hours. upcast for 2 extra horses per additional spell level.
-                        duplicate or replicate an outfit utility, tangible not an illusion
-                        temporary portable hole utility, non-exploding (collapses instead)
-                        medium range teleport, 1 mile
-                        temporary graffiti
-                        Lesser animate objects
-                        AoE difficult terrain and fall prone (no save) at the start of turn if touching the ground
-                        better earth bind - effect for non flying creatures too (restrained?)
-                        feast of left overs - table with partially eaten food appears, enough for 2d6+1 people to have a meal. Each makes a CON save, On a failure, poisoned for 2 hours. On a success, immune to charm effects and gain 2d12 Temp HP 
-                            other feast ideas - damage resistance paired with vulnerability, gamble AC bonus or a point of Exhaustion
-                *  Illusion
-                        multiplying illusion - start with 3, more appear whenever one is touched 
-                        nimble - DC and only disappears if hit
-                        ghostly second stage if touched
-                        tangible illusions - 1d4 pysical interactions
-                        fixed illusion (preset shapes & sounds)
-                        subtractive illusion / partial invisibility
-                        object invisibility
-                        Directional scent (false illusion)
-                        hide worth - illusion or transmutation - gold coins to copper temporarily, and gems into common minerals
-                        split illusions - 3d4 copies of the same illusion, less than 6 inches in any dimension
-                        split illusion - 2d6 copies, less than 3ft
-                * Necro                        
-                        reaction - as you fall unconscious - tie the target's fate to your own, whenever you fail a death saving throw they take necrotic damage and if you die they are stunned for 1d3 rounds - is always instant (to avoid concentration requirements)
-                        reaction - as you fall unconscious deal [5-8][dice] + [10-40@10] necrotic damage to one visible targt in range
-                        bodyswap - teleport, if you consume a corpse at the target location deal damage and does not use the spell slot	
-                        consume a corpse (turned to dust) to gain temp HP	
-                        consume a corpse (turned to dust) to heal an ally	
-	                        buffs? speed, resistance, damage?
-                        unearth from poe, remains burst from the ground and deal damage in a line?	
-                        statis AoE center on self - outside of AoE 1d8 hours pass, by inside only minutes. Barrier like wall of force prevents anything from passing in the meantime	
-	                        another version with days instead of hours?
-	                        another version that doesn't center of self, smaller time range to trap enemies 
-                        consume two undead minions under your control to grant a permanent bonus to a 3rd minion	
-	                        limited vampiric damage or bonus AC or double walking speed
-	                        new creature counts as two for maintenance (ie from animate or create dead spells)
-                        summon raging spirit - long cast time, store in a vessel (lantern or similar)	
-                        rot, moss, mold, wear out objects	(non-damaging, non-creature objects only)
-                        spray curdled milk, rotten fruit, etc (aesthetic or utility? prevent tracking, distraction charm to drive victims away )	
-                        curse item 	
-                        delayed, undetectable poison (or difficult to detect)	
-                        temporary animation - lasts for only 1d4 rounds - must be recent, intead of new stat block use original with fixed penalty	
-                        animate beast - use original stat block, fixed penalty	
-                        animate monstrosity or abberation - original stat block, no penalty		
-                        animate giant - original stat block with penalty	
-                        animate incomplete remains	
-                        change remains to be purely skeletal	
-                        only affects undead creatures with INT less than 7. Temporarily restore their intellect from when they were alive.
-                        transform a permanent skeleton or zombie you control into a ghostly variant of the same	
-                        ritual to sacrifice max HP until next long rest interchange for one of the following: immune to poison, no need to breathe, 50 percent chance after death save to gain 3d6 HP, necrotic damage heals you and healing spells damage you. Roll randomly, can be cast multiple times to stack different effects	                        
+                /*      
+                 * Next up
+                        frozen slide	
+                        cave of wonders style head/rising up out of the ground..	
+                        summon wooden boat, can fit up to 1d6 + 2 medium creatures.	
+                        temporary animation - necro - lasts for only 1d4 rounds - must be recent, intead of new stat block use original with fixed penalty	
+                        animate beast - necro - use original stat block, fixed penalty	
+                        animate monstrosity or abberation - necro - original stat block, no penalty		
+                        animate giant - necro - original stat block with penalty	
+                        animate incomplete remains	 - necro
                         command undead - temporarily take control, only if low INT
                         detonate one undead under your control as an explosion 
+                        only affects undead creatures with INT less than 7. Temporarily restore their intellect from when they were alive.
                         detonate and desecrate (single cast? delayed explosion)
+                        ground shakes with each step, create difficult terrain with shockwaves along the path the walk
+                * Transmute
+                        polymorph a willing creature into a small object that weighs 1/10th their normal weight 
+                        transmutation - counterfeit coins, from copper to gold, change lasts for 2d8 days, can change image on the coins too
+                        utility - drunk or sober (no effect on undead, elementals, constructs)                        
+                        instant door - range of touch
+                        reduce object size but same weight
+                * Necromancy                            
+                        delayed, undetectable poison (or difficult to detect)	
+                        transform a permanent skeleton or zombie you control into a ghostly variant of the same	
+                        ritual to sacrifice max HP until next long rest interchange for one of the following: immune to poison, no need to breathe, 50 percent chance after death save to gain 3d6 HP, necrotic damage heals you and healing spells damage you. Roll randomly, can be cast multiple times to stack different effects	                        
+                        curse item 	
+                        statis AoE center on self - outside of AoE 1d8 hours pass, by inside only minutes. Barrier like wall of force prevents anything from passing in the meantime	
+	                        another version with days instead of hours?
+	                        another version that doesn't center of self, smaller time range to trap enemies  
                 * Evocation
                         searing bond, 1d3 stationary points and yourself, bonus action to replace one
                         variant of contingency, lasts only 1 hour but multiple creatures benefit (common triggering condition and spell for all), spell level not more than half this spell
                         improve cordon of arrows 
-                        lesser demi plane (maybe on scale of a portable hole with a 1hr duration?
-                        sending with higher word limit or an extra "volley" back and forth
-                        huge AoE alarm, but with a specific trigger spoken phrase (know when someone says your name) and instantly know where in AoE trigger occurred
-                        frost blink and flame dash and plague bearer and smoke mine and withering step and lightning warp
-                        gamble spell slots for self, spend X slot, roll dice to see if you get back more or less, then immune to effects until long rest
-                        ground shakes with each step, create difficult terrain with shockwaves along the path the walk
                         pick a 1st level spell you know. Each time the target successfully hits with a weapon attack (once per turn) the spell is automatically triggered without using a spell slot or components. The spell automatically targets the creature that was hit, but any AoE effects still have an area.	                                                             
-                * Transmute
-                        make an object buoyant
-                        weight half or double
-                        color change
-                        Delayed effect transformation
-                        temporary glue
-                        add or remove 2d6 words on a paper document you hold, matching handwriting, Investigation vs modifier to catch it
-                        add any name you choose to any list of at least 10 names - always ranged
-                        polymorph a willing creature into a small object that weighs 1/10th their normal weight
-                        like polymorph, but fiend instead of beast
-                        resize clothing utility - must be fabric, not armor - tailor alterations rapidly 
-                        transmutation - counterfeit coins, from copper to gold, change lasts for 2d8 days, can change image on the coins too
-                        utility - drunk or sober (no effect on undead, elementals, constructs)
-                        instant swamp
-                        instant desert - mundane plant life crumbles to dust
-                        instant door - range of touch
-                        reduce object size but same weight
                 * 
                  * Illusion, Divination? 
                        remote spell casting - channel for ally to allow them to project a spell very long range
                             one version with scrying spell to pick see target
                             one version where you create a beacon on a target that the chosen ally can send thh spell to, like a homing missile
+                       subtractive illusion / partial invisibility
+                       Directional scent (false illusion)
+                       sending with higher word limit or an extra "volley" back and forth
+                       huge AoE alarm, but with a specific trigger spoken phrase (know when someone says your name) and instantly know where in AoE trigger occurred
+                       illusion - rainbow that starts above you and reaches towards a goal within 10 miles	
                 * PoE
                         spell whose damage scales based on the amount of depleted spell slots you have (or undeleted)	
 	                        mana mine
@@ -1244,17 +2039,6 @@ namespace SpellGenerator.Client.Data
                         ten minutes for a long rest, but also 1d4 points of Exhaustion	
                         instant short rest, but Max HP is reduced but 1d8 per character level for 24 hours. if reduced to 0, instead reduce to 1 and take 1d4 points of Exhaustion	
                         honey I shrunk the kids - all abilities also scaled down (esp spells), physical damage taken x10	
-                        illusion - rainbow that starts above you and reaches towards a goal within 10 miles	
-                        Necro - condense remains into a tiny object for later animation	
-                        illusion of self that you can swap places with as a bonus action each turn	
-                        evocation - yeet a willing creature, multiple saving throws. one for  stunned, prone 	
-	                        target creature within 150 ft
-	                        target location visible within 500 ft
-                        frozen slide	
-                        cave of wonders style hear/rising up out of the ground..	
-                        pumpkins carriage from Cinderella	
-                        smoke elevator ala Mari Poppins	
-                        summon wooden boat, can fit up to 1d6 + 2 medium creatures.	
                  */
             };
 
