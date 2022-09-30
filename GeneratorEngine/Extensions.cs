@@ -114,9 +114,10 @@ namespace GeneratorEngine
                 case ProjectileType.Bouncing:
                     return 1.25;
                 case ProjectileType.Chaining:                    
-                case ProjectileType.Piercing:                    
+                case ProjectileType.Piercing:
+                    return 2.0;
                 case ProjectileType.Splitting:
-                    return 1.5;
+                    return 3.0;
                 case ProjectileType.StraightLine:
                 case ProjectileType.OverheadArcing:
                 case ProjectileType.Meteor:
