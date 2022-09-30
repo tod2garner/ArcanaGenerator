@@ -1029,6 +1029,42 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysInstant = true,
                     BaseValueScore = 20
                 },
+                new SpellTemplate //Holy damage - extra vs evil, less vs good alignments
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Divination },
+                    Type = EffectType.Debuff,
+                    Description = "is illuminated by a brilliant light and suffers [2-4][dice] + [5-10] radiant damage. Creatures with an evil alignment take double damage. Creatures with a good alignment take half damage. Celestial creatures take no damage.",
+                    Names = new List<string> { "devotion", "light", "purity" },
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 25
+                },
+                new SpellTemplate //Evil damage - extra vs good, less vs evil alignments
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Debuff,
+                    Description = "is engulfed in black flames and suffers [2-4][dice] + [5-10] necrotic damage. Creatures with a good alignment take double damage. Creatures with an evil alignment take half damage. Undead creatures take no damage.",
+                    Names = new List<string> { "darkness", "corruption", "depravity" },
+                    IsAlwaysInstant = true,                    
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Chaotic damage - extra vs lawful, less vs chaotic alignments
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Debuff,
+                    Description = "is ravaged by a pulse of chaotic turbulence and suffers [2-4][dice] + [5-10] force damage. Creatures with a lawful alignment take double damage. Creatures with a chaotic alignment take half damage. Demonic creatures take no damage.",
+                    Names = new List<string> { "darkness", "corruption", "depravity" },
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 25
+                },
+                new SpellTemplate //Orderly damage - extra vs chaotic, less vs lawful alignments
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration, SchoolOfMagic.Illusion },
+                    Type = EffectType.Debuff,
+                    Description = "is briefly encased in rapidly growing crystals. The crystalline layer shatters after 5 seconds and they suffer [2-4][dice] + [5-10] psychic damage. Creatures with a chaotic alignment take double damage. Creatures with a lawful alignment take half damage. Constructs take no damage.",
+                    Names = new List<string> { "darkness", "corruption", "depravity" },
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 25
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
