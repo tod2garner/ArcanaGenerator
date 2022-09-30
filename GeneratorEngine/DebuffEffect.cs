@@ -19,8 +19,17 @@ namespace GeneratorEngine
 
         public string AttackOrSaveDescription()
         {
-            var savingThrow = SavingThrowType.HasValue ? $" [{SavingThrowType.Value}]" : string.Empty;
-            return $"{AttackOrSaveWhenCast}{savingThrow}";
+            switch (AttackOrSaveWhenCast)
+            {
+                case AttackOrSavingThrow.AttackRoll:
+                    return "Make an attack roll for each target. On a hit they are affected.";
+                case AttackOrSavingThrow.SavingThrow:
+                    var savingThrow = SavingThrowType.HasValue ? $" [{SavingThrowType.Value}]" : string.Empty;
+                    return $"Targets must make a {savingThrow} saving throw. On a failure they are affected.";
+                case AttackOrSavingThrow.CannotMiss:
+                default:
+                    return "This spell cannot miss. All targets are affected, with no chance for a saving throw.";
+            }
         }
     }
 }

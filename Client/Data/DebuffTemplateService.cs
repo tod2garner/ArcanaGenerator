@@ -956,7 +956,7 @@ namespace SpellGenerator.Client.Data
                 {
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
                     Type = EffectType.Debuff,
-                    Description = "is covered with a layer of ash for the spell duration. If they are reduced to 0 HP it explodes, dealing [2-4][dice] + [5-10] fire damage to all creatures within 10ft. " +
+                    Description = "is covered with a layer of ash for the spell duration. If they are reduced to 0 HP then the ash explodes, dealing [2-4][dice] + [5-10] fire damage to all creatures within 10ft. " +
                                     "This can trigger a chain reaction if the explosion reduces another creature covered in ash to 0 HP.",
                     Names = new List<string> {  },//--------------------TODO
                     MinimumDuration= Duration.OneMinute,
