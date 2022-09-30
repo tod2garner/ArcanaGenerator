@@ -1830,7 +1830,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Lightning warp
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
                     Type = EffectType.Utility,
                     Description = "You call twin bolts of lightning down from the sky. One of them strikes the ground at a visible point you choose in range, while the other strikes you, teleporting you to the chosen point. The lightning does not harm you, but if a creature is standing at your destination then they must make a DEX saving throw. " +
                                     "On a failure they suffer [2-4][dice] lightning damage and are teleported to where you used to be (effectively trading places). On a success they dodge out of the way and move to an unoccupied space within 5ft and take no damage. If they cannot move to an unoccupied space then they automatically fail their saving throw.",
@@ -1856,7 +1856,7 @@ namespace SpellGenerator.Client.Data
                 },
                 new SpellTemplate //Flame dash
                 {
-                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation, SchoolOfMagic.Conjuration },
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
                     Type = EffectType.Utility,
                     Description = "You instantly teleport to a visible, unoccupied point in range and leave a trail of burning coals along the ground. The coals are red-hot and cover the ground in a straight line, 5ft wide, between your origin and destination. " +
                                     "They remain for 1d4 rounds before vanishing. The coals are harmless to you, but any other creature that starts their turn on them or that walks across them suffers [2-4][dice] fire damage.",
@@ -1969,6 +1969,116 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.OneHour,
                     BaseValueScore = 5
                 },
+                new SpellTemplate //Shared saving throws
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Divination },
+                    Type = EffectType.Utility,
+                    Description = "This spell binds your fate to another humanoid that you touch. When either of you must make a saving throw both of you make it. One cannot fail unless both fail, however if both fail then both suffer the consequences - even if the source of the saving throw would normally only effect one of you.",
+                    Names = new List<string> { "fate", "chance", "destiny" },
+                    IsRangeAlwaysSelf = true,
+                    MinimumDuration = Duration.TenMinutes,
+                    IsNeverAoE = true,                    
+                    BaseValueScore = 15
+                },
+                new SpellTemplate //Ice slide
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You create a slide made of ice beginning at a visible point in range. The slide is 5ft wide and can be up to [20-50@5]ft long. The end point must be at least 10ft lower in elevation than the start. " +
+                                    "The ice need not be anchored to anything and is self supporting. If no part of it touches the ground the ice will simply float. At the end of the spell duration it vanishes instantly.",
+                    Names = new List<string> { "ice", "slide", "ramp" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    MinimumDuration = Duration.TenMinutes,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Summon boat
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Conjuration },
+                    Type = EffectType.Utility,
+                    Description = "You conjure a small wooden boat at an unoccupied point within range. The boat is just large enough to fit 1d6 + 2 medium creatures. It does not have a mast or any sails, but it does have enough oars for half of the passengers to use them.",
+                    Names = new List<string> { "vessel", "boat", "oars" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    MinimumDuration = Duration.OneHour,
+                    BaseValueScore = 3
+                },
+                new SpellTemplate //Command undead
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "Any undead creature targeted by this spell must make an INT saving throw. On a failed save, they are compelled to obey your verbal commands for the duration of the spell. Clever creatures may find loopholes in your phrasing, and dull creatures may take your words too literally. " +
+                                    "If they have an INT score higher than 10 then they make the save at advantage, and may repeat the save at the end of each turn. This spell has no affect on creatures that are not undead.",
+                    Names = new List<string> { "wrest", "control", "command" },
+                    IsAlwaysRanged = true, 
+                    MinimumDuration = Duration.OneMinute,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Detonate minion
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "This spell detonates an undead minion, destroying them in a fiery explosion. This spell can only target undead creatures that you both created yourself and currently control. " +
+                                    "The chosen minion instantly explodes and is completely destroyed, leaving no remains. The explosion deals [4-7][dice] + [10-18] fire damage to any creatures within [15-30@5]ft.",
+                    Names = new List<string> { "ignition", "detonation", "farewell" },
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 40
+                },
+                new SpellTemplate //Detonate corpse
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "This spell detonates a corpse or pile of bones, destroying the organic remains in a fiery explosion. The explosion deals [2-4][dice] + [6-12] fire damage to any creatures within [15-30@5]ft. " +
+                                    "This spell cannot target undead creatures, only un-animated remains. It is not, however, limited to humanoid remains.",
+                    Names = new List<string> { "ignition", "detonation", "farewell" },
+                    DoesNotTargetCreatures = true,
+                    IsNeverAoE = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 30
+                },
+                new SpellTemplate //Desecrate from PoE
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "This spell conjures a lifeless, humanoid corpse or pile of bones at an unoccupied, visible point in range. The remains are unrecognizable as any specific individual. Surfaces in the target area surrounding it are instantly covered in rot, mildew, and viscera.",
+                    Names = new List<string> { "desecration", "remains", "exhumation" },
+                    DoesNotTargetCreatures = true,
+                    IsAlwaysAoE = true,
+                    IsAlwaysRanged = true,
+                    IsAlwaysInstant = true,
+                    BaseValueScore = 5
+                },
+                new SpellTemplate //Restore undead intellect (but not personality)
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
+                    Type = EffectType.Utility,
+                    Description = "You reach out and touch one undead creature that has an INT score lower than 10. The creature temporarily has their prior intellect, but not their personality, restored from when they were alive. " +
+                                    "The facts that they knew when they were living are brought back for the spell duration, including the ability to speak (if applicable). This does not, however, include skills like" +
+                                    "martial abilities that require muscle memory nor any magical or spellcasting abilities. After being affected by this spell a creature cannot be targeted by it again for [3-7] days.",
+                    Names = new List<string> { "remembrance", "recollection", "memory" },
+                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumDuration = Duration.OneMinute,
+                    IsNeverAoE = true,
+                    IsRangeAlwaysSelf = true,
+                    BaseValueScore = 20
+                },
+                new SpellTemplate //Footstep shockwaves
+                {
+                    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Evocation },
+                    Type = EffectType.Utility,
+                    Description = "The ground shakes with each step you take, triggering shockwaves that shatter the ground and create difficult terrain within 15ft along your path. " +
+                                    "At the end of the spell duration your steps are no longer empowered, but the broken ground remains.",
+                    Names = new List<string> { "step", "march", "tremors" },
+                    IsRangeAlwaysSelf = true,
+                    IsNeverAoE = true,
+                    MinimumDuration = Duration.OneMinute,                    
+                    BaseValueScore = 5
+                },
                 //new SpellTemplate //
                 //{
                 //    Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
@@ -1979,20 +2089,6 @@ namespace SpellGenerator.Client.Data
                 //},
                 //*************************************************************************
                 /*      
-                 * Next up
-                        frozen slide	
-                        cave of wonders style head/rising up out of the ground..	
-                        summon wooden boat, can fit up to 1d6 + 2 medium creatures.	
-                        temporary animation - necro - lasts for only 1d4 rounds - must be recent, intead of new stat block use original with fixed penalty	
-                        animate beast - necro - use original stat block, fixed penalty	
-                        animate monstrosity or abberation - necro - original stat block, no penalty		
-                        animate giant - necro - original stat block with penalty	
-                        animate incomplete remains	 - necro
-                        command undead - temporarily take control, only if low INT
-                        detonate one undead under your control as an explosion 
-                        only affects undead creatures with INT less than 7. Temporarily restore their intellect from when they were alive.
-                        detonate and desecrate (single cast? delayed explosion)
-                        ground shakes with each step, create difficult terrain with shockwaves along the path the walk
                 * Transmute
                         polymorph a willing creature into a small object that weighs 1/10th their normal weight 
                         transmutation - counterfeit coins, from copper to gold, change lasts for 2d8 days, can change image on the coins too
@@ -2004,9 +2100,14 @@ namespace SpellGenerator.Client.Data
                         transform a permanent skeleton or zombie you control into a ghostly variant of the same	
                         ritual to sacrifice max HP until next long rest interchange for one of the following: immune to poison, no need to breathe, 50 percent chance after death save to gain 3d6 HP, necrotic damage heals you and healing spells damage you. Roll randomly, can be cast multiple times to stack different effects	                        
                         curse item 	
+                        animate incomplete remains	 - necro
                         statis AoE center on self - outside of AoE 1d8 hours pass, by inside only minutes. Barrier like wall of force prevents anything from passing in the meantime	
 	                        another version with days instead of hours?
 	                        another version that doesn't center of self, smaller time range to trap enemies  
+                        temporary animation - necro - lasts for only 1d4 rounds - must be recent, intead of new stat block use original with fixed penalty	
+                            animate beast - necro - use original stat block, fixed penalty	
+                            animate monstrosity or abberation - necro - original stat block, no penalty		
+                            animate giant - necro - original stat block with penalty	
                 * Evocation
                         searing bond, 1d3 stationary points and yourself, bonus action to replace one
                         variant of contingency, lasts only 1 hour but multiple creatures benefit (common triggering condition and spell for all), spell level not more than half this spell
@@ -2035,6 +2136,7 @@ namespace SpellGenerator.Client.Data
 	                        blade blast, ranged aoe	
                 * Other
                         at least one per school utility - interact with environment, climate, or social
+                        cave of wonders style head/rising up out of the ground.	
                         instantly gain the benefits of a long rest, but your max HP is reduced to 1 for 24 hours, and can't be affected by this spell again for 3 days	
                         ten minutes for a long rest, but also 1d4 points of Exhaustion	
                         instant short rest, but Max HP is reduced but 1d8 per character level for 24 hours. if reduced to 0, instead reduce to 1 and take 1d4 points of Exhaustion	
