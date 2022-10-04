@@ -89,6 +89,11 @@ namespace SpellGenerator.Client.Data
             
         }
 
+        public string GetRandomAestheticContext(DeliveryType deliveryType)
+        {
+            return aestheticService.GetRandomAestheticContext(deliveryType);
+        }
+
         public string GetRandomRequiredMaterialComponent(SchoolOfMagic school)
         {
             return requiredMaterialsService.GetRandomMaterialTemplate(school).Value;

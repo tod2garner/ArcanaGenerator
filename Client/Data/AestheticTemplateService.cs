@@ -7,6 +7,7 @@ namespace SpellGenerator.Client.Data
     {
         private List<AestheticAdjectiveTemplate>? _adjectiveTemplates;
         private List<AestheticShapeTemplate>? _shapeTemplates;
+        private List<TemplatePerDeliveryType>? _contextTemplates;
 
         #region Materials
         protected override void CreateMaterialTemplates()
@@ -388,7 +389,7 @@ namespace SpellGenerator.Client.Data
             var universalTemplates = matchingTemplates.Where(t => !t.DeliveryType.HasValue).ToList();
 
             var rng = new Random();
-            var templatesToPickFrom = (rng.NextDouble() > 0.4) ? universalTemplates : specificTemplates;
+            var templatesToPickFrom = (rng.NextDouble() > 0.6) ? universalTemplates : specificTemplates;
             var roll = rng.Next(templatesToPickFrom.Count());
             return templatesToPickFrom.ElementAt(roll);
         }
@@ -525,6 +526,63 @@ namespace SpellGenerator.Client.Data
                     hydrosphere style
                 */
             };
+        }
+        #endregion
+
+        #region Context
+        public string GetRandomAestheticContext(DeliveryType deliveryType)
+        {
+            if (_contextTemplates is null)
+                CreateCommonContextTemplates();
+
+            if (_contextTemplates == null)
+            {
+                throw new NullReferenceException("Aesthetic Context Templates were not created");
+            }
+
+            var matchingTemplates = _contextTemplates.Where(x => x.DeliveryType == deliveryType).Select(t => t.Value).ToList();
+            if (!matchingTemplates.Any())
+                throw new NotImplementedException("No matching aesthetic context templates found for the given delivery type");
+
+            return matchingTemplates.ElementAt(new Random().Next(matchingTemplates.Count));
+        }
+
+        private void CreateCommonContextTemplates()
+        {
+            _contextTemplates = new List<TemplatePerDeliveryType>
+            {
+                new TemplatePerDeliveryType(DeliveryType.None, $"{Aesthetic.DESCRIPTION_PLACEHOLDER} appear(s) in the target's space"),
+                new TemplatePerDeliveryType(DeliveryType.None, $"{Aesthetic.DESCRIPTION_PLACEHOLDER} suddenly appear(s) over the target"),
+
+                new TemplatePerDeliveryType(DeliveryType.Touch, $"{Aesthetic.DESCRIPTION_PLACEHOLDER} appear(s) in your hand"),
+                new TemplatePerDeliveryType(DeliveryType.Touch, $"You summon {Aesthetic.DESCRIPTION_PLACEHOLDER} in your hand"),
+                new TemplatePerDeliveryType(DeliveryType.Touch, $"You stretch out your hand and {Aesthetic.DESCRIPTION_PLACEHOLDER} appear(s) in it"),
+
+                new TemplatePerDeliveryType(DeliveryType.AreaOfEffect, $"You conjure {Aesthetic.DESCRIPTION_PLACEHOLDER} that radiate(s) magic in the target area"),
+                new TemplatePerDeliveryType(DeliveryType.AreaOfEffect, $"You create {Aesthetic.DESCRIPTION_PLACEHOLDER} that warp(s) the target area"),
+                new TemplatePerDeliveryType(DeliveryType.AreaOfEffect, $"Magic fills the area, radiating from {Aesthetic.DESCRIPTION_PLACEHOLDER}"),
+                new TemplatePerDeliveryType(DeliveryType.AreaOfEffect, $"You conjure {Aesthetic.DESCRIPTION_PLACEHOLDER} at the target area"),
+                new TemplatePerDeliveryType(DeliveryType.AreaOfEffect, $"You create {Aesthetic.DESCRIPTION_PLACEHOLDER} at the target area"),
+                new TemplatePerDeliveryType(DeliveryType.AreaOfEffect, $"You summon {Aesthetic.DESCRIPTION_PLACEHOLDER} along the target area"),
+                new TemplatePerDeliveryType(DeliveryType.AreaOfEffect, $"You unleash {Aesthetic.DESCRIPTION_PLACEHOLDER} along the target area"),
+                new TemplatePerDeliveryType(DeliveryType.AreaOfEffect, $"{Aesthetic.DESCRIPTION_PLACEHOLDER} appear(s) across the target area"),
+                new TemplatePerDeliveryType(DeliveryType.AreaOfEffect, $"You conjure {Aesthetic.DESCRIPTION_PLACEHOLDER} across the target area"),
+
+                new TemplatePerDeliveryType(DeliveryType.Projectile, $"You launch {Aesthetic.DESCRIPTION_PLACEHOLDER}"),
+                new TemplatePerDeliveryType(DeliveryType.Projectile, $"You hurl {Aesthetic.DESCRIPTION_PLACEHOLDER} at the target"),
+                new TemplatePerDeliveryType(DeliveryType.Projectile, $"You throw {Aesthetic.DESCRIPTION_PLACEHOLDER} at the target"),
+                new TemplatePerDeliveryType(DeliveryType.Projectile, $"{Aesthetic.DESCRIPTION_PLACEHOLDER} shoot(s) from your hand"),
+
+                new TemplatePerDeliveryType(DeliveryType.AreaProjectile, $"You launch {Aesthetic.DESCRIPTION_PLACEHOLDER} that release(s) a burst of magic on impact"),
+                new TemplatePerDeliveryType(DeliveryType.AreaProjectile, $"You throw {Aesthetic.DESCRIPTION_PLACEHOLDER} that release(s) a burst of magic on impact"),
+                new TemplatePerDeliveryType(DeliveryType.AreaProjectile, $"You launch {Aesthetic.DESCRIPTION_PLACEHOLDER} that detonate(s) on impact"),
+
+                new TemplatePerDeliveryType(DeliveryType.Weapon, $"On impact the weapon conjures {Aesthetic.DESCRIPTION_PLACEHOLDER} for a moment"),
+                new TemplatePerDeliveryType(DeliveryType.Weapon, $"On impact the weapon summons {Aesthetic.DESCRIPTION_PLACEHOLDER} over the target"),
+                new TemplatePerDeliveryType(DeliveryType.Weapon, $"Attacks with the weapon create {Aesthetic.DESCRIPTION_PLACEHOLDER} over the target"),
+                new TemplatePerDeliveryType(DeliveryType.Weapon, $"Hits with the weapon cause {Aesthetic.DESCRIPTION_PLACEHOLDER} to appear over the target")
+            };
+
         }
         #endregion
     }
