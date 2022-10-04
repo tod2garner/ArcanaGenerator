@@ -22,7 +22,7 @@ namespace GeneratorEngine.Generators
             if(string.IsNullOrEmpty(context))
             {
                 if(projectileType.HasValue && projectileType.Value == ProjectileType.Meteor)
-                    context = $"You call {Aesthetic.DESCRIPTION_PLACEHOLDER} from the sky, falling like a metor.";
+                    context = $"You call {Aesthetic.DESCRIPTION_PLACEHOLDER} from the sky, falling like a meteor.";
                 else
                     context = dataTemplateService.GetRandomAestheticContext(deliveryType);
             }                
