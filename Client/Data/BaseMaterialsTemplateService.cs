@@ -5,8 +5,8 @@ namespace SpellGenerator.Client.Data
 {
     public abstract class BaseMaterialsTemplateService
     {
-        protected List<TemplatePerSchool>? _templates;
-        public TemplatePerSchool GetRandomTemplate(SchoolOfMagic school)
+        protected List<TemplatePerSchool>? _materialTemplates;
+        public TemplatePerSchool GetRandomMaterialTemplate(SchoolOfMagic school)
         {
             var templatesForGivenSchool = GetTemplates(school);
 
@@ -15,16 +15,19 @@ namespace SpellGenerator.Client.Data
             return templatesForGivenSchool.ElementAt(roll);
         }
 
-        public List<TemplatePerSchool> GetTemplates(SchoolOfMagic school)
+        protected List<TemplatePerSchool> GetTemplates(SchoolOfMagic school)
         {
-            if (_templates == null)
-                CreateTemplates();
+            if (_materialTemplates == null)
+                CreateMaterialTemplates();
 
-            var templatesToReturn = (school == SchoolOfMagic.Any) ? _templates.ToList() : _templates.Where(t => t.Schools.Any(s => s == SchoolOfMagic.Any || s == school)).ToList();
+            if (_materialTemplates == null)
+                throw new NullReferenceException("Material Templates were not created");
+
+            var templatesToReturn = (school == SchoolOfMagic.Any) ? _materialTemplates.ToList() : _materialTemplates.Where(t => t.Schools.Any(s => s == SchoolOfMagic.Any || s == school)).ToList();
             return templatesToReturn;
         }
 
-        protected abstract void CreateTemplates();
+        protected abstract void CreateMaterialTemplates();
 
     }
 }

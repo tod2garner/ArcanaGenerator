@@ -8,9 +8,9 @@ namespace SpellGenerator.Client.Data
     /// </summary>
     public class RequiredMaterialsTemplateService : BaseMaterialsTemplateService
     {
-        protected override void CreateTemplates()
+        protected override void CreateMaterialTemplates()
         {
-            _templates = new List<TemplatePerSchool>
+            _materialTemplates = new List<TemplatePerSchool>
             {
                 new TemplatePerSchool("powdered dragon bone"),
                 new TemplatePerSchool("powdered dragon claw"),

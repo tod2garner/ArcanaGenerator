@@ -160,7 +160,21 @@ namespace GeneratorEngine.Generators
                     break;
             }
 
-            return AestheticGenerator.GetRandomAesthetic(dataTemplateService, delivery.Type, school, damageType, aoEShape);
+            ProjectileType? projectileType;
+            switch (delivery)
+            {
+                case ProjectileDelivery projectileDelivery:
+                    projectileType = projectileDelivery.ProjectileType;
+                    break;
+                case AreaProjectileDelivery areaProjectileDelivery:
+                    projectileType = areaProjectileDelivery.ProjectileType;
+                    break;
+                default:
+                    projectileType = null;
+                    break;
+            }
+
+            return AestheticGenerator.GetRandomAesthetic(dataTemplateService, delivery.Type, school, damageType, aoEShape, projectileType);
         }
 
         private static bool DetermineConcentration(Duration duration)
