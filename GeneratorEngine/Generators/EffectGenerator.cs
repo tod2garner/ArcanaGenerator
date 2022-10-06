@@ -31,6 +31,10 @@ namespace GeneratorEngine.Generators
         private static DamageEffect CreateDamageEffect(SchoolOfMagic school, DeliveryType deliveryType)
         {
             var attackOrSave = GenerateAttackOrSave(deliveryType);
+            var repeatable = GetWeightedRepeatType();
+            var maxDuration = Duration.Instant;
+            if (repeatable != RepeatType.None)
+                maxDuration = repeatable == RepeatType.Free ? Duration.OneMinute : Duration.TenMinutes;
 
             return new DamageEffect
             {
@@ -39,7 +43,8 @@ namespace GeneratorEngine.Generators
                 AttackOrSaveWhenCast = attackOrSave,
                 SavingThrowType = GenerateSavingThrowType(attackOrSave, EffectType.Damage),
                 DamageType = GenerateDamageType(school),
-                Duration = GenerateDuration(EffectType.Damage, Duration.Instant, Duration.TenMinutes),
+                RepeatType = repeatable,
+                Duration = GenerateDuration(EffectType.Damage, Duration.Instant, maxDuration),
                 DiceSize = GetRandomWeightedDiceSize(),
                 NumberOfDice = 1, //default here, will be scaled later based on desired value score
                 Description = string.Empty //not set here, will be created after dice are set                
@@ -244,6 +249,26 @@ namespace GeneratorEngine.Generators
             }
 
             return DamageType.Bludgeoning;
+        }
+
+        private static RepeatType GetWeightedRepeatType()
+        {
+            var options = new List<(RepeatType value, int rollThreshold)>
+            {
+                (RepeatType.Free, 90),          // 10
+                (RepeatType.BonusAction, 80),   // 10
+                (RepeatType.Action, 70),        // 10
+                (RepeatType.None, 0)            // 50
+            };
+
+            int roll = Rnd.Next(100);
+            foreach (var choice in options)
+            {
+                if (roll > choice.rollThreshold)
+                    return choice.value;
+            }
+
+            return RepeatType.None;
         }
 
         private static Duration GenerateDuration(EffectType effectType, Duration minDuration, Duration maxDuration)

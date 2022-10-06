@@ -10,12 +10,14 @@ namespace GeneratorEngine
         public DiceSize DiceSize;
         public AttackOrSavingThrow AttackOrSaveWhenCast;
         public SavingThrowType? SavingThrowType;
+        public RepeatType RepeatType;
 
         public override Dictionary<string, double> GetPowerRatingFactors()
         {
             BasePowerRating = NumberOfDice * (int)DiceSize;
 
             var factors = base.GetPowerRatingFactors();
+            factors.Add(nameof(RepeatType), RepeatType.GetPowerRatingFactor());
             factors.Add(nameof(DamageType), DamageType.GetPowerRatingFactor());
             factors.Add("CannotMiss", AttackOrSaveWhenCast.GetPowerRatingFactor());
             factors.Add(nameof(SavingThrowType), SavingThrowType.GetPowerRatingFactor());
@@ -40,6 +42,14 @@ namespace GeneratorEngine
         internal override void UpdateDescription()
         {
             Description = $"Any creature affected by this spell suffers {NumberOfDice}{DiceSize} {DamageType} damage.";
+
+            if(RepeatType != RepeatType.None && Duration != Duration.Instant)
+            {
+                if (RepeatType == RepeatType.Free)
+                    Description += " This damage is repeated automatically at the end of their turn for the duration of the spell.";
+                else
+                    Description += $" On subsequent turns you may repeat this effect using your {RepeatType}.";
+            }
         }
 
         internal override void ScalePower(double? scalingRatio, Duration? minDuration)
