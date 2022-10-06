@@ -284,7 +284,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
                     Type = EffectType.Penalty,
                     Description = "A random tiny animal (DM's choice based on local ecology, CR of 0) appears on your shoulder. It is neither friendly nor hostile to you.",
-                    MinimumDuration = Duration.Instant,
+                    IsAlwaysInstant = true,
                     BaseValueScore = 5
                 },
                 new SpellTemplate
@@ -317,7 +317,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
                     Type = EffectType.Penalty,
                     Description = "Anytime that you attempt to quiet your mind you are overwhelmed by anxiety. You are unable to benefit from short rests for 2d6 hours.",
-                    MinimumDuration = Duration.Instant,
+                    IsAlwaysInstant = true,
                     BaseValueScore = 15
                 },
                 new SpellTemplate
@@ -325,7 +325,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Any },
                     Type = EffectType.Penalty,
                     Description = "You are imbued with intense insomnia and are unable to benefit from a long rest for 2d8 hours.",
-                    MinimumDuration = Duration.Instant,
+                    IsAlwaysInstant = true,
                     BaseValueScore = 20
                 },
                 /*
