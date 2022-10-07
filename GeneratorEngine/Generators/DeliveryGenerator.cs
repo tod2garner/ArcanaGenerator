@@ -123,8 +123,8 @@ namespace GeneratorEngine.Generators
                 options = options.Where(o => o.type != DeliveryType.AreaOfEffect && o.type != DeliveryType.AreaProjectile).ToList();
             }
 
-            if (options.Count == 1)
-                return options.First().type;
+            if(options.Count == 0)
+                throw new ArgumentException("No option for delivery type found");
 
             foreach (var choice in options)
             {
@@ -132,7 +132,7 @@ namespace GeneratorEngine.Generators
                     return choice.type;
             }
 
-            throw new ArgumentException("No option for delivery type found");
+            return options.Last().type;
         }
 
         private static RangeType GenerateRangeType(bool isRangeNeverSelf, bool isRangeAlwaysSelf, bool isAlwaysRanged)
