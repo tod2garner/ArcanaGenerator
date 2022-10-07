@@ -16,6 +16,7 @@ namespace SpellGenerator.Client.Data
                     Description = "is knocked back [5-30@5] ft",
                     Names = new List<string> { "pulse", "rebuke", "surge", "ram" },
                     IsAlwaysInstant = true,
+                    IsRepeatable = true,
                     BaseValueScore = 4
                 },
                 new SpellTemplate
@@ -52,6 +53,7 @@ namespace SpellGenerator.Client.Data
                     Description = "is knocked Prone",
                     Names = new List<string> { "trip", "trap", "impact" },
                     IsAlwaysInstant = true,
+                    IsRepeatable = true,
                     BaseValueScore = 5
                 },
                 new SpellTemplate
@@ -61,6 +63,7 @@ namespace SpellGenerator.Client.Data
                     Description = "is pulled closer by [10-20@5] ft",
                     Names = new List<string> { "grasp", "lure", "hook", "claw" },
                     IsAlwaysInstant = true,
+                    IsRepeatable = true,
                     IsAlwaysRanged = true,
                     BaseValueScore = 10
                 },
@@ -71,6 +74,7 @@ namespace SpellGenerator.Client.Data
                     Description = "is pulled closer by [10-25@5] ft and restrained",
                     Names = new List<string> { "grasp", "hook", "hunt", "snare" },
                     IsAlwaysInstant = true,
+                    IsRepeatable = true,
                     IsAlwaysRanged = true,
                     BaseValueScore = 20
                 },
@@ -81,6 +85,7 @@ namespace SpellGenerator.Client.Data
                     Description = "is knocked back [10-35@5] ft and falls prone",
                     Names = new List<string> { "rebuke", "ram", "impact" },
                     IsAlwaysInstant = true,
+                    IsRepeatable = true,
                     BaseValueScore = 15
                 },
                 new SpellTemplate
@@ -156,6 +161,7 @@ namespace SpellGenerator.Client.Data
                     Description = "takes one point of Exhaustion (but never more than 3 points from this spell)",
                     Names = new List<string> { "siphon", "exhaustion", "enervation" },
                     IsAlwaysInstant = true,
+                    IsRepeatable = true,
                     BaseValueScore = 20
                 },
                 new SpellTemplate //Sleep
@@ -333,6 +339,7 @@ namespace SpellGenerator.Client.Data
                     Description = "is forced to drop one object they are holding or grasping. If that object weighs less than 10 lbs then it is flung 5 + 1d10 feet in a random direction.",
                     Names = new List<string> { "blast", "impact", "jolt" },
                     IsAlwaysInstant = true,
+                    IsRepeatable = true,
                     BaseValueScore = 20
                 },
                 new SpellTemplate //Dropped for fall damage
@@ -464,6 +471,7 @@ namespace SpellGenerator.Client.Data
                     Description = "suffers [3-8][dice] necrotic damage and has their Maximum HP reduced by the same amount until their next Long Rest.",
                     Names = new List<string> { "withering", "wilting", "desiccation" },
                     IsAlwaysInstant = true,
+                    IsRepeatable = true,
                     BaseValueScore = 30
                 },
                 new SpellTemplate //Escalating reduced Max HP
@@ -530,6 +538,7 @@ namespace SpellGenerator.Client.Data
                     Description = "suffers [4-8][dice] necrotic damage and you regain HP equal to half the damage dealt.",
                     Names = new List<string> { "harvest", "vampirism", "drain", "reaping" },
                     IsAlwaysInstant = true,
+                    IsRepeatable = true,
                     IsNeverAoE = true,
                     BaseValueScore = 30
                 },
@@ -540,6 +549,7 @@ namespace SpellGenerator.Client.Data
                     Description = "suffers [2-6][dice] necrotic damage and you regain [1-2] HP per creature damaged.",
                     Names = new List<string> { "harvest", "vampirism", "drain", "reaping" },
                     IsAlwaysInstant = true,
+                    IsRepeatable = true,
                     IsAlwaysAoE = true,
                     BaseValueScore = 30
                 },
@@ -794,6 +804,7 @@ namespace SpellGenerator.Client.Data
                                     "This spell has no effect on creatures that are Huge or larger.",
                     Names = new List<string> {  },//--------------------TODO
                     IsAlwaysInstant = true,
+                    IsRepeatable = true,
                     IsNeverAoE = true,
                     BaseValueScore = 30
                 },
@@ -877,6 +888,7 @@ namespace SpellGenerator.Client.Data
                     Description = "blurts out 2d4 words of your choosing. If you are hidden from the target then the number of words is doubled.",
                     Names = new List<string> { "confession", "exclamation", "interjection" },
                     IsAlwaysInstant = true,
+                    IsRepeatable = true,
                     IsAlwaysRanged = true,
                     BaseValueScore = 5
                 },
@@ -1036,6 +1048,7 @@ namespace SpellGenerator.Client.Data
                     Description = "is illuminated by a brilliant light and suffers [2-4][dice] + [5-10] radiant damage. Creatures with an evil alignment take double damage. Creatures with a good alignment take half damage. Celestial creatures take no damage.",
                     Names = new List<string> { "devotion", "light", "purity" },
                     IsAlwaysInstant = true,
+                    IsRepeatable = true,
                     BaseValueScore = 25
                 },
                 new SpellTemplate //Evil damage - extra vs good, less vs evil alignments
@@ -1044,7 +1057,8 @@ namespace SpellGenerator.Client.Data
                     Type = EffectType.Debuff,
                     Description = "is engulfed in black flames and suffers [2-4][dice] + [5-10] necrotic damage. Creatures with a good alignment take double damage. Creatures with an evil alignment take half damage. Undead creatures take no damage.",
                     Names = new List<string> { "darkness", "corruption", "depravity" },
-                    IsAlwaysInstant = true,                    
+                    IsAlwaysInstant = true,
+                    IsRepeatable = true,
                     BaseValueScore = 20
                 },
                 new SpellTemplate //Chaotic damage - extra vs lawful, less vs chaotic alignments
@@ -1054,6 +1068,7 @@ namespace SpellGenerator.Client.Data
                     Description = "is ravaged by a pulse of chaotic turbulence and suffers [2-4][dice] + [5-10] force damage. Creatures with a lawful alignment take double damage. Creatures with a chaotic alignment take half damage. Demonic creatures take no damage.",
                     Names = new List<string> { "darkness", "corruption", "depravity" },
                     IsAlwaysInstant = true,
+                    IsRepeatable = true,
                     BaseValueScore = 25
                 },
                 new SpellTemplate //Orderly damage - extra vs chaotic, less vs lawful alignments

@@ -118,6 +118,14 @@
         Force
     }
 
+    public enum RepeatType
+    {
+        None,
+        Action,
+        BonusAction,
+        Free
+    }
+
     public enum DiceSize
     {
         d4 = 2,

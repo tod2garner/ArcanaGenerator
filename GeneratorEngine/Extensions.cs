@@ -151,5 +151,21 @@ namespace GeneratorEngine
                     return 1.0;
             };
         }
+
+        public static double GetPowerRatingFactor(this RepeatType repeatType)
+        {
+            switch (repeatType)
+            {                
+                case RepeatType.Action:
+                    return 1.5;
+                case RepeatType.BonusAction:
+                    return 2.0;
+                case RepeatType.Free:
+                    return 3.0;
+                case RepeatType.None:
+                default:
+                    return 1.0;
+            }
+        }
     }
 }

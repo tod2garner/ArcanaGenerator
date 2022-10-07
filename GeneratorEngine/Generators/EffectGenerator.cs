@@ -31,6 +31,10 @@ namespace GeneratorEngine.Generators
         private static DamageEffect CreateDamageEffect(SchoolOfMagic school, DeliveryType deliveryType)
         {
             var attackOrSave = GenerateAttackOrSave(deliveryType);
+            var repeatable = GetWeightedRepeatType(true);
+            var maxDuration = Duration.Instant;
+            if (repeatable != RepeatType.None)
+                maxDuration = repeatable == RepeatType.Free ? Duration.OneMinute : Duration.TenMinutes;
 
             return new DamageEffect
             {
@@ -39,7 +43,8 @@ namespace GeneratorEngine.Generators
                 AttackOrSaveWhenCast = attackOrSave,
                 SavingThrowType = GenerateSavingThrowType(attackOrSave, EffectType.Damage),
                 DamageType = GenerateDamageType(school),
-                Duration = GenerateDuration(EffectType.Damage, Duration.Instant, Duration.TenMinutes),
+                RepeatDamage = repeatable,
+                Duration = GenerateDuration(EffectType.Damage, Duration.Instant, maxDuration),
                 DiceSize = GetRandomWeightedDiceSize(),
                 NumberOfDice = 1, //default here, will be scaled later based on desired value score
                 Description = string.Empty //not set here, will be created after dice are set                
@@ -48,17 +53,23 @@ namespace GeneratorEngine.Generators
 
         private static DebuffEffect CreateDebuffEffect(SpellTemplate template, DeliveryType deliveryType)
         {
+            var repeatable = template.IsRepeatable ? GetWeightedRepeatType(true) : RepeatType.None;
             var minDuration = template.MinimumDuration ?? Duration.Instant;
-            var maxDuration = (template.IsAlwaysInstant) ? Duration.Instant : Duration.OneMonth;
+            var maxDuration = (template.IsAlwaysInstant && repeatable == RepeatType.None) ? Duration.Instant : Duration.OneMonth;
+            maxDuration = repeatable != RepeatType.None ? Duration.TenMinutes : maxDuration;
+            var duration = GenerateDuration(EffectType.Debuff, minDuration, maxDuration);
             var attackOrSave = GenerateAttackOrSave(deliveryType);
+            var retryType = (duration == Duration.Instant || duration == Duration.OneRound || attackOrSave == AttackOrSavingThrow.CannotMiss) ? RepeatType.None : GetWeightedRepeatType(false);
 
             return new DebuffEffect
             {
                 Type = EffectType.Debuff,
-                AttackOrSaveWhenCast = attackOrSave,
-                SavingThrowType = GenerateSavingThrowType(attackOrSave, EffectType.Debuff),
                 BasePowerRating = template.BaseValueScore,
-                Duration = GenerateDuration(EffectType.Debuff, minDuration, maxDuration),
+                AttackOrSaveWhenCast = attackOrSave,
+                RepeatDebuff = repeatable,
+                SavingThrowType = GenerateSavingThrowType(attackOrSave, EffectType.Debuff),
+                RetryResistType = retryType,
+                Duration = duration,
                 Description = RollDynamicValuesInDescription(template.Description)
             };
         }
@@ -135,7 +146,7 @@ namespace GeneratorEngine.Generators
 
         private static SavingThrowType? GenerateSavingThrowType(AttackOrSavingThrow attackOrSavingThrow, EffectType effectType)
         {
-            if (attackOrSavingThrow == AttackOrSavingThrow.CannotMiss || attackOrSavingThrow == AttackOrSavingThrow.AttackRoll)
+            if (attackOrSavingThrow == AttackOrSavingThrow.CannotMiss)
                 return null;
 
             var options = new List<(SavingThrowType type, int rollThreshold)>();
@@ -244,6 +255,34 @@ namespace GeneratorEngine.Generators
             }
 
             return DamageType.Bludgeoning;
+        }
+
+        private static RepeatType GetWeightedRepeatType(bool isNoRepeatMostCommon)
+        {
+            var options = new List<(RepeatType value, int rollThreshold)>();
+            if(isNoRepeatMostCommon)
+            {
+                options.Add((RepeatType.Free, 90));          // 10
+                options.Add((RepeatType.BonusAction, 80));   // 10
+                options.Add((RepeatType.Action, 70));        // 10
+                options.Add((RepeatType.None, 0));           // 70
+            }
+            else
+            {
+                options.Add((RepeatType.Free, 80));          // 20
+                options.Add((RepeatType.BonusAction, 60));   // 20
+                options.Add((RepeatType.Action, 30));        // 30
+                options.Add((RepeatType.None, 0));           // 30
+            }
+
+            int roll = Rnd.Next(100);
+            foreach (var choice in options)
+            {
+                if (roll > choice.rollThreshold)
+                    return choice.value;
+            }
+
+            return RepeatType.None;
         }
 
         private static Duration GenerateDuration(EffectType effectType, Duration minDuration, Duration maxDuration)
