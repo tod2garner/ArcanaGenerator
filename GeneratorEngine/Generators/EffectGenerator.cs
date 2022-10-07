@@ -31,7 +31,7 @@ namespace GeneratorEngine.Generators
         private static DamageEffect CreateDamageEffect(SchoolOfMagic school, DeliveryType deliveryType)
         {
             var attackOrSave = GenerateAttackOrSave(deliveryType);
-            var repeatable = GetWeightedRepeatType();
+            var repeatable = GetWeightedRepeatType(true);
             var maxDuration = Duration.Instant;
             if (repeatable != RepeatType.None)
                 maxDuration = repeatable == RepeatType.Free ? Duration.OneMinute : Duration.TenMinutes;
@@ -55,15 +55,18 @@ namespace GeneratorEngine.Generators
         {
             var minDuration = template.MinimumDuration ?? Duration.Instant;
             var maxDuration = (template.IsAlwaysInstant) ? Duration.Instant : Duration.OneMonth;
+            var duration = GenerateDuration(EffectType.Debuff, minDuration, maxDuration);
             var attackOrSave = GenerateAttackOrSave(deliveryType);
+            var retryType = (duration == Duration.Instant || duration == Duration.OneRound || attackOrSave == AttackOrSavingThrow.CannotMiss) ? RepeatType.None : GetWeightedRepeatType(false);
 
             return new DebuffEffect
             {
                 Type = EffectType.Debuff,
+                BasePowerRating = template.BaseValueScore,
                 AttackOrSaveWhenCast = attackOrSave,
                 SavingThrowType = GenerateSavingThrowType(attackOrSave, EffectType.Debuff),
-                BasePowerRating = template.BaseValueScore,
-                Duration = GenerateDuration(EffectType.Debuff, minDuration, maxDuration),
+                RetryResistType = retryType,
+                Duration = duration,
                 Description = RollDynamicValuesInDescription(template.Description)
             };
         }
@@ -140,7 +143,7 @@ namespace GeneratorEngine.Generators
 
         private static SavingThrowType? GenerateSavingThrowType(AttackOrSavingThrow attackOrSavingThrow, EffectType effectType)
         {
-            if (attackOrSavingThrow == AttackOrSavingThrow.CannotMiss || attackOrSavingThrow == AttackOrSavingThrow.AttackRoll)
+            if (attackOrSavingThrow == AttackOrSavingThrow.CannotMiss)
                 return null;
 
             var options = new List<(SavingThrowType type, int rollThreshold)>();
@@ -251,15 +254,23 @@ namespace GeneratorEngine.Generators
             return DamageType.Bludgeoning;
         }
 
-        private static RepeatType GetWeightedRepeatType()
+        private static RepeatType GetWeightedRepeatType(bool isNoRepeatMostCommon)
         {
-            var options = new List<(RepeatType value, int rollThreshold)>
+            var options = new List<(RepeatType value, int rollThreshold)>();
+            if(isNoRepeatMostCommon)
             {
-                (RepeatType.Free, 90),          // 10
-                (RepeatType.BonusAction, 80),   // 10
-                (RepeatType.Action, 70),        // 10
-                (RepeatType.None, 0)            // 50
-            };
+                options.Add((RepeatType.Free, 90));          // 10
+                options.Add((RepeatType.BonusAction, 80));   // 10
+                options.Add((RepeatType.Action, 70));        // 10
+                options.Add((RepeatType.None, 0));           // 70
+            }
+            else
+            {
+                options.Add((RepeatType.Free, 80));          // 20
+                options.Add((RepeatType.BonusAction, 60));   // 20
+                options.Add((RepeatType.Action, 30));        // 30
+                options.Add((RepeatType.None, 0));           // 30
+            }
 
             int roll = Rnd.Next(100);
             foreach (var choice in options)
