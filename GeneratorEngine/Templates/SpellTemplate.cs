@@ -20,6 +20,7 @@ namespace GeneratorEngine.Templates
         public Duration? MinimumDuration;
         public CastTime? MinimumCastTime;
         public bool IsAlwaysAReaction;
+        public bool IsRepeatable;
         //Delivery restrictions
         public bool IsAlwaysAoE;
         public bool IsNeverAoE;

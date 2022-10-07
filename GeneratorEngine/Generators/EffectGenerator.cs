@@ -43,7 +43,7 @@ namespace GeneratorEngine.Generators
                 AttackOrSaveWhenCast = attackOrSave,
                 SavingThrowType = GenerateSavingThrowType(attackOrSave, EffectType.Damage),
                 DamageType = GenerateDamageType(school),
-                RepeatType = repeatable,
+                RepeatDamage = repeatable,
                 Duration = GenerateDuration(EffectType.Damage, Duration.Instant, maxDuration),
                 DiceSize = GetRandomWeightedDiceSize(),
                 NumberOfDice = 1, //default here, will be scaled later based on desired value score
@@ -53,8 +53,10 @@ namespace GeneratorEngine.Generators
 
         private static DebuffEffect CreateDebuffEffect(SpellTemplate template, DeliveryType deliveryType)
         {
+            var repeatable = template.IsRepeatable ? GetWeightedRepeatType(true) : RepeatType.None;
             var minDuration = template.MinimumDuration ?? Duration.Instant;
-            var maxDuration = (template.IsAlwaysInstant) ? Duration.Instant : Duration.OneMonth;
+            var maxDuration = (template.IsAlwaysInstant && repeatable == RepeatType.None) ? Duration.Instant : Duration.OneMonth;
+            maxDuration = repeatable != RepeatType.None ? Duration.TenMinutes : maxDuration;
             var duration = GenerateDuration(EffectType.Debuff, minDuration, maxDuration);
             var attackOrSave = GenerateAttackOrSave(deliveryType);
             var retryType = (duration == Duration.Instant || duration == Duration.OneRound || attackOrSave == AttackOrSavingThrow.CannotMiss) ? RepeatType.None : GetWeightedRepeatType(false);
@@ -64,6 +66,7 @@ namespace GeneratorEngine.Generators
                 Type = EffectType.Debuff,
                 BasePowerRating = template.BaseValueScore,
                 AttackOrSaveWhenCast = attackOrSave,
+                RepeatDebuff = repeatable,
                 SavingThrowType = GenerateSavingThrowType(attackOrSave, EffectType.Debuff),
                 RetryResistType = retryType,
                 Duration = duration,

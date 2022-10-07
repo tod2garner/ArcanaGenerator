@@ -5,6 +5,7 @@ namespace GeneratorEngine
     public class DebuffEffect : EffectBase
     {
         public AttackOrSavingThrow AttackOrSaveWhenCast;
+        public RepeatType RepeatDebuff;
         public SavingThrowType? SavingThrowType;
         public RepeatType RetryResistType;
 
@@ -16,8 +17,22 @@ namespace GeneratorEngine
                 factors.Add(nameof(RetryResistType), 1 / RetryResistType.GetPowerRatingFactor());//Invert value, opposite scaling from damage repeat
 
             factors.Add("CannotMiss", AttackOrSaveWhenCast.GetPowerRatingFactor());
+            factors.Add(nameof(RepeatDebuff), RepeatDebuff.GetPowerRatingFactor());
             factors.Add(nameof(SavingThrowType), SavingThrowType.GetPowerRatingFactor());            
             return factors;
+        }
+
+        internal override void UpdateDescription()
+        {
+            base.UpdateDescription();
+
+            if (RepeatDebuff != RepeatType.None && Duration != Duration.Instant)
+            {
+                if (RepeatDebuff == RepeatType.Free)
+                    Description += " On subsequent turns you may repeat this effect as a free action.";
+                else
+                    Description += $" On subsequent turns you may repeat this effect using your {RepeatDebuff}.";
+            }
         }
 
         public string AttackOrSaveDescription()
