@@ -18,7 +18,7 @@ namespace GeneratorEngine.Templates
         //Effect restrictions
         public bool IsAlwaysInstant;
         public Duration? MinimumDuration;
-        public CastTime? MinimumCastTime;
+        public CastTimeLength? MinimumCastTime;
         public bool IsAlwaysAReaction;
         public bool IsRepeatable;
         //Delivery restrictions

@@ -67,7 +67,7 @@ namespace SpellGenerator.Client.Data
                     IsNeverAoE = true,
                     IsRangeAlwaysSelf = true,
                     MinimumDuration = Duration.TenMinutes,
-                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumCastTime = CastTimeLength.OneMinute,
                     BaseValueScore = 10
                 },
                 new SpellTemplate//Cover
@@ -437,7 +437,7 @@ namespace SpellGenerator.Client.Data
                     IsNeverAoE = true,
                     IsRangeAlwaysSelf = true,
                     IsAlwaysInstant = true,
-                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumCastTime = CastTimeLength.OneMinute,
                     BaseValueScore = 30
                 },
                 new SpellTemplate //Secret light
@@ -568,7 +568,7 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysAoE = true,
                     IsRangeAlwaysSelf = true,
                     DoesNotTargetCreatures = true,
-                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumCastTime = CastTimeLength.OneMinute,
                     BaseValueScore = 10,
                 },
                 new SpellTemplate //Immune to fall damage
@@ -593,7 +593,7 @@ namespace SpellGenerator.Client.Data
                     MinimumDuration = Duration.OneMinute,
                     IsAlwaysAoE = true,
                     DoesNotTargetCreatures = true,
-                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumCastTime = CastTimeLength.OneMinute,
                     BaseValueScore = 30,
                 },
                 new SpellTemplate //Anti-magic pulse
@@ -994,7 +994,7 @@ namespace SpellGenerator.Client.Data
                                     "Creatures that are immune to magical sleep (ex: those of elvish descent) are instead charmed to sit quietly and daydream - they are considered restrained and incapacitated. " +
                                     "This spell bypasses immunity to charm effects. Creatures cannot be roused by any non-magical means short of suffering damage equal to at least half of their maximum HP.",
                     Names = new List<string> { "opus", "masterstroke", "dormancy" },
-                    MinimumCastTime = CastTime.OneHour,
+                    MinimumCastTime = CastTimeLength.OneHour,
                     IsRangeAlwaysSelf = true,
                     IsNeverAoE = true,
                     IsAlwaysInstant = true,
@@ -1041,7 +1041,7 @@ namespace SpellGenerator.Client.Data
                                     "When you cast this spell you may choose up to 2[dice] creatures to exclude from its effect.",
                     Names = new List<string> { "distraction", "redirection", "diversion" },
                     MinimumDuration = Duration.EightHours,
-                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumCastTime = CastTimeLength.OneMinute,
                     DoesNotTargetCreatures = true,
                     IsAlwaysAoE = true,
                     IsRangeAlwaysSelf = true,
@@ -1137,7 +1137,7 @@ namespace SpellGenerator.Client.Data
                     IsRangeAlwaysSelf = true,
                     IsNeverAoE = true,
                     MinimumDuration = Duration.TenMinutes,
-                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumCastTime = CastTimeLength.OneMinute,
                     BaseValueScore = 50
                 },
                 new SpellTemplate //Mimic ability
@@ -1327,7 +1327,7 @@ namespace SpellGenerator.Client.Data
                     DoesNotTargetCreatures = true,
                     IsAlwaysRanged = true,
                     IsNeverAoE = true,
-                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumCastTime = CastTimeLength.OneMinute,
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 7
                 },
@@ -1538,7 +1538,7 @@ namespace SpellGenerator.Client.Data
                     IsRangeAlwaysSelf = true,
                     IsAlwaysInstant = true,
                     IsNeverAoE = true,
-                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumCastTime = CastTimeLength.OneMinute,
                     BaseValueScore = 50
                 },
                 new SpellTemplate //Permanent duplicate
@@ -1551,7 +1551,7 @@ namespace SpellGenerator.Client.Data
                     IsRangeAlwaysSelf = true,
                     IsAlwaysInstant = true,
                     IsNeverAoE = true,
-                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumCastTime = CastTimeLength.OneMinute,
                     BaseValueScore = 60
                 },
                 new SpellTemplate //Infest food
@@ -1599,7 +1599,7 @@ namespace SpellGenerator.Client.Data
                     IsAlwaysInstant = true,
                     IsNeverAoE = true,
                     DoesNotTargetCreatures = true,
-                    MinimumCastTime = CastTime.OneHour,
+                    MinimumCastTime = CastTimeLength.OneHour,
                     IsRangeAlwaysSelf = true,
                     BaseValueScore = 1000
                 },
@@ -1616,7 +1616,7 @@ namespace SpellGenerator.Client.Data
                     IsNeverAoE = true,
                     IsRangeAlwaysSelf = true,
                     IsAlwaysInstant = true,
-                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumCastTime = CastTimeLength.OneMinute,
                     BaseValueScore = 50
                 },
                 new SpellTemplate //Steal heart (ala temple of doom)
@@ -1706,7 +1706,7 @@ namespace SpellGenerator.Client.Data
                     DoesNotTargetCreatures = true,
                     IsRangeAlwaysSelf = true,
                     IsNeverAoE = true,
-                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumCastTime = CastTimeLength.OneMinute,
                     MinimumDuration = Duration.OneHour,
                     BaseValueScore = 30
                 },
@@ -1923,7 +1923,7 @@ namespace SpellGenerator.Client.Data
                     IsNeverAoE = true,
                     IsRangeAlwaysSelf = true,
                     IsAlwaysInstant = true,
-                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumCastTime = CastTimeLength.OneMinute,
                     BaseValueScore = 200
                 },
                 new SpellTemplate //Preserve remains for later
@@ -1938,7 +1938,7 @@ namespace SpellGenerator.Client.Data
                     DoesNotTargetCreatures = true,
                     IsAlwaysRanged = true,
                     IsNeverAoE = true,
-                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumCastTime = CastTimeLength.OneMinute,
                     MinimumDuration = Duration.OneDay,
                     BaseValueScore = 2
                 },
@@ -2061,7 +2061,7 @@ namespace SpellGenerator.Client.Data
                                     "The facts that they knew when they were living are brought back for the spell duration, including the ability to speak (if applicable). This does not, however, include skills like" +
                                     "martial abilities that require muscle memory nor any magical or spellcasting abilities. After being affected by this spell a creature cannot be targeted by it again for [3-7] days.",
                     Names = new List<string> { "remembrance", "recollection", "memory" },
-                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumCastTime = CastTimeLength.OneMinute,
                     MinimumDuration = Duration.OneMinute,
                     IsNeverAoE = true,
                     IsRangeAlwaysSelf = true,

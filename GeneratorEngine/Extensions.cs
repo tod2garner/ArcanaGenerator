@@ -27,18 +27,18 @@ namespace GeneratorEngine
             return char.ToUpper(text[0]) + text.Substring(1);
         }
 
-        public static double GetPowerRatingFactor(this CastTime castTime)
+        public static double GetPowerRatingFactor(this CastTimeLength castTime)
         {
             switch (castTime)
             {
-                case CastTime.BonusAction:
+                case CastTimeLength.BonusAction:
                     return 1.5;
-                case CastTime.OneMinute:
+                case CastTimeLength.OneMinute:
                     return 0.5;
-                case CastTime.OneHour:
+                case CastTimeLength.OneHour:
                     return 0.1;
-                case CastTime.Action:
-                case CastTime.Reaction:
+                case CastTimeLength.Action:
+                case CastTimeLength.Reaction:
                 default:
                     return 1.0;
             };
