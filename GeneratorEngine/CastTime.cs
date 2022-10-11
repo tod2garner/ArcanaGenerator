@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GeneratorEngine
+﻿namespace GeneratorEngine
 {
     public class CastTime
     {
         public CastTimeLength Length;
+        public string Conditions;
 
         public string Description()
         {
-            if (Length == CastTimeLength.Reaction)
+            if (!string.IsNullOrEmpty(Conditions))
             {
-                //TODO - create subtype for CastTime so that reaction can be more detailed
-                return Length.ToString();
+                return $"{Length} - {Conditions}";
             }
 
             return Length.ToString();

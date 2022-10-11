@@ -16,5 +16,6 @@ namespace GeneratorEngine.Templates
         string GetRandomNameAdjective(SchoolOfMagic school, EffectType effectType);
         string GetRandomNameEmotion(SchoolOfMagic school, EffectType effectType);
         string GetRandomNamePossesive(SchoolOfMagic school);
+        string GetRandomReactionCondition(SchoolOfMagic school);
     }
 }
