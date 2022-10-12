@@ -41,7 +41,7 @@ namespace SpellGenerator.Client.Data
                 new TemplatePerSchool("When you succeed on a saving throw for a hostile spell", new List<SchoolOfMagic>{ SchoolOfMagic.Enchantment }),
                 new TemplatePerSchool("Before an ally that you can see takes damage", new List<SchoolOfMagic>{ SchoolOfMagic.Abjuration }),
                 new TemplatePerSchool("When you see an attack that targets you, but before the DM declares if it hits or misses"),
-                new TemplatePerSchool("When you see an attack miss you (it rolls lower than your AC)"),
+                new TemplatePerSchool("When you see an attack miss you (ie. it rolls lower than your AC)"),
                 new TemplatePerSchool("After you suffer at least 10 damage"),
                 new TemplatePerSchool("When your health falls below half of your Maximum HP"),
                 new TemplatePerSchool("When your health falls below 10 HP (but not less than 1)"),

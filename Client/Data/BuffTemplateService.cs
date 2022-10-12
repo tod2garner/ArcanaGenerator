@@ -620,7 +620,7 @@ namespace SpellGenerator.Client.Data
                     Description = "may use [2-3] reactions per round and has advantage on any attacks of opportunity that they make.",
                     Names = new List<string> { "reflex", "impulse", "intuition" },
                     MinimumDuration = Duration.OneMinute,
-                    BaseValueScore = 5
+                    BaseValueScore = 10
                 },
                 new SpellTemplate //Ranged oppportunity attacks
                 {
@@ -630,7 +630,7 @@ namespace SpellGenerator.Client.Data
                                     "their weapon range or ends a turn within range. They still only have one reaction per round, but they do have advantage on any attacks of opportunity that they make",
                     Names = new List<string> { "hunt", "stalking", "reach" },
                     MinimumDuration = Duration.TenMinutes,
-                    BaseValueScore = 2
+                    BaseValueScore = 3
                 },
                 new SpellTemplate //Undead fortitude
                 {
