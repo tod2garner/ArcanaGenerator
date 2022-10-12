@@ -37,25 +37,25 @@ namespace SpellGenerator.Client.Data
         {
             _conditions = new List<TemplatePerSchool>()
             {
-                new TemplatePerSchool("Before you make a saving throw"),
-                new TemplatePerSchool("After you make a saving throw"),
-                new TemplatePerSchool("When you succeed on a saving throw to resist a hostile spell", new List<SchoolOfMagic>{ SchoolOfMagic.Enchantment }),
-                new TemplatePerSchool("Before an ally takes damage", new List<SchoolOfMagic>{ SchoolOfMagic.Abjuration }),
-                new TemplatePerSchool("When an attack targets you, but before the DM declares if it hits or misses"),
-                new TemplatePerSchool("When an attack misses you"),
+                new TemplatePerSchool("After you fail a saving throw"),
+                new TemplatePerSchool("When you succeed on a saving throw for a hostile spell", new List<SchoolOfMagic>{ SchoolOfMagic.Enchantment }),
+                new TemplatePerSchool("Before an ally that you can see takes damage", new List<SchoolOfMagic>{ SchoolOfMagic.Abjuration }),
+                new TemplatePerSchool("When you see an attack that targets you, but before the DM declares if it hits or misses"),
+                new TemplatePerSchool("When you see an attack miss you (it rolls lower than your AC)"),
                 new TemplatePerSchool("After you suffer at least 10 damage"),
-                new TemplatePerSchool("When a creature enters your melee reach"),
-                new TemplatePerSchool("When you drop below half of your Max HP"),
-                new TemplatePerSchool("When your health falls below 10 HP"),
-                new TemplatePerSchool("When you see a creature drop to 0 HP", new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy }),
+                new TemplatePerSchool("When your health falls below half of your Maximum HP"),
+                new TemplatePerSchool("When your health falls below 10 HP (but not less than 1)"),
                 new TemplatePerSchool("After rolling initiative", new List<SchoolOfMagic>{ SchoolOfMagic.Divination }),
-                new TemplatePerSchool("When you see a creature become charmed or frightened by an ally", new List<SchoolOfMagic>{ SchoolOfMagic.Enchantment }),
-                new TemplatePerSchool("When you see a creature become restrained or grappled by an ally", new List<SchoolOfMagic>{ SchoolOfMagic.Evocation }),
+                new TemplatePerSchool("When you see a creature drop to 0 HP", new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy }),
+                new TemplatePerSchool("When you see a creature enter your melee reach"),
                 new TemplatePerSchool("When a creature that you are fighting moves into your line of sight"),
                 new TemplatePerSchool("When you lose concentration on another spell", new List<SchoolOfMagic>{ SchoolOfMagic.Transmutation }),
+                new TemplatePerSchool("After you see a creature become charmed or frightened (by a source other than yourself)", new List<SchoolOfMagic>{ SchoolOfMagic.Enchantment }),
+                new TemplatePerSchool("After you see a creature become restrained or grappled (by a source other than yourself)", new List<SchoolOfMagic>{ SchoolOfMagic.Evocation }),
+                new TemplatePerSchool("After you see a creature suffer Poison or Necrotic damage (from a source other than yourself)", new List<SchoolOfMagic>{ SchoolOfMagic.Necromancy }),
+                new TemplatePerSchool("After you see a creature suffer Fire or Cold damage (from a source other than yourself)", new List<SchoolOfMagic>{ SchoolOfMagic.Evocation }),
+                new TemplatePerSchool("After you see a creature suffer Thunder or Lightning damage (from a source other than yourself)", new List<SchoolOfMagic>{ SchoolOfMagic.Evocation }),
             };
-                            
-            //    when you see a creature suffer X damage            
         }
     }
 }
