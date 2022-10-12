@@ -22,7 +22,7 @@
         Transmutation
     }
 
-    public enum CastTime
+    public enum CastTimeLength
     {
         Action,
         BonusAction,

@@ -16,6 +16,7 @@ builder.Services.AddSingleton<PenaltyTemplateService>();
 builder.Services.AddSingleton<RequiredMaterialsTemplateService>();
 builder.Services.AddSingleton<AestheticTemplateService>();
 builder.Services.AddSingleton<NameFragmentTemplateService>();
+builder.Services.AddSingleton<ReactionConditionService>();
 builder.Services.AddSingleton<DataTemplateService>();
 
 

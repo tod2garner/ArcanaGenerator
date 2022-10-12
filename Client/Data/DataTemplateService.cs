@@ -12,6 +12,7 @@ namespace SpellGenerator.Client.Data
         private readonly RequiredMaterialsTemplateService requiredMaterialsService;
         private readonly AestheticTemplateService aestheticService;
         private readonly NameFragmentTemplateService nameFragmentService;
+        private readonly ReactionConditionService reactionService;
 
         public DataTemplateService(BuffTemplateService buffTemplateService,
                                     DebuffTemplateService debuffTemplateService,
@@ -19,7 +20,8 @@ namespace SpellGenerator.Client.Data
                                     PenaltyTemplateService penaltyTemplateService,
                                     RequiredMaterialsTemplateService requiredMaterialsTemplateService,
                                     AestheticTemplateService aestheticTemplateService,
-                                    NameFragmentTemplateService nameFragmentTemplateService)
+                                    NameFragmentTemplateService nameFragmentTemplateService,
+                                    ReactionConditionService reactionConditionService)
         {
             buffService = buffTemplateService;
             debuffService = debuffTemplateService;
@@ -28,6 +30,7 @@ namespace SpellGenerator.Client.Data
             requiredMaterialsService = requiredMaterialsTemplateService;
             aestheticService = aestheticTemplateService;
             nameFragmentService = nameFragmentTemplateService;
+            reactionService = reactionConditionService;
         }
 
         public SpellTemplate GetRandomSpellTemplate(EffectType effectType, SchoolOfMagic school)
@@ -117,6 +120,11 @@ namespace SpellGenerator.Client.Data
         public string GetRandomNameEmotion(SchoolOfMagic school, EffectType effectType)
         {
             return nameFragmentService.GetRandomNameEmotion(school, effectType);
+        }
+
+        public string GetRandomReactionCondition(SchoolOfMagic school)
+        {
+            return reactionService.GetRandomReactionCondition(school);
         }
     }
 }

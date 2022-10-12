@@ -620,7 +620,7 @@ namespace SpellGenerator.Client.Data
                     Description = "may use [2-3] reactions per round and has advantage on any attacks of opportunity that they make.",
                     Names = new List<string> { "reflex", "impulse", "intuition" },
                     MinimumDuration = Duration.OneMinute,
-                    BaseValueScore = 5
+                    BaseValueScore = 10
                 },
                 new SpellTemplate //Ranged oppportunity attacks
                 {
@@ -630,7 +630,7 @@ namespace SpellGenerator.Client.Data
                                     "their weapon range or ends a turn within range. They still only have one reaction per round, but they do have advantage on any attacks of opportunity that they make",
                     Names = new List<string> { "hunt", "stalking", "reach" },
                     MinimumDuration = Duration.TenMinutes,
-                    BaseValueScore = 2
+                    BaseValueScore = 3
                 },
                 new SpellTemplate //Undead fortitude
                 {
@@ -719,7 +719,7 @@ namespace SpellGenerator.Client.Data
                     Description = "gains a +[5-10] bonus to Insight, Perception, and Investigation checks" +
                                     "When the spell ends the target suffers an equal penalty for double the spell duration (even if the spell is ended early).",
                     Names = new List<string> { "hunt", "search", "eye", "vision" },
-                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumCastTime = CastTimeLength.OneMinute,
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 5
                 },
@@ -730,7 +730,7 @@ namespace SpellGenerator.Client.Data
                     Description = "gains a +[5-10] bonus to Acrobatics and Athletics checks" +
                                     "When the spell ends the target suffers an equal penalty for double the spell duration (even if the spell is ended early).",
                     Names = new List<string> { "sinew", "muscle", "brawn" },
-                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumCastTime = CastTimeLength.OneMinute,
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 3
                 },
@@ -741,7 +741,7 @@ namespace SpellGenerator.Client.Data
                     Description = "gains a +[5-10] bonus to Persuasion, Intimidation, and Deception checks for the spell duration. " +
                                     "When the spell ends the target suffers an equal penalty for double the spell duration (even if the spell is ended early).",
                     Names = new List<string> {  },//--------------------TODO
-                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumCastTime = CastTimeLength.OneMinute,
                     MinimumDuration = Duration.TenMinutes,
                     BaseValueScore = 3
                 },
@@ -815,7 +815,7 @@ namespace SpellGenerator.Client.Data
                                     "If cast at Level 6 or higher the bonus also applies to saving throws, as well as one attack per round. " +
                                     "This spell can only be cast under moonlight.",
                     Names = new List<string> { "darkness", "void", "shadow", "dusk" },
-                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumCastTime = CastTimeLength.OneMinute,
                     MinimumDuration = Duration.OneHour,
                     BaseValueScore = 4
                 },
@@ -953,7 +953,7 @@ namespace SpellGenerator.Client.Data
                                     "Rather than preventing scrying, such a spell appears successful to the caster " +
                                     "but you may choose false information to 'reveal' in place of the target's true location, appearance, etc.",
                     Names = new List<string> { "guise", "deception", "mask", "pretense" },
-                    MinimumCastTime = CastTime.OneMinute,
+                    MinimumCastTime = CastTimeLength.OneMinute,
                     MinimumDuration = Duration.OneDay,
                     BaseValueScore = 2
                 },

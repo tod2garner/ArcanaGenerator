@@ -85,7 +85,7 @@
         <div class="grid-item col2">@theSpell.Components.SummarizeIncludingSpecificMaterials()</div>
 
         <div class="grid-item col1">Cast Time</div>
-        <div class="grid-item col2">@theSpell.CastTime</div>
+        <div class="grid-item col2">@theSpell.CastTime.Description()</div>
 
         @if (theSpell.Effect.Duration != Duration.Instant)
         {

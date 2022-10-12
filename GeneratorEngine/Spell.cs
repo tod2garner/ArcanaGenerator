@@ -105,7 +105,7 @@ namespace GeneratorEngine
             {
                 { nameof(Ritual), ritualFactor },
                 { "NoConcentration", concentrationFactor },
-                { nameof(CastTime), CastTime.GetPowerRatingFactor() },
+                { nameof(CastTime), CastTime.Length.GetPowerRatingFactor() },
                 { nameof(Components), Components.GetPowerRatingFactor() },
             };
         }

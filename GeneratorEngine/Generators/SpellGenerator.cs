@@ -26,7 +26,7 @@ namespace GeneratorEngine.Generators
             var effect = EffectGenerator.GenerateEffect(spellTemplate, school, delivery.Type);
             var aesthetic = GenerateAesthetic(dataTemplateService, school, effect, delivery);
             var name = NameGenerator.GenerateName(dataTemplateService, school, effectType, aesthetic, spellTemplate.Names);
-            var castTime = GenerateCastTime(effectType, effect.Duration, spellTemplate.IsAlwaysAReaction, spellTemplate.DoesNotTargetCreatures, spellTemplate.MinimumCastTime);
+            var castTime = GenerateCastTime(dataTemplateService, school, effectType, effect.Duration, spellTemplate.IsAlwaysAReaction, spellTemplate.DoesNotTargetCreatures, spellTemplate.MinimumCastTime);
 
             var theSpell = new Spell
             {
@@ -38,7 +38,7 @@ namespace GeneratorEngine.Generators
                 CastTime = castTime,
                 Components = GenerateComponents(dataTemplateService, school),
                 RequiresConcentration = true,
-                Ritual = DetermineRitual(effectType, castTime),
+                Ritual = DetermineRitual(effectType, castTime.Length),
                 CasterPenaltyCost = null,
             };
 
@@ -81,23 +81,33 @@ namespace GeneratorEngine.Generators
             return (SchoolOfMagic)Rnd.Next(minRange, maxRange);
         }
 
-        private static CastTime GenerateCastTime(EffectType effectType, Duration duration, bool isAlwaysReaction, bool doesNotTargetCreatures, CastTime? minimumCastTime)
+        private static CastTime GenerateCastTime(IDataTemplateService dataTemplateService, SchoolOfMagic school, EffectType effectType, Duration duration, bool isAlwaysReaction, bool doesNotTargetCreatures, CastTimeLength? minimumCastTime)
+        {
+            var result = new CastTime { Length = GenerateCastTimeLength(effectType, duration, isAlwaysReaction, doesNotTargetCreatures, minimumCastTime) };
+
+            if(result.Length == CastTimeLength.Reaction && !isAlwaysReaction)            
+                result.Conditions = dataTemplateService.GetRandomReactionCondition(school);
+            
+            return result;
+        }
+
+        private static CastTimeLength GenerateCastTimeLength(EffectType effectType, Duration duration, bool isAlwaysReaction, bool doesNotTargetCreatures, CastTimeLength? minimumCastTime)
         {
             if (isAlwaysReaction)
-                return CastTime.Reaction;
+                return CastTimeLength.Reaction;
 
             int roll = Rnd.Next(100);
-            CastTime result;
+            CastTimeLength result;
             if (roll > 95 && effectType != EffectType.Damage && (int)duration > (int)Duration.OneHour)
-                result = CastTime.OneHour; // 5%
+                result = CastTimeLength.OneHour; // 5%
             else if (roll > 90 && !doesNotTargetCreatures)
-                result = CastTime.Reaction; // 5%
+                result = CastTimeLength.Reaction; // 5%
             else if (roll > 80)
-                result = CastTime.BonusAction;// 10%
+                result = CastTimeLength.BonusAction;// 10%
             else if (roll > 70 && effectType != EffectType.Damage && (int)duration > (int)Duration.OneMinute)
-                result = CastTime.OneMinute;// 10%
+                result = CastTimeLength.OneMinute;// 10%
             else
-                result = CastTime.Action;// 70%
+                result = CastTimeLength.Action;// 70%
 
             if (minimumCastTime.HasValue && (int)result < (int)minimumCastTime.Value)
             {
@@ -188,9 +198,9 @@ namespace GeneratorEngine.Generators
                 return true;
         }
 
-        private static bool DetermineRitual(EffectType effectType, CastTime castTime)
+        private static bool DetermineRitual(EffectType effectType, CastTimeLength castTime)
         {
-            if (effectType != EffectType.Utility || castTime == CastTime.Reaction)
+            if (effectType != EffectType.Utility || castTime == CastTimeLength.Reaction)
                 return false;
 
             if (Rnd.Next(100) > 70)
