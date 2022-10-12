@@ -1701,7 +1701,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
                     Type = EffectType.Utility,
                     Description = "You touch an object and trigger a delayed transformation. The object can be no larger than [2-5]ft in any dimension (both before and after being changed). You can change it into any other non-living, non-magical object, " +
-                                    "but the transformation doesn't happen until 5[dice] minutes after you finish casting the spell. The DM makes this roll in secret. This spell cannot target an object being worn or carried by a creature at the time of casting.",
+                                    "but the transformation doesn't happen until 5[dice] minutes after you finish casting the spell. The DM makes the roll for the delay in secret. This spell cannot target an object being worn or carried by a creature at the time of casting.",
                     Names = new List<string> {  },//--------------------TODO
                     DoesNotTargetCreatures = true,
                     IsRangeAlwaysSelf = true,
@@ -1715,7 +1715,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
                     Type = EffectType.Utility,
                     Description = "You cast a variation of the 4th level spell Polymorph where the transformation is delayed. The creature makes their saving throw immediately, but if they fail " +
-                                    "the transformation doesn't happen until 3[dice] minutes after you finish casting the spell. The DM makes this roll in secret.",
+                                    "the transformation doesn't happen until 3[dice] minutes after you finish casting the spell. The DM makes the roll for the delay in secret.",
                     Names = new List<string> {  },//--------------------TODO
                     MinimumDuration = Duration.TenMinutes,
                     IsNeverAoE = true,
@@ -1764,7 +1764,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Transmutation },
                     Type = EffectType.Utility,
                     Description = "You touch up to [3-5] non-magical articles of clothing and instantly resize them. This spell cannot target objects being worn by a creature. " +
-                                    "You may either change the clothing with specific dimensional edits in mind, or you can modify them to automatically fit a nearby visible creature or yourself." +
+                                    "You may either change the clothing with specific dimensional edits in mind, or you can modify them to automatically fit a nearby visible creature or yourself. " +
                                     "In the process of altering the clothing you may also choose to remove any blood, stains, rips, or tears that are smaller than 1ft. " +
                                     "At the time of casting you may choose to suffer 1[dice] piercing damage in order to triple the amount of items you may edit.",
                     Names = new List<string> { "tailor", "stitching", "alteration" },
@@ -2058,7 +2058,7 @@ namespace SpellGenerator.Client.Data
                     Schools = new List<SchoolOfMagic> { SchoolOfMagic.Necromancy },
                     Type = EffectType.Utility,
                     Description = "You reach out and touch one undead creature that has an INT score lower than 10. The creature temporarily has their prior intellect, but not their personality, restored from when they were alive. " +
-                                    "The facts that they knew when they were living are brought back for the spell duration, including the ability to speak (if applicable). This does not, however, include skills like" +
+                                    "The facts that they knew when they were living are brought back for the spell duration, including the ability to speak (if applicable). This does not, however, include skills like " +
                                     "martial abilities that require muscle memory nor any magical or spellcasting abilities. After being affected by this spell a creature cannot be targeted by it again for [3-7] days.",
                     Names = new List<string> { "remembrance", "recollection", "memory" },
                     MinimumCastTime = CastTimeLength.OneMinute,
