@@ -63,7 +63,7 @@ namespace GeneratorEngine.Generators
             
             if (repeatable != RepeatType.None)
             {
-                minDuration = Duration.OneRound;
+                minDuration = Duration.OneMinute;
                 maxDuration = Duration.TenMinutes;
             }                
 

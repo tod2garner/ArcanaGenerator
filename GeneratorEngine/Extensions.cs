@@ -71,6 +71,22 @@ namespace GeneratorEngine
             }
         }
 
+        /// <remarks>
+        /// Duration of 1 day or 1 month doesn't matter if they can repeat the save every round; they will succeed after a few minutes no matter the max duration
+        /// </remarks>
+        private const double CAP_FOR_DURATION_WITH_RESIST_RETRY = 5.0;
+        public static double GetPowerRatingFactor(this Duration duration, RepeatType repeatResist)
+        {
+            var factor = duration.GetPowerRatingFactor();
+            if(repeatResist != RepeatType.None)
+            {
+                factor *= 1 / repeatResist.GetPowerRatingFactor();//Invert value, opposite scaling from damage repeat
+                factor = Math.Max(1.0, Math.Min(CAP_FOR_DURATION_WITH_RESIST_RETRY, factor));
+            }
+
+            return factor;
+        }
+
         public static double GetPowerRatingFactor(this AttackOrSavingThrow attackOrSave)
         {
             switch (attackOrSave)
