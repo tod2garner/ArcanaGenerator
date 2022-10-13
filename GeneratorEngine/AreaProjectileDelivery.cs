@@ -5,8 +5,6 @@ namespace GeneratorEngine
 {
     public class AreaProjectileDelivery : Delivery
     {
-        //For projectiles that chain, split, etc into multiples stages the AoE occurs only at the final stage
-        //TODO - add this note to the description
 
         public ProjectileType ProjectileType;
         public Area Area;
@@ -14,7 +12,7 @@ namespace GeneratorEngine
         public override Dictionary<string, double> GetPowerRatingFactors()
         {
             var factors = base.GetPowerRatingFactors();
-            factors.Add("AreaSize", Area.GetLikelyNumberOfTargets());
+            factors.Add("AreaSize", Area.GetPowerRatingFactor());
             factors.Add(nameof(ProjectileType), ProjectileType.GetPowerRatingFactor());
             return factors;
         }

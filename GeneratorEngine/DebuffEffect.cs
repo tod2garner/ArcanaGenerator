@@ -11,16 +11,19 @@ namespace GeneratorEngine
 
         public override Dictionary<string, double> GetPowerRatingFactors()
         {
-            var factors = base.GetPowerRatingFactors();
+            var factors = new Dictionary<string, double>();
 
-            if (Duration != Duration.Instant && Duration != Duration.OneRound && AttackOrSaveWhenCast != AttackOrSavingThrow.CannotMiss)
-                factors.Add(nameof(RetryResistType), 1 / RetryResistType.GetPowerRatingFactor());//Invert value, opposite scaling from damage repeat
+            var durationText = IsDurationEffectivelyCappedByRetryingResist() ? $"Capped{nameof(Duration)}" : nameof(Duration);
+            factors.Add(durationText, Duration.GetPowerRatingFactor(RetryResistType));
 
             factors.Add("CannotMiss", AttackOrSaveWhenCast.GetPowerRatingFactor());
             factors.Add(nameof(RepeatDebuff), RepeatDebuff.GetPowerRatingFactor());
             factors.Add(nameof(SavingThrowType), SavingThrowType.GetPowerRatingFactor());            
             return factors;
         }
+
+        private bool IsDurationEffectivelyCappedByRetryingResist()
+            => RetryResistType != RepeatType.None && Duration != Duration.Instant && Duration != Duration.OneRound && AttackOrSaveWhenCast != AttackOrSavingThrow.CannotMiss;
 
         internal override void UpdateDescription()
         {

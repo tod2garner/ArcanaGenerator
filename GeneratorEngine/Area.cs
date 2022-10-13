@@ -26,10 +26,18 @@ namespace GeneratorEngine
             return 1;
         }
 
-        public double GetLikelyNumberOfTargets()
+        private double GetLikelyNumberOfTargets()
         {
             var numberOfSquares = CalculateSquareFeet() / 25.0;
-            return Math.Max(1,numberOfSquares / 7);//using 7 as an arbitrary estimate             
+            return Math.Max(1, numberOfSquares / 5);//using 5 as an arbitrary estimate             
+        }
+
+        public double GetPowerRatingFactor()
+        {
+            var targets = GetLikelyNumberOfTargets();
+            //Cap power rating for large numbers of targets because in combat if there are >2 enemies most will be minions that are less important
+            var factor = 1.5 * Math.Log(targets) + 1;//Diminishing returns after 2 targets
+            return Math.Min(factor, 5);
         }
     }
 }

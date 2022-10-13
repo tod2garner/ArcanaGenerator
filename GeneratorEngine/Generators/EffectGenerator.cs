@@ -32,9 +32,13 @@ namespace GeneratorEngine.Generators
         {
             var attackOrSave = GenerateAttackOrSave(deliveryType);
             var repeatable = GetWeightedRepeatType(true);
+            var minDuration = Duration.Instant;
             var maxDuration = Duration.Instant;
             if (repeatable != RepeatType.None)
+            {
+                minDuration = Duration.OneRound;
                 maxDuration = repeatable == RepeatType.Free ? Duration.OneMinute : Duration.TenMinutes;
+            }
 
             return new DamageEffect
             {
@@ -44,7 +48,7 @@ namespace GeneratorEngine.Generators
                 SavingThrowType = GenerateSavingThrowType(attackOrSave, EffectType.Damage),
                 DamageType = GenerateDamageType(school),
                 RepeatDamage = repeatable,
-                Duration = GenerateDuration(EffectType.Damage, Duration.Instant, maxDuration),
+                Duration = GenerateDuration(EffectType.Damage, minDuration, maxDuration),
                 DiceSize = GetRandomWeightedDiceSize(),
                 NumberOfDice = 1, //default here, will be scaled later based on desired value score
                 Description = string.Empty //not set here, will be created after dice are set                
@@ -55,8 +59,14 @@ namespace GeneratorEngine.Generators
         {
             var repeatable = template.IsRepeatable ? GetWeightedRepeatType(true) : RepeatType.None;
             var minDuration = template.MinimumDuration ?? Duration.Instant;
-            var maxDuration = (template.IsAlwaysInstant && repeatable == RepeatType.None) ? Duration.Instant : Duration.OneMonth;
-            maxDuration = repeatable != RepeatType.None ? Duration.TenMinutes : maxDuration;
+            var maxDuration = template.IsAlwaysInstant ? Duration.Instant : Duration.OneMonth;
+            
+            if (repeatable != RepeatType.None)
+            {
+                minDuration = Duration.OneMinute;
+                maxDuration = Duration.TenMinutes;
+            }                
+
             var duration = GenerateDuration(EffectType.Debuff, minDuration, maxDuration);
             var attackOrSave = GenerateAttackOrSave(deliveryType);
             var retryType = (duration == Duration.Instant || duration == Duration.OneRound || attackOrSave == AttackOrSavingThrow.CannotMiss) ? RepeatType.None : GetWeightedRepeatType(false);
@@ -291,9 +301,9 @@ namespace GeneratorEngine.Generators
 
             if (effectType == EffectType.Damage)
             {
-                options.Add((Duration.TenMinutes, 90)); // 10%   TODO - only if repeat like call lightning or witch bolt
-                options.Add((Duration.OneMinute, 80));  // 10%
-                options.Add((Duration.Instant, 0));     // 80%
+                options.Add((Duration.TenMinutes, 90)); // 10%
+                options.Add((Duration.OneMinute, 50));  // 40%
+                options.Add((Duration.Instant, 0));     // 50%
             }
             else if (effectType == EffectType.Penalty)
             {

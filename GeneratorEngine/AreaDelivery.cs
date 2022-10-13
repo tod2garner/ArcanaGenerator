@@ -11,7 +11,7 @@ namespace GeneratorEngine
         public override Dictionary<string, double> GetPowerRatingFactors()
         {
             var factors = base.GetPowerRatingFactors();
-            factors.Add("AreaSize", Area.GetLikelyNumberOfTargets());
+            factors.Add("AreaSize", Area.GetPowerRatingFactor());
             return factors;
         }
 
